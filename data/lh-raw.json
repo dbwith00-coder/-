@@ -1,43 +1,6 @@
 {
-  "collectedAt": "2026-08-26T06:38:07.264Z",
-  "pickedFrom": "[]. dsList",
+  "collectedAt": "2026-08-26T08:56:33.832Z",
+  "pickedFrom": null,
   "note": "필드명 확인용 앞 3건",
-  "sample": [
-    {
-      "PAN_ID": "2026-0001",
-      "PAN_NM": "고양창릉 A-3블록 공공분양",
-      "CNP_CD_NM": "경기 고양시",
-      "SPL_INST_NM": "LH 한국토지주택공사",
-      "PAN_NT_ST_DT": "2026-09-01",
-      "PAN_SS": "접수중",
-      "TOT_SUPLY_HSHLDCO": "1100",
-      "SUPLY_HSHLDCO": "340",
-      "EXCLUSE_AR": "59.98",
-      "LWDN_MNY": "380000000"
-    },
-    {
-      "PAN_ID": "2026-0001",
-      "PAN_NM": "고양창릉 A-3블록 공공분양",
-      "CNP_CD_NM": "경기 고양시",
-      "SPL_INST_NM": "LH 한국토지주택공사",
-      "PAN_NT_ST_DT": "2026-09-01",
-      "PAN_SS": "접수중",
-      "TOT_SUPLY_HSHLDCO": "1100",
-      "SUPLY_HSHLDCO": "180",
-      "EXCLUSE_AR": "84.97",
-      "LWDN_MNY": "520000000"
-    },
-    {
-      "PAN_ID": "2026-0002",
-      "PAN_NM": "부산 에코델타 B2 공공분양",
-      "CNP_CD_NM": "부산 강서구",
-      "SPL_INST_NM": "LH 한국토지주택공사",
-      "PAN_NT_ST_DT": "2026-10-15",
-      "PAN_SS": "공고중",
-      "TOT_SUPLY_HSHLDCO": "640",
-      "SUPLY_HSHLDCO": "300",
-      "EXCLUSE_AR": "74.5",
-      "LWDN_MNY": "410000000"
-    }
-  ]
+  "sample": []
 }
