@@ -22,9 +22,15 @@ jobs:
         env:
           ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
         run: node scripts/probe-trades.js
+      - name: 법정동코드 확보 경로 탐침
+        env:
+          ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
+        run: node scripts/probe-lawd.js
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: probe-trades-${{ github.run_number }}
-          path: data/probe-trades.json
+          path: |
+            data/probe-trades.json
+            data/probe-lawd.json
           if-no-files-found: warn
