@@ -191,8 +191,21 @@ export function normalizeRows(rows, source) {
 }
 
 /* ── 실제 호출 ──────────────────────────────────────────── */
-async function callJson(url, signal) {
-  const res = await fetch(url, { signal, headers: { Accept: "application/json" } });
+/* 네트워크 단계에서 끊기는 경우(대표적으로 apis.data.go.kr) 한 번만 재시도합니다.
+   응답이 오긴 왔는데 내용이 틀린 경우(HTTP 4xx/5xx, XML 오류)는 재시도하지 않습니다 —
+   같은 답이 다시 올 뿐이고, 원인을 가려버립니다. */
+async function callJson(url, signal, attempt = 0) {
+  let res;
+  try {
+    res = await fetch(url, {
+      signal: signal ?? AbortSignal.timeout(25000),
+      headers: { Accept: "application/json" },
+    });
+  } catch (e) {
+    const kind = e?.name === "TimeoutError" ? "25초 안에 응답 없음" : String(e?.message || e);
+    if (attempt === 0 && e?.name !== "AbortError") return callJson(url, signal, 1);
+    throw new Error(`연결 실패 (${kind}) · 2회 시도`);
+  }
   const text = await res.text();
   if (!res.ok) {
     throw new Error(`HTTP ${res.status} · ${text.slice(0, 160)}`);

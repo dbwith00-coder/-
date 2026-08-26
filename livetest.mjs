@@ -70,7 +70,10 @@ const privRows = await pg.locator(".mv-listrow").allInnerTexts();
 check("청약홈 민영 공고 반영", privRows.some(t => t.includes("래미안 원페를라")));
 check("HOUSE_TY 파싱 (084.9500A → 84㎡A)", privRows.some(t => t.includes("84㎡A")));
 check("당첨선 추정 표기", privRows.some(t => t.includes("지역 기준 추정")));
-check("내장 샘플도 함께 유지", privRows.some(t => t.includes("반포 디에이치 클래스트")));
+check("실시간 성공 시 스냅샷 대신 실시간만 표시",
+  privRows.some(t => t.includes("래미안 원페를라")) &&
+  !privRows.some(t => t.includes("시티오씨엘")),
+  "같은 공고 중복 방지");
 await pg.screenshot({ path: "shots/21-live-list.png", fullPage: true });
 await pg.close();
 
@@ -79,9 +82,10 @@ console.log("\n── 시나리오 2: 인증키 오류 (data.go.kr XML) ──")
 pg = await openApp(cfg({ serviceKey: "BADKEY" }));
 const p2 = await pg.locator(".mv-card:has-text('실시간 분양공고 연동')").first().innerText();
 check("XML 오류 메시지 파싱", p2.includes("SERVICE_KEY_IS_NOT_REGISTERED_ERROR"));
-check("실패 시 샘플 폴백 안내", p2.includes("내장 샘플 데이터"));
+check("실패 시 스냅샷 폴백 안내", p2.includes("수집 스냅샷"));
 const r2 = await pg.locator(".mv-listrow").allInnerTexts();
-check("실패해도 앱은 정상 동작", r2.some(t => t.includes("반포 디에이치 클래스트")));
+check("실패 시 수집 스냅샷(실제 공고)으로 폴백",
+  r2.some(t => t.includes("시티오씨엘 9단지 오션파크뷰")), "청약홈 수집분");
 await pg.screenshot({ path: "shots/22-live-error.png", fullPage: false });
 await pg.close();
 

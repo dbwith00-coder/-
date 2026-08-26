@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { loadConfig, saveConfig, fetchAllNotices } from "./lib/openapi";
+import SNAPSHOT from "./data/notices.json";
 
 /* ============================================================
    집당 프로토타입에서 "청약 · 입주설계" 모듈만 뽑아낸 독립 버전입니다.
@@ -205,68 +206,11 @@ const REGIONS = [
   "경상남도", "제주특별자치도",
 ];
 
-const SITES = [
-  { id: "s1", supply: "민영", n: "반포 디에이치 클래스트", gu: "서울 서초구 반포동", brand: "현대건설",
-
-    total: 3199, general: 1300, when: "2026-11", status: "예정",
-    types: [{ t: "59㎡", n: 420, price: 178000 }, { t: "84㎡", n: 560, price: 246000 },
-            { t: "114㎡", n: 320, price: 338000 }],
-    cut: 74, tags: ["재건축", "한강변", "토지거래허가구역"],
-    note: "구 반포주공1단지 1·2·4주구. 서울 최대어로 꼽히는 단지입니다." },
-  { id: "s2", supply: "민영", n: "청담 써밋 클라비온", gu: "서울 강남구 청담동", brand: "대우건설",
-    total: 812, general: 176, when: "2026-09", status: "접수 예정",
-    types: [{ t: "59㎡", n: 48, price: 192000 }, { t: "84㎡", n: 96, price: 268000 },
-            { t: "101㎡", n: 32, price: 324000 }],
-    cut: 72, tags: ["재건축", "강남권", "학군"],
-    note: "일반분양 물량이 적어 경쟁률이 높게 형성될 전망입니다." },
-  { id: "s3", supply: "민영", n: "충정로역 자이르네", gu: "서울 서대문구 충정로", brand: "GS건설",
-    total: 299, general: 186, when: "2026-08", status: "접수 중",
-    types: [{ t: "39㎡", n: 62, price: 78000 }, { t: "59㎡", n: 84, price: 112000 },
-            { t: "74㎡", n: 40, price: 138000 }],
-    cut: 61, tags: ["역세권", "도심", "소형 위주"],
-    note: "5호선 충정로역 도보 3분. 1~2인 가구 수요가 많습니다." },
-  { id: "s4", supply: "민영", n: "중화역 라온프라이빗 센트로", gu: "서울 중랑구 중화동", brand: "라온건설",
-    total: 250, general: 113, when: "2026-08", status: "접수 중",
-    types: [{ t: "59㎡", n: 68, price: 82000 }, { t: "84㎡", n: 45, price: 108000 }],
-    cut: 55, tags: ["역세권", "실수요", "가성비"],
-    note: "7호선 중화역 인근. 서울 안에서 진입 문턱이 낮은 편입니다." },
-  { id: "s5", supply: "민영", n: "힐스테이트 송파 더 그리드", gu: "서울 송파구 문정동", brand: "현대엔지니어링",
-    total: 428, general: 214, when: "2026-10", status: "예정",
-    types: [{ t: "59㎡", n: 96, price: 128000 }, { t: "84㎡", n: 118, price: 172000 }],
-    cut: 67, tags: ["역세권", "업무지구", "신축"],
-    note: "문정법조타운 인근. 직주근접 수요가 두텁습니다." },
-  { id: "s6", supply: "민영", n: "고덕 강일 3단지", gu: "서울 강동구 강일동", brand: "SH공사",
-    total: 500, general: 500, when: "2026-09", status: "접수 예정",
-    types: [{ t: "49㎡", n: 180, price: 52000 }, { t: "59㎡", n: 320, price: 68000 }],
-    cut: 58, tags: ["공공분양", "장기전세", "시세 대비 저렴"],
-    note: "SH 공공분양. 소득·자산 요건이 별도로 있습니다." },
-  { id: "s7", supply: "민영", n: "광명 자이 힐스테이트", gu: "경기 광명시 광명동", brand: "GS·현대",
-    total: 1248, general: 620, when: "2026-09", status: "접수 예정",
-    types: [{ t: "59㎡", n: 240, price: 74000 }, { t: "84㎡", n: 300, price: 98000 },
-            { t: "101㎡", n: 80, price: 124000 }],
-    cut: 64, tags: ["서울 인접", "재개발", "7호선"],
-    note: "광명뉴타운. 서울 접근성 대비 분양가가 낮습니다." },
-  { id: "s8", supply: "민영", n: "검단신도시 리버뷰파크", gu: "인천 서구 원당동", brand: "대방건설",
-    total: 862, general: 862, when: "2026-08", status: "접수 중",
-    types: [{ t: "59㎡", n: 280, price: 42000 }, { t: "74㎡", n: 302, price: 51000 },
-            { t: "84㎡", n: 280, price: 58000 }],
-    cut: 48, tags: ["신도시", "GTX-D 예정", "실수요"],
-    note: "검단신도시 마지막 물량 중 하나입니다." },
-  /* 공공분양 샘플 — 일반공급이 가점제가 아니라 저축총액(인정액) 순 경쟁이라
-     cut 대신 cutAmt(예상 당첨 인정액 컷, 만원)를 씁니다. 컷은 최근 수도권
-     공공 당첨선 패턴을 참고한 추정치입니다. */
-  { id: "s9", supply: "공공", n: "고양창릉 공공분양 S-1(가칭)", gu: "경기 고양시 창릉", brand: "공공분양 · 뉴:홈",
-    status: "접수 예정", when: "2026.10", total: 1100, general: 620,
-    types: [{ t: "59㎡", n: 340, price: 38000 }, { t: "74㎡", n: 180, price: 45000 },
-            { t: "84㎡", n: 100, price: 52000 }],
-    cut: 0, cutAmt: 2400, tags: ["3기 신도시", "공공분양", "GTX-A"],
-    note: "3기 신도시 공공분양. 40㎡ 초과 일반공급은 저축총액(인정액) 많은 순으로 당첨자를 뽑습니다." },
-  { id: "s10", supply: "공공", n: "남양주왕숙 공공분양 A-2(가칭)", gu: "경기 남양주시 왕숙", brand: "공공분양 · 뉴:홈",
-    status: "접수 예정", when: "2027.02", total: 900, general: 510,
-    types: [{ t: "59㎡", n: 300, price: 34000 }, { t: "84㎡", n: 210, price: 47000 }],
-    cut: 0, cutAmt: 2000, tags: ["3기 신도시", "공공분양", "9호선 연장"],
-    note: "왕숙지구 공공분양. 인정액 컷은 인근 지구 최근 결과를 참고한 추정입니다." },
-];
+/* ── 분양공고 후 단지 ──
+   GitHub Actions 수집기가 청약홈 API 에서 받아 저장소에 커밋한 실제 공고입니다.
+   (src/data/notices.json · 수집 시각은 파일 안의 collectedAt)
+   실시간 호출이 되는 환경에서는 이 스냅샷 대신 방금 받은 데이터가 쓰입니다. */
+const SITES = SNAPSHOT.sites;
 
 /* ── 분양공고 전 단지 ──
    분양예정가 = (평당 택지비 + 평당 건축비) × (1 + 가산비율) × 공급면적(평)
@@ -600,26 +544,40 @@ function Subscription({ tab, setTab, allSites, live }) {
   const budget = cash + (bestBank ? bestBank.cap : 0);
 
   /* ── 분양현장 ─────────────────────────────────────── */
+  /* 청약홈 주소는 "충청남도"·"경상북도" 처럼 정식 명칭이라
+     "충남"·"경북" 칩만으로는 매칭이 안 됩니다. 별칭을 함께 둡니다. */
   const areas = ["전체", "서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종",
     "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"];
+  const AREA_ALIAS = {
+    충북: ["충청북도", "충북"], 충남: ["충청남도", "충남"],
+    전북: ["전북", "전라북도"], 전남: ["전라남도", "전남"],
+    경북: ["경상북도", "경북"], 경남: ["경상남도", "경남"],
+  };
+  const inArea = (site, a) =>
+    a === "전체" || (AREA_ALIAS[a] || [a]).some((pre) => (site.gu || "").startsWith(pre));
+  const s2r = (s) => (s.status === "접수 중" ? 0 : s.status === "접수 예정" ? 1 : 2);
   /* 통장 종류가 선택한 공급유형에 청약 가능한지 (예·부금=민영만, 청약저축=공공만, 종합·드림=전부) */
   const bankOk = supplyType === "공공"
     ? !(bankType === "청약예금" || bankType === "청약부금")
     : bankType !== "청약저축";
   const siteList = allSites
     .filter((s) => s.supply === supplyType)
-    .filter((s) => area === "전체" || s.gu.startsWith(area))
-    .sort((a, b) => (supplyType === "공공" ? (a.cutAmt || 0) - (b.cutAmt || 0) : a.cut - b.cut));
+    .filter((s) => inArea(s, area))
+    .sort((a, b) => (s2r(a) - s2r(b)) ||
+      (supplyType === "공공" ? (a.cutAmt || 0) - (b.cutAmt || 0) : a.cut - b.cut));
   /* 오른쪽 공고 목록: 공급유형·지역으로 거르고, 민영=당첨선 낮은순 / 공공=인정액 컷 낮은순 */
+  /* 이미 끝난 공고를 위에 두면 쓸모가 없어서, 접수 상태를 1순위로 정렬합니다 */
+  const statusRank = (s) => (s.status === "접수 중" ? 0 : s.status === "접수 예정" ? 1 : 2);
   const rightSites = allSites
     .filter((s) => s.supply === supplyType)
-    .filter((s) => listRegion === "전체" || s.gu.startsWith(listRegion))
-    .sort((a, b) => (supplyType === "공공" ? (a.cutAmt || 0) - (b.cutAmt || 0) : a.cut - b.cut));
+    .filter((s) => inArea(s, listRegion))
+    .sort((a, b) => statusRank(a) - statusRank(b) ||
+      (supplyType === "공공" ? (a.cutAmt || 0) - (b.cutAmt || 0) : a.cut - b.cut));
   /* 분양공고 전 단지: 원가식(하한 성격)과 시세·시장예상(marketEst)을 결합해 범위로 추정.
      대표값(estMid) = 두 값의 중간(50:50). 시세 근거가 없으면 원가식 단일값. */
   const rightPre = PRE_SITES
     .filter((s) => s.supply === supplyType)
-    .filter((s) => listRegion === "전체" || s.gu.startsWith(listRegion))
+    .filter((s) => inArea(s, listRegion))
     .map((s) => {
       const pyPrice = Math.round((s.land + s.constCost) * (1 + s.margin));
       const costTotal = pyPrice * s.py;
@@ -2056,7 +2014,7 @@ function LivePanel({ live }) {
   const src = live.data?.sources;
   const chip = live.state === "loading" ? { c: "mv-cool", t: "불러오는 중…" }
     : live.count > 0 ? { c: "mv-on", t: `실시간 ${live.count}건 연결됨` }
-    : { c: "mv-warn", t: "실시간 데이터 없음 · 내장 샘플로 표시 중" };
+    : { c: "mv-cool", t: `수집 스냅샷 ${live.snapshotCount}건 표시 중` };
 
   return (
     <div className="mv-card mv-pad">
@@ -2142,10 +2100,13 @@ function LivePanel({ live }) {
       )}
 
       {live.count === 0 && live.state !== "loading" && (
-        <div className="mv-note" style={{ marginTop: 12, borderLeft: "3px solid #C1440E", fontSize: 12.5 }}>
-          지금 화면의 공고는 <b>내장 샘플 데이터</b>입니다. 실시간 공고를 받으려면 위 <b>API 설정</b>에
-          인증키와 경로를 넣고 다시 호출하세요. 게시된 아티팩트 링크는 보안 정책(CSP)상 외부 API 를
-          호출할 수 없어 항상 샘플로 표시됩니다.
+        <div className="mv-note" style={{ marginTop: 12, borderLeft: "3px solid #17285A", fontSize: 12.5, lineHeight: 1.7 }}>
+          지금 화면은 <b>수집 스냅샷</b>입니다 — 청약홈 API 에서 받아 저장해 둔
+          <b> 실제 공고 {live.snapshotCount}건</b>
+          {live.snapshotAt && <> (<b>{new Date(live.snapshotAt).toLocaleString("ko-KR")}</b> 수집)</>}.
+          지어낸 예시가 아니라 진짜 데이터지만, <b>지금 이 순간</b>의 상태는 아닙니다.<br />
+          게시된 링크는 보안 정책(CSP)상 외부 API 를 직접 호출할 수 없어 늘 스냅샷으로 보입니다.
+          매일 자동 수집돼 갱신되고, 직접 띄워서 쓰시면 위 <b>API 설정</b>으로 실시간 호출이 됩니다.
         </div>
       )}
     </div>
@@ -2176,6 +2137,8 @@ export default function App() {
 
   const live = {
     state, data, cfg,
+    snapshotCount: SNAPSHOT.count,
+    snapshotAt: SNAPSHOT.collectedAt,
     count: data?.sites?.length || 0,
     at: data?.at || null,
     refresh: () => run(cfg),
@@ -2183,7 +2146,11 @@ export default function App() {
   };
 
   /* 실시간 공고를 앞에, 내장 샘플을 뒤에 — 실시간이 0건이면 샘플만 보입니다 */
-  const allSites = useMemo(() => [...(data?.sites || []), ...SITES], [data]);
+  /* 실시간 호출이 성공하면 그 결과를, 실패하면(아티팩트 링크 등) 수집 스냅샷을 씁니다.
+     둘을 섞으면 같은 공고가 중복되므로 한쪽만 씁니다. */
+  const allSites = useMemo(
+    () => (data?.sites?.length ? data.sites : SITES),
+    [data]);
 
   return (
     <div className="mv">
