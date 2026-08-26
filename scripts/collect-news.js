@@ -81,36 +81,77 @@ function parseRss(xml) {
 
 /* 기사 제목에서 단지명 후보를 뽑습니다.
    브랜드명을 축으로 앞뒤 토큰을 붙여 "OO 힐스테이트 OO" 같은 형태를 만듭니다. */
+const normName = (s) => String(s).replace(/[\s()（）\-–—·.]/g, "").toLowerCase();
+
+/* 붙이면 안 되는 토큰: 조사·서술어·시점·건설사명 */
+const STOP = new RegExp("^(" + [
+  "분양", "청약", "예정", "아파트", "단지", "공급", "물량", "일반", "특별", "접수", "모집",
+  "공고", "오는", "이달", "다음달", "이번달", "전국", "수도권", "지방", "신규", "올해",
+  "내년", "하반기", "상반기", "최고", "대단지", "브랜드", "시공", "착공", "입주", "확정",
+  "시작", "돌입", "개시", "본격", "특징", "눈길", "관심", "인기", "주목",
+  /* 건설사명 — 단지명이 아니라 주체입니다 */
+  "현대건설", "현대엔지니어링", "삼성물산", "대우건설", "GS건설", "지에스건설", "롯데건설",
+  "포스코이앤씨", "DL이앤씨", "디엘이앤씨", "HDC현대산업개발", "한화건설", "쌍용건설",
+  "대방건설", "제일건설", "서희건설", "한신공영", "중흥토건", "우미건설", "동부건설",
+  "코오롱글로벌", "금호건설", "계룡건설", "태영건설", "두산건설", "SK에코플랜트",
+].join("|") + ")$");
+/* "9월", "2026년", "3.3㎡" 같은 시점·수치 토큰 */
+const NUMERIC = /^\d+(월|년|일|가구|세대|억|만|차|단지|블록|㎡)?$/;
+
 function extractComplexNames(title) {
   const out = new Set();
+  const push = (v) => {
+    const name = String(v).trim();
+    if (name.length < 3 || name.length > 30) return;
+    if (!/[가-힣]/.test(name)) return;                 /* 한글이 없으면 단지명이 아님 */
+    if (BRANDS.includes(name)) return;                 /* 브랜드명 단독은 단지가 아님 */
+    if (STOP.test(name) || NUMERIC.test(name)) return;
+    out.add(name);
+  };
 
-  /* 1) 따옴표로 묶인 이름 — 기사에서 단지명을 인용할 때 가장 정확합니다 */
+  /* 1) 따옴표로 묶인 이름 — 기사에서 단지명을 인용할 때 가장 정확합니다.
+     브랜드 목록에 없는 신규 브랜드('르엘' 등)도 여기서 잡힙니다. */
   for (const m of title.matchAll(/[‘'"“]([^’'"”]{3,30})[’'"”]/g)) {
     const name = m[1].trim();
-    if (BRAND_RE.test(name)) out.add(name);
+    const words = name.split(/\s+/);
+    /* 인용부호 안이라도 문장 조각이면 버립니다 */
+    if (words.length <= 5 && !/[.…?!]/.test(name)) push(name);
   }
 
   /* 2) 브랜드명 주변 토큰 결합 */
   const tokens = title.split(/[\s,·]+/).filter(Boolean);
   tokens.forEach((tok, i) => {
-    if (!BRAND_RE.test(tok)) return;
-    const around = [tokens[i - 1], tok, tokens[i + 1]]
+    const bare = tok.replace(/[^가-힣A-Za-z0-9]/g, "");
+    if (!BRAND_RE.test(bare)) return;
+    const parts = [tokens[i - 1], tok, tokens[i + 1]]
       .filter(Boolean)
       .map((t) => t.replace(/[^가-힣A-Za-z0-9]/g, ""))
-      .filter((t) => t.length >= 1);
-    /* 앞뒤 토큰이 조사·서술어면 붙이지 않습니다 */
-    const STOP = /^(분양|청약|예정|아파트|단지|공급|물량|일반|특별|접수|모집|공고|오는|이달|다음달|전국|수도권|지방|신규|올해|내년|최고|대단지|브랜드|시공|건설|착공|입주)$/;
-    const parts = around.filter((t) => !STOP.test(t));
-    if (parts.length >= 2) out.add(parts.join(" "));
-    out.add(tok.replace(/[^가-힣A-Za-z0-9]/g, ""));
+      .filter((t) => t.length >= 1 && !STOP.test(t) && !NUMERIC.test(t));
+    if (parts.length >= 2) push(parts.join(" "));
   });
 
-  return [...out]
-    .map((s) => s.trim())
-    .filter((s) => s.length >= 3 && s.length <= 30);
+  return [...out];
 }
 
-const normName = (s) => String(s).replace(/[\s()（）\-–—·.]/g, "").toLowerCase();
+/* "힐스테이트 검단" 과 "힐스테이트 검단 웰카운티" 가 따로 집계되면
+   같은 단지가 둘로 보입니다. 짧은 쪽이 긴 쪽에 포함되면 흡수시킵니다. */
+function consolidate(list) {
+  const sorted = [...list].sort((a, b) => b.name.length - a.name.length);
+  const kept = [];
+  for (const c of sorted) {
+    const host = kept.find((k) => normName(k.name).includes(normName(c.name)));
+    if (host) {
+      host.mentions += c.mentions;
+      for (const a of c.articles) {
+        if (host.articles.length < 5 && !host.articles.some((x) => x.link === a.link)) host.articles.push(a);
+      }
+      host.aliases = [...new Set([...host.aliases, ...c.aliases])];
+    } else {
+      kept.push(c);
+    }
+  }
+  return kept;
+}
 
 async function fetchRss(query) {
   const url = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=ko&gl=KR&ceid=KR:ko`;
@@ -177,9 +218,9 @@ const main = async () => {
     }
   }
 
-  const candidates = [...byName.values()]
+  const candidates = consolidate(
+      [...byName.values()].map((c) => ({ ...c, aliases: [...c.aliases] })))
     .filter((c) => c.mentions >= 2)              /* 1회 언급은 노이즈일 확률이 높습니다 */
-    .map((c) => ({ ...c, aliases: [...c.aliases] }))
     .sort((a, b) => b.mentions - a.mentions || a.name.localeCompare(b.name));
 
   const out = {
