@@ -1,0 +1,69 @@
+name: 실거래가 수집
+
+# 분양예정가 추정에 "주변 시세"를 넣기 위한 국토부 아파트 매매 실거래가 수집.
+#
+# 처음 한 번은 시군구 코드표를 훑느라 20분쯤 걸립니다. 코드표는
+# data/lawd.json 으로 커밋되므로 그 다음부터는 거래만 받습니다(몇 분).
+
+on:
+  workflow_dispatch:
+    inputs:
+      months_back:
+        description: "공고 시점에서 몇 개월 뒤까지 볼지"
+        default: "6"
+      concurrency:
+        description: "동시 요청 수 (너무 높이면 거부당합니다)"
+        default: "5"
+  schedule:
+    - cron: "30 21 * * 0"   # 매주 월요일 06:30 KST
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 인증키 확인
+        env:
+          ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
+        run: |
+          if [ -z "$ODCLOUD_KEY" ]; then
+            echo "::error::ODCLOUD_KEY 시크릿이 없습니다"
+            exit 1
+          fi
+          echo "인증키 길이 ${#ODCLOUD_KEY}자"
+
+      - name: 실거래가 수집
+        env:
+          ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
+          MONTHS_BACK: ${{ inputs.months_back || '6' }}
+          CONCURRENCY: ${{ inputs.concurrency || '5' }}
+        run: node scripts/collect-trades.js
+
+      - name: 커밋
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lawd.json data/trades.json
+          if git diff --staged --quiet; then
+            echo "바뀐 게 없습니다"
+          else
+            git commit -m "chore(data): 실거래가 수집 $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trades-${{ github.run_number }}
+          path: |
+            data/lawd.json
+            data/trades.json
+          if-no-files-found: warn
