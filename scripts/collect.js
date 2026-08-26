@@ -35,7 +35,9 @@ const cfg = {
   rows: ROWS,
 };
 
-const mask = (s) => (s ? `${s.slice(0, 6)}…${s.slice(-4)} (${s.length}자)` : "(없음)");
+/* 공개 저장소의 Actions 로그에 남으므로 키는 길이만 찍습니다.
+   GitHub 은 시크릿 전체 문자열만 마스킹하고 일부만 잘라 쓴 값은 마스킹하지 않습니다. */
+const mask = (s) => (s ? `설정됨 (${s.length}자)` : "(없음)");
 
 async function one(label, fn, source) {
   const t0 = Date.now();
