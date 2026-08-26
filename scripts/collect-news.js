@@ -125,12 +125,11 @@ function extractComplexNames(title) {
     if (!/[가-힣]/.test(name)) return;                 /* 한글이 없으면 단지명이 아님 */
     if (BRANDS.includes(name)) return;                 /* 브랜드명 단독은 단지가 아님 */
     if (STOP.test(name) || NUMERIC.test(name) || GENERIC.test(name)) return;
-    /* 브랜드가 없는 이름은 인용부호에서 온 것만 허용하고,
-       그마저도 일반명사로 끝나면(“…로또 청약”, “반값아파트”) 버립니다. */
-    if (!BRAND_RE.test(name.replace(/\s/g, ""))) {
-      if (!quoted) return;
-      if (/(청약|분양|아파트|시장|일정|물량|단지)$/.test(name)) return;
-    }
+    /* 브랜드명이 없으면 버립니다.
+       인용부호 안이라도 "공사중단", "당첨되면 수십억 차익", "더블생활권" 같은
+       기사 표현이 단지로 둔갑하는 게 더 나쁩니다.
+       대신 브랜드 목록에 없는 신규 브랜드는 놓칩니다 — BRANDS 에 추가하면 잡힙니다. */
+    if (!BRAND_RE.test(name.replace(/\s/g, ""))) return;
     out.add(name);
   };
 
@@ -207,7 +206,7 @@ const main = async () => {
      "검암역 푸르지오 프라베뉴 (B-1BL) 공공분양주택" 과 "인천 검암역 푸르지오 프라베뉴"
      처럼 한쪽이 다른 쪽을 품는 형태라, 포함 관계로 봐야 걸러집니다. */
   const isAnnounced = (key) =>
-    key.length >= 6 && announced.some((a) => a.includes(key) || key.includes(a));
+    key.length >= 4 && announced.some((a) => a.includes(key) || key.includes(a));
 
   const articles = [];
   const perQuery = [];
