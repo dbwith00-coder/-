@@ -394,7 +394,9 @@ const MODEL_GENERAL = ["SUPLY_HSHLDCO", "GNSPLY_HSHLDCO"];
 export function normalizeApplyhome(d, models = [], set = APPLYHOME_SETS[0]) {
   const addr = String(d.HSSPLY_ADRES ?? "").trim();
   const areaNm = String(d.SUBSCRPT_AREA_CODE_NM ?? "").trim();
-  const gu = addr ? addr.split(/\s+/).slice(0, 3).join(" ") : areaNm || "지역 미상";
+  /* 3토큰이면 서울은 동까지 나오지만 경기도는 "경기도 부천시 원미구" 에서 끊깁니다.
+     동 단위가 있어야 같은 구 안의 가격 차이를 설명할 수 있어 4토큰까지 답니다. */
+  const gu = addr ? addr.split(/\s+/).slice(0, 4).join(" ") : areaNm || "지역 미상";
 
   /* 금액 필드는 문서상 단위가 이미 "만원" 이라 환산하지 않습니다 */
   const types = models
