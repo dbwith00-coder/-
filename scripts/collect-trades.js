@@ -115,6 +115,12 @@ const LAWD_FILE = `${OUT}/lawd.json`;
 const SIDO = ["11", "26", "27", "28", "29", "30", "31", "36",
               "41", "42", "43", "44", "45", "46", "47", "48", "50", "51", "52"];
 
+/* 하루 한도가 10,000회인데 전국 훑기는 17,100회가 듭니다.
+   한 번에 다 못 하니 하루치 예산만 쓰고 멈춥니다. 거래 수집 몫을 남겨야
+   훑는 날에도 시세가 조금씩은 쌓입니다. 매일 돌리면 이틀이면 표가 완성되고,
+   그 뒤로는 훑기를 건너뛰어 거래만 받습니다. */
+const SCAN_BUDGET = Number(process.env.SCAN_BUDGET || 8000);
+
 async function scanLawd() {
   let store = { at: null, done: [], codes: {} };
   if (fs.existsSync(LAWD_FILE)) store = JSON.parse(fs.readFileSync(LAWD_FILE, "utf8"));
@@ -124,11 +130,15 @@ async function scanLawd() {
     console.log(`코드표 재사용 — 시군구 ${Object.keys(store.codes).length}개`);
     return store;
   }
-  console.log(`코드표를 훑습니다 (${todo.length}개 시도 × 900) — 기준월 ${probeYm}`);
+  console.log(`코드표를 훑습니다 — 남은 시도 ${todo.length}개 · 오늘 예산 ${SCAN_BUDGET}회 · 기준월 ${probeYm}`);
 
-  let quota = null;
+  let quota = null, spent = 0;
   for (const prefix of todo) {
     if (quota) break;
+    if (spent + 900 > SCAN_BUDGET) {
+      console.log(`  예산 남은 ${SCAN_BUDGET - spent}회 — ${prefix}xxx 부터는 다음에 합니다`);
+      break;
+    }
     const codes = [];
     for (let n = 100; n <= 999; n++) codes.push(prefix + String(n));
     const queue = [...codes];
@@ -152,6 +162,7 @@ async function scanLawd() {
       }
     }));
     /* 한도로 끊겼으면 그 시도는 "끝났다"고 표시하면 안 됩니다 — 다음에 다시 */
+    spent += calls;
     if (!quota) store.done.push(prefix);
     store.at = new Date().toISOString();
     fs.writeFileSync(LAWD_FILE, JSON.stringify(store));
@@ -165,7 +176,13 @@ async function scanLawd() {
     console.log(`  한도는 자정(KST)에 초기화됩니다. 다시 돌리면 이어서 합니다.`);
     store.quota = quota;
   } else {
-    console.log(`코드표 완성 — 시군구 ${Object.keys(store.codes).length}개`);
+    const left = SIDO.filter((p) => !store.done.includes(p));
+    if (left.length) {
+      console.log(`\n오늘 예산(${spent}회)을 다 썼습니다. 시군구 ${Object.keys(store.codes).length}개 저장.`);
+      console.log(`  남은 시도: ${left.join(" ")} — 내일 이어서 합니다.`);
+    } else {
+      console.log(`코드표 완성 — 시군구 ${Object.keys(store.codes).length}개`);
+    }
   }
   return store;
 }

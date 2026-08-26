@@ -17,8 +17,13 @@ on:
       probe_only:
         description: "한도 진단만 하고 수집은 건너뛰기 (true/false)"
         default: "false"
+      scan_budget:
+        description: "코드표 훑기에 쓸 하루 호출 수 (한도 10,000 중)"
+        default: "8000"
   schedule:
-    - cron: "30 21 * * 0"   # 매주 월요일 06:30 KST
+    # 매일 00:10 KST — 공공데이터포털 일일 한도가 자정에 풀립니다.
+    # 코드표가 다 차기 전에는 훑기를 이어서 하고, 완성되면 거래만 받습니다.
+    - cron: "10 15 * * *"
 
 permissions:
   contents: write
@@ -54,6 +59,7 @@ jobs:
           ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
           MONTHS_BACK: ${{ inputs.months_back || '6' }}
           CONCURRENCY: ${{ inputs.concurrency || '5' }}
+          SCAN_BUDGET: ${{ inputs.scan_budget || '8000' }}
         run: node scripts/collect-trades.js
 
       - name: 커밋
