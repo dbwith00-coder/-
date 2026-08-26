@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-08-26T07:39:07.187Z",
+ "collectedAt": "2026-08-26T07:42:58.980Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -45,7 +45,7 @@
   }
  ],
  "articleCount": 618,
- "count": 48,
+ "count": 47,
  "candidates": [
   {
    "name": "e편한세상 분당 퍼스트빌리지",
@@ -166,41 +166,6 @@
    "freq": {}
   },
   {
-   "name": "IBD서 더샵 송도그란테르",
-   "mentions": 5,
-   "articles": [
-    {
-     "title": "포스코이앤씨, 안방인 송도 IBD서 ‘더샵 송도그란테르’ 이달 분양 예정",
-     "source": "뉴스톱",
-     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBoNmZmUlNuX29mbXNLWmt3TFUzMmx5R3RvRDRLTjRXVWNmSXhQa3E1aXBGaEdhcm52SGhiZ1ViUGFlRWxWSWNrMi16SzI2OS1MdFZOLUpUYl81eWk5REc4bDFpV1BCZkJsVnBPRjRLOA?oc=5",
-     "pubDate": "Tue, 12 May 2026 07:00:00 GMT"
-    },
-    {
-     "title": "포스코이앤씨, ‘더샵 송도그란테르’ 4월 분양 예정",
-     "source": "remagazine.co.kr",
-     "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9kaGdGTnlDQzItOUt0ZkxSd0xwR2ptSS13VXQzaFVWWXJuVkhSVi1rQlQ0a1k5OU9TeGxLN204WGluMlc4bGhkcEk5RTNFRzdDMDZZQ2Q4WDRlcUg2R1ZkZjhYYXVoZUpoRzFXQU5n0gFyQVVfeXFMUG5jM2lhb25sRW1NWUpxYUxsRWZsd2lfWW8wRWNqb1Y3VVd4MkZreDRKNWRPN2xOenQweXlfcnVCekUwaGo5TWgxR1BGdTBBU2c1M21ZeWhZWDhDWDZaa1pwTlFNNVpaUTZfMFowSlBtZ1J3?oc=5",
-     "pubDate": "Mon, 10 Aug 2026 07:00:00 GMT"
-    },
-    {
-     "title": "포스코이앤씨, 인천 ‘더샵 송도그란테르’ 4월 분양 예정",
-     "source": "포스코그룹 뉴스룸",
-     "link": "https://news.google.com/rss/articles/CBMisgJBVV95cUxNZl93SjBFLW5KLWxxTmluSEh5bXlYZlZOaS1BWHFDWVp5alBvT3Y1M2twMExRYWd1cjJNRTRnSXplVjA3bVZ0YjRhOVZTX0NpLUZfOFRUX0wyaUplVkRkQ3BHQXFHN3hkUnl4VktpVkNGWURqa1VKRHJMTUVNeWlGdHJJN2lRLXcwSkZXazdHXzlOQzdvOFhCR3BPdnJtYWJQOS1XaDVBQmNtR2hhRTRlei02ay1sY3B2b0VxTmRWSkM3c3Nzbi1nTVQtSGhhVFNpaUV5dWd4T1BqQmdHclJ2SkdMSzg2VVNNb1hEdlBqOXlCb2llSDJYWjE4TS1zTVdrenRhcHR2N2swaUV2Z1k0X0Y0X3pJS2Z5MWZoNkEwLUVILWR2Y1dtcDM3Nk5ub2FkZFE?oc=5",
-     "pubDate": "Wed, 01 Apr 2026 07:00:00 GMT"
-    },
-    {
-     "title": "포스코이앤씨, 더샵 송도그란테르 이달 분양 예정",
-     "source": "한국주택경제신문",
-     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE84RGY1b1hTX2QzOXFxM096R3J6VEtzaDZwWnF3dGQ5TmctZTFuZUE5cWFsX2RLUzdQM2lNbFVhZElzVVk4WmtGVjd2TVVNYTU3Wjg1SVI2djNzaGg3cHA0b0NKbzg0elJQ?oc=5",
-     "pubDate": "Wed, 01 Apr 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "IBD서 더샵 송도그란테르",
-    "더샵 송도그란테르"
-   ],
-   "freq": {}
-  },
-  {
    "name": "세종 우미린 센터파크",
    "mentions": 5,
    "articles": [
@@ -242,6 +207,41 @@
    "freq": {}
   },
   {
+   "name": "인천 더샵 송도그란테르",
+   "mentions": 5,
+   "articles": [
+    {
+     "title": "포스코이앤씨, 인천 ‘더샵 송도그란테르’ 4월 분양 예정",
+     "source": "포스코그룹 뉴스룸",
+     "link": "https://news.google.com/rss/articles/CBMisgJBVV95cUxNZl93SjBFLW5KLWxxTmluSEh5bXlYZlZOaS1BWHFDWVp5alBvT3Y1M2twMExRYWd1cjJNRTRnSXplVjA3bVZ0YjRhOVZTX0NpLUZfOFRUX0wyaUplVkRkQ3BHQXFHN3hkUnl4VktpVkNGWURqa1VKRHJMTUVNeWlGdHJJN2lRLXcwSkZXazdHXzlOQzdvOFhCR3BPdnJtYWJQOS1XaDVBQmNtR2hhRTRlei02ay1sY3B2b0VxTmRWSkM3c3Nzbi1nTVQtSGhhVFNpaUV5dWd4T1BqQmdHclJ2SkdMSzg2VVNNb1hEdlBqOXlCb2llSDJYWjE4TS1zTVdrenRhcHR2N2swaUV2Z1k0X0Y0X3pJS2Z5MWZoNkEwLUVILWR2Y1dtcDM3Nk5ub2FkZFE?oc=5",
+     "pubDate": "Wed, 01 Apr 2026 07:00:00 GMT"
+    },
+    {
+     "title": "포스코이앤씨, ‘더샵 송도그란테르’ 4월 분양 예정",
+     "source": "remagazine.co.kr",
+     "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9kaGdGTnlDQzItOUt0ZkxSd0xwR2ptSS13VXQzaFVWWXJuVkhSVi1rQlQ0a1k5OU9TeGxLN204WGluMlc4bGhkcEk5RTNFRzdDMDZZQ2Q4WDRlcUg2R1ZkZjhYYXVoZUpoRzFXQU5n0gFyQVVfeXFMUG5jM2lhb25sRW1NWUpxYUxsRWZsd2lfWW8wRWNqb1Y3VVd4MkZreDRKNWRPN2xOenQweXlfcnVCekUwaGo5TWgxR1BGdTBBU2c1M21ZeWhZWDhDWDZaa1pwTlFNNVpaUTZfMFowSlBtZ1J3?oc=5",
+     "pubDate": "Mon, 10 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "포스코이앤씨, 안방인 송도 IBD서 ‘더샵 송도그란테르’ 이달 분양 예정",
+     "source": "뉴스톱",
+     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBoNmZmUlNuX29mbXNLWmt3TFUzMmx5R3RvRDRLTjRXVWNmSXhQa3E1aXBGaEdhcm52SGhiZ1ViUGFlRWxWSWNrMi16SzI2OS1MdFZOLUpUYl81eWk5REc4bDFpV1BCZkJsVnBPRjRLOA?oc=5",
+     "pubDate": "Tue, 12 May 2026 07:00:00 GMT"
+    },
+    {
+     "title": "포스코이앤씨, 더샵 송도그란테르 이달 분양 예정",
+     "source": "한국주택경제신문",
+     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE84RGY1b1hTX2QzOXFxM096R3J6VEtzaDZwWnF3dGQ5TmctZTFuZUE5cWFsX2RLUzdQM2lNbFVhZElzVVk4WmtGVjd2TVVNYTU3Wjg1SVI2djNzaGg3cHA0b0NKbzg0elJQ?oc=5",
+     "pubDate": "Wed, 01 Apr 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "인천 더샵 송도그란테르",
+    "더샵 송도그란테르"
+   ],
+   "freq": {}
+  },
+  {
    "name": "천안 백석시그니처자이",
    "mentions": 5,
    "articles": [
@@ -267,41 +267,6 @@
    "aliases": [
     "천안 백석시그니처자이",
     "백석시그니처자이"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "리버뷰 아이파크 오늘",
-   "mentions": 4,
-   "articles": [
-    {
-     "title": "'춘천 리버뷰 아이파크' 오늘 청약 스타트",
-     "source": "뉴스1",
-     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE54ajBJUzU1bW5xMG0wcXo2U0MwSkl5TFZPM2hRWDg3V2c4d19vR3FGVHVwdHFCMnZuaGpyOUxBWTEybUNCVFRyZW5hWXJTU2l1ZHNveNIBWkFVX3lxTE9DRHhPOXREbENUNTRhT1Z5VXFVOVFEcGpGZjR3Q0tRNnRMRnlwdDg1S2pIOV95cTBBU0s1RE0xdjZhN2ZhMk80VXduUUpxOWRzd2trNlRXYi1Edw?oc=5",
-     "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
-    },
-    {
-     "title": "'춘천 리버뷰 아이파크' 오늘 청약 스타트",
-     "source": "v.daum.net",
-     "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9oRDhsUk9YUWJWeEtoSjJuQUM5cjg4NHU1RHlJTjRzcUNMdjQ0WFdCY19OVW1hd2ZrbGh3a3haQ0lfamU4bjRZN2tsZHkzX1E?oc=5",
-     "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
-    },
-    {
-     "title": "노후 아파트 비중 높은 춘천, ‘춘천 리버뷰 아이파크’ 이달 분양 예정",
-     "source": "서울신문",
-     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5JUW5rRGRmMmhKMGpGT0FlaGNaNXIwTDhxdGNhQ3ZwUXFQb3VaUUhMUzJMbG1rYUd6LTF6VnFJcXVvSm1JOWZDTkloeFNzOUdkSW0zcFpHMEhIckpJWGg5Tkg0Ti13d3pjYnF3MGhsVQ?oc=5",
-     "pubDate": "Thu, 09 Jul 2026 07:00:00 GMT"
-    },
-    {
-     "title": "노후 아파트 비중 높은 춘천, ‘춘천 리버뷰 아이파크’ 이달 분양 예정",
-     "source": "서울Pn",
-     "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1zQVpCbzNLRmRxTHZ4MndidldjdnlJTjF2NDFEelZhNVVWVFYtRzZWZWh6TC1aYllFUGgzcHYyYTRJTElpWEJqdHdKN185eTB1SWFQLTBhTGZmbmZyQnpCVEliampPNWlvS0JKdk13?oc=5",
-     "pubDate": "Thu, 09 Jul 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "리버뷰 아이파크 오늘",
-    "리버뷰 아이파크"
    ],
    "freq": {}
   },
@@ -441,25 +406,81 @@
    "freq": {}
   },
   {
-   "name": "반포디에이치클래스트일반분양 줄어들듯집슐랭",
+   "name": "리버뷰 아이파크",
    "mentions": 3,
    "articles": [
     {
-     "title": "조합원 1+1 분양 나서는 '반포디에이치클래스트'…일반분양 줄어들듯[집슐랭]",
-     "source": "서울경제",
-     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB3UF9sbFpyRnVPY1N6Nk5JS1NRZjljMWFXclBMQTA2VHFlTEdBdUNHRnZxZXJYc3VfYURCWnlCWGNYQ0JJRlpGb2ZtQlVuRHpZX3c?oc=5",
-     "pubDate": "Thu, 31 Jul 2025 07:00:00 GMT"
+     "title": "노후 아파트 비중 높은 춘천, ‘춘천 리버뷰 아이파크’ 이달 분양 예정",
+     "source": "서울신문",
+     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5JUW5rRGRmMmhKMGpGT0FlaGNaNXIwTDhxdGNhQ3ZwUXFQb3VaUUhMUzJMbG1rYUd6LTF6VnFJcXVvSm1JOWZDTkloeFNzOUdkSW0zcFpHMEhIckpJWGg5Tkg0Ti13d3pjYnF3MGhsVQ?oc=5",
+     "pubDate": "Thu, 09 Jul 2026 07:00:00 GMT"
     },
+    {
+     "title": "'춘천 리버뷰 아이파크' 오늘 청약 스타트",
+     "source": "뉴스1",
+     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE54ajBJUzU1bW5xMG0wcXo2U0MwSkl5TFZPM2hRWDg3V2c4d19vR3FGVHVwdHFCMnZuaGpyOUxBWTEybUNCVFRyZW5hWXJTU2l1ZHNveNIBWkFVX3lxTE9DRHhPOXREbENUNTRhT1Z5VXFVOVFEcGpGZjR3Q0tRNnRMRnlwdDg1S2pIOV95cTBBU0s1RE0xdjZhN2ZhMk80VXduUUpxOWRzd2trNlRXYi1Edw?oc=5",
+     "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
+    },
+    {
+     "title": "'춘천 리버뷰 아이파크' 오늘 청약 스타트",
+     "source": "v.daum.net",
+     "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9oRDhsUk9YUWJWeEtoSjJuQUM5cjg4NHU1RHlJTjRzcUNMdjQ0WFdCY19OVW1hd2ZrbGh3a3haQ0lfamU4bjRZN2tsZHkzX1E?oc=5",
+     "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "리버뷰 아이파크"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "반포디에이치클래스트 등판8월",
+   "mentions": 3,
+   "articles": [
     {
      "title": "'반포디에이치클래스트' 등판…8월 아파트 2.8만가구 분양",
      "source": "뉴시스",
      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1NTWYzOVNleWUtbU95RDlxcWxhc0d4TEtpNnVRTmNIajNTQl8yMWd0LXk3Z0tkNHJ0Z2JTbnRQcDQ2RVI3NllTVjVidEZuYmdLdEhyUzJYOGFJbnd1ZmloS9IBeEFVX3lxTE9HX0poS2RhNWMwZFhQRU9aWUN2dF9aTTAxVl9GUEF1V0hyT0RZMVRDc3FWTF9nX0Q2MmlycnZjbmlDMkU5ZTJGN2NUZ2RMcW1CUXZTU3ctakx1a050My1wbC1oUkszUzJ2S3k5bE9ncHBKTTh6STdndw?oc=5",
      "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "조합원 1+1 분양 나서는 '반포디에이치클래스트'…일반분양 줄어들듯[집슐랭]",
+     "source": "서울경제",
+     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB3UF9sbFpyRnVPY1N6Nk5JS1NRZjljMWFXclBMQTA2VHFlTEdBdUNHRnZxZXJYc3VfYURCWnlCWGNYQ0JJRlpGb2ZtQlVuRHpZX3c?oc=5",
+     "pubDate": "Thu, 31 Jul 2025 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "반포디에이치클래스트일반분양 줄어들듯집슐랭",
+    "반포디에이치클래스트 등판8월",
     "반포디에이치클래스트"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "블랑 써밋",
+   "mentions": 3,
+   "articles": [
+    {
+     "title": "‘북항 개발 호재’ 대우건설, 블랑 써밋 74 오피스텔 이달 분양",
+     "source": "catchnews.kr",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE8wVFF5UWU4dVEwSzliMFg5Yk1kMlBiWDBkV3Nwa1c3ZUdIbjlIRm1SQVQ0LU5PcHZ3TE9fZXJlU3BDVDRxdWhWbVIwYzMzM1lqZFRUSi1feWQ4TGpkbUhRQVFac1U2MHlzTGh30gFvQVVfeXFMTVRpN2NGMXptbGVzRXpBMEU3ZWpmYlVlSGV4ellzUzNoVFRLQmVJT09XdkVfU1A5RGEyNHpLMHp3dUxOcTVYcUdRYTUyZEJDMTBKaXN6N053VUFIei11NmdlaUIxSXRuQVpxN1VOS00w?oc=5",
+     "pubDate": "Thu, 20 Aug 2026 08:59:00 GMT"
+    },
+    {
+     "title": "대우건설, 블랑 써밋 74 오피스텔 이달 분양",
+     "source": "한국주택경제신문",
+     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1vNUNONFBoY3FOX3dLS05DOW9pRVlaNkh0S1VKRnBOSGEtRDQ2S191MGRmMVhEREFad25CU0VTWnA0Q05oR3NpYzltRDVBSEJtNWlfcHp6NzJiQkw1Njh3Mng4a0pkbkFf?oc=5",
+     "pubDate": "Thu, 06 Feb 2025 08:00:00 GMT"
+    },
+    {
+     "title": "대우건설, 부산 하이엔드 아파트 '블랑 써밋 74' 다음달 공급",
+     "source": "팍스경제TV",
+     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBuWWZIZUotSXhCa2Zla3BYdWEwRzNtM041UHM5MWVyRmttTVpVWmtGeXg4dHNLZERnNU5UbTNLTnRFcWhkVkUxVlVxTXUxYlpVbktPdEhXZ3VtR3RfQTM2a2o5WVNYNFps?oc=5",
+     "pubDate": "Tue, 14 May 2024 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "블랑 써밋"
    ],
    "freq": {}
   },
@@ -548,23 +569,6 @@
    "aliases": [
     "e편한세상 동탄역 어반원",
     "e편한세상 동탄역"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "가능한 힐스테이트 동탄포레",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "유주택자도 계약 가능한 ‘힐스테이트 동탄포레’ 선착순 분양 시작",
-     "source": "매일경제",
-     "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE4xaUxDcGxIZDE3ZFFzQ1JiQVBsOHl3RnFtVGxHUTQtdi1WOWRuSFhfNzl5dUZPaFRGcFZoWlEwUVpmN0EzTHpYMEJyOFpUZnZsUTVWQ19NQ2s?oc=5",
-     "pubDate": "Mon, 27 May 2024 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "가능한 힐스테이트 동탄포레",
-    "힐스테이트 동탄포레"
    ],
    "freq": {}
   },
@@ -866,28 +870,6 @@
    ],
    "aliases": [
     "분양가상한제"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "블랑 써밋",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "‘북항 개발 호재’ 대우건설, 블랑 써밋 74 오피스텔 이달 분양",
-     "source": "catchnews.kr",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE8wVFF5UWU4dVEwSzliMFg5Yk1kMlBiWDBkV3Nwa1c3ZUdIbjlIRm1SQVQ0LU5PcHZ3TE9fZXJlU3BDVDRxdWhWbVIwYzMzM1lqZFRUSi1feWQ4TGpkbUhRQVFac1U2MHlzTGh30gFvQVVfeXFMTVRpN2NGMXptbGVzRXpBMEU3ZWpmYlVlSGV4ellzUzNoVFRLQmVJT09XdkVfU1A5RGEyNHpLMHp3dUxOcTVYcUdRYTUyZEJDMTBKaXN6N053VUFIei11NmdlaUIxSXRuQVpxN1VOS00w?oc=5",
-     "pubDate": "Thu, 20 Aug 2026 08:59:00 GMT"
-    },
-    {
-     "title": "대우건설, 부산 하이엔드 아파트 '블랑 써밋 74' 다음달 공급",
-     "source": "팍스경제TV",
-     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBuWWZIZUotSXhCa2Zla3BYdWEwRzNtM041UHM5MWVyRmttTVpVWmtGeXg4dHNLZERnNU5UbTNLTnRFcWhkVkUxVlVxTXUxYlpVbktPdEhXZ3VtR3RfQTM2a2o5WVNYNFps?oc=5",
-     "pubDate": "Tue, 14 May 2024 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "블랑 써밋"
    ],
    "freq": {}
   },
