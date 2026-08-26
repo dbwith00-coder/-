@@ -577,16 +577,23 @@ function Subscription({ tab, setTab, allSites, live }) {
   /* 오른쪽 공고 목록: 공급유형·지역으로 거르고, 민영=당첨선 낮은순 / 공공=인정액 컷 낮은순 */
   /* 이미 끝난 공고를 위에 두면 쓸모가 없어서, 접수 상태를 1순위로 정렬합니다 */
   const statusRank = (s) => (s.status === "접수 중" ? 0 : s.status === "접수 예정" ? 1 : 2);
-  const rightSites = scored
+  const byCut = (a, b) =>
+    supplyType === "공공" ? (a.cutAmt || 0) - (b.cutAmt || 0) : a.cut - b.cut;
+  const mine = scored
     .filter((s) => s.supply === supplyType)
-    .filter((s) => showClosed || s.status !== "접수 마감")
-    .filter((s) => inArea(s, listRegion))
-    .sort((a, b) => statusRank(a) - statusRank(b) ||
-      (supplyType === "공공" ? (a.cutAmt || 0) - (b.cutAmt || 0) : a.cut - b.cut));
+    .filter((s) => inArea(s, listRegion));
+  /* 지금 접수 중인 공고 (+ 토글을 켜면 마감분까지) */
+  const rightSites = mine
+    .filter((s) => s.status === "접수 중" || (showClosed && s.status === "접수 마감"))
+    .sort((a, b) => statusRank(a) - statusRank(b) || byCut(a, b));
   /* 분양공고 전 단지: 원가식(하한 성격)과 시세·시장예상(marketEst)을 결합해 범위로 추정.
      대표값(estMid) = 두 값의 중간(50:50). 시세 근거가 없으면 원가식 단일값. */
-  /* 접수가 아직 시작되지 않은 공고 — 접수 시작일 빠른 순 */
-  const upcoming = allSites
+  /* 공고는 났고 접수가 아직 시작되지 않은 공고 — 접수 시작일 빠른 순.
+     분양가·세대수는 공고에 이미 확정돼 있어서 추정이 아닙니다. */
+  /* 곧 열리는 공고는 전국에 몇 건 안 되므로 민영·공공을 같이 봅니다.
+     공급유형으로 좁히면 4건 중 3건이 숨겨져서 "다가올 공고" 구실을 못 합니다.
+     무순위·잔여세대는 아래 전용 섹션이 있어 제외합니다. */
+  const upcoming = scored
     .filter((s) => s.status === "접수 예정")
     .filter((s) => inArea(s, listRegion))
     .sort((a, b) => String(a.rceptStart || "9999").localeCompare(String(b.rceptStart || "9999")));
@@ -1216,7 +1223,10 @@ function Subscription({ tab, setTab, allSites, live }) {
 
           <LivePanel live={live} />
 
-          <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: "-.035em", marginTop: 6 }}>분양공고 후 아파트</div>
+          <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: "-.035em", marginTop: 6 }}>
+            접수 중 공고 <span style={{ fontWeight: 700, fontSize: 13, color: "var(--ink-3)" }}>
+              · {rightSites.filter((s) => s.status === "접수 중").length}건 · 지금 넣을 수 있는 공고</span>
+          </div>
 
           <div className="mv-card">
             <div className="mv-pad" style={{ paddingBottom: 10 }}>
@@ -1360,18 +1370,19 @@ function Subscription({ tab, setTab, allSites, live }) {
           )}
 
           <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: "-.035em", marginTop: 6 }}>
-            접수 예정 공고 <span style={{ fontWeight: 700, fontSize: 13, color: "var(--ink-3)" }}>· 전국 · 아직 접수 시작 전</span>
+            접수 예정 공고 <span style={{ fontWeight: 700, fontSize: 13, color: "var(--ink-3)" }}>
+              · {upcoming.length}건 · 공고 났고 접수 시작 전</span>
           </div>
 
           <div className="mv-card">
             <div className="mv-pad" style={{ paddingBottom: 10 }}>
-              <div className="mv-eyebrow" style={{ marginBottom: 6 }}>곧 열리는 공고 {upcoming.length}건</div>
+              <div className="mv-eyebrow" style={{ marginBottom: 6 }}>접수 시작일 빠른 순</div>
               <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.7 }}>
-                공고는 났고 <b>접수가 아직 시작되지 않은</b> 단지입니다. 접수 시작일 빠른 순.
-                지역 선택이 여기에도 같이 적용됩니다.<br />
-                <b style={{ color: "#A93F1F" }}>공고 자체가 안 난 "분양 예정 단지"는 공공 API 로 제공되지 않습니다.</b>
-                {" "}청약홈은 모집공고가 게시된 건만 공개해서, 그 전 단계는 받아올 소스가 없습니다.
-                아래 <b>공고 전 예상가</b> 블록은 직접 넣은 변수로 계산한 추정치입니다.
+                <b>모집공고는 이미 나왔고 접수만 시작 전</b>인 단지입니다. 그래서 분양가·세대수·
+                특별공급 물량이 <b>공고에 확정돼 있고</b>, 여기 값은 추정이 아니라 공고 원문입니다.
+                D-day 는 접수 시작일까지 남은 날입니다.<br />
+                <b style={{ color: "#A93F1F" }}>아직 공고 자체가 안 난 현장</b>은 공공 API 에 없어서
+                아래 <b>분양 예정 단지 후보(뉴스)</b> 와 <b>공고 전 예상가</b> 섹션에서 따로 다룹니다.
               </div>
             </div>
             <div>
@@ -1380,15 +1391,35 @@ function Subscription({ tab, setTab, allSites, live }) {
                 return (
                   <button key={s.id} className="mv-listrow" onClick={() => setSite(s)}>
                     <div className="mv-between">
-                      <strong>{s.n}</strong>
+                      <strong>
+                        <span className="mv-chip" style={{ fontSize: 10.5, padding: "2px 7px", marginRight: 6 }}>
+                          {s.supply}
+                        </span>
+                        {s.n}
+                      </strong>
                       <span className={"mv-chip " + (d !== null && d <= 7 ? "mv-on" : "mv-cool")}>
                         {d === null ? "접수일 미정" : d === 0 ? "오늘 접수 시작" : `D-${d}`}
                       </span>
                     </div>
                     <small>
-                      {s.gu} · {s.supply}{s.category !== "APT" ? ` · ${s.category}` : ""} ·
-                      총 {s.total.toLocaleString()}세대 · 접수 {s.rceptStart || "미정"}
+                      {s.gu} · 총 {s.total.toLocaleString()}세대 · 접수 {s.rceptStart || "미정"}
+                      {s.types?.[0]?.price ? ` · 분양가 ${eok(Math.min(...s.types.map((t) => t.price || Infinity)))}원~` : ""}
                     </small>
+                    {(() => {
+                      const bts = bestTypesFor(s);
+                      if (!bts.length) return null;
+                      const g0 = score - bts[0].estCut;
+                      return (
+                        <small style={{ display: "block", marginTop: 4, fontWeight: 600,
+                          color: g0 >= 0 ? "var(--flow-2)" : "var(--ink-3)" }}>
+                          유리한 타입 {bts.length}개 ·{" "}
+                          {bts.map((t, i) => {
+                            const g = score - t.estCut;
+                            return `${i + 1}. ${t.t} ~${t.estCut}점(${g >= 0 ? `+${g}` : g})`;
+                          }).join("  ")}
+                        </small>
+                      );
+                    })()}
                   </button>
                 );
               })}
@@ -1651,7 +1682,8 @@ function Subscription({ tab, setTab, allSites, live }) {
                   <div className="mv-scroll">
                     <table className="mv-tbl">
                       <thead><tr><th>타입</th><th className="mv-r">세대수</th>
-                        <th className="mv-r">예상 분양가</th><th className="mv-r">계약금 10%</th></tr></thead>
+                        <th className="mv-r">{site.live ? "분양가" : "예상 분양가"}</th>
+                        <th className="mv-r">계약금 10%</th></tr></thead>
                       <tbody>
                         {site.types.map((t) => (
                           <tr key={t.t}>
@@ -1669,6 +1701,13 @@ function Subscription({ tab, setTab, allSites, live }) {
                       {site.receipt.special && <>특별공급 접수 <b>{site.receipt.special}</b><br /></>}
                       {site.receipt.rank1 && <>1순위 해당지역 <b>{site.receipt.rank1}</b><br /></>}
                       {site.receipt.result && <>당첨자 발표 <b>{site.receipt.result}</b></>}
+                    </div>
+                  )}
+                  {site.live && (
+                    <div style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 8, lineHeight: 1.6 }}>
+                      분양가는 청약홈 API 의 <b>공급금액(분양최고금액)</b> 값 그대로입니다 — 추정이 아니라
+                      모집공고에 확정된 금액이고, 같은 주택형 안에서 층·향에 따라 이보다 낮은 세대가 있습니다.
+                      발코니 확장·옵션은 별도입니다.
                     </div>
                   )}
                   <div className="mv-row" style={{ marginTop: 12, gap: 16 }}>
@@ -1732,7 +1771,11 @@ function Subscription({ tab, setTab, allSites, live }) {
                                     <div style={{ minWidth: 0 }}>
                                       <b className="mv-num" style={{ fontSize: 13 }}>{i + 1}. {t.t}</b>
                                       <small style={{ display: "block", color: "var(--ink-3)", fontSize: 11.5, lineHeight: 1.5 }}>
-                                        {t.n}세대 · {eok(t.price)}원<br />{t.reason}
+                                        {t.n}세대 · {eok(t.price)}원
+                                        {myBudget > 0 && t.price > myBudget && (
+                                          <b style={{ color: "#C1440E" }}> · 예산 {eok(t.price - myBudget)}원 초과</b>
+                                        )}
+                                        <br />{t.reason}
                                       </small>
                                     </div>
                                     <span className={"mv-chip " + (g >= 0 ? "mv-on" : "mv-warn")}
@@ -1744,6 +1787,8 @@ function Subscription({ tab, setTab, allSites, live }) {
                               })}
                             </div>
                             순위 기준은 <b>예상 당첨선 → 세대수 많은 순 → 분양가 낮은 순</b>입니다.
+                            내 가점은 <b>여유·부족 표시에만</b> 쓰이고 순서는 바꾸지 않습니다
+                            (여유 = 내 가점 − 예상 당첨선이라, 당첨선 낮은 순과 여유 큰 순이 같은 순서입니다).
                             청약홈 과거 데이터 패턴상 70~74㎡ 틈새평형은 84㎡보다 커트라인이 확연히 낮게 형성됩니다.
                             같은 평형에서도 타워형(B·C)이 판상형(A)보다 낮고, 특별공급 경쟁률이 낮았던
                             타입은 다음 날 일반공급도 낮게 가는 동조화 경향이 있으니 특공 결과를 선행지표로 보세요.

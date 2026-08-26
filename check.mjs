@@ -17,12 +17,14 @@ let pass = 0, fail = 0;
 const ck = (n, c, d = "") => { c ? pass++ : fail++; console.log(`${c ? "PASS" : "FAIL"} ${n}${d ? " — " + d : ""}`); };
 
 const body = await pg.locator(".mv-wrap").innerText();
-const expUpcoming = SNAP.sites.filter(s => s.status === "접수 예정").length;
+const expUpcoming = SNAP.sites.filter(s => s.status === "접수 예정" && !s.scoreless).length;
 const expNoScore = SNAP.sites.filter(s => s.scoreless && s.status !== "접수 마감").length;
 ck("스냅샷 건수 표기", body.includes(`${SNAP.count}건`), `${SNAP.count}건`);
+ck("접수 중 섹션", body.includes("접수 중 공고"));
 ck("접수 예정 섹션 존재", body.includes("접수 예정 공고"));
-ck("접수 예정 건수", body.includes(`곧 열리는 공고 ${expUpcoming}건`), `${expUpcoming}건`);
-ck("공고 전 API 없음 명시", body.includes("공공 API 로 제공되지 않습니다"));
+ck("접수 예정은 공고 난 상태임을 명시", body.includes("모집공고는 이미 나왔고"));
+ck("접수 예정 건수", body.includes(`${expUpcoming}건 · 공고 났고 접수 시작 전`), `${expUpcoming}건`);
+ck("공고 전 현장은 별도 섹션 안내", body.includes("아직 공고 자체가 안 난 현장"));
 ck("무순위 섹션", expNoScore > 0 ? body.includes("무순위 · 잔여세대") : true, `${expNoScore}건`);
 ck("가칭 샘플 제거", !body.includes("가칭"), "동탄 레이크팰리스 등 삭제");
 ck("아크메르 동탄 유지", body.includes("아크메르 동탄"));
@@ -45,7 +47,7 @@ ck("마감 포함 토글", rowsShown > rowsHidden, `${rowsHidden}행 → ${rowsS
 // D-day 표기
 await pg.locator('button:has-text("✓ 접수 마감 포함")').first().click();
 await pg.waitForTimeout(400);
-const upSec = await pg.locator('.mv-card:has-text("곧 열리는 공고")').first().innerText();
+const upSec = await pg.locator('.mv-card:has-text("접수 시작일 빠른 순")').first().innerText();
 ck("D-day 또는 접수일 표기", /D-\d+|오늘 접수 시작|접수일 미정/.test(upSec));
 
 await pg.screenshot({ path: "shots/50-nationwide.png", fullPage: true });

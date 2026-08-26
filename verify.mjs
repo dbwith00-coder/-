@@ -12,8 +12,10 @@ const rank = (s) => [...s.types]
   .sort((a, b) => a.estCut - b.estCut || b.n - a.n || a.price - b.price);
 const statusRank = (s) => (s.status === "접수 중" ? 0 : s.status === "접수 예정" ? 1 : 2);
 
+/* "접수 중 공고" 목록은 접수 중 + (토글을 켜면) 마감분입니다.
+   접수 예정은 별도 섹션으로 빠졌으므로 여기서 제외합니다. */
 const expected = SNAP.sites
-  .filter((s) => s.supply === "민영" && !s.scoreless)
+  .filter((s) => s.supply === "민영" && !s.scoreless && s.status !== "접수 예정")
   .sort((a, b) => statusRank(a) - statusRank(b) || a.cut - b.cut)
   .map((s) => ({ n: s.n, top3: rank(s).slice(0, 3).map((t) => [t.t, t.estCut]) }));
 

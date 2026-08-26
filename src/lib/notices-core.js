@@ -124,6 +124,17 @@ const toManwon = (v) => {
   return Math.round(n);                              // 이미 만원 단위
 };
 
+/* 기관마다 상태 표기가 제각각입니다("접수중" / "접수 중" / "공고중").
+   화면은 "접수 중 / 접수 예정 / 접수 마감" 세 가지로만 거르므로 표준화합니다. */
+export function canonStatus(raw) {
+  const t = String(raw ?? "").replace(/\s/g, "");
+  if (!t) return "";
+  if (/^(접수중|신청중|청약중|모집중)$/.test(t)) return "접수 중";
+  if (/^(접수예정|공고중|공고|모집예정|청약예정)$/.test(t)) return "접수 예정";
+  if (/^(접수마감|마감|종료|접수종료|당첨자발표)$/.test(t)) return "접수 마감";
+  return String(raw).trim();
+}
+
 /* ── 레코드 → 앱 내부 site 객체 ─────────────────────────── */
 function normalizeRow(row, i, source) {
   const name = String(val(row, FIELDS.name, "") || "").trim();
@@ -153,7 +164,7 @@ function normalizeRow(row, i, source) {
     total: total || general || units || 0,
     general,
     when: String(val(row, FIELDS.notice, "")).trim() || "일정 미상",
-    status: String(val(row, FIELDS.status, "공고")).trim(),
+    status: canonStatus(val(row, FIELDS.status, "")) || "공고",
     types: [{ t: typeLabel, n: units || 0, price }],
     cut,
     cutEstimated: true,
@@ -445,7 +456,7 @@ export function normalizeApplyhome(d, models = [], set = APPLYHOME_SETS[0]) {
     when: normDate(d.RCRIT_PBLANC_DE) || "일정 미상",
     rceptStart: firstDate(d, RCEPT_START),
     rceptEnd: firstDate(d, RCEPT_END),
-    status: deriveStatus(d),
+    status: canonStatus(deriveStatus(d)),
     receipt: {
       special: [d.SPSPLY_RCEPT_BGNDE, d.SPSPLY_RCEPT_ENDDE].filter(Boolean).map(normDate).join(" ~ "),
       rank1: [d.GNRL_RNK1_CRSPAREA_RCPTDE, d.GNRL_RNK1_CRSPAREA_ENDDE].filter(Boolean).map(normDate).join(" ~ "),
