@@ -22,7 +22,11 @@ export const DEFAULT_CONFIG = {
   lhBase: ENV.VITE_LH_BASE || "/openapi/lh",
   lhPath: ENV.VITE_LH_PATH || "/lhLeaseNoticeSplInfo1",
   odcBase: ENV.VITE_ODC_BASE || "/openapi/odcloud",
-  odcPath: ENV.VITE_ODC_PATH || "",
+  /* 청약홈 APT 분양정보 — Swagger 확정 경로 */
+  odcPath: ENV.VITE_ODC_PATH || "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancDetail",
+  odcModelPath: ENV.VITE_ODC_MODEL_PATH || "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancMdl",
+  detailLimit: 12,
+  sinceDays: 240,
   rows: 50,
   enabled: true,
 };

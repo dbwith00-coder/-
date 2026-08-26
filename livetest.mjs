@@ -1,8 +1,10 @@
 import { chromium } from "playwright";
 const B = "http://localhost:8899";
 const cfg = (over = {}) => JSON.stringify({
-  serviceKey: "TESTKEY", lhBase: "", lhPath: "/lh", odcBase: "", odcPath: "/odc",
-  rows: 50, enabled: true, ...over,
+  serviceKey: "TESTKEY", lhBase: "", lhPath: "/lh", odcBase: "",
+  odcPath: "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancDetail",
+  odcModelPath: "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancMdl",
+  rows: 50, detailLimit: 12, sinceDays: 240, enabled: true, ...over,
 });
 
 const browser = await chromium.launch();
@@ -35,7 +37,7 @@ const panel = await pg.locator(".mv-card:has-text('실시간 분양공고 연동
 check("연결 상태 표시", /실시간 \d+건 연결됨/.test(panel), panel.match(/실시간 \d+건 연결됨/)?.[0]);
 check("LH 수신 건수", /2건 수신/.test(panel), "LH 3행 → 공고 2건으로 병합");
 check("응답 경로 자동 탐지(dsList)", /dsList/.test(panel));
-check("odcloud 수신 건수", /2건 수신/.test(panel));
+check("청약홈 수신 건수", /2건 수신/.test(panel));
 
 // 공공 목록에 LH 실시간 공고가 뜨는지
 await pg.getByRole("button", { name: "← 조건 다시 입력" }).click();
@@ -45,6 +47,7 @@ await pg.getByRole("button", { name: "제출하고 공고 보기" }).click();
 await pg.waitForTimeout(500);
 const pubRows = await pg.locator(".mv-listrow").allInnerTexts();
 check("LH 공고가 공공 목록에 반영", pubRows.some(t => t.includes("고양창릉 A-3블록 공공분양")));
+check("청약홈 국민주택이 공공으로 분류", pubRows.some(t => t.includes("고양창릉 신혼희망타운")));
 check("실시간 배지 표시", pubRows.some(t => t.includes("실시간")));
 check("인정액 컷 없는 건 비교 생략", pubRows.some(t => t.includes("인정액 컷 미제공")));
 
@@ -64,7 +67,8 @@ await pg.locator('button:has-text("민영주택")').first().click();
 await pg.getByRole("button", { name: "제출하고 공고 보기" }).click();
 await pg.waitForTimeout(500);
 const privRows = await pg.locator(".mv-listrow").allInnerTexts();
-check("odcloud 공고가 민영 목록에 반영", privRows.some(t => t.includes("서초 래미안 원페를라")));
+check("청약홈 민영 공고 반영", privRows.some(t => t.includes("래미안 원페를라")));
+check("HOUSE_TY 파싱 (084.9500A → 84㎡A)", privRows.some(t => t.includes("84㎡A")));
 check("당첨선 추정 표기", privRows.some(t => t.includes("지역 기준 추정")));
 check("내장 샘플도 함께 유지", privRows.some(t => t.includes("반포 디에이치 클래스트")));
 await pg.screenshot({ path: "shots/21-live-list.png", fullPage: true });
@@ -98,10 +102,25 @@ await pg.close();
 
 /* ── 5. odcloud 경로 미설정 (부분 실패) ── */
 console.log("\n── 시나리오 5: 한쪽만 실패해도 다른 쪽은 살아야 함 ──");
-pg = await openApp(cfg({ odcPath: "" }));
+pg = await openApp(cfg({ odcPath: "/없는경로" }));
 const p5 = await pg.locator(".mv-card:has-text('실시간 분양공고 연동')").first().innerText();
 check("LH 는 정상 수신", /2건 수신/.test(p5));
-check("odcloud 만 오류 표기", p5.includes("오퍼레이션 경로가 비어 있습니다"));
+check("청약홈만 오류 표기", p5.includes("HTTP 404") || p5.includes("경로"));
+await pg.close();
+
+
+/* ── 6. 청약홈 공고 모달: 특별공급 실제 물량 ── */
+console.log("\n── 시나리오 6: 청약홈 공고 상세 ──");
+pg = await openApp(cfg());
+await pg.locator('.mv-listrow:has-text("래미안 원페를라")').first().click();
+await pg.waitForSelector(".mv-sheet");
+const sheet6 = await pg.locator(".mv-sheet").innerText();
+check("타입 3종 파싱", ["59㎡A","74㎡B","84㎡A"].every(t => sheet6.includes(t)));
+check("분양가 만원 단위 유지 (232000 → 23억 2,000만)", sheet6.includes("23억 2,000만원"));
+check("특별공급 실제 물량 표시", sheet6.includes("신혼부부 84세대"));
+check("접수 일정 표시", sheet6.includes("당첨자 발표"));
+check("규제 태그 반영", sheet6.includes("분양가상한제"));
+await pg.screenshot({ path: "shots/30-applyhome-modal.png", fullPage: false });
 await pg.close();
 
 await browser.close();

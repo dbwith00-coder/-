@@ -244,17 +244,22 @@ export async function fetchAllNotices(cfg, signal) {
     },
   };
 
-  const jobs = [
-    ["lh", fetchLh],
-    ["odc", fetchOdcloud],
-  ].map(async ([key, fn]) => {
+  const jobs = [["lh", "generic"], ["odc", "applyhome"]].map(async ([key, mode]) => {
     try {
-      const { rows, pickedFrom } = await fn(cfg, signal);
-      const sites = normalizeRows(rows, key === "lh" ? "lh" : "odc");
-      out.sources[key] = {
-        ok: true, count: sites.length, error: null, pickedFrom,
-        sample: rows[0] ?? null,
-      };
+      let sites, pickedFrom, sample;
+      if (mode === "applyhome") {
+        /* 청약홈은 스키마가 확정돼 있어 전용 정규화를 씁니다 */
+        const r = await fetchApplyhome(cfg, signal);
+        sites = r.rows.map((d, i) => normalizeApplyhome(d, r.models[i] || []));
+        pickedFrom = r.pickedFrom;
+        sample = r.rows[0] ?? null;
+      } else {
+        const r = await fetchLh(cfg, signal);
+        sites = normalizeRows(r.rows, "lh");
+        pickedFrom = r.pickedFrom;
+        sample = r.rows[0] ?? null;
+      }
+      out.sources[key] = { ok: true, count: sites.length, error: null, pickedFrom, sample };
       return sites;
     } catch (e) {
       out.sources[key] = {
@@ -268,4 +273,168 @@ export async function fetchAllNotices(cfg, signal) {
   const results = await Promise.all(jobs);
   out.sites = results.flat();
   return out;
+}
+
+/* ============================================================
+   청약홈(한국부동산원) APT 분양정보 — 확정 스키마 기준
+   ------------------------------------------------------------
+   Swagger: 청약홈 분양정보 조회 서비스 (api.odcloud.kr/api)
+   공고 단위(Detail)와 주택형 단위(Mdl)를 HOUSE_MANAGE_NO + PBLANC_NO
+   로 조인해서, 타입별 분양가·세대수와 특별공급 유형별 세대수까지 채웁니다.
+   ============================================================ */
+export const APPLYHOME = {
+  detail: "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancDetail",
+  model:  "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancMdl",
+};
+
+const pad2 = (n) => String(n).padStart(2, "0");
+const isoDay = (d) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+const daysAgo = (n) => { const d = new Date(); d.setDate(d.getDate() - n); return isoDay(d); };
+
+/* HOUSE_TY 는 "084.9500A" 같은 형식입니다 → "84㎡A" */
+export function houseTypeLabel(ty) {
+  const s = String(ty ?? "").trim();
+  const m = s.match(/(\d+(?:\.\d+)?)/);
+  if (!m) return s || "면적 미상";
+  const suffix = s.slice(m.index + m[0].length).replace(/^[.\s]+/, "").trim();
+  return `${Math.floor(parseFloat(m[1]))}㎡${suffix}`;
+}
+
+/* 이 API 에는 진행상태 필드가 없어서 접수일로 파생합니다 */
+export function deriveStatus(row, today = isoDay(new Date())) {
+  const start = String(row.SPSPLY_RCEPT_BGNDE || row.RCEPT_BGNDE || "").trim();
+  const end = String(row.RCEPT_ENDDE || row.GNRL_RNK1_ETC_AREA_ENDDE || "").trim();
+  if (!start && !end) return "공고";
+  if (start && today < start) return "접수 예정";
+  if (end && today > end) return "접수 마감";
+  return "접수 중";
+}
+
+const isY = (v) => String(v ?? "").trim().toUpperCase() === "Y";
+
+/* 앱의 특별공급 유형 키(SPECIALS2.k)와 API 필드를 맞춰둡니다 */
+export const SPECIAL_UNIT_FIELDS = [
+  ["newly", "NWWDS_HSHLDCO", "신혼부부"],
+  ["first", "LFE_FRST_HSHLDCO", "생애최초"],
+  ["multi", "MNYCH_HSHLDCO", "다자녀가구"],
+  ["old", "OLD_PARNTS_SUPORT_HSHLDCO", "노부모부양"],
+  ["inst", "INSTT_RECOMEND_HSHLDCO", "기관추천"],
+  ["baby", "NWBB_HSHLDCO", "신생아"],
+  ["young", "YGMN_HSHLDCO", "청년"],
+  ["transfer", "TRANSR_INSTT_ENFSN_HSHLDCO", "이전기관"],
+  ["etc", "ETC_HSHLDCO", "기타"],
+];
+
+export function normalizeApplyhome(d, models = []) {
+  const addr = String(d.HSSPLY_ADRES ?? "").trim();
+  const areaNm = String(d.SUBSCRPT_AREA_CODE_NM ?? "").trim();
+  const gu = addr ? addr.split(/\s+/).slice(0, 3).join(" ") : areaNm || "지역 미상";
+
+  /* LTTOT_TOP_AMOUNT 는 문서상 단위가 이미 "만원" 이라 환산하지 않습니다 */
+  const types = models
+    .map((m) => ({
+      t: houseTypeLabel(m.HOUSE_TY),
+      n: toNum(m.SUPLY_HSHLDCO) + toNum(m.SPSPLY_HSHLDCO),
+      price: toNum(m.LTTOT_TOP_AMOUNT),
+      general: toNum(m.SUPLY_HSHLDCO),
+      special: toNum(m.SPSPLY_HSHLDCO),
+    }))
+    .filter((t) => t.t !== "면적 미상" || t.n > 0);
+
+  const general = models.reduce((a, m) => a + toNum(m.SUPLY_HSHLDCO), 0);
+  const total = toNum(d.TOT_SUPLY_HSHLDCO) || types.reduce((a, t) => a + t.n, 0);
+
+  const specialUnits = {};
+  for (const [key, field, label] of SPECIAL_UNIT_FIELDS) {
+    const n = models.reduce((a, m) => a + toNum(m[field]), 0);
+    if (n > 0) specialUnits[key] = { n, label };
+  }
+
+  const tags = ["실시간"];
+  if (isY(d.PARCPRC_ULS_AT)) tags.push("분양가상한제");
+  if (isY(d.SPECLT_RDN_EARTH_AT)) tags.push("투기과열지구");
+  if (isY(d.MDAT_TRGET_AREA_SECD)) tags.push("조정대상지역");
+  if (isY(d.IMPRMN_BSNS_AT)) tags.push("정비사업");
+  if (isY(d.PUBLIC_HOUSE_EARTH_AT)) tags.push("공공주택지구");
+  if (isY(d.LRSCL_BLDLND_AT)) tags.push("대규모택지");
+
+  const cut = guessCut(`${gu} ${areaNm} ${addr}`);
+  const builder = String(d.CNSTRCT_ENTRPS_NM ?? "").trim();
+  const developer = String(d.BSNS_MBY_NM ?? "").trim();
+
+  const noteBits = [
+    developer && `시행 ${developer}`,
+    builder && `시공 ${builder}`,
+    d.PRZWNER_PRESNATN_DE && `당첨자발표 ${d.PRZWNER_PRESNATN_DE}`,
+    d.MVN_PREARNGE_YM && `입주예정 ${d.MVN_PREARNGE_YM}`,
+  ].filter(Boolean);
+
+  return {
+    id: `applyhome-${d.HOUSE_MANAGE_NO ?? "x"}-${d.PBLANC_NO ?? "x"}`,
+    live: true,
+    source: "applyhome",
+    /* HOUSE_DTL_SECD — 01: 민영, 03: 국민(공공) */
+    supply: String(d.HOUSE_DTL_SECD ?? "").trim() === "03" ? "공공" : "민영",
+    kind: String(d.HOUSE_SECD_NM ?? "").trim(),
+    n: String(d.HOUSE_NM ?? "").trim() || "(주택명 없음)",
+    gu,
+    brand: builder || developer || "청약홈",
+    total,
+    general: general || total,
+    when: String(d.RCRIT_PBLANC_DE ?? "").trim() || "일정 미상",
+    status: deriveStatus(d),
+    receipt: {
+      special: [d.SPSPLY_RCEPT_BGNDE, d.SPSPLY_RCEPT_ENDDE].filter(Boolean).join(" ~ "),
+      rank1: [d.GNRL_RNK1_CRSPAREA_RCPTDE, d.GNRL_RNK1_CRSPAREA_ENDDE].filter(Boolean).join(" ~ "),
+      result: String(d.PRZWNER_PRESNATN_DE ?? "").trim(),
+    },
+    types: types.length ? types : [{ t: "주택형 미상", n: 0, price: 0 }],
+    specialUnits,
+    cut,
+    cutEstimated: true,
+    cutAmt: 0,
+    cutAmtEstimated: true,
+    tags,
+    url: String(d.PBLANC_URL ?? "").trim(),
+    note: `청약홈 분양정보 API 에서 받아온 공고입니다.${noteBits.length ? " " + noteBits.join(" · ") + "." : ""} 예상 당첨선(${cut}점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다.`,
+    raw: d,
+  };
+}
+
+/* 공고 목록 → 상위 N건의 주택형 상세를 이어서 조회 */
+export async function fetchApplyhome(cfg, signal) {
+  if (!cfg.serviceKey) throw new Error("인증키가 비어 있습니다");
+  const base = cfg.odcBase;
+  const detailPath = cfg.odcPath || APPLYHOME.detail;
+
+  const q = new URLSearchParams({
+    serviceKey: cfg.serviceKey,
+    page: "1",
+    perPage: String(cfg.rows || 50),
+  });
+  /* 오래된 공고까지 다 끌어오지 않도록 모집공고일 하한을 겁니다 */
+  q.set("cond[RCRIT_PBLANC_DE::GTE]", cfg.since || daysAgo(cfg.sinceDays ?? 240));
+
+  const json = await callJson(`${base}${detailPath}?${q}`, signal);
+  const { rows, pickedFrom } = extractRecords(json);
+
+  const sorted = [...rows].sort((a, b) =>
+    String(b.RCRIT_PBLANC_DE ?? "").localeCompare(String(a.RCRIT_PBLANC_DE ?? "")));
+  const targets = sorted.slice(0, cfg.detailLimit || 12);
+
+  const modelPath = cfg.odcModelPath || APPLYHOME.model;
+  const models = await Promise.all(targets.map(async (r) => {
+    try {
+      const mq = new URLSearchParams({ serviceKey: cfg.serviceKey, page: "1", perPage: "60" });
+      mq.set("cond[HOUSE_MANAGE_NO::EQ]", String(r.HOUSE_MANAGE_NO ?? ""));
+      mq.set("cond[PBLANC_NO::EQ]", String(r.PBLANC_NO ?? ""));
+      const mj = await callJson(`${base}${modelPath}?${mq}`, signal);
+      return extractRecords(mj).rows;
+    } catch {
+      /* 주택형 조회가 실패해도 공고 자체는 살립니다 */
+      return [];
+    }
+  }));
+
+  return { rows: targets, models, pickedFrom, totalMatched: rows.length };
 }

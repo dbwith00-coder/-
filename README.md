@@ -5,7 +5,7 @@
 | 구분 | 엔드포인트 | 앱에서 분류 |
 |---|---|---|
 | LH 분양임대공고별 공급정보 | `https://apis.data.go.kr/B552555/lhLeaseNoticeSplInfo1` | 공공주택 |
-| odcloud 청약 데이터셋 (stage 37000) | `https://api.odcloud.kr/api` + Swagger에서 확인한 경로 | 민영주택 |
+| 청약홈 APT 분양정보 (한국부동산원) | `https://api.odcloud.kr/api/ApplyhomeInfoDetailSvc/v1/...` | 민영/공공 (HOUSE_DTL_SECD로 판별) |
 
 ## 실행
 
@@ -43,27 +43,45 @@ location /openapi/odcloud/ { proxy_pass https://api.odcloud.kr/api/; }
 정적 호스팅(GitHub Pages 등)처럼 서버가 없는 곳에는 올릴 수 없습니다 —
 Cloudflare Worker / Vercel Edge Function 같은 얇은 중계 하나가 반드시 필요합니다.
 
-## odcloud 경로 설정
+## 청약홈 API 구성
 
-odcloud 는 데이터셋마다 오퍼레이션 경로가 달라서 기본값을 비워뒀습니다.
-Swagger(`https://infuser.odcloud.kr/api/stages/37000/api-docs`)에서 실제 path 를
-확인해 `.env.local` 의 `VITE_ODC_PATH` 또는 **API 설정** 패널에 넣으세요.
-비어 있으면 LH 만 조회하고 odcloud 는 "경로 없음"으로 표시됩니다.
+두 오퍼레이션을 조인해서 씁니다.
+
+| 경로 | 단위 | 얻는 것 |
+|---|---|---|
+| `/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancDetail` | 공고 | 주택명, 공급위치, 공급규모, 접수일정, 시공사, 규제지역 플래그, 공고 URL |
+| `/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancMdl` | 주택형 | 주택형, 일반/특별공급 세대수, **특별공급 유형별 세대수**, 공급금액 |
+
+조인 키는 `HOUSE_MANAGE_NO` + `PBLANC_NO`.
+공고 목록은 `cond[RCRIT_PBLANC_DE::GTE]` 로 최근 것만 받고(기본 240일),
+모집공고일 최신순으로 상위 N건(브라우저 12건 / 수집기 30건)의 주택형을 이어서 조회합니다.
 
 ## 필드 매핑
 
-공공데이터는 같은 뜻의 필드를 기관마다 다르게 부릅니다(`PAN_NM` / `HOUSE_NM` …).
-`src/lib/openapi.js` 의 `FIELDS` 에 후보 이름을 나열해두고 먼저 잡히는 값을 씁니다.
+**청약홈 쪽은 Swagger 확정 스키마 기준으로 매핑돼 있습니다.**
 
-**실제 응답을 아직 확인하지 못한 상태라 이 후보 목록은 확정본이 아닙니다.**
-앱 실행 후 **API 설정 → 응답 첫 건 필드 보기**에서 실제 키 이름을 확인하고,
-`FIELDS` 에 추가하면 매핑이 정확해집니다. 어떤 경로에서 레코드를 꺼냈는지도
-패널에 `응답 경로 dsList` 처럼 표시됩니다.
+| 앱 | 청약홈 필드 |
+|---|---|
+| 공고명 | `HOUSE_NM` |
+| 민영/공공 | `HOUSE_DTL_SECD` (01 민영 / 03 국민) |
+| 지역 | `HSSPLY_ADRES` 앞 3토큰, 없으면 `SUBSCRPT_AREA_CODE_NM` |
+| 시공사 | `CNSTRCT_ENTRPS_NM` → 없으면 `BSNS_MBY_NM`(시행사) |
+| 총 세대수 | `TOT_SUPLY_HSHLDCO` |
+| 주택형 | `HOUSE_TY` (`084.9500A` → `84㎡A`) |
+| 분양가 | `LTTOT_TOP_AMOUNT` (문서상 이미 **만원** 단위 — 환산하지 않음) |
+| 특별공급 | `NWWDS_/LFE_FRST_/MNYCH_/OLD_PARNTS_SUPORT_/INSTT_RECOMEND_/NWBB_/YGMN_HSHLDCO` |
+| 규제 태그 | `PARCPRC_ULS_AT`, `SPECLT_RDN_EARTH_AT`, `MDAT_TRGET_AREA_SECD`, `IMPRMN_BSNS_AT` 등 Y 플래그 |
+| 진행 상태 | 필드가 없어 `RCEPT_BGNDE`/`RCEPT_ENDDE` 로 파생 |
+
+LH 쪽은 아직 실제 응답을 확인하지 못해 후보 이름을 나열해 두는 방식입니다
+(`src/lib/notices-core.js` 의 `FIELDS`). 수집 결과 `status.json` 의 `fields` 를 보고
+확정하면 됩니다.
 
 ## 데이터 처리 규칙
 
 - **금액**: 원/만원 혼재 → 만원 단위로 정규화 (`toManwon`)
 - **전용면적**: `59.98` → `59㎡` (반올림 아닌 절사 — 국내 표기 관행)
+- **금액 단위**: 청약홈 `LTTOT_TOP_AMOUNT` 는 이미 만원 단위라 그대로, LH 계열은 원 단위 추정 후 환산
 - **주택형 병합**: 같은 공고가 주택형별로 여러 행으로 오면 1건으로 합쳐 타입 배열 구성
 - **예상 당첨선**: API가 주지 않으므로 지역 기준 추정값을 넣고 화면에 `(지역 기준 추정)` 표기
 - **부분 실패**: 두 API를 독립 호출 → 한쪽이 죽어도 다른 쪽은 표시
@@ -87,8 +105,8 @@ GitHub 러너는 제약이 없습니다.)
 
 이후 매일 06:00 / 12:00 KST 에 자동 실행됩니다.
 
-> 워크플로는 기본 브랜치에 있어야 실행됩니다.
-> 현재 `claude/subscription-housing-module-n6dc73` 이 기본 브랜치라 그대로 실행됩니다.
+> ⚠️ 워크플로는 **기본 브랜치에 있어야** 실행됩니다. 다른 브랜치에 있다면
+> 기본 브랜치로 먼저 합쳐 주세요.
 
 ### 생성되는 파일
 

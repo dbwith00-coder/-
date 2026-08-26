@@ -1560,6 +1560,15 @@ function Subscription({ tab, setTab, allSites, live }) {
                 <button className="mv-x" onClick={() => setSite(null)} aria-label="닫기">✕</button>
               </div>
               <div className="mv-sheet-body">
+                {site.tags?.length > 0 && (
+                  <div className="mv-row" style={{ gap: 5, marginBottom: 12 }}>
+                    <span className={"mv-chip " + (site.status === "접수 중" ? "mv-on" : "mv-cool")}
+                      style={{ fontSize: 11.5 }}>{site.status}</span>
+                    {site.tags.map((t) => (
+                      <span key={t} className="mv-chip" style={{ fontSize: 11.5 }}>{t}</span>
+                    ))}
+                  </div>
+                )}
                 <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--ink-2)" }}>{site.note}</p>
 
                 <DSec n="01" t="공급 규모">
@@ -1579,6 +1588,13 @@ function Subscription({ tab, setTab, allSites, live }) {
                       </tbody>
                     </table>
                   </div>
+                  {site.receipt && (site.receipt.special || site.receipt.rank1 || site.receipt.result) && (
+                    <div className="mv-note" style={{ marginTop: 12, fontSize: 12.5, lineHeight: 1.8 }}>
+                      {site.receipt.special && <>특별공급 접수 <b>{site.receipt.special}</b><br /></>}
+                      {site.receipt.rank1 && <>1순위 해당지역 <b>{site.receipt.rank1}</b><br /></>}
+                      {site.receipt.result && <>당첨자 발표 <b>{site.receipt.result}</b></>}
+                    </div>
+                  )}
                   <div className="mv-row" style={{ marginTop: 12, gap: 16 }}>
                     <span style={{ fontSize: 13.5 }}>총 <b className="mv-num">{site.total.toLocaleString()}</b>세대</span>
                     <span style={{ fontSize: 13.5 }}>일반분양 <b className="mv-num">{site.general.toLocaleString()}</b>세대</span>
@@ -1688,21 +1704,39 @@ function Subscription({ tab, setTab, allSites, live }) {
 
                 <DSec n="03" t="넣을 수 있는 특별공급">
                   <div className="mv-grid" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(220px,1fr))" }}>
-                    {specialFit.filter((x) => x.ok === true).map((x) => (
-                      <div key={x.k} className="mv-card mv-pad" style={{ borderColor: "#BFDED4", background: "var(--tint)" }}>
-                        <div style={{ fontSize: 22 }}>{x.ic}</div>
-                        <strong style={{ display: "block", fontSize: 15.5, marginTop: 6 }}>{x.n}</strong>
-                        <small style={{ display: "block", fontSize: 12.5, color: "var(--ink-2)", marginTop: 3 }}>
-                          {x.ratio}
-                        </small>
-                      </div>
-                    ))}
+                    {specialFit.filter((x) => x.ok === true).map((x) => {
+                      const unit = site.specialUnits?.[x.k];
+                      return (
+                        <div key={x.k} className="mv-card mv-pad" style={{ borderColor: "#BFDED4", background: "var(--tint)" }}>
+                          <div style={{ fontSize: 22 }}>{x.ic}</div>
+                          <strong style={{ display: "block", fontSize: 15.5, marginTop: 6 }}>{x.n}</strong>
+                          {unit ? (
+                            <b className="mv-num" style={{ display: "block", fontSize: 19, color: "var(--flow)", marginTop: 4 }}>
+                              {unit.n.toLocaleString()}세대
+                              <small style={{ fontSize: 11.5, color: "var(--ink-3)", fontWeight: 600 }}> 이 단지 배정</small>
+                            </b>
+                          ) : (
+                            <small style={{ display: "block", fontSize: 12.5, color: "var(--ink-2)", marginTop: 3 }}>
+                              {site.specialUnits ? "이 공고에는 배정 없음" : x.ratio}
+                            </small>
+                          )}
+                        </div>
+                      );
+                    })}
                     {fitCount === 0 && <div className="mv-note">해당하는 특별공급이 없습니다. 일반공급으로 넣으셔야 합니다.</div>}
                   </div>
+                  {site.specialUnits && Object.keys(site.specialUnits).length > 0 && (
+                    <div className="mv-note" style={{ marginTop: 12, fontSize: 12.5, lineHeight: 1.8 }}>
+                      <b>이 공고의 특별공급 배정 물량</b>
+                      <span style={{ color: "var(--ink-3)" }}> · 청약홈 주택형별 상세 합계</span><br />
+                      {Object.values(site.specialUnits)
+                        .map((v) => `${v.label} ${v.n.toLocaleString()}세대`).join(" · ")}
+                    </div>
+                  )}
                 </DSec>
 
                 <div className="mv-row" style={{ marginTop: 22 }}>
-                  <a className="mv-btn mv-primary" href="https://www.applyhome.co.kr"
+                  <a className="mv-btn mv-primary" href={site.url || "https://www.applyhome.co.kr"}
                     target="_blank" rel="noopener noreferrer">청약홈에서 공고 확인 ↗</a>
                 </div>
                 <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 16, lineHeight: 1.6 }}>
@@ -2050,7 +2084,7 @@ function LivePanel({ live }) {
 
       <div className="mv-grid" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 10, marginTop: 14 }}>
         {[["lh", "LH 분양임대공고별 공급정보", "apis.data.go.kr/B552555"],
-          ["odc", "odcloud 청약 데이터셋", "api.odcloud.kr/api"]].map(([k, label, host]) => {
+          ["odc", "청약홈 APT 분양정보", "api.odcloud.kr · 한국부동산원"]].map(([k, label, host]) => {
           const st = src?.[k];
           return (
             <div key={k} style={{ padding: "11px 13px", borderRadius: 10,
@@ -2085,8 +2119,9 @@ function LivePanel({ live }) {
           {[["serviceKey", "일반 인증키 (Decoding)", "공공데이터포털에서 발급받은 키"],
             ["lhBase", "LH 요청 경로 prefix", "/openapi/lh"],
             ["lhPath", "LH 오퍼레이션", "/lhLeaseNoticeSplInfo1"],
-            ["odcBase", "odcloud 요청 경로 prefix", "/openapi/odcloud"],
-            ["odcPath", "odcloud 오퍼레이션", "Swagger(stage 37000)에서 확인한 경로"]].map(([k, label, ph]) => (
+            ["odcBase", "청약홈 요청 경로 prefix", "/openapi/odcloud"],
+            ["odcPath", "청약홈 공고 조회 경로", "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancDetail"],
+            ["odcModelPath", "청약홈 주택형 조회 경로", "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancMdl"]].map(([k, label, ph]) => (
             <div className="mv-field" key={k} style={{ marginBottom: 12 }}>
               <label htmlFor={`api-${k}`} style={{ fontSize: 13 }}>{label}</label>
               <input id={`api-${k}`} className="mv-in" style={{ height: 42, fontSize: 14 }}

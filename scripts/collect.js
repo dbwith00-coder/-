@@ -19,7 +19,8 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { fetchLh, fetchOdcloud, normalizeRows } from "../src/lib/notices-core.js";
+import { fetchLh, fetchApplyhome, normalizeRows, normalizeApplyhome, APPLYHOME }
+  from "../src/lib/notices-core.js";
 
 const OUT = "data";
 const KEY = process.env.ODCLOUD_KEY || "";
@@ -31,7 +32,11 @@ const cfg = {
   lhBase: process.env.LH_BASE || "https://apis.data.go.kr/B552555",
   lhPath: process.env.LH_PATH || "/lhLeaseNoticeSplInfo1",
   odcBase: process.env.ODC_BASE || "https://api.odcloud.kr/api",
-  odcPath: process.env.ODC_PATH || "",
+  /* 청약홈 APT 분양정보 — Swagger 확정 경로 */
+  odcPath: process.env.ODC_PATH || APPLYHOME.detail,
+  odcModelPath: process.env.ODC_MODEL_PATH || APPLYHOME.model,
+  detailLimit: Number(process.env.DETAIL_LIMIT || 30) || 30,
+  sinceDays: Number(process.env.SINCE_DAYS || 240) || 240,
   rows: ROWS,
 };
 
@@ -39,12 +44,24 @@ const cfg = {
    GitHub 은 시크릿 전체 문자열만 마스킹하고 일부만 잘라 쓴 값은 마스킹하지 않습니다. */
 const mask = (s) => (s ? `설정됨 (${s.length}자)` : "(없음)");
 
-async function one(label, fn, source) {
+async function one(label, mode) {
   const t0 = Date.now();
   try {
     if (!cfg.serviceKey) throw new Error("ODCLOUD_KEY 시크릿이 비어 있습니다");
-    const { rows, pickedFrom } = await fn(cfg);
-    const sites = normalizeRows(rows, source);
+    let rows, pickedFrom, sites;
+    if (mode === "applyhome") {
+      /* 공고(Detail) + 주택형(Mdl) 을 조인해 타입·특별공급 물량까지 채웁니다 */
+      const r = await fetchApplyhome(cfg);
+      rows = r.rows;
+      pickedFrom = r.pickedFrom;
+      sites = r.rows.map((d, i) => normalizeApplyhome(d, r.models[i] || []));
+      console.log(`  ${label}: 공고 ${rows.length}건 (전체 매칭 ${r.totalMatched}건), 주택형 ${r.models.reduce((a, m) => a + m.length, 0)}행`);
+    } else {
+      const r = await fetchLh(cfg);
+      rows = r.rows;
+      pickedFrom = r.pickedFrom;
+      sites = normalizeRows(rows, "lh");
+    }
     return {
       ok: true, count: sites.length, rawCount: rows.length, pickedFrom,
       ms: Date.now() - t0, error: null,
@@ -71,9 +88,9 @@ const main = async () => {
   console.log(`LH      ${cfg.lhBase}${cfg.lhPath}`);
   console.log(`odcloud ${cfg.odcBase}${cfg.odcPath || " (경로 미설정 — 건너뜀)"}`);
 
-  const lh = await one("LH", fetchLh, "lh");
+  const lh = await one("LH", "generic");
   const odc = cfg.odcPath
-    ? await one("odcloud", fetchOdcloud, "odc")
+    ? await one("청약홈", "applyhome")
     : { ok: false, count: 0, rawCount: 0, pickedFrom: null, ms: 0,
         error: "ODC_PATH 미설정 — Swagger(stage 37000)에서 경로 확인 후 워크플로 입력값으로 지정",
         fields: [], sample: [], sites: [] };
