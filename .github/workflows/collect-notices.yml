@@ -57,6 +57,10 @@ jobs:
           DETAIL_LIMIT: ${{ inputs.detail_limit || '0' }}
         run: node scripts/collect.js
 
+      - name: 분양 예정 단지 후보 수집 (뉴스)
+        continue-on-error: true
+        run: node scripts/collect-news.js
+
       - name: 변경분 커밋
         run: |
           git config user.name  "github-actions[bot]"
