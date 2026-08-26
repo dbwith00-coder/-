@@ -51,11 +51,19 @@ console.log("\n" + "─".repeat(74));
 console.log(`과거 사례 ${CASES.length}건 — 평균 절대오차 ${(sumAbs / CASES.length).toFixed(1)}% · 범위 적중 ${hit}/${CASES.length}`);
 console.log("과거 사례는 표본이 적고 시점 보정 지수까지 얹혀 있어 참고용입니다.\n");
 
-/* 진짜 성능은 "학습에 안 쓴 공고" 를 맞히는 정확도입니다 — 표본이 훨씬 많습니다.
-   아래 숫자는 공고 단위 5겹 교차검증 결과라 자기 답을 보고 맞힌 게 아닙니다. */
+/* 진짜 성능은 "학습에 안 쓴 공고" 를 맞히는 정확도입니다.
+   그리고 그 정확도는 현장마다 다릅니다 — 근처에 비교할 분양 실적이
+   얼마나 가까이 있느냐로 갈립니다. 등급별로 나눠 봅니다. */
 console.log("─".repeat(74));
-console.log(`교차검증 — 학습 관측 ${FIT_META.samples.toLocaleString()}건 · 검증 공고 ${FIT_CV.n}건`);
-console.log(`  (한 공고당 국민평형 1건을, 지역+브랜드만 알고 예측)`);
-console.log(`  평균 절대오차 ${FIT_CV.mae}% · 중앙 ${FIT_CV.p50}% · 80분위 ${FIT_CV.p80}%`);
-console.log(`  ±10% 안에 ${FIT_CV.w10}% · ±15% 안에 ${FIT_CV.w15}% · ±20% 안에 ${FIT_CV.w20}%`);
-console.log(`\n표시 범위는 80분위(±${Math.round(FIT_CV.p80)}%)를 씁니다 — 임의로 정한 값이 아닙니다.\n`);
+console.log(`교차검증 — 학습 공고 ${FIT_META.samples}건 · 검증 ${FIT_CV.all.n}건 (공고 단위 5겹)`);
+console.log(`  (한 공고당 국민평형 1건을, 위치만 알고 예측)`);
+console.log(`  전체        평균 ${FIT_CV.all.mae}% · 중앙 ${FIT_CV.all.p50}% · ±10% 안 ${FIT_CV.all.w10}%`);
+const NAME = { 5: "높음      읍면동·지구까지 일치", 4: "보통      시군구까지 일치",
+               3: "낮음      시군구 실적을 통째로", 2: "매우 낮음  시도 평균에서 빌림" };
+for (const d of [5, 4, 3, 2]) {
+  const s = FIT_CV.byDepth?.[d];
+  if (!s) continue;
+  console.log(`  ${NAME[d].padEnd(26)} 평균 ${String(s.mae).padStart(5)}% · 중앙 ${String(s.p50).padStart(5)}%`
+    + ` · ±10% 안 ${String(s.w10).padStart(2)}% · 범위 ±${Math.round(s.p80)}%  (${s.n}건)`);
+}
+console.log(`\n표시 범위는 등급마다 다릅니다 — 그 등급에서 실제로 난 오차의 80분위입니다.\n`);

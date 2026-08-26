@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { loadConfig, saveConfig, fetchAllNotices } from "./lib/openapi";
 import SNAPSHOT from "./data/notices.json";
 import NEWS from "./data/upcoming-news.json";
-import { estimatePrice, guessRegion } from "./lib/price-model";
+import { estimatePrice, guessRegion, GRADE_WHY } from "./lib/price-model";
 import { FIT_CV, FIT_META } from "./data/price-model-fit.js";
 
 /* ============================================================
@@ -1501,7 +1501,7 @@ function Subscription({ tab, setTab, allSites, live }) {
                         </div>
                         <small>
                           {c.region ? `${c.region} · ` : ""}
-                          {c.est ? `범위 ${eok(c.est.lo)}~${eok(c.est.hi)} · 평당 ${c.est.pyPrice.toLocaleString()}만 · 34평 기준` : "기사에서 지역을 못 찾았습니다"}
+                          {c.est ? `범위 ${eok(c.est.lo)}~${eok(c.est.hi)} · 평당 ${c.est.pyPrice.toLocaleString()}만 · 34평 기준 · 신뢰도 ${c.est.grade}` : "기사에서 지역을 못 찾았습니다"}
                           {" · "}기사 {c.mentions}건
                         </small>
                       </button>
@@ -1519,9 +1519,11 @@ function Subscription({ tab, setTab, allSites, live }) {
                               {" "}(범위 {eok(c.est.lo)}~{eok(c.est.hi)})<br />
                               <span style={{ color: "var(--ink-3)" }}>
                                 평당가는 <b>청약홈 실제 분양가 {FIT_META.samples.toLocaleString()}건</b>으로 학습한
-                                지역 계층 모델에서 나옵니다{c.est.fitKey ? ` (${c.est.fitKey} 실적 ${c.est.fitN}건)` : ""}.
+                                지역 계층 모델에서 나옵니다 ({c.est.labels.land}).
                                 택지비·건축비는 그 평당가를 화면용으로 되쪼갠 값입니다.<br />
-                                학습에 안 쓴 공고로 검증한 오차는 평균 {FIT_CV.mae}% · 중앙 {FIT_CV.p50}%입니다.
+                                <b>신뢰도 {c.est.grade}</b> — {GRADE_WHY[c.est.grade]}.
+                                같은 조건에서 학습에 안 쓴 공고를 맞혀 본 평균 오차가{" "}
+                                <b>{c.est.gradeMae}%</b>라서 범위를 ±{c.est.bandPct}%로 잡았습니다.
                               </span>
                             </div>
                           )}
@@ -1562,19 +1564,34 @@ function Subscription({ tab, setTab, allSites, live }) {
                 아직 공고가 안 난 단지는 분양가가 없어서 추정합니다.
                 <b>시세는 섞지 않습니다</b> — 절반씩 섞으면 원가 추정인지 시세 반영인지
                 알 수 없어지고 검증도 안 됩니다.<br />
-                평당가는 <b>청약홈 실제 분양가 {FIT_META.samples.toLocaleString()}건</b>으로 학습한
-                지역 계층 모델(시도 › 시군구 › 읍면동, 표본 적은 곳은 상위로 축소)에
-                공급유형·평형대·단지규모·상한제·브랜드·정비사업 보정을 곱해 냅니다.
-                학습 데이터가 아예 없는 지역만 원가식으로 떨어집니다.<br />
-                성능은 <b>공고 단위 5겹 교차검증</b>입니다 — 학습에 안 쓴 공고 {FIT_CV.n}건을
-                지역과 브랜드만 보고 맞혀 본 결과라 자기 답을 보고 맞힌 숫자가 아닙니다.
-                <b>평균 절대오차 {FIT_CV.mae}%</b> · 중앙 {FIT_CV.p50}% ·
-                ±10% 안에 {FIT_CV.w10}% · ±20% 안에 {FIT_CV.w20}%.
-                표시 범위는 임의값이 아니라 <b>80분위(±{Math.round(FIT_CV.p80)}%)</b>입니다.<br />
-                <b>절반 이상은 오차 10% 안</b>에 들어오지만, 평균이 {FIT_CV.mae}%인 이유는
-                읍·면 신규택지처럼 주변 실적과 값이 크게 어긋나는 소수 현장 때문입니다.
-                과거 시점 백테스트: 과천 지정타(2020) <b>-8.6%</b>, 검단(2024) <b>+15.9%</b>,
-                용인한숲시티(2015) <b>+31.5%</b> — 오래된 건은 시점 보정 지수가 얹혀 오차가 커집니다.
+                평당가는 <b>청약홈 실제 분양가 {FIT_META.samples.toLocaleString()}건</b>을
+                <b>[시도 › 읍면·택지·시가지 › 시군구 › 재개발·일반 › 읍면동·지구]</b> 트리로 학습한
+                값입니다. 성격을 한 층으로 둔 이유는, 같은 안성시라도 아양지구(읍면)는
+                평당 1,292만인데 시내 동은 2,000만대라 시 평균을 물려주면 70% 과대예측되기
+                때문입니다. 건축비는 국토부 고시 <b>기본형건축비(2026.3, ㎡당 222만원)</b>를 씁니다.<br />
+                <b>중요 — 현장마다 오차가 다릅니다.</b> 근처에 비교할 분양 실적이
+                얼마나 가까이 있느냐로 갈립니다. 아래는 공고 단위 5겹 교차검증
+                실측값입니다(학습에 안 쓴 공고 {FIT_CV.all.n}건).
+                <div style={{ marginTop: 6, marginBottom: 6 }}>
+                  {[["높음", 5], ["보통", 4], ["낮음", 3], ["매우 낮음", 2]].map(([g, d]) => {
+                    const st = FIT_CV.byDepth?.[d];
+                    if (!st) return null;
+                    return (
+                      <div key={g} style={{ display: "flex", gap: 8, fontSize: 12 }}>
+                        <b style={{ minWidth: 58 }}>{g}</b>
+                        <span style={{ minWidth: 150, color: "var(--ink-3)" }}>{GRADE_WHY[g]}</span>
+                        <span>평균 <b>{st.mae}%</b> · 중앙 {st.p50}% · ±10% 안 {st.w10}%</span>
+                        <span style={{ color: "var(--ink-3)" }}>({st.n}건)</span>
+                      </div>
+                    );
+                  })}
+                </div>
+                즉 <b>읍면동·지구까지 비교 실적이 잡히는 현장은 평균 오차가
+                {" "}{FIT_CV.byDepth?.[5]?.mae}%</b>로 10% 안입니다. 시군구 위로 올라가야
+                하는 현장은 {FIT_CV.byDepth?.[2]?.mae}%까지 벌어집니다 — 그건 모델이 나빠서가
+                아니라 그 동네에 비교할 분양이 없어서입니다. 같은 시군구·6개월 안에 분양한
+                두 단지끼리도 평당가가 평균 16% 벌어집니다.<br />
+                표시 범위는 임의값이 아니라 <b>그 등급에서 실제로 난 오차의 80분위</b>입니다.
               </div>
             </div>
             <div>
