@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-08-26T07:35:50.686Z",
+ "collectedAt": "2026-08-26T07:39:07.187Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -25,7 +25,7 @@
   },
   {
    "query": "청약 예정 아파트",
-   "count": 78,
+   "count": 80,
    "error": null
   },
   {
@@ -44,19 +44,13 @@
    "error": null
   }
  ],
- "articleCount": 616,
- "count": 56,
+ "articleCount": 618,
+ "count": 48,
  "candidates": [
   {
-   "name": "분양일정 e편한세상분당퍼스트빌리지 등",
-   "mentions": 11,
+   "name": "e편한세상 분당 퍼스트빌리지",
+   "mentions": 10,
    "articles": [
-    {
-     "title": "[7월 첫째 주 아파트 분양일정] ‘e편한세상분당퍼스트빌리지’ 등 8167가구",
-     "source": "디트NEWS24",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5WUmZRUkM2WVB4TUhJQ1dhdWdrRFVOU2VXUS1QVzdrWW4zQk9xWmtHQ1pmQ2lzYUVxTFJrdUE5SHNHbjRFXzRTMlpyOTgtd2s5S0ZHM0c4Q29VT3luQTlaLWI4b0VVSnZYYVpn?oc=5",
-     "pubDate": "Fri, 26 Jun 2026 07:00:00 GMT"
-    },
     {
      "title": "DL이앤씨 ‘e편한세상 분당 퍼스트빌리지’ 7월 분양 예정",
      "source": "국토일보",
@@ -80,14 +74,20 @@
      "source": "이슈투데이",
      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE53Y1lGbTVRdGZLVGpwZmVhTkVld2FkNHlaOWFHTW5udVg4LUozTFZndUF2N3ZSX1lXUmdBcHRQN3lHQ1NfYV9uWWUySnFHSkJ5MlA4SWVxQU9ybmoyeTFGVDNqZnEtUQ?oc=5",
      "pubDate": "Tue, 23 Jun 2026 07:00:00 GMT"
+    },
+    {
+     "title": "직주근접 수요 이어지는 성남...'e편한세상 분당 퍼스트빌리지' 이달 분양",
+     "source": "한경매거진&북",
+     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB1NFJxaFhKRC15MWF0Ym1XWThqZGdkQU0xRk40WjI3UFIyel9Xc1BvS1ExMnJsTzl6Qkt2UUR4N0lPZXRyMUlwdk5jWlpDNXhtQ1E5MWpvdEMtRVdkU1l1SmlkWnpMaGxE?oc=5",
+     "pubDate": "Wed, 15 Jul 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "분양일정 e편한세상분당퍼스트빌리지 등",
     "e편한세상 분당 퍼스트빌리지",
     "e편한세상분당퍼스트빌리지",
     "e편한세상 분당"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "인천 검암역 푸르지오 프라베뉴",
@@ -127,7 +127,8 @@
    "aliases": [
     "인천 검암역 푸르지오 프라베뉴",
     "검암역 푸르지오 프라베뉴"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "e편한세상 신곡 시그니처뷰",
@@ -161,79 +162,8 @@
    "aliases": [
     "e편한세상 신곡 시그니처뷰",
     "e편한세상 신곡"
-   ]
-  },
-  {
-   "name": "반포 20억 로또 청약",
-   "mentions": 6,
-   "articles": [
-    {
-     "title": "오늘 특별공급 ''반포 20억 로또 청약'.. 20억 이상 현금부자들만 땡큐",
-     "source": "땅집고",
-     "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5nMVRMb2RYUzhkQU80NDNPVkFWcHVTM0Eza1hFcERVenQ5QXpISHl6VnRXTWUxdVBlaU9EYmxPaXZJV1JBb2daX1JzdFFrT0xSTkV4cF9wRUJJSENmbnYyQlJZQW1TbnoyYk9HWjRGN0VpRTV5cUgyYzhJZDRpUWfSAXNBVV95cUxPS0x2TXkyZV9rVm1qX2c4X2Q4LUtnN2VOQXl0YTFMd2RrRkN0U01YbjNrc3pjN1RHZktLeUNJQXF2Q0txdWszeHgyd3ZZOFJiVWJxYnRHcElFQzBfOEFIX0l6cXdHODR4bXZ4d0RuOGp1VEpV?oc=5",
-     "pubDate": "Fri, 07 Nov 2025 08:00:00 GMT"
-    },
-    {
-     "title": "[이슈&논란] 서울 강남권 반포·잠원·방배·서초·용산 '로또 청약' 대기중…\"현금부자 놀이터로 변질\" 논란",
-     "source": "뉴스스페이스",
-     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBleDctWlUtaXN4ak02WGZzSjh3Vlg0ajUwaFEyaWlvV2dqUGJkNzNiMUt3RkY3Ql8tWXNDYldob2ZaVElUMkVJNjFPa3FiWWVPbGZXQmFSc0xDbUtLMXdSNA?oc=5",
-     "pubDate": "Thu, 08 Jan 2026 08:00:00 GMT"
-    },
-    {
-     "title": "서울 강남권 '알짜 분양' 나온다…'로또 청약' 올해도",
-     "source": "더팩트",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5Xcl9GcS1pSV8yWnVMWmRkLUZ6bjY1YTNPU21NbE11Y1V1WnpPeUJDcmt2MzF2dlZ0UXZRYkxwMEZzWDY4Vm9idGtEMlhmUUMyNjVQeDF1T3Rvd9IBVEFVX3lxTE9YbG1oaEsxNnNtM0VOQ3hlQmtIWEcwM0pqMFpYd09IVU9VeWViZjh3TURlTkhSVUNRc1RNY3YwUzFuZW1ZZG5MWnpTeWI5ZGdYeGJFbw?oc=5",
-     "pubDate": "Mon, 05 Jan 2026 08:00:00 GMT"
-    },
-    {
-     "title": "급감한 서울 아파트 분양... 하반기엔 잇단 '로또 청약'",
-     "source": "한국일보",
-     "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5mdjZpNFYtSDhCTGQtOERvUWN2WEs1MHFWY2ZWdml6ZVU3dWtnOThocXhnckViRHpxZG1Uc0h3NjlIbDNRbUI3LThqRk5uV3pkWFNHYTBsdV9PRXZQdEZtS1QwdmpnUnZjTzJfcDBR0gFzQVVfeXFMUEpGZHlrZWF0NXRmOTFCR3NyME8zT3BVTkxVVGNfYU9ya3RpbWdDeHhJd2VUdDZaY1FlUlctVnlxaDhETFBxdWc2LTdKS0VhejlGa1Z4Ql9MQkZaZFdRelpOSldGZFpWd0J5NUxMNndTa0tMRQ?oc=5",
-     "pubDate": "Tue, 17 Jun 2025 07:00:00 GMT"
-    },
-    {
-     "title": "2026년 서울 분양시장, '로또청약' 열기 더 뜨거워진다",
-     "source": "미디어펜",
-     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1XVmowNXBBT0F0aFdabnY4c0FvcmlLb1hJY0VtZmFFVm9sNGREVDNlb3JwUXlpb3FvMUFCRGJUOWVGbE9QSUVQUlFXejljTEhVVTRkStIBWEFVX3lxTFB2TGFaNWdmbjhVMFRvVUZnSEJITkVRYmJKcW9icWRxeXl2SkpvbGM1Tmt1NTVYUDhvZm5POGdjOGJXUWR5dUdTTVFKYktNWm1RMDR3UE5DWGI?oc=5",
-     "pubDate": "Sat, 03 Jan 2026 08:00:00 GMT"
-    }
    ],
-   "aliases": [
-    "반포 20억 로또 청약",
-    "로또 청약",
-    "로또청약"
-   ]
-  },
-  {
-   "name": "분양일정 평택고덕우미린프레스티지 등",
-   "mentions": 6,
-   "articles": [
-    {
-     "title": "[6월 셋째 주 아파트 분양일정] ‘평택고덕우미린프레스티지’ 등 3606가구",
-     "source": "디트NEWS24",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5sVVdtY2J4S2dRUTVaVTdZWDhyTlRMdXNnZ1FqS2NZU1JHWEF2NmtpYzZ3c0I4NUVwS0hMSGVrdDBLUGU1MEM2aXJpcmN1STJsVk13WmlQMGZtSmFYZWNpYUVNRTBVLTZLX2dJ?oc=5",
-     "pubDate": "Fri, 12 Jun 2026 07:00:00 GMT"
-    },
-    {
-     "title": "'평택고덕우미린프레스티지' 등 3606가구 분양예정[분양캘린더]",
-     "source": "뉴시스",
-     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE55aDc1cGFVUXMybVNCMTc0OEcxdkV4X0I4bzd6VE1McmRlWGhqRC0tS21BMWJhTFZ6RzdjXzdYMmN1REZDeTBKU3Q0dU9Nb0FVVmE1dG9tRDB1bEc0bFJxX9IBeEFVX3lxTFB0cnVGdWlMSzdfaDRrOVhkWVlucVQxMDBkaG5QU0VIREU3Qmo2TkE4UDNxdjQ2R1A0SnRuYTVqTUgwU3RnMEFwdVd3cjItdnhWMnBGYlBRdl9aR0tUN3hWcWMyQi0wWWxNaXIwdXBvWjBTYUF4YU9aYw?oc=5",
-     "pubDate": "Sat, 13 Jun 2026 07:00:00 GMT"
-    },
-    {
-     "title": "평택 고덕지구 '평택 고덕 우미린 프레스티지' 분양 예정",
-     "source": "서울경제TV",
-     "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9LUFhMX1hBT1lMb01nT2t1cm5iYXZLUlhhR3R1NEdxMnJYRGE2Zlo5S0ZBMkExc1RBSWcySlh6dERSb0VRQjQyb2FVVUZkZ3BzRjZja2NzcUJWb1M0NEhCZVgycEQ?oc=5",
-     "pubDate": "Wed, 27 May 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "분양일정 평택고덕우미린프레스티지 등",
-    "평택고덕우미린프레스티지",
-    "평택 고덕 우미린 프레스티지",
-    "평택고덕우미린프레스티지 등",
-    "고덕 우미린 프레스티지"
-   ]
+   "freq": {}
   },
   {
    "name": "IBD서 더샵 송도그란테르",
@@ -267,7 +197,8 @@
    "aliases": [
     "IBD서 더샵 송도그란테르",
     "더샵 송도그란테르"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "세종 우미린 센터파크",
@@ -307,23 +238,24 @@
    "aliases": [
     "세종 우미린센터파크",
     "세종 우미린 센터파크"
-   ]
+   ],
+   "freq": {}
   },
   {
-   "name": "천안 백석시그니처자이 등",
+   "name": "천안 백석시그니처자이",
    "mentions": 5,
    "articles": [
-    {
-     "title": "[6월 둘째 주 아파트 분양일정] 천안 ‘백석시그니처자이’ 등 2000가구",
-     "source": "디트NEWS24",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5JZWJkQUVXM2xkd3UtckNTem96c0tVR2RUV0s2WlNReFpkbFdZUXV1N05NM0pJbjNYLVkweFFpVlFWb293dUxCRmRXcGZoa2xPWHFzd3FUaWhSQlJ3RnJDQW9TcDhlYzNma1h3?oc=5",
-     "pubDate": "Fri, 05 Jun 2026 07:00:00 GMT"
-    },
     {
      "title": "GS건설, 천안 ‘백석시그니처자이’ 이달 분양…1174가구 공급",
      "source": "마켓인",
      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5kbU1RVzYzOXZXR243VmliUWc5eFNzZDZNd0p5dS1ZT2VYeHVUdkFvd0ptRHF1LVlDV0NUbXdpUlJ3REM1X3RvVG85TFp6b09uaUNPUnB1UWN2VV9sZUhHcng4ZTRBRGxlb2dubmZJWVppS1U?oc=5",
      "pubDate": "Wed, 06 May 2026 07:00:00 GMT"
+    },
+    {
+     "title": "[6월 둘째 주 아파트 분양일정] 천안 ‘백석시그니처자이’ 등 2000가구",
+     "source": "디트NEWS24",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5JZWJkQUVXM2xkd3UtckNTem96c0tVR2RUV0s2WlNReFpkbFdZUXV1N05NM0pJbjNYLVkweFFpVlFWb293dUxCRmRXcGZoa2xPWHFzd3FUaWhSQlJ3RnJDQW9TcDhlYzNma1h3?oc=5",
+     "pubDate": "Fri, 05 Jun 2026 07:00:00 GMT"
     },
     {
      "title": "GS건설 ‘백석시그니처자이’ 이달 분양…천안 '브랜드 아파트' 경쟁",
@@ -333,32 +265,45 @@
     }
    ],
    "aliases": [
-    "천안 백석시그니처자이 등",
     "천안 백석시그니처자이",
     "백석시그니처자이"
-   ]
+   ],
+   "freq": {}
   },
   {
-   "name": "경기광주역 롯데캐슬 시그니처 2단지",
+   "name": "리버뷰 아이파크 오늘",
    "mentions": 4,
    "articles": [
     {
-     "title": "롯데건설, ‘경기광주역 롯데캐슬 시그니처 2단지’ 내달 분양 예정",
-     "source": "edaily.co.kr",
-     "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNdV9nU3AxWmRuMmpGQVNhTnU5MV9JN1cteWpqSy1ZYkdOMzNfUXEyQTFxQ2pDcjlDdUlacTBWZkY0a0dnaTdLTTlyaFZvOEwtQkhGNVJnenVWenV0REZfazJvN1I4TGUzaEJpejRoWUZqcy0xODJOakpfQVotM2lOQg?oc=5",
-     "pubDate": "Wed, 26 Aug 2026 01:30:19 GMT"
+     "title": "'춘천 리버뷰 아이파크' 오늘 청약 스타트",
+     "source": "뉴스1",
+     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE54ajBJUzU1bW5xMG0wcXo2U0MwSkl5TFZPM2hRWDg3V2c4d19vR3FGVHVwdHFCMnZuaGpyOUxBWTEybUNCVFRyZW5hWXJTU2l1ZHNveNIBWkFVX3lxTE9DRHhPOXREbENUNTRhT1Z5VXFVOVFEcGpGZjR3Q0tRNnRMRnlwdDg1S2pIOV95cTBBU0s1RE0xdjZhN2ZhMk80VXduUUpxOWRzd2trNlRXYi1Edw?oc=5",
+     "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
     },
     {
-     "title": "롯데건설, '경기광주역 롯데캐슬 시그니처 2단지' 9월 분양 예정",
-     "source": "네이트",
-     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1MQVBYa1E2OHlkZkRUTXkxSnYwTXRlcWx1VXpEeDJqMDgxa2FCR1NVLWtnR2JvZXZrdzdENUloOEVYVUdLbkxMS0p0NG5IMHlCWXdj?oc=5",
-     "pubDate": "Wed, 26 Aug 2026 02:11:00 GMT"
+     "title": "'춘천 리버뷰 아이파크' 오늘 청약 스타트",
+     "source": "v.daum.net",
+     "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9oRDhsUk9YUWJWeEtoSjJuQUM5cjg4NHU1RHlJTjRzcUNMdjQ0WFdCY19OVW1hd2ZrbGh3a3haQ0lfamU4bjRZN2tsZHkzX1E?oc=5",
+     "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
+    },
+    {
+     "title": "노후 아파트 비중 높은 춘천, ‘춘천 리버뷰 아이파크’ 이달 분양 예정",
+     "source": "서울신문",
+     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5JUW5rRGRmMmhKMGpGT0FlaGNaNXIwTDhxdGNhQ3ZwUXFQb3VaUUhMUzJMbG1rYUd6LTF6VnFJcXVvSm1JOWZDTkloeFNzOUdkSW0zcFpHMEhIckpJWGg5Tkg0Ti13d3pjYnF3MGhsVQ?oc=5",
+     "pubDate": "Thu, 09 Jul 2026 07:00:00 GMT"
+    },
+    {
+     "title": "노후 아파트 비중 높은 춘천, ‘춘천 리버뷰 아이파크’ 이달 분양 예정",
+     "source": "서울Pn",
+     "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1zQVpCbzNLRmRxTHZ4MndidldjdnlJTjF2NDFEelZhNVVWVFYtRzZWZWh6TC1aYllFUGgzcHYyYTRJTElpWEJqdHdKN185eTB1SWFQLTBhTGZmbmZyQnpCVEliampPNWlvS0JKdk13?oc=5",
+     "pubDate": "Thu, 09 Jul 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "경기광주역 롯데캐슬 시그니처 2단지",
-    "경기광주역 롯데캐슬 시그니처"
-   ]
+    "리버뷰 아이파크 오늘",
+    "리버뷰 아이파크"
+   ],
+   "freq": {}
   },
   {
    "name": "쌍용 더 플래티넘 서면",
@@ -382,7 +327,8 @@
     "쌍용 더 플래티넘",
     "더 플래티넘 서면",
     "더 플래티넘"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "용인 푸르지오 원클러스터 2·3단지",
@@ -405,47 +351,38 @@
     "용인 푸르지오 원클러스터 2·3단지",
     "용인 푸르지오 원클러스터",
     "푸르지오 원클러스터"
-   ]
+   ],
+   "freq": {}
   },
   {
-   "name": "한강푸르지오 세종우미린 등",
+   "name": "평택고덕우미린프레스티지",
    "mentions": 4,
    "articles": [
     {
-     "title": "'한강푸르지오' '세종우미린' 등 4808가구 분양 예정[분양캘린더]",
-     "source": "뉴시스",
-     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAyc1V3aDRmOTdQV1lkUll1ZzBydDlVbWhwNVFFM0pnLThXa3FiSXpqdDN0MU5pUTE5QjBaZVYtS2l4N1hvdEx5UmUtQUZnUHdhWVpzZlV5NnVUbGhOS0x6MtIBeEFVX3lxTE9CUXJGTm9EQTJaNDN0OE0xUGFFamMyalU3U1JSdlpBYXo1RmJTMlE1Z3NVR0NrOG9qLW9WT2VOdlBrRHF6akI5SDhoYUxqaDZhTEM3dTBxczhNNURXREoweUpoeWw4ZU1MVkZrRU5JZGZqeWV6Mm5idQ?oc=5",
-     "pubDate": "Sat, 08 Aug 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "한강푸르지오 세종우미린 등",
-    "한강푸르지오 세종우미린",
-    "한강푸르지오",
-    "세종우미린"
-   ]
-  },
-  {
-   "name": "나서는 반포디에이치클래스트일반분양 줄어들듯집슐랭",
-   "mentions": 3,
-   "articles": [
-    {
-     "title": "조합원 1+1 분양 나서는 '반포디에이치클래스트'…일반분양 줄어들듯[집슐랭]",
-     "source": "서울경제",
-     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB3UF9sbFpyRnVPY1N6Nk5JS1NRZjljMWFXclBMQTA2VHFlTEdBdUNHRnZxZXJYc3VfYURCWnlCWGNYQ0JJRlpGb2ZtQlVuRHpZX3c?oc=5",
-     "pubDate": "Thu, 31 Jul 2025 07:00:00 GMT"
+     "title": "[6월 셋째 주 아파트 분양일정] ‘평택고덕우미린프레스티지’ 등 3606가구",
+     "source": "디트NEWS24",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5sVVdtY2J4S2dRUTVaVTdZWDhyTlRMdXNnZ1FqS2NZU1JHWEF2NmtpYzZ3c0I4NUVwS0hMSGVrdDBLUGU1MEM2aXJpcmN1STJsVk13WmlQMGZtSmFYZWNpYUVNRTBVLTZLX2dJ?oc=5",
+     "pubDate": "Fri, 12 Jun 2026 07:00:00 GMT"
     },
     {
-     "title": "'반포디에이치클래스트' 등판…8월 아파트 2.8만가구 분양",
+     "title": "'평택고덕우미린프레스티지' 등 3606가구 분양예정[분양캘린더]",
      "source": "뉴시스",
-     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1NTWYzOVNleWUtbU95RDlxcWxhc0d4TEtpNnVRTmNIajNTQl8yMWd0LXk3Z0tkNHJ0Z2JTbnRQcDQ2RVI3NllTVjVidEZuYmdLdEhyUzJYOGFJbnd1ZmloS9IBeEFVX3lxTE9HX0poS2RhNWMwZFhQRU9aWUN2dF9aTTAxVl9GUEF1V0hyT0RZMVRDc3FWTF9nX0Q2MmlycnZjbmlDMkU5ZTJGN2NUZ2RMcW1CUXZTU3ctakx1a050My1wbC1oUkszUzJ2S3k5bE9ncHBKTTh6STdndw?oc=5",
-     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
+     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE55aDc1cGFVUXMybVNCMTc0OEcxdkV4X0I4bzd6VE1McmRlWGhqRC0tS21BMWJhTFZ6RzdjXzdYMmN1REZDeTBKU3Q0dU9Nb0FVVmE1dG9tRDB1bEc0bFJxX9IBeEFVX3lxTFB0cnVGdWlMSzdfaDRrOVhkWVlucVQxMDBkaG5QU0VIREU3Qmo2TkE4UDNxdjQ2R1A0SnRuYTVqTUgwU3RnMEFwdVd3cjItdnhWMnBGYlBRdl9aR0tUN3hWcWMyQi0wWWxNaXIwdXBvWjBTYUF4YU9aYw?oc=5",
+     "pubDate": "Sat, 13 Jun 2026 07:00:00 GMT"
+    },
+    {
+     "title": "평택 고덕지구 '평택 고덕 우미린 프레스티지' 분양 예정",
+     "source": "서울경제TV",
+     "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9LUFhMX1hBT1lMb01nT2t1cm5iYXZLUlhhR3R1NEdxMnJYRGE2Zlo5S0ZBMkExc1RBSWcySlh6dERSb0VRQjQyb2FVVUZkZ3BzRjZja2NzcUJWb1M0NEhCZVgycEQ?oc=5",
+     "pubDate": "Wed, 27 May 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "나서는 반포디에이치클래스트일반분양 줄어들듯집슐랭",
-    "반포디에이치클래스트"
-   ]
+    "평택고덕우미린프레스티지",
+    "평택 고덕 우미린 프레스티지",
+    "고덕 우미린 프레스티지"
+   ],
+   "freq": {}
   },
   {
    "name": "더 플래티넘 서대문",
@@ -472,7 +409,8 @@
    ],
    "aliases": [
     "더 플래티넘 서대문"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "두정역 푸르지오 그랑피크",
@@ -499,84 +437,31 @@
    ],
    "aliases": [
     "두정역 푸르지오 그랑피크"
-   ]
+   ],
+   "freq": {}
   },
   {
-   "name": "반값아파트",
+   "name": "반포디에이치클래스트일반분양 줄어들듯집슐랭",
    "mentions": 3,
    "articles": [
     {
-     "title": "과천 '반값아파트' 3번의 기회, 다음달 열린다",
-     "source": "네이트",
-     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBnd28wNlFsck5kX1g5NmJCSnhYcEk5XzFUUjJuSEVLdXBOMXktd1dmblZVWUVXMDJ6cWtvN0drZG04QnNiWUJmWTJPZG9WRmw2UjJNWk4tSDlGZ1BsZEJwMA?oc=5",
-     "pubDate": "Thu, 22 Oct 2020 07:00:00 GMT"
+     "title": "조합원 1+1 분양 나서는 '반포디에이치클래스트'…일반분양 줄어들듯[집슐랭]",
+     "source": "서울경제",
+     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB3UF9sbFpyRnVPY1N6Nk5JS1NRZjljMWFXclBMQTA2VHFlTEdBdUNHRnZxZXJYc3VfYURCWnlCWGNYQ0JJRlpGb2ZtQlVuRHpZX3c?oc=5",
+     "pubDate": "Thu, 31 Jul 2025 07:00:00 GMT"
     },
     {
-     "title": "‘반값아파트’ 서울 청약 재시동 청년 실거주 대안으로 급부상",
-     "source": "헤럴드경제",
-     "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE8zWDM3YUFYT1NQZ2JlMDJXTmNGU0ZNRmpNV3k5OTRBcFhIWWRqYnVSU2wzZHNBUzQ5Xzh5ZXpCTy1zME1sbWJXakF4WWU5YkI5WWtvaW1R?oc=5",
-     "pubDate": "Fri, 07 Nov 2025 08:00:00 GMT"
-    },
-    {
-     "title": "'반값아파트' 마곡 토지임대부 본청약 두 달 연기[부동산AtoZ]",
-     "source": "아시아경제",
-     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1xcHZpUVlUQjRrZzZuYm1CS3JHQkFESWhuc3FyRXF5Nk5IXzQtN2t4dlZoWDNuS3d6TWo1YU40ZVlQVlB4LWlyb1BXS1I3MkZ0UXFHcGZzNGV2elptNzNUNXBn?oc=5",
-     "pubDate": "Tue, 02 Dec 2025 08:00:00 GMT"
+     "title": "'반포디에이치클래스트' 등판…8월 아파트 2.8만가구 분양",
+     "source": "뉴시스",
+     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1NTWYzOVNleWUtbU95RDlxcWxhc0d4TEtpNnVRTmNIajNTQl8yMWd0LXk3Z0tkNHJ0Z2JTbnRQcDQ2RVI3NllTVjVidEZuYmdLdEhyUzJYOGFJbnd1ZmloS9IBeEFVX3lxTE9HX0poS2RhNWMwZFhQRU9aWUN2dF9aTTAxVl9GUEF1V0hyT0RZMVRDc3FWTF9nX0Q2MmlycnZjbmlDMkU5ZTJGN2NUZ2RMcW1CUXZTU3ctakx1a050My1wbC1oUkszUzJ2S3k5bE9ncHBKTTh6STdndw?oc=5",
+     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "반값아파트"
-   ]
-  },
-  {
-   "name": "분양일정 춘천리버뷰아이파크 등",
-   "mentions": 3,
-   "articles": [
-    {
-     "title": "[7월 넷째 주 아파트 분양일정] ‘춘천리버뷰아이파크’ 등 8905가구 분양",
-     "source": "디트NEWS24",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE94TXFUQUNRV1NmNXI3T3BzOTVwaktNaXJPeDBxX0JlTE9EaVBjcjVMdC1Gc1oyNExuaXhCQ3FhLWsxM2tGcGRiM0k1bnhQY2dOczFHU0NWR2p1V1VsTmcxelE5SWd6YkNlMEJv?oc=5",
-     "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
-    },
-    {
-     "title": "노후 아파트 비중 높은 춘천, ‘춘천 리버뷰 아이파크’ 이달 분양 예정",
-     "source": "서울신문",
-     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5JUW5rRGRmMmhKMGpGT0FlaGNaNXIwTDhxdGNhQ3ZwUXFQb3VaUUhMUzJMbG1rYUd6LTF6VnFJcXVvSm1JOWZDTkloeFNzOUdkSW0zcFpHMEhIckpJWGg5Tkg0Ti13d3pjYnF3MGhsVQ?oc=5",
-     "pubDate": "Thu, 09 Jul 2026 07:00:00 GMT"
-    },
-    {
-     "title": "노후 아파트 비중 높은 춘천, ‘춘천 리버뷰 아이파크’ 이달 분양 예정",
-     "source": "서울Pn",
-     "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1zQVpCbzNLRmRxTHZ4MndidldjdnlJTjF2NDFEelZhNVVWVFYtRzZWZWh6TC1aYllFUGgzcHYyYTRJTElpWEJqdHdKN185eTB1SWFQLTBhTGZmbmZyQnpCVEliampPNWlvS0JKdk13?oc=5",
-     "pubDate": "Thu, 09 Jul 2026 07:00:00 GMT"
-    }
+    "반포디에이치클래스트일반분양 줄어들듯집슐랭",
+    "반포디에이치클래스트"
    ],
-   "aliases": [
-    "분양일정 춘천리버뷰아이파크 등",
-    "리버뷰 아이파크"
-   ]
-  },
-  {
-   "name": "블랑 써밋 74",
-   "mentions": 3,
-   "articles": [
-    {
-     "title": "대우건설, 부산 하이엔드 아파트 '블랑 써밋 74' 다음달 공급",
-     "source": "팍스경제TV",
-     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBuWWZIZUotSXhCa2Zla3BYdWEwRzNtM041UHM5MWVyRmttTVpVWmtGeXg4dHNLZERnNU5UbTNLTnRFcWhkVkUxVlVxTXUxYlpVbktPdEhXZ3VtR3RfQTM2a2o5WVNYNFps?oc=5",
-     "pubDate": "Tue, 14 May 2024 07:00:00 GMT"
-    },
-    {
-     "title": "‘북항 개발 호재’ 대우건설, 블랑 써밋 74 오피스텔 이달 분양",
-     "source": "catchnews.kr",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE8wVFF5UWU4dVEwSzliMFg5Yk1kMlBiWDBkV3Nwa1c3ZUdIbjlIRm1SQVQ0LU5PcHZ3TE9fZXJlU3BDVDRxdWhWbVIwYzMzM1lqZFRUSi1feWQ4TGpkbUhRQVFac1U2MHlzTGh30gFvQVVfeXFMTVRpN2NGMXptbGVzRXpBMEU3ZWpmYlVlSGV4ellzUzNoVFRLQmVJT09XdkVfU1A5RGEyNHpLMHp3dUxOcTVYcUdRYTUyZEJDMTBKaXN6N053VUFIei11NmdlaUIxSXRuQVpxN1VOS00w?oc=5",
-     "pubDate": "Thu, 20 Aug 2026 08:59:00 GMT"
-    }
-   ],
-   "aliases": [
-    "블랑 써밋 74",
-    "블랑 써밋"
-   ]
+   "freq": {}
   },
   {
    "name": "아크로드서초 드파인연희",
@@ -604,7 +489,8 @@
    "aliases": [
     "아크로드서초 드파인연희",
     "아크로 드"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "지제역 반도체밸리 효성 해링턴 플레이스",
@@ -627,28 +513,26 @@
     "지제역 반도체밸리 효성 해링턴 플레이스",
     "효성 해링턴 플레이스",
     "해링턴 플레이스"
-   ]
+   ],
+   "freq": {}
   },
   {
-   "name": "10억 로또",
-   "mentions": 2,
+   "name": "한강푸르지오 세종우미린",
+   "mentions": 3,
    "articles": [
     {
-     "title": "'10억 로또' 떴다…성수 '오티에르 포레' 내달 7일부터 청약",
-     "source": "한국경제",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0wS3dPc3BSMXNiSXlZN2lYRHVxbzRra0c2bVF3UndoNzVIWUpFdElhZ2VaQjZxckxiUDVsREJsUUVMc05jRXJnUjM4UVQyRGh2VjdvUXJzdlpHdw?oc=5",
-     "pubDate": "Thu, 26 Jun 2025 07:00:00 GMT"
-    },
-    {
-     "title": "반포·잠실서 ‘10억 로또’ 나온다는데…",
-     "source": "매일경제",
-     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBLcGFXTDlyUGkxV2NZdFh5enlFUEtGb2NvNzRVYURaTGZ3YTVaZ0toTlNvSVZjc0R5ZlpuUERpb2JsTEI3akE2WnM0ZlMwTWVDYU53cg?oc=5",
-     "pubDate": "Mon, 18 Aug 2025 07:00:00 GMT"
+     "title": "'한강푸르지오' '세종우미린' 등 4808가구 분양 예정[분양캘린더]",
+     "source": "뉴시스",
+     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAyc1V3aDRmOTdQV1lkUll1ZzBydDlVbWhwNVFFM0pnLThXa3FiSXpqdDN0MU5pUTE5QjBaZVYtS2l4N1hvdEx5UmUtQUZnUHdhWVpzZlV5NnVUbGhOS0x6MtIBeEFVX3lxTE9CUXJGTm9EQTJaNDN0OE0xUGFFamMyalU3U1JSdlpBYXo1RmJTMlE1Z3NVR0NrOG9qLW9WT2VOdlBrRHF6akI5SDhoYUxqaDZhTEM3dTBxczhNNURXREoweUpoeWw4ZU1MVkZrRU5JZGZqeWV6Mm5idQ?oc=5",
+     "pubDate": "Sat, 08 Aug 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "10억 로또"
-   ]
+    "한강푸르지오 세종우미린",
+    "한강푸르지오",
+    "세종우미린"
+   ],
+   "freq": {}
   },
   {
    "name": "e편한세상 동탄역 어반원",
@@ -664,7 +548,8 @@
    "aliases": [
     "e편한세상 동탄역 어반원",
     "e편한세상 동탄역"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "가능한 힐스테이트 동탄포레",
@@ -680,7 +565,30 @@
    "aliases": [
     "가능한 힐스테이트 동탄포레",
     "힐스테이트 동탄포레"
-   ]
+   ],
+   "freq": {}
+  },
+  {
+   "name": "경기광주역 롯데캐슬 시그니처",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "롯데건설, ‘경기광주역 롯데캐슬 시그니처 2단지’ 내달 분양 예정",
+     "source": "edaily.co.kr",
+     "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNdV9nU3AxWmRuMmpGQVNhTnU5MV9JN1cteWpqSy1ZYkdOMzNfUXEyQTFxQ2pDcjlDdUlacTBWZkY0a0dnaTdLTTlyaFZvOEwtQkhGNVJnenVWenV0REZfazJvN1I4TGUzaEJpejRoWUZqcy0xODJOakpfQVotM2lOQg?oc=5",
+     "pubDate": "Wed, 26 Aug 2026 01:30:19 GMT"
+    },
+    {
+     "title": "롯데건설, '경기광주역 롯데캐슬 시그니처 2단지' 9월 분양 예정",
+     "source": "네이트",
+     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1MQVBYa1E2OHlkZkRUTXkxSnYwTXRlcWx1VXpEeDJqMDgxa2FCR1NVLWtnR2JvZXZrdzdENUloOEVYVUdLbkxMS0p0NG5IMHlCWXdj?oc=5",
+     "pubDate": "Wed, 26 Aug 2026 02:11:00 GMT"
+    }
+   ],
+   "aliases": [
+    "경기광주역 롯데캐슬 시그니처"
+   ],
+   "freq": {}
   },
   {
    "name": "고덕 자연앤 하우스디",
@@ -701,7 +609,8 @@
    ],
    "aliases": [
     "고덕 자연앤 하우스디"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "공사중단",
@@ -722,7 +631,8 @@
    ],
    "aliases": [
     "공사중단"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "김포풍무 호반써밋 풍무역세권",
@@ -744,7 +654,8 @@
    "aliases": [
     "김포풍무 호반써밋 풍무역세권",
     "김포풍무 호반써밋"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "당첨되면 수십억 차익",
@@ -765,7 +676,8 @@
    ],
    "aliases": [
     "당첨되면 수십억 차익"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "더블생활권",
@@ -786,7 +698,8 @@
    ],
    "aliases": [
     "더블생활권"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "떴다성수 오티에르 포레",
@@ -802,7 +715,8 @@
    "aliases": [
     "떴다성수 오티에르 포레",
     "오티에르 포레"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "뜬다GS건설 아산탕정자이 퍼스트시티",
@@ -818,28 +732,8 @@
    "aliases": [
     "뜬다GS건설 아산탕정자이 퍼스트시티",
     "아산탕정자이 퍼스트시티"
-   ]
-  },
-  {
-   "name": "리버뷰 아이파크 오늘",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "'춘천 리버뷰 아이파크' 오늘 청약 스타트",
-     "source": "뉴스1",
-     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE54ajBJUzU1bW5xMG0wcXo2U0MwSkl5TFZPM2hRWDg3V2c4d19vR3FGVHVwdHFCMnZuaGpyOUxBWTEybUNCVFRyZW5hWXJTU2l1ZHNveNIBWkFVX3lxTE9DRHhPOXREbENUNTRhT1Z5VXFVOVFEcGpGZjR3Q0tRNnRMRnlwdDg1S2pIOV95cTBBU0s1RE0xdjZhN2ZhMk80VXduUUpxOWRzd2trNlRXYi1Edw?oc=5",
-     "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
-    },
-    {
-     "title": "'춘천 리버뷰 아이파크' 오늘 청약 스타트",
-     "source": "v.daum.net",
-     "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9oRDhsUk9YUWJWeEtoSjJuQUM5cjg4NHU1RHlJTjRzcUNMdjQ0WFdCY19OVW1hd2ZrbGh3a3haQ0lfamU4bjRZN2tsZHkzX1E?oc=5",
-     "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
-    }
    ],
-   "aliases": [
-    "리버뷰 아이파크 오늘"
-   ]
+   "freq": {}
   },
   {
    "name": "만에 관리처분인가개포써밋187 재건축",
@@ -855,29 +749,8 @@
    "aliases": [
     "만에 관리처분인가개포써밋187 재건축",
     "개포써밋187"
-   ]
-  },
-  {
-   "name": "밀양 수자인 더퍼스트 1,2단지",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "BS한양, ‘밀양 수자인 더퍼스트 1,2단지’ 6월 분양 예정",
-     "source": "한국건설신문",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1KUGxuNzJmX0Z6TXlWYXFmbmVIY2swOElPYzA5WXFhSkl1c2lSa19vMHZjUlRiaXJKbl9QMzkta2Vva2VBMG1fYjFiUkFJM3BtLWhDSnd0Rm1Qdnh3UzgzQUNtNHY2ZkJtZDdB?oc=5",
-     "pubDate": "Mon, 22 Jun 2026 07:00:00 GMT"
-    },
-    {
-     "title": "공공분양 문턱 낮춘 '밀양 수자인 더퍼스트', 8월 22일부터 선착순 분양",
-     "source": "한경매거진&북",
-     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1yNThBTXNKMDgxSFM1TmRLQXZ4UlhHMnZldlJUSEE1Q0R6NlF6NjM4WXhaejdlTjRnT0JEVkJodkVSdVRvUi11SjNWRy1obG1tZml5NkM2SW5ONDJUZ00wdy1vN29Ccm1DSHl6VQ?oc=5",
-     "pubDate": "Mon, 10 Aug 2026 07:00:00 GMT"
-    }
    ],
-   "aliases": [
-    "밀양 수자인 더퍼스트 1,2단지",
-    "밀양 수자인 더퍼스트"
-   ]
+   "freq": {}
   },
   {
    "name": "벚꽃 대전",
@@ -898,7 +771,8 @@
    ],
    "aliases": [
     "벚꽃 대전"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "부산 더샵 당리센트리체",
@@ -914,7 +788,8 @@
    "aliases": [
     "부산 더샵 당리센트리체",
     "더샵 당리센트리체"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "부산 래미안 어반파크",
@@ -930,7 +805,8 @@
    "aliases": [
     "부산 래미안 어반파크",
     "래미안 어반파크"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "부산 힐스테이트 연산",
@@ -946,7 +822,8 @@
    "aliases": [
     "부산 힐스테이트 연산",
     "힐스테이트 연산"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "부천 소사본1-1구역",
@@ -967,82 +844,52 @@
    ],
    "aliases": [
     "부천 소사본1-1구역"
-   ]
+   ],
+   "freq": {}
   },
   {
-   "name": "분양가상한제 밖",
+   "name": "분양가상한제",
    "mentions": 2,
    "articles": [
-    {
-     "title": "반포미도2차, ‘분양가상한제 밖’ 반포 재건축 확정…분담금 부담 넘어 시세분양 기대감",
-     "source": "디벨로퍼뉴스",
-     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5Ic2d2eVBTWmJnbHNnUHZMMkk0c3FDSFBDYXAtS2I5UlJfcHBzb2VLQTJvUW9WbVdDOTM5djBJb1FpQ0dMeHRQcDMxR2E1WkM3aVdwU0JDZ2FoN3BoQzRrTnp2dk9kbjNM?oc=5",
-     "pubDate": "Fri, 24 Jul 2026 07:00:00 GMT"
-    },
     {
      "title": "경기 용인·안양 'GTX 호재'…성남 대장·야탑 '분양가상한제' 관심",
      "source": "한국경제",
      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5OWnpGMFRHSEd2UHU3alMwSndac0xFSllzRThrSGpxWVlLbmdtS2tBeWU4a0RCb2ZiYzNiWGpONGpsWXd0bmlTaUpxZlY2bkpMZGlHQ0V3YXlQZw?oc=5",
      "pubDate": "Wed, 21 Feb 2024 08:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "분양가상한제 밖",
-    "분양가상한제"
-   ]
-  },
-  {
-   "name": "분양일정 도안자이센텀리체 등",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "[4월 둘째 주 아파트 분양일정] ‘도안자이센텀리체’ 등 4112가구 분양예정",
-     "source": "디트NEWS24",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9rTFRuOVRYaTZJYXhwT25wUzBRUTB0M2g1OEpNUGlacXQ3Si1RNTdlaUNVQWdmV3JaSjVyZXZuM1k1dnlsZzh3cWh5WklKcjUydk1LdDY3RFhTRk9wVlFQSTZNc3JvYmpCUEln?oc=5",
-     "pubDate": "Fri, 03 Apr 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "분양일정 도안자이센텀리체 등",
-    "도안자이센텀리체"
-   ]
-  },
-  {
-   "name": "분양일정 아산탕정자이 메트로시티",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "[3월 마지막 주 아파트 분양일정] ‘아산탕정자이 메트로시티’ 등 2346가구",
-     "source": "디트NEWS24",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBheHBFZ3RNcnVjTUJjQnF0YVYtRi1kOUtJVE5SRlNSZ1RJalJEWUdkNjJXSkdYYjd5ZlN4bUY5RVVTaTY4M20xNG1wUGhoREFaQWJkQm9vS0F3dlRFYlFweEpGVXNqWXFfOWhv?oc=5",
-     "pubDate": "Fri, 20 Mar 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "분양일정 아산탕정자이 메트로시티",
-    "아산탕정자이 메트로시티"
-   ]
-  },
-  {
-   "name": "새 아파트 분양",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "서울 반포·서초에 '새 아파트 분양' 큰 장 선다",
-     "source": "더구루",
-     "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1MeFZtZkpRb29SQzRWekZWMFFsdDBhdV9sOHNabzduX2NtV3lINlJPV1lrRnF2Mm9vRURsYkRUVXBRMEdBY2hLa3dxNXE5anAtdUpLRTNTTndqdEpo?oc=5",
-     "pubDate": "Mon, 02 Mar 2026 08:00:00 GMT"
     },
     {
-     "title": "서울 반포·서초에 '새 아파트 분양' 큰 장 선다",
-     "source": "더구루",
-     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBvT0xYYno1OTNGSXBwMTR5NVhkV080S2prck1ycy0wMHdTN1N4Zl94NmtkT01xaHBua2t4c2swWUQzOWpxdG9raUxmLWxpYm50RXA5VzNxMHh3SGNScWZPVTFB?oc=5",
-     "pubDate": "Mon, 02 Mar 2026 08:00:00 GMT"
+     "title": "반포미도2차, ‘분양가상한제 밖’ 반포 재건축 확정…분담금 부담 넘어 시세분양 기대감",
+     "source": "디벨로퍼뉴스",
+     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5Ic2d2eVBTWmJnbHNnUHZMMkk0c3FDSFBDYXAtS2I5UlJfcHBzb2VLQTJvUW9WbVdDOTM5djBJb1FpQ0dMeHRQcDMxR2E1WkM3aVdwU0JDZ2FoN3BoQzRrTnp2dk9kbjNM?oc=5",
+     "pubDate": "Fri, 24 Jul 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "새 아파트 분양"
-   ]
+    "분양가상한제"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "블랑 써밋",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "‘북항 개발 호재’ 대우건설, 블랑 써밋 74 오피스텔 이달 분양",
+     "source": "catchnews.kr",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE8wVFF5UWU4dVEwSzliMFg5Yk1kMlBiWDBkV3Nwa1c3ZUdIbjlIRm1SQVQ0LU5PcHZ3TE9fZXJlU3BDVDRxdWhWbVIwYzMzM1lqZFRUSi1feWQ4TGpkbUhRQVFac1U2MHlzTGh30gFvQVVfeXFMTVRpN2NGMXptbGVzRXpBMEU3ZWpmYlVlSGV4ellzUzNoVFRLQmVJT09XdkVfU1A5RGEyNHpLMHp3dUxOcTVYcUdRYTUyZEJDMTBKaXN6N053VUFIei11NmdlaUIxSXRuQVpxN1VOS00w?oc=5",
+     "pubDate": "Thu, 20 Aug 2026 08:59:00 GMT"
+    },
+    {
+     "title": "대우건설, 부산 하이엔드 아파트 '블랑 써밋 74' 다음달 공급",
+     "source": "팍스경제TV",
+     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBuWWZIZUotSXhCa2Zla3BYdWEwRzNtM041UHM5MWVyRmttTVpVWmtGeXg4dHNLZERnNU5UbTNLTnRFcWhkVkUxVlVxTXUxYlpVbktPdEhXZ3VtR3RfQTM2a2o5WVNYNFps?oc=5",
+     "pubDate": "Tue, 14 May 2024 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "블랑 써밋"
+   ],
+   "freq": {}
   },
   {
    "name": "생활권 오산헤리티지자이",
@@ -1058,7 +905,8 @@
    "aliases": [
     "생활권 오산헤리티지자이",
     "오산헤리티지자이"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "신경주 데시앙 잔여분",
@@ -1074,7 +922,8 @@
    "aliases": [
     "신경주 데시앙 잔여분",
     "신경주 데시앙"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "안성 공도 서해그랑블",
@@ -1095,7 +944,8 @@
    ],
    "aliases": [
     "안성 공도 서해그랑블"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "용인반도체클러스터 동일하이빌 파크밸리",
@@ -1117,7 +967,8 @@
    "aliases": [
     "용인반도체클러스터 동일하이빌 파크밸리",
     "반도체 클러스터"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "은계지구 힐스테이트 시흥대야역",
@@ -1133,7 +984,8 @@
    "aliases": [
     "은계지구 힐스테이트 시흥대야역",
     "힐스테이트 시흥대야역"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "의왕시청역 SK뷰 아이파크",
@@ -1149,7 +1001,8 @@
    "aliases": [
     "의왕시청역 SK뷰 아이파크",
     "SK뷰 아이파크"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "의정부 e편한세상 신곡",
@@ -1170,7 +1023,8 @@
    ],
    "aliases": [
     "의정부 e편한세상 신곡"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "재개발 e편한세상 서울대입구",
@@ -1186,7 +1040,8 @@
    "aliases": [
     "재개발 e편한세상 서울대입구",
     "e편한세상 서울대입구"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "지분적립형",
@@ -1207,7 +1062,25 @@
    ],
    "aliases": [
     "지분적립형"
-   ]
+   ],
+   "freq": {}
+  },
+  {
+   "name": "천안아이파크시티5·6단지",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "[2월 마지막 주 아파트 분양일정] ‘천안아이파크시티5·6단지’ 등 2078가구",
+     "source": "디트NEWS24",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE44cFlyTDAxcFdXMzlyZTktelJYM1FXal94b2xJNU1kMkctWGNYQTJYNHdEb1BkRlFEWm9wQVBpeFNsWFFycnFKZUJRVlIwdG9RdFVZSC10M2I2Uk5yejNaa3ZjWGpUNzVKdjJN?oc=5",
+     "pubDate": "Fri, 20 Feb 2026 08:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "천안아이파크시티5·6단지",
+    "천안아이파크시티5"
+   ],
+   "freq": {}
   },
   {
    "name": "첨단 제일풍경채 분양완료",
@@ -1223,7 +1096,8 @@
    "aliases": [
     "첨단 제일풍경채 분양완료",
     "첨단 제일풍경채"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "첨단3지구 A6블록 제일풍경채",
@@ -1239,28 +1113,8 @@
    "aliases": [
     "첨단3지구 A6블록 제일풍경채",
     "A6블록 제일풍경채"
-   ]
-  },
-  {
-   "name": "청약 대목",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "3월 서울 ‘청약 대목’ 온다 | 서초/동작/영등포 알짜 단지는?",
-     "source": "KB Think",
-     "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9DcHVWR0JSNExhcnRJMEt4YWprdTQ5Z18yWTgxOFQ0bmpMa0lVeVJPV2JfM3RTX2FMY0Q2SkJqLTJvS09oaGk4dmM4d1Z6X3ZQU0xZVkFEX3FHRXViaVdLVTJIV2w?oc=5",
-     "pubDate": "Wed, 11 Mar 2026 07:00:00 GMT"
-    },
-    {
-     "title": "연휴 뒤 '청약 대목'…서초 재건축, 사당·신길 지주택",
-     "source": "비즈워치",
-     "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBuZjF5T0lMZDNwQ1BFTzJfRHl0VDd0SGdTc3ZQdENxUHNZWTFQc2pKeXlRRHl2Zk9pdno5SWJlOWdXVDdZOGlRZHNyQ0dRS0xQdGx2UnM2WUEwODJ3T214UzBuMmNGWHNVandVZ2NEZDE?oc=5",
-     "pubDate": "Tue, 07 Oct 2025 07:00:00 GMT"
-    }
    ],
-   "aliases": [
-    "청약 대목"
-   ]
+   "freq": {}
   },
   {
    "name": "프리미엄 더샵 검단레이크파크",
@@ -1276,7 +1130,8 @@
    "aliases": [
     "프리미엄 더샵 검단레이크파크",
     "더샵 검단레이크파크"
-   ]
+   ],
+   "freq": {}
   },
   {
    "name": "한국토지신탁 써밋 클라비온",
@@ -1297,7 +1152,8 @@
    ],
    "aliases": [
     "한국토지신탁 써밋 클라비온"
-   ]
+   ],
+   "freq": {}
   }
  ]
 }
