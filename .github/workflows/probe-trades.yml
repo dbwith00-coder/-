@@ -1,0 +1,30 @@
+name: 실거래가 소스 탐침
+
+# 분양예정가에 "주변 시세"를 넣으려면 실거래가가 필요합니다.
+# 지금 인증키로 국토부 실거래가 API가 열리는지 러너에서 확인합니다.
+# 아무것도 커밋하지 않습니다.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: 실거래가 탐침
+        env:
+          ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
+        run: node scripts/probe-trades.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: probe-trades-${{ github.run_number }}
+          path: data/probe-trades.json
+          if-no-files-found: warn
