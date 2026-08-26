@@ -1,0 +1,29 @@
+name: 분양예정 소스 탐침
+
+# "공고 전 분양 예정 단지"를 알 수 있는 경로가 실제로 있는지,
+# 지금 인증키로 열리는지 러너에서 직접 확인합니다. 아무것도 커밋하지 않습니다.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: 소스 탐침
+        env:
+          ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
+        run: node scripts/probe.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: probe-${{ github.run_number }}
+          path: data/probe.json
+          if-no-files-found: warn
