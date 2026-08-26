@@ -22,7 +22,9 @@ import fs from "node:fs";
 
 const SNAP = JSON.parse(fs.readFileSync("src/data/notices.json", "utf8"));
 const TRADES = JSON.parse(fs.readFileSync("data/trades.json", "utf8"));
-const LAWD = JSON.parse(fs.readFileSync("data/lawd.json", "utf8"));
+/* 공고 → 시군구코드 매칭은 수집기가 이미 해서 trades.json 에 담아 둡니다.
+   여기서 다시 계산하면 규칙이 어긋날 수 있어 그대로 씁니다. */
+const MATCHED = TRADES.matched || {};
 
 const SEP = String.fromCharCode(1);
 const PY_PER_M2 = 1.35 / 3.3058;
@@ -71,14 +73,6 @@ const near = (list, ym) => {
   return { v: median(vals), n: ws.reduce((a, b) => a + b, 0) };
 };
 
-function lawdOf(gu) {
-  const tok = String(gu || "").split(/\s+/).filter(Boolean);
-  for (const n of [tok.slice(0, 3).join(" "), tok.slice(0, 2).join(" ")]) {
-    if (LAWD.sgg[n]) return LAWD.sgg[n];
-  }
-  return null;
-}
-
 /* ── 관측치 ───────────────────────────────────────────────── */
 const sites = [];
 let noCode = 0, noMarket = 0;
@@ -98,7 +92,7 @@ for (const s of SNAP.sites) {
   }
   if (!ref) continue;
 
-  const code = lawdOf(gu);
+  const code = MATCHED[`${s.n}|${gu}`] || null;
   if (!code) noCode++;
   const when = new Date(s.when || "2026-01-01");
   const ym = `${when.getFullYear()}${String(when.getMonth() + 1).padStart(2, "0")}`;
