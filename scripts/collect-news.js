@@ -97,15 +97,37 @@ const STOP = new RegExp("^(" + [
 ].join("|") + ")$");
 /* "9월", "2026년", "3.3㎡" 같은 시점·수치 토큰 */
 const NUMERIC = /^\d+(월|년|일|가구|세대|억|만|차|단지|블록|㎡)?$/;
+/* 기사 제목의 껍데기 — 단지명 앞뒤에 붙어 오는 말들 */
+const GENERIC = new RegExp("^(" + [
+  "등", "및", "외", "서", "중", "위", "안", "밖", "속", "발", "은", "는", "이", "가",
+  "분양일정", "일정", "로또", "반값", "줄어들듯", "나서는", "집슐랭", "부동산",
+  "청약일정", "이번주", "다음주", "금주", "내달", "월분양", "분양시장", "시장",
+].join("|") + ")$");
+
+/* 이름 앞뒤에 붙은 껍데기 토큰을 떼어냅니다.
+   "분양일정 e편한세상 분당 퍼스트빌리지 등" → "e편한세상 분당 퍼스트빌리지" */
+function trimName(name) {
+  let parts = String(name).split(/\s+/).filter(Boolean);
+  const junk = (t) => STOP.test(t) || NUMERIC.test(t) || GENERIC.test(t);
+  while (parts.length && junk(parts[0])) parts.shift();
+  while (parts.length && junk(parts[parts.length - 1])) parts.pop();
+  return parts.join(" ").trim();
+}
 
 function extractComplexNames(title) {
   const out = new Set();
-  const push = (v) => {
-    const name = String(v).trim();
+  const push = (v, { quoted = false } = {}) => {
+    const name = trimName(v);
     if (name.length < 3 || name.length > 30) return;
     if (!/[가-힣]/.test(name)) return;                 /* 한글이 없으면 단지명이 아님 */
     if (BRANDS.includes(name)) return;                 /* 브랜드명 단독은 단지가 아님 */
-    if (STOP.test(name) || NUMERIC.test(name)) return;
+    if (STOP.test(name) || NUMERIC.test(name) || GENERIC.test(name)) return;
+    /* 브랜드가 없는 이름은 인용부호에서 온 것만 허용하고,
+       그마저도 일반명사로 끝나면(“…로또 청약”, “반값아파트”) 버립니다. */
+    if (!BRAND_RE.test(name.replace(/\s/g, ""))) {
+      if (!quoted) return;
+      if (/(청약|분양|아파트|시장|일정|물량|단지)$/.test(name)) return;
+    }
     out.add(name);
   };
 
@@ -115,7 +137,7 @@ function extractComplexNames(title) {
     const name = m[1].trim();
     const words = name.split(/\s+/);
     /* 인용부호 안이라도 문장 조각이면 버립니다 */
-    if (words.length <= 5 && !/[.…?!]/.test(name)) push(name);
+    if (words.length <= 5 && !/[.…?!]/.test(name)) push(name, { quoted: true });
   }
 
   /* 2) 브랜드명 주변 토큰 결합 */
@@ -139,7 +161,9 @@ function consolidate(list) {
   const sorted = [...list].sort((a, b) => b.name.length - a.name.length);
   const kept = [];
   for (const c of sorted) {
-    const host = kept.find((k) => normName(k.name).includes(normName(c.name)));
+    /* 별칭 어느 하나라도 포함되면 같은 단지로 봅니다 */
+    const host = kept.find((k) =>
+      [k.name, ...k.aliases].some((kn) => normName(kn).includes(normName(c.name))));
     if (host) {
       host.mentions += c.mentions;
       for (const a of c.articles) {
@@ -206,10 +230,9 @@ const main = async () => {
       const key = normName(name);
       if (announced.has(key)) continue;          /* 이미 공고남 */
       if (key.length < 4) continue;              /* 브랜드명 단독은 단지가 아님 */
-      const hit = byName.get(key) || { name, mentions: 0, articles: [], aliases: new Set() };
+      const hit = byName.get(key) || { name, mentions: 0, articles: [], aliases: new Set(), freq: new Map() };
       hit.aliases.add(name);
-      /* 더 긴 표기를 대표 이름으로 */
-      if (name.length > hit.name.length) hit.name = name;
+      hit.freq.set(name, (hit.freq.get(name) || 0) + 1);
       hit.mentions += 1;
       if (hit.articles.length < 5) {
         hit.articles.push({ title: a.title, source: a.source, link: a.link, pubDate: a.pubDate });
@@ -218,8 +241,14 @@ const main = async () => {
     }
   }
 
+  /* 대표 이름은 가장 자주 등장한 표기로 정합니다.
+     "가장 긴 표기" 로 하면 껍데기가 붙은 쪽이 대표가 됩니다. */
+  const pickName = (c) => {
+    const ranked = [...c.freq.entries()].sort((a, b) => b[1] - a[1] || a[0].length - b[0].length);
+    return ranked[0]?.[0] ?? c.name;
+  };
   const candidates = consolidate(
-      [...byName.values()].map((c) => ({ ...c, aliases: [...c.aliases] })))
+      [...byName.values()].map((c) => ({ ...c, name: pickName(c), aliases: [...c.aliases] })))
     .filter((c) => c.mentions >= 2)              /* 1회 언급은 노이즈일 확률이 높습니다 */
     .sort((a, b) => b.mentions - a.mentions || a.name.localeCompare(b.name));
 
