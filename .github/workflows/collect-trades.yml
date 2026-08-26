@@ -14,6 +14,9 @@ on:
       concurrency:
         description: "동시 요청 수 (너무 높이면 거부당합니다)"
         default: "5"
+      probe_only:
+        description: "한도 진단만 하고 수집은 건너뛰기 (true/false)"
+        default: "false"
   schedule:
     - cron: "30 21 * * 0"   # 매주 월요일 06:30 KST
 
@@ -46,6 +49,7 @@ jobs:
         run: node scripts/probe-quota.js
 
       - name: 실거래가 수집
+        if: inputs.probe_only != 'true'
         env:
           ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
           MONTHS_BACK: ${{ inputs.months_back || '6' }}
@@ -53,6 +57,7 @@ jobs:
         run: node scripts/collect-trades.js
 
       - name: 커밋
+        if: inputs.probe_only != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
