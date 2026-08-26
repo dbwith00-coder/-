@@ -20,7 +20,7 @@
 
 import { PY_PRICE_REGIONS, PY_PRICE_FINE, PY_PRICE_ALIAS, PY_PRICE_ALIAS_FINE,
          PY_PRICE_META } from "../data/py-price.js";
-import { FIT_REGION, FIT_REGION_N, FIT_PLACE, FIT_CV, FIT_META, SEP }
+import { FIT_A, FIT_A_N, FIT_B, FIT_B_N, FIT_PLACE, FIT_CV, FIT_META, SEP }
   from "../data/price-model-fit.js";
 
 export { FIT_CV, FIT_META };
@@ -88,107 +88,107 @@ const pick = (table, text, fallback) => {
 };
 
 /* ── 학습 모델 조회 ──────────────────────────────────────────
-   경로는 [시도] > [읍면/택지/시가지] > [시군구] > [재개발/일반] > [읍면동·지구].
-   잎에서 뿌리로 훑어 가장 깊은 노드를 씁니다. **어느 깊이에서 멈췄는지가
-   그대로 신뢰도**입니다 — 읍면동까지 같은 사례를 찾았으면 잘 맞고,
-   시도까지 올라가 빌려왔으면 크게 틀립니다. 교차검증으로 잰 값:
+   트리를 둘 씁니다.
+     A  [시도] > [읍면·택지·시가지] > [시군구] > [재개발·일반] > [읍면동·지구]
+     B  [시도] > [시군구] > [읍면동] > [상세]
+   로그공간에서 반씩 섞습니다. 서로 다른 실수를 하기 때문에 둘 다보다 낫습니다
+   (교차검증 12.64 / 12.95 → 12.38).
 
-     읍면동·지구까지 일치   평균 8.1%   (전체의 41%)
-     시군구까지 일치        평균 12.3%
-     그 위로 올라감         평균 20.0%
+   **신뢰도는 A가 어느 깊이에서 멈췄는지**로 정합니다. 읍면동·지구까지 같은
+   사례를 찾았으면 잘 맞고, 시도까지 올라가 빌려왔으면 크게 틀립니다.
+   교차검증 실측:
+     높음(깊이 5)      평균  7.9%   (전체의 41%)
+     보통(깊이 4)      평균 11.9%
+     낮음(깊이 3)      평균 17.0%
+     매우 낮음(깊이 2) 평균 20.5%
 */
 const TAXI_RE = /지구|블록|BL|신도시|택지/;
 
-/* 학습 때와 **똑같이** 경로를 만들어야 합니다. 여기가 어긋나면 조회가 헛돕니다. */
-export function pathOfAddress(gu) {
+/* 학습 때와 **똑같은** 규칙이어야 합니다. 여기가 어긋나면 조회가 헛돕니다. */
+export function ruralOf(gu) {
   const tok = String(gu || "").split(/\s+/).filter(Boolean);
-  const rural = /(읍|면|리)$/.test(tok[2] || "") || /[읍면리] /.test(String(gu))
+  return /(읍|면|리)$/.test(tok[2] || "") || /[읍면리] /.test(String(gu))
     ? "읍면" : TAXI_RE.test(String(gu)) ? "택지" : "시가지";
-  return [tok[0], rural, tok[1], "일반", tok[2]].filter(Boolean);
 }
 
-function walk(path) {
+function walk(table, counts, path) {
   for (let i = path.length; i >= 1; i--) {
     const k = path.slice(0, i).join(SEP);
-    if (FIT_REGION[k] != null) {
-      return { logPy: FIT_REGION[k], key: k, n: FIT_REGION_N[k] || 0, depth: i };
-    }
+    if (table[k] != null) return { log: table[k], key: k, n: counts[k] || 0, depth: i };
   }
   return null;
 }
 
-/* ── 지명 색인 ────────────────────────────────────────────
-   "동탄", "당리", "서울대입구" 같은 낱말을 학습 노드 경로로 바꿉니다.
-   세 군데서 모읍니다.
-     ① FIT_PLACE — 학습 데이터(실제 공고 주소)에서 뽑은 읍면동·지구 이름
-     ② DONG_TO_SGG — 기사에 자주 나오는 동·역세권 이름 (표에 없는 동네용)
-     ③ 시군구 이름 자체
-   같은 글에 여러 개가 걸리면 **더 깊은 쪽**을 씁니다.
-   "부산 더샵 당리센트리체"에서 '부산'이 아니라 '당리'가 이겨야 합니다. */
-const PLACE_INDEX = new Map();
-const addPlace = (word, path) => {
-  if (!word || word.length < 2 || !path?.length) return;
-  const cur = PLACE_INDEX.get(word);
-  if (!cur || path.length > cur.length) PLACE_INDEX.set(word, path);
-};
-for (const [w, k] of Object.entries(FIT_PLACE)) {
-  if (FIT_REGION[k] != null) addPlace(w, k.split(SEP));
-}
-
-/* 색인 채우기는 DONG_TO_SGG 정의 뒤에 이어집니다 (아래 initPlaceIndex) */
-let PLACE_KEYS = [...PLACE_INDEX.keys()].sort((a, b) => b.length - a.length);
-
-function walkPath(path) {
-  for (let i = path.length; i >= 1; i--) {
-    const k = path.slice(0, i).join(SEP);
-    if (FIT_REGION[k] != null) {
-      return { logPy: FIT_REGION[k], key: k, n: FIT_REGION_N[k] || 0, depth: i };
-    }
+/* 트리A 경로. 뉴스 현장은 재개발인지 아닌지 모르므로, 그 지역에 한쪽만
+   있으면 그쪽을 쓰고 둘 다 있으면 위 단계(둘을 합친 값)에 머뭅니다. */
+function walkA({ sido, sgg, emd, rural }) {
+  const base = [sido, rural, sgg].filter(Boolean);
+  const branches = ["일반", "재개발"]
+    .map((r) => walk(FIT_A, FIT_A_N, [...base, r, emd].filter(Boolean)))
+    .filter((h) => h && h.depth > base.length);
+  if (branches.length === 1) return branches[0];
+  if (branches.length > 1) {
+    /* 둘 다 있는데 읍면동까지 내려간 게 하나뿐이면 그건 씁니다 */
+    const deep = branches.filter((h) => h.depth === base.length + 2);
+    if (deep.length === 1) return deep[0];
   }
-  return null;
+  return walk(FIT_A, FIT_A_N, base);
 }
+const walkB = ({ sido, sgg, emd }) => walk(FIT_B, FIT_B_N, [sido, sgg, emd].filter(Boolean));
 
-/* 한 문장에서 가장 깊게 걸리는 지명을 찾습니다 */
-function resolveIn(text) {
-  const t = String(text || "");
+/* 지명 낱말은 긴 것부터 — "동탄2신도시"가 "동탄"보다 먼저 걸려야 합니다 */
+const PLACE_KEYS = Object.keys(FIT_PLACE).sort((a, b) => b.length - a.length);
+
+/* 지역 문자열 → {시도, 시군구, 읍면동, 성격}.
+   주소처럼 생겼으면(토큰 2개 이상) 그대로 쪼개고,
+   낱말이면 학습 데이터에서 뽑아 둔 지명 색인을 씁니다. */
+export function resolvePlace(text) {
+  const t = String(text || "").trim();
+  if (!t) return null;
+  /* 주소로 취급할지 판단 — 첫 토큰이 **아는 시도 이름**일 때만입니다.
+     "첨단3지구 A6블록 제일풍경채" 같은 단지명도 띄어쓰기가 있어서,
+     칸 수만 보고 주소로 넘기면 시도="첨단3지구" 가 돼 조회가 통째로 헛돕니다. */
+  const tok = t.split(/\s+/).filter(Boolean);
+  const asSido = FIT_PLACE[tok[0]];
+  if (tok.length >= 2 && asSido && !asSido[1] && !asSido[2]) {
+    return { sido: asSido[0], sgg: tok[1], emd: tok[2] || "", rural: ruralOf(t), word: null };
+  }
+  /* 낱말 하나 — 색인에서 가장 깊게 걸리는 것을 고릅니다 */
   let best = null;
   for (const w of PLACE_KEYS) {
     if (!t.includes(w)) continue;
-    /* 색인이 가리키는 노드는 시군구 단계에서 끊겨 있을 수 있습니다.
-       사업유형 층을 붙여 한 단계 더 내려가 봅니다 — 주소로 조회할 때와
-       깊이를 맞춰야 신뢰도 등급이 어긋나지 않습니다.
-       뉴스 현장은 재개발인지 신규택지인지 모르므로, 그 지역에 한쪽만
-       있으면 그쪽을 쓰고 둘 다 있으면 위 단계(둘을 합친 값)에 머뭅니다. */
-    const p0 = PLACE_INDEX.get(w);
-    const branches = ["일반", "재개발"]
-      .map((b) => walkPath([...p0, b]))
-      .filter((h) => h && h.depth === p0.length + 1);
-    const hit = branches.length === 1 ? branches[0] : walkPath(p0);
-    if (!hit) continue;
-    if (!best || hit.depth > best.depth || (hit.depth === best.depth && w.length > best.word.length)) {
-      best = { ...hit, word: w };
-    }
+    const [sido, sgg, emd, rural] = FIT_PLACE[w];
+    const cand = { sido, sgg, emd, rural, word: w };
+    /* 몇 단계까지 아는지 — 시도만 1, 시군구까지 2, 읍면동·지구까지 3.
+       "김포"(시도 칸에 든 깨진 주소)보다 "풍무역세권"(시군구 칸)이 이겨야 합니다. */
+    const d = 1 + (sgg ? 1 : 0) + (emd ? 1 : 0);
+    if (!best || d > best.d || (d === best.d && w.length > best.p.word.length)) best = { d, p: cand };
   }
-  return best;
+  if (best) return best.p;
+  /* 색인에 없으면 손으로 만든 동·역세권 표(성수 → 성동구, 반포 → 서초구).
+     여기서는 시세표(PY_PRICE) 유무와 무관하게 주소만 씁니다 —
+     예전엔 시세표에 없는 구(성동구 등)에서 조회가 통째로 실패했습니다. */
+  for (const [dong, sgg] of Object.entries(DONG_TO_SGG)) {
+    if (!t.includes(dong)) continue;
+    const k = sgg.split(/\s+/);
+    return { sido: k[0], sgg: k[1] || "", emd: k[2] || "", rural: "시가지", word: dong };
+  }
+  return null;
 }
 
-/* 지역 문자열 → 학습 노드.
-   주소처럼 생겼으면(토큰 2개 이상) 경로를 직접 만들고,
-   낱말이면 지명 색인을 씁니다. */
+/* 두 트리를 섞어 평당가 하나를 냅니다 */
 export function fitLookup(text) {
-  const t = String(text || "").trim();
-  if (!t) return null;
-  if (t.split(/\s+/).filter(Boolean).length >= 2) {
-    const b = walkPath(pathOfAddress(t));
-    if (b && b.depth >= 3) return b;
-  }
-  return resolveIn(t);
+  const p = resolvePlace(text);
+  if (!p) return null;
+  const a = walkA(p), b = walkB(p);
+  if (!a && !b) return null;
+  const log = a && b ? (1 - FIT_META.wB) * a.log + FIT_META.wB * b.log : (a || b).log;
+  const ref = a || b;
+  return { logPy: log, key: ref.key, n: ref.n, depth: a ? a.depth : 2, word: p.word, place: p };
 }
 
 /* 깊이 → 신뢰도 등급.
-   등급 이름도, 등급별 오차·표시범위도 전부 교차검증 실측값입니다.
-   깊이 3(시군구까지)과 깊이 2 이하(시도까지)는 오차가 뚜렷이 달라서
-   "낮음"과 "매우 낮음"으로 갈라 놓습니다. */
+   등급 이름도, 등급별 오차·표시범위도 전부 교차검증 실측값입니다. */
 export const gradeOf = (depth) =>
   depth >= 5 ? "높음" : depth === 4 ? "보통" : depth === 3 ? "낮음" : "매우 낮음";
 const DEPTH_KEY = { "높음": 5, "보통": 4, "낮음": 3, "매우 낮음": 2 };
@@ -347,8 +347,8 @@ const REGION_WORDS = [
 export function guessRegion(...texts) {
   const list = texts.filter(Boolean).map(String);
   for (const t of list) {
-    const hit = resolveIn(t);
-    if (hit) return hit.word;
+    const p = resolvePlace(t);
+    if (p?.word) return p.word;
   }
   for (const t of list) {
     for (const w of REGION_WORDS) if (t.includes(w)) return w;
@@ -356,42 +356,4 @@ export function guessRegion(...texts) {
   return "";
 }
 
-/* DONG_TO_SGG · 시군구 이름을 색인에 마저 넣습니다.
-   DONG_TO_SGG 가 아래에 정의돼 있어 여기서 한 번 더 채웁니다. */
-export function initPlaceIndex() {
-  /* 1단계 — 시·군·구 이름. "화성시" 와 "화성" 을 함께 넣고,
-     짧은 형태는 따로 모아 둡니다. */
-  const CITY_SHORT = new Set();
-  const CITY_SUFFIX = /(특별자치도|광역시|특별시|자치시|자치도|시|군|구)$/;
-  for (const key of Object.keys(FIT_REGION)) {
-    const toks = key.split(SEP);
-    const last = toks[toks.length - 1];
-    if (!last || last.length < 2 || /^(읍면|택지|시가지|재개발|일반)$/.test(last)) continue;
-    if (!CITY_SUFFIX.test(last)) continue;
-    addPlace(last, toks);
-    const short = last.replace(CITY_SUFFIX, "");
-    if (short.length >= 2) { addPlace(short, toks); CITY_SHORT.add(short); }
-  }
-  /* 2단계 — 읍면동·지구 이름. 접미사를 뗀 형태는 그것이 시·군·구 이름과
-     겹치지 않을 때만 넣습니다. "반포동"→"반포" 는 넣고,
-     "의정부동"→"의정부" 는 의정부시와 겹치므로 넣지 않습니다. */
-  for (const key of Object.keys(FIT_REGION)) {
-    const toks = key.split(SEP);
-    const last = toks[toks.length - 1];
-    if (!last || last.length < 2 || /^(읍면|택지|시가지|재개발|일반)$/.test(last)) continue;
-    if (CITY_SUFFIX.test(last)) continue;
-    addPlace(last, toks);
-    const short = last.replace(/(읍|면|동|리|가)$/, "");
-    if (short.length >= 2 && !CITY_SHORT.has(short)) addPlace(short, toks);
-  }
-  /* 3단계 — 기사에 자주 나오는 동·역세권 이름 (학습 데이터에 없는 동네용) */
-  for (const [dong, sgg] of Object.entries(DONG_TO_SGG)) {
-    if (PLACE_INDEX.has(dong)) continue;
-    const path = pathOfAddress(`${sgg} ${dong}동`);
-    addPlace(dong, walkPath(path) ? path : pathOfAddress(sgg));
-  }
-  PLACE_KEYS = [...PLACE_INDEX.keys()].sort((a, b) => b.length - a.length);
-}
 
-
-initPlaceIndex();
