@@ -481,7 +481,9 @@ async function fetchPaged(base, path, cfg, signal, extra = {}) {
     const json = await callJson(`${base}${path}?${q}`, signal);
     const r = extractRecords(json);
     pickedFrom = pickedFrom || r.pickedFrom;
-    total = Number(json?.totalCount ?? json?.matchCount ?? 0) || total;
+    /* odcloud 는 totalCount = 데이터셋 전체, matchCount = 조건에 걸린 건수.
+       우리가 알아야 하는 건 조건에 걸린 쪽입니다. */
+    total = Number(json?.matchCount ?? json?.totalCount ?? 0) || total;
     rows.push(...r.rows);
     if (r.rows.length < perPage) break;
     if (total && rows.length >= total) break;
@@ -527,6 +529,8 @@ export async function fetchApplyhomeSet(set, cfg, signal) {
 
 /* 켜져 있는 세트를 모두 조회해 하나의 공고 목록으로 */
 export async function fetchApplyhome(cfg, signal) {
+  /* 키가 없으면 네트워크를 두드리지 않습니다 — 실패가 뻔하고 로그만 지저분해집니다 */
+  if (!cfg.serviceKey) throw new Error("인증키가 비어 있습니다");
   const wanted = cfg.sets?.length
     ? APPLYHOME_SETS.filter((s) => cfg.sets.includes(s.key))
     : APPLYHOME_SETS.filter((s) => s.defaultOn);

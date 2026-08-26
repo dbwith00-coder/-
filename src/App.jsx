@@ -216,34 +216,17 @@ const SITES = SNAPSHOT.sites;
    분양예정가 = (평당 택지비 + 평당 건축비) × (1 + 가산비율) × 공급면적(평)
    아크메르 동탄은 위드님이 주신 변수 그대로이고, 나머지는 같은 공식에
    추정 변수를 넣은 가칭 단지입니다. 실제 공고가와는 다를 수 있습니다. */
+/* ── 분양공고 전 단지 (API 아님) ──
+   공고가 안 난 단지는 공공 API 에 없어서, 택지비·건축비·가산비율을 직접 넣어
+   원가식으로 계산하고 시장 예상과 결합해 범위로 추정합니다.
+   분양예정가 = (평당 택지비 + 평당 건축비) × (1 + 가산비율) × 공급면적(평)
+   가칭 샘플들은 실제 공고 데이터가 들어오면서 오해를 부를 수 있어 정리했고,
+   변수를 직접 받은 단지만 남겼습니다. */
 const PRE_SITES = [
   { id: "p1", supply: "민영", n: "아크메르 동탄", gu: "경기 화성시 반송동(동탄1)", brand: "주상복합 · 하이엔드",
     when: "2026.4분기~2027 상반기 공고 예정", land: 1200, constCost: 1100, margin: 0.30, py: 34,
     marketEst: 120000, marketBasis: "시장 예상 컨센서스 11~13억(일부 15억설)의 중심값 · 전용 84 기준",
     note: "메타폴리스 2단계 부지, 약 1,800세대 최고 49층. 실제 분양가는 주변 시세·분양시장 상황을 종합해 결정됩니다." },
-  { id: "p2", supply: "민영", n: "동탄 레이크팰리스(가칭)", gu: "경기 화성시 동탄2", brand: "민영 아파트",
-    when: "2027 상반기 공고 예정", land: 950, constCost: 850, margin: 0.25, py: 34,
-    note: "호수공원 인접 예정지(가칭 샘플). 인근 시세 근거가 확보되지 않아 원가식 단일 추정입니다." },
-  { id: "p3", supply: "민영", n: "검단 센트럴포레(가칭)", gu: "인천 서구 검단", brand: "민영 아파트",
-    when: "2027 상반기 공고 예정", land: 620, constCost: 780, margin: 0.22, py: 34,
-    marketEst: 55000, marketBasis: "인근 검단 신규 분양 4.9억(옵션 제외)~기존 분양 5.8억 사이 실사례 반영",
-    note: "검단신도시 후속 블록(가칭 샘플)." },
-  { id: "p4", supply: "민영", n: "과천 지식정보타운 B5(가칭)", gu: "경기 과천시", brand: "민영 아파트",
-    when: "2026 하반기 공고 예정", land: 1350, constCost: 900, margin: 0.20, py: 34,
-    marketEst: 90000, marketBasis: "지정타 84㎡ 분양 실적 7.3~8.2억(2020, 평당 2,400만 안팎)에 이후 건축비 상승분 반영 추정",
-    note: "분양가상한제 적용 가능성이 있어 가산비율을 낮게 추정(가칭 샘플)." },
-  { id: "p5", supply: "민영", n: "성동 리버포레(가칭)", gu: "서울 성동구", brand: "민영 아파트",
-    when: "2027 상반기 공고 예정", land: 3500, constCost: 1200, margin: 0.28, py: 34,
-    marketEst: 200000, marketBasis: "서울 도심 신축 분양 실적 수준 참고(추정)",
-    note: "한강변 정비사업 예정지(가칭 샘플). 서울 도심은 택지비 비중이 매우 높습니다." },
-  { id: "p6", supply: "공공", n: "하남교산 공공분양 A-1(가칭)", gu: "경기 하남시 교산", brand: "공공분양 · 뉴:홈",
-    when: "2026 하반기 공고 예정", land: 900, constCost: 800, margin: 0.15, py: 34,
-    marketEst: 60000, marketBasis: "3기 신도시 공공분양 예상가 수준 참고(추정)",
-    note: "3기 신도시 공공 예정 블록(가칭 샘플). 공공은 이윤이 제한돼 가산비율을 낮게 추정." },
-  { id: "p7", supply: "공공", n: "부산 에코델타 공공 B2(가칭)", gu: "부산 강서구 에코델타", brand: "공공분양 · 뉴:홈",
-    when: "2027 상반기 공고 예정", land: 500, constCost: 750, margin: 0.12, py: 34,
-    marketEst: 45000, marketBasis: "인근 공공 분양 실적 수준 참고(추정)",
-    note: "에코델타시티 공공 예정 블록(가칭 샘플)." },
 ];
 
 /* ── 기관추천 특별공급 유형별 기준 · 준비서류 ──
@@ -362,6 +345,17 @@ function useScrollTop(deps, offset = 20) {
 /* ============================================================
    공통 UI 조각
    ============================================================ */
+/* 번들 크기를 줄이려고 스냅샷에서 뺀 설명문을 여기서 다시 만듭니다 */
+function siteNote(s) {
+  if (s.note) return s.note;
+  if (!s.live) return "";
+  const who = [s.brand && `시공 ${s.brand}`, s.receipt?.result && `당첨자발표 ${s.receipt.result}`]
+    .filter(Boolean).join(" · ");
+  return `청약홈 API 에서 받아온 공고입니다.${who ? " " + who + "." : ""} ` + (s.scoreless
+    ? "무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    : `예상 당첨선(${s.cut}점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다.`);
+}
+
 function DSec({ n, t, children }) {
   return (
     <section style={{ marginTop: 28 }}>
@@ -424,6 +418,7 @@ function Subscription({ tab, setTab, allSites, live }) {
   /* ── 오른쪽 공고 목록 필터 ── */
   const [listRegion, setListRegion] = useState("전체");   // 희망 지역 (공고 목록 쪽에서 선택)
   const [listSp, setListSp] = useState("");               // 선택한 특공 유형 ("" = 일반공급)
+  const [showClosed, setShowClosed] = useState(false);    // 접수 마감 공고까지 볼지
   /* ── 입력 마법사 ── */
   const [step, setStep] = useState(1);                    // 1 공통 → 2 일반분양 → 3 특별공급(선택) → 4 결과
   const [spEntered, setSpEntered] = useState(false);      // 특별공급 조건까지 입력하고 제출했는지
@@ -556,25 +551,48 @@ function Subscription({ tab, setTab, allSites, live }) {
   const inArea = (site, a) =>
     a === "전체" || (AREA_ALIAS[a] || [a]).some((pre) => (site.gu || "").startsWith(pre));
   const s2r = (s) => (s.status === "접수 중" ? 0 : s.status === "접수 예정" ? 1 : 2);
+  /* 접수 시작까지 남은 일수 */
+  const daysUntil = (d) => {
+    if (!d) return null;
+    const t = new Date(d + "T00:00:00");
+    if (Number.isNaN(t.getTime())) return null;
+    const now = new Date(); now.setHours(0, 0, 0, 0);
+    return Math.max(0, Math.round((t - now) / 86400000));
+  };
   /* 통장 종류가 선택한 공급유형에 청약 가능한지 (예·부금=민영만, 청약저축=공공만, 종합·드림=전부) */
   const bankOk = supplyType === "공공"
     ? !(bankType === "청약예금" || bankType === "청약부금")
     : bankType !== "청약저축";
-  const siteList = allSites
+  /* 무순위·잔여세대는 추첨이라 가점 목록에서 빼고 따로 보여줍니다 */
+  const scored = allSites.filter((s) => !s.scoreless);
+  const siteList = scored
     .filter((s) => s.supply === supplyType)
+    .filter((s) => showClosed || s.status !== "접수 마감")
     .filter((s) => inArea(s, area))
     .sort((a, b) => (s2r(a) - s2r(b)) ||
       (supplyType === "공공" ? (a.cutAmt || 0) - (b.cutAmt || 0) : a.cut - b.cut));
   /* 오른쪽 공고 목록: 공급유형·지역으로 거르고, 민영=당첨선 낮은순 / 공공=인정액 컷 낮은순 */
   /* 이미 끝난 공고를 위에 두면 쓸모가 없어서, 접수 상태를 1순위로 정렬합니다 */
   const statusRank = (s) => (s.status === "접수 중" ? 0 : s.status === "접수 예정" ? 1 : 2);
-  const rightSites = allSites
+  const rightSites = scored
     .filter((s) => s.supply === supplyType)
+    .filter((s) => showClosed || s.status !== "접수 마감")
     .filter((s) => inArea(s, listRegion))
     .sort((a, b) => statusRank(a) - statusRank(b) ||
       (supplyType === "공공" ? (a.cutAmt || 0) - (b.cutAmt || 0) : a.cut - b.cut));
   /* 분양공고 전 단지: 원가식(하한 성격)과 시세·시장예상(marketEst)을 결합해 범위로 추정.
      대표값(estMid) = 두 값의 중간(50:50). 시세 근거가 없으면 원가식 단일값. */
+  /* 접수가 아직 시작되지 않은 공고 — 접수 시작일 빠른 순 */
+  const upcoming = allSites
+    .filter((s) => s.status === "접수 예정")
+    .filter((s) => inArea(s, listRegion))
+    .sort((a, b) => String(a.rceptStart || "9999").localeCompare(String(b.rceptStart || "9999")));
+  /* 무순위·잔여세대 */
+  const noScoreSites = allSites
+    .filter((s) => s.scoreless)
+    .filter((s) => showClosed || s.status !== "접수 마감")
+    .filter((s) => inArea(s, listRegion))
+    .sort((a, b) => s2r(a) - s2r(b) || String(b.when).localeCompare(String(a.when)));
   const rightPre = PRE_SITES
     .filter((s) => s.supply === supplyType)
     .filter((s) => inArea(s, listRegion))
@@ -1213,7 +1231,14 @@ function Subscription({ tab, setTab, allSites, live }) {
                   ? "공공 일반공급은 가점이 아니라 저축총액(인정액) 순 경쟁이라, 내 인정 납입액과 예상 컷을 비교합니다 (컷은 추정치)."
                   : '각 공고의 "유리한 타입"은 단지 대표 당첨선에 면적대별 보정(70~74㎡ -8점 · 70㎡ 미만 -3점)을 적용해 낮은 순으로 3개까지 보여줍니다. 청약홈 과거 패턴을 규칙으로 옮긴 추정치예요.'}
               </div>
-              <div style={{ fontSize: 12.5, color: "var(--ink-3)", marginBottom: 6 }}>희망 지역</div>
+              <div className="mv-between" style={{ marginBottom: 6 }}>
+                <span style={{ fontSize: 12.5, color: "var(--ink-3)" }}>희망 지역</span>
+                <button className={"mv-chip" + (showClosed ? " mv-on" : "")}
+                  style={{ padding: "5px 11px", fontSize: 11.5 }}
+                  onClick={() => setShowClosed((v) => !v)}>
+                  {showClosed ? "✓ 접수 마감 포함" : "접수 마감 숨김"}
+                </button>
+              </div>
               <div className="mv-row" style={{ gap: 5, flexWrap: "wrap" }}>
                 {areas.map((a) => (
                   <button key={a} className={"mv-chip" + (listRegion === a ? " mv-on" : "")}
@@ -1331,19 +1356,92 @@ function Subscription({ tab, setTab, allSites, live }) {
             </div>
           )}
 
-          <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: "-.035em", marginTop: 6 }}>분양공고 전 아파트</div>
+          <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: "-.035em", marginTop: 6 }}>
+            접수 예정 공고 <span style={{ fontWeight: 700, fontSize: 13, color: "var(--ink-3)" }}>· 전국 · 아직 접수 시작 전</span>
+          </div>
 
           <div className="mv-card">
             <div className="mv-pad" style={{ paddingBottom: 10 }}>
-              <div className="mv-eyebrow" style={{ marginBottom: 6 }}>일반공급 · 분양예정가 예측</div>
-              <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.6 }}>
-                원가식(택지비+건축비, 하한 성격)과 인근 시세·시장 예상을 함께 반영해 범위로 추정합니다.
-                시세 근거가 없는 단지는 원가식 단일값이에요. 행을 누르면 산출 과정이 펼쳐집니다.
-                참고로 분양가는 시세와 딱 맞지 않아요 — 상한제 단지는 인근 시세보다 10~20% 이상 낮게(핵심지 로또 단지는 더),
-                수도권 일반 신규도 시세의 75~85% 선 실사례가 흔하고, 지방은 시세를 넘겨 책정하면
-                청약 미달이 나는 구조라 시세가 사실상 상한 역할을 합니다.
+              <div className="mv-eyebrow" style={{ marginBottom: 6 }}>곧 열리는 공고 {upcoming.length}건</div>
+              <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.7 }}>
+                공고는 났고 <b>접수가 아직 시작되지 않은</b> 단지입니다. 접수 시작일 빠른 순.
+                지역 선택이 여기에도 같이 적용됩니다.<br />
+                <b style={{ color: "#A93F1F" }}>공고 자체가 안 난 "분양 예정 단지"는 공공 API 로 제공되지 않습니다.</b>
+                {" "}청약홈은 모집공고가 게시된 건만 공개해서, 그 전 단계는 받아올 소스가 없습니다.
+                아래 <b>공고 전 예상가</b> 블록은 직접 넣은 변수로 계산한 추정치입니다.
+              </div>
+            </div>
+            <div>
+              {upcoming.map((s) => {
+                const d = daysUntil(s.rceptStart);
+                return (
+                  <button key={s.id} className="mv-listrow" onClick={() => setSite(s)}>
+                    <div className="mv-between">
+                      <strong>{s.n}</strong>
+                      <span className={"mv-chip " + (d !== null && d <= 7 ? "mv-on" : "mv-cool")}>
+                        {d === null ? "접수일 미정" : d === 0 ? "오늘 접수 시작" : `D-${d}`}
+                      </span>
+                    </div>
+                    <small>
+                      {s.gu} · {s.supply}{s.category !== "APT" ? ` · ${s.category}` : ""} ·
+                      총 {s.total.toLocaleString()}세대 · 접수 {s.rceptStart || "미정"}
+                    </small>
+                  </button>
+                );
+              })}
+              {upcoming.length === 0 && (
+                <div className="mv-pad"><div className="mv-note">
+                  이 지역에는 접수 예정 공고가 없어요. 지역을 넓혀보세요.
+                </div></div>
+              )}
+            </div>
+          </div>
+
+          {noScoreSites.length > 0 && (
+            <>
+              <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: "-.035em", marginTop: 6 }}>
+                무순위 · 잔여세대 <span style={{ fontWeight: 700, fontSize: 13, color: "var(--ink-3)" }}>· 가점 무관 추첨</span>
+              </div>
+              <div className="mv-card">
+                <div className="mv-pad" style={{ paddingBottom: 10 }}>
+                  <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.7 }}>
+                    청약통장·가점과 무관하게 추첨으로 뽑는 물량입니다. 가점이 낮아도 조건만 맞으면
+                    지원할 수 있어서, 가점이 부족한 분들이 노려볼 만합니다.
+                  </div>
+                </div>
+                <div>
+                  {noScoreSites.map((s) => (
+                    <button key={s.id} className="mv-listrow" onClick={() => setSite(s)}>
+                      <div className="mv-between">
+                        <strong>{s.n}</strong>
+                        <span className="mv-chip mv-cool">{s.status}</span>
+                      </div>
+                      <small>
+                        {s.gu} · {s.total.toLocaleString()}세대 ·
+                        {s.types[0]?.price ? ` ${eok(Math.min(...s.types.map((t) => t.price || Infinity)))}원~` : ""} · {s.when}
+                      </small>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+
+          <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: "-.035em", marginTop: 6 }}>
+            공고 전 예상가 <span style={{ fontWeight: 700, fontSize: 13, color: "var(--ink-3)" }}>· API 아님 · 직접 넣은 변수로 계산</span>
+          </div>
+
+          <div className="mv-card">
+            <div className="mv-pad" style={{ paddingBottom: 10 }}>
+              <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.7 }}>
+                아직 공고가 안 난 단지는 API 에 없어서, <b>택지비·건축비·가산비율을 직접 넣어</b> 원가식으로
+                계산하고 시장 예상과 결합해 범위로 추정합니다. 아래는 그렇게 넣어둔 단지입니다 —
+                수집된 실제 공고가 아니라 <b>추정치</b>입니다. 행을 누르면 산출 과정이 펼쳐집니다.<br />
+                분양가는 시세와 딱 맞지 않습니다 — 상한제 단지는 인근 시세보다 10~20% 이상 낮게(핵심지는 더),
+                수도권 일반 신규도 시세의 75~85% 선 실사례가 흔하고, 지방은 시세를 넘기면 미달이 나서
+                시세가 사실상 상한 역할을 합니다.
                 백테스트: 용인한숲시티 5단지 84(2015년 분양, 평당 790만원대 실적)를 당시 조건으로
-                역산하면 예측 범위(2.66~3.18억)의 하한이 실제(약 2.70억)와 1.4% 차이로 맞았어요 —
+                역산하면 예측 범위(2.66~3.18억)의 하한이 실제(약 2.70억)와 1.4% 차이로 맞았습니다 —
                 외곽 대규모 완판형 단지는 하한(저마진) 쪽에 가깝게 봐야 합니다.
               </div>
             </div>
@@ -1376,52 +1474,10 @@ function Subscription({ tab, setTab, allSites, live }) {
                 </div>
               ))}
               {rightPre.length === 0 && (
-                <div className="mv-pad"><div className="mv-note">이 지역에는 공고 전 단지가 없어요.</div></div>
+                <div className="mv-pad"><div className="mv-note">이 지역에는 등록된 공고 전 단지가 없어요.</div></div>
               )}
             </div>
           </div>
-
-          {spEntered && (
-            <div className="mv-card">
-              <div className="mv-pad" style={{ paddingBottom: 10 }}>
-                <div className="mv-eyebrow" style={{ marginBottom: 6 }}>특별공급 · 분양예정가 예측</div>
-                <div style={{ fontSize: 12, color: "var(--ink-2)", lineHeight: 1.6 }}>
-                  {fitCount > 0
-                    ? "공고가 나오면 아래 단지의 특별공급 물량에 지원해볼 수 있어요. 해당 유형: " +
-                      specialFit.filter((x) => x.ok === true).map((x) => x.n).join(" · ")
-                    : "지금 조건으로는 해당하는 특별공급 유형이 없어요."}
-                </div>
-              </div>
-              {fitCount > 0 && (
-                <div>
-                  {rightPre.map((s) => (
-                    <div key={s.id}>
-                      <button className="mv-listrow" onClick={() => setOpenPre(openPre === s.id ? null : s.id)}>
-                        <div className="mv-between">
-                          <strong>{s.n}</strong>
-                          <span className="mv-chip mv-cool">특공 예정 · 예측 {eok(s.estMid)}원</span>
-                        </div>
-                        <small>{s.gu} · {s.when}</small>
-                      </button>
-                      {openPre === s.id && (
-                        <div style={{ padding: "0 17px 15px" }}>
-                          <div className="mv-note" style={{ fontSize: 12.5, lineHeight: 1.8 }}>
-                            택지비 {s.land.toLocaleString()} + 건축비 {s.constCost.toLocaleString()} = 평당 원가 <b className="mv-num">{(s.land + s.constCost).toLocaleString()}만</b><br />
-                            × 가산비율 (1 + {Math.round(s.margin * 100)}%) = 평당 <b className="mv-num">{s.pyPrice.toLocaleString()}만</b><br />
-                            × {s.py}평 = 원가식 <b className="mv-num">{eok(s.costTotal)}원</b>
-                            {s.hasMarket && <><br />시세 기반 {eok(s.marketEst)}원 · <b>종합 대표 {eok(s.estMid)}원</b></>}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                  {rightPre.length === 0 && (
-                    <div className="mv-pad"><div className="mv-note">이 지역에는 공고 전 단지가 없어요.</div></div>
-                  )}
-                </div>
-              )}
-            </div>
-          )}
 
           <div className="mv-note">
             예상 당첨선은 인근 단지의 최근 실적을 참고한 추정입니다. 실제 특별공급 물량·자격은
@@ -1527,7 +1583,7 @@ function Subscription({ tab, setTab, allSites, live }) {
                     ))}
                   </div>
                 )}
-                <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--ink-2)" }}>{site.note}</p>
+                <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--ink-2)" }}>{siteNote(site)}</p>
 
                 <DSec n="01" t="공급 규모">
                   <div className="mv-scroll">

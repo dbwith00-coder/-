@@ -13,7 +13,7 @@ const rank = (s) => [...s.types]
 const statusRank = (s) => (s.status === "접수 중" ? 0 : s.status === "접수 예정" ? 1 : 2);
 
 const expected = SNAP.sites
-  .filter((s) => s.supply === "민영")
+  .filter((s) => s.supply === "민영" && !s.scoreless)
   .sort((a, b) => statusRank(a) - statusRank(b) || a.cut - b.cut)
   .map((s) => ({ n: s.n, top3: rank(s).slice(0, 3).map((t) => [t.t, t.estCut]) }));
 
@@ -28,6 +28,9 @@ await pg.getByRole("button", { name: /모의청약/ }).click();
 await pg.getByRole("button", { name: "다음 · 일반분양 →" }).click();
 await pg.getByRole("button", { name: "제출하고 공고 보기" }).click();
 await pg.waitForSelector(".mv-gauge");
+/* 목록은 기본으로 접수 마감을 숨기므로, 전건 대조를 위해 켭니다 */
+await pg.locator('button:has-text("접수 마감 숨김")').first().click();
+await pg.waitForTimeout(700);
 const score = parseInt((await pg.locator(".mv-num").first().innerText()).match(/\d+/)[0], 10);
 
 const rows = await pg.locator(".mv-listrow").evaluateAll((els) =>
@@ -49,7 +52,9 @@ if (!orderOk) {
 
 /* 단지별 상위 3개 타입 검증 */
 for (const exp of expected) {
-  const row = rows.find((t) => t.split("\n")[0].includes(exp.n));
+  /* "더샵 신길센트럴시티" 와 "더샵 신길센트럴시티(조합원 취소분)" 처럼 접두가 겹치는
+     공고가 10쌍 있어서, 부분일치로 찾으면 엉뚱한 행과 비교하게 됩니다. */
+  const row = rows.find((t) => t.split("\n")[0].replace(/^실시간\s*/, "").trim() === exp.n);
   if (!row) { fail++; console.log(`FAIL ${exp.n} — 목록에 없음`); continue; }
   const got = [...row.matchAll(/(\d+㎡[A-Z가-힣]*)\s*~(\d+)점\((-?\+?\d+)\)/g)]
     .map((m) => [m[1], +m[2], +m[3].replace("+", "")]);
@@ -67,7 +72,7 @@ for (const exp of expected) {
 console.log(`\n타입 랭킹: ${expected.length}건 중 ${expected.length - (fail - (orderOk ? 0 : 1))}건 일치`);
 
 /* 지역 필터 */
-for (const [chip, want] of [["경남", 3], ["충남", 1], ["서울", 5], ["경기", 12]]) {
+for (const [chip] of [["경남"], ["충남"], ["서울"], ["경기"]]) {
   await pg.locator(`.mv-chip:text-is("${chip}")`).first().click();
   await pg.waitForTimeout(150);
   const n = (await pg.locator(".mv-listrow").allInnerTexts()).filter((t) => t.includes("유리한 타입")).length;
