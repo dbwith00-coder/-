@@ -11,7 +11,8 @@
     "collect:news": "node scripts/collect-news.js",
     "model-search": "node scripts/model-search.js",
     "calibrate": "node scripts/calibrate.js",
-    "backtest": "node scripts/backtest.js"
+    "backtest": "node scripts/backtest.js",
+    "standalone": "node scripts/standalone.js"
   },
   "keywords": [],
   "author": "",
