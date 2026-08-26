@@ -27,6 +27,14 @@ ck("무순위 섹션", expNoScore > 0 ? body.includes("무순위 · 잔여세대
 ck("가칭 샘플 제거", !body.includes("가칭"), "동탄 레이크팰리스 등 삭제");
 ck("아크메르 동탄 유지", body.includes("아크메르 동탄"));
 
+
+// 뉴스 후보 섹션
+const NEWS = JSON.parse(fs.readFileSync("src/data/upcoming-news.json", "utf8"));
+ck("뉴스 후보 섹션", body.includes("분양 예정 단지 후보"));
+ck("공식 아님 경고", body.includes("공공 API 에 없습니다") || body.includes("확정 정보가 아니고"));
+ck("후보 건수 표기", body.includes(`후보 ${NEWS.count}건`), `${NEWS.count}건`);
+ck("상위 후보 노출", body.includes(NEWS.candidates[0].name), NEWS.candidates[0].name);
+
 // 마감 숨김 기본 동작
 const rowsHidden = (await pg.locator(".mv-listrow").allInnerTexts()).length;
 await pg.locator('button:has-text("접수 마감 숨김")').first().click();

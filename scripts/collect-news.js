@@ -194,14 +194,20 @@ const main = async () => {
   fs.mkdirSync(OUT, { recursive: true });
 
   /* 이미 공고가 난 단지는 후보에서 뺍니다 — 그건 API 로 정확히 알고 있습니다 */
-  let announced = new Set();
+  let announced = [];
   try {
     const snap = JSON.parse(fs.readFileSync(`${OUT}/notices.json`, "utf8"));
-    announced = new Set(snap.sites.map((s) => normName(s.n)));
-    console.log(`이미 공고된 단지 ${announced.size}건 제외 대상으로 로드`);
+    announced = [...new Set(snap.sites.map((s) => normName(s.n)))];
+    console.log(`이미 공고된 단지 ${announced.length}건 제외 대상으로 로드`);
   } catch {
     console.log("notices.json 없음 — 공고 대조 없이 진행");
   }
+
+  /* 공고명과 기사 표기가 정확히 같은 경우는 드뭅니다.
+     "검암역 푸르지오 프라베뉴 (B-1BL) 공공분양주택" 과 "인천 검암역 푸르지오 프라베뉴"
+     처럼 한쪽이 다른 쪽을 품는 형태라, 포함 관계로 봐야 걸러집니다. */
+  const isAnnounced = (key) =>
+    key.length >= 6 && announced.some((a) => a.includes(key) || key.includes(a));
 
   const articles = [];
   const perQuery = [];
@@ -231,7 +237,7 @@ const main = async () => {
   for (const a of uniq) {
     for (const name of extractComplexNames(a.title)) {
       const key = normName(name);
-      if (announced.has(key)) continue;          /* 이미 공고남 */
+      if (isAnnounced(key)) continue;            /* 이미 공고가 난 단지 */
       if (key.length < 4) continue;              /* 브랜드명 단독은 단지가 아님 */
       const hit = byName.get(key) || { name, mentions: 0, articles: [], aliases: new Set(), freq: new Map() };
       hit.aliases.add(name);
