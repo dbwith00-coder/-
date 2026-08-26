@@ -10,7 +10,7 @@
 
 import fs from "node:fs";
 import { estimatePrice } from "../src/lib/price-model.js";
-import { PY_PRICE_META } from "../src/data/py-price.js";
+import { FIT_CV, FIT_META } from "../src/data/price-model-fit.js";
 
 /* 실제 분양 사례 — 공개 보도된 값 */
 const CASES = [
@@ -51,10 +51,11 @@ console.log("\n" + "─".repeat(74));
 console.log(`과거 사례 ${CASES.length}건 — 평균 절대오차 ${(sumAbs / CASES.length).toFixed(1)}% · 범위 적중 ${hit}/${CASES.length}`);
 console.log("과거 사례는 표본이 적고 시점 보정 지수까지 얹혀 있어 참고용입니다.\n");
 
-/* 진짜 성능은 "지금 공고" 를 맞히는 정확도입니다 — 표본이 훨씬 많습니다 */
-const m = PY_PRICE_META.stats;
+/* 진짜 성능은 "학습에 안 쓴 공고" 를 맞히는 정확도입니다 — 표본이 훨씬 많습니다.
+   아래 숫자는 공고 단위 5겹 교차검증 결과라 자기 답을 보고 맞힌 게 아닙니다. */
 console.log("─".repeat(74));
-console.log(`현재 공고 실측 대조 — 관측 ${PY_PRICE_META.samples}건 / 공고 ${PY_PRICE_META.notices}건`);
-console.log(`  평균 절대오차 ${m.mae}% · 중앙 ${m.p50}% · 80분위 ${m.p80}% · 90분위 ${m.p90}%`);
-for (const [b, v] of Object.entries(m.within)) console.log(`  ±${String(b).padStart(2)}% 안에 ${v}%`);
-console.log(`\n표시 범위는 80분위(±${m.p80}%)를 씁니다 — 임의로 정한 값이 아닙니다.`);
+console.log(`교차검증 — 학습 관측 ${FIT_META.samples.toLocaleString()}건 · 검증 공고 ${FIT_CV.n}건`);
+console.log(`  (한 공고당 국민평형 1건을, 지역+브랜드만 알고 예측)`);
+console.log(`  평균 절대오차 ${FIT_CV.mae}% · 중앙 ${FIT_CV.p50}% · 80분위 ${FIT_CV.p80}%`);
+console.log(`  ±10% 안에 ${FIT_CV.w10}% · ±15% 안에 ${FIT_CV.w15}% · ±20% 안에 ${FIT_CV.w20}%`);
+console.log(`\n표시 범위는 80분위(±${Math.round(FIT_CV.p80)}%)를 씁니다 — 임의로 정한 값이 아닙니다.\n`);

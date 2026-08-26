@@ -69,6 +69,12 @@ for (const s of SNAP.sites) {
       supply: s.supply, capped: tags.includes("분양가상한제") ? "Y" : "N",
       redev: tags.includes("정비사업") ? "Y" : "N",
       tier, size,
+      /* 주택구분 — 신혼희망타운·사전청약은 분양가 체계가 아예 다릅니다 */
+      kind: String(s.kind || "APT").trim() || "APT",
+      /* 같은 시/군 안에서도 읍·면·리는 동보다 훨씬 쌉니다.
+         가평 설악면·강화 선원면이 시 평균으로 끌려 올라가 과대예측됐습니다. */
+      rural: /[면리]$|면 |리 /.test(String(s.gu || "")) ? "읍면리"
+           : /동$|동 |가$/.test(String(s.gu || "")) ? "동" : "기타",
       pyBand: py < 22 ? "소형" : py < 30 ? "중소형" : py < 38 ? "국민" : "대형",
       month: String(s.when || "").slice(0, 7),
     });
@@ -94,7 +100,11 @@ notices.forEach((n, i) => foldOf.set(n, i % K));
    이렇게 하면 "김포"처럼 주소 형식이 깨진 것도 알아서 자기 노드가 되고,
    표본 1건짜리 동네가 튀는 것도 막힙니다.
    가격은 곱셈으로 움직이므로 로그 공간에서 평균냅니다. */
-const K_SHRINK = 6;
+let K_SHRINK = 6;
+let USE_MEDIAN = false;
+const logAgg = (v) => USE_MEDIAN
+  ? median(v)
+  : v.reduce((a, b) => a + b, 0) / v.length;
 
 function buildHierarchy(train) {
   const nodes = new Map();          /* 경로 → 로그가격 배열 */
@@ -112,7 +122,7 @@ function buildHierarchy(train) {
     const v = nodes.get(key);
     const parentKey = key.split(" ").slice(0, -1).join(" ");
     const parent = key === "" ? null : est.get(parentKey);
-    const mean = v.reduce((a, b) => a + b, 0) / v.length;
+    const mean = logAgg(v);
     est.set(key, parent == null ? mean : (v.length * mean + K_SHRINK * parent) / (v.length + K_SHRINK));
   }
   return (path) => {
@@ -141,7 +151,7 @@ function buildModel(train, steps) {
     const tab = {};
     for (const [k, v] of Object.entries(buckets)) {
       if (v.length < 12) continue;
-      tab[k] = Math.exp(v.reduce((a, b) => a + b, 0) / v.length);
+      tab[k] = Math.exp(logAgg(v));
     }
     factors.push({ key, tab });
   }
@@ -182,6 +192,7 @@ const TRIALS = [
   ["+ 분양가상한제", ["supply", "pyBand", "size", "capped"]],
   ["+ 브랜드 등급", ["supply", "pyBand", "size", "capped", "tier"]],
   ["+ 정비사업", ["supply", "pyBand", "size", "capped", "tier", "redev"]],
+  ["+ 읍면리 여부", ["rural", "supply", "pyBand", "size", "capped", "tier", "redev"]],
 ];
 
 console.log("공고 단위 5겹 교차검증 (학습에 안 쓴 공고로만 평가)");
@@ -198,6 +209,129 @@ for (const [label, steps] of TRIALS) {
 console.log("\n" + "─".repeat(78));
 console.log(`가장 좋은 조합: ${best.label}  →  평균 ${best.r.mae}% · 중앙 ${best.r.p50}% · ±10% 안에 ${best.r.w10}%`);
 
+/* ── 실제 사용 시나리오 지표 ───────────────────────────────
+   앱이 예측하는 대상은 "아직 공고가 안 난 현장의 국민평형 분양가" 입니다.
+   그때 아는 정보는 지역과 브랜드뿐 — 타입 구성도, 세대수도 모릅니다.
+   그러니 공고마다 84㎡(국민평형) 한 건만 예측해 맞히는지가 진짜 지표입니다. */
+function cvNational(steps) {
+  const errs = [];
+  for (let k = 0; k < K; k++) {
+    const train = obs.filter((o) => foldOf.get(o.notice) !== k);
+    const test = obs.filter((o) => foldOf.get(o.notice) === k);
+    const m = buildModel(train, steps);
+    /* 공고별로 국민평형(30~38평)에 가장 가까운 타입 하나만 */
+    const byNotice = new Map();
+    for (const o of test) {
+      const cur = byNotice.get(o.notice);
+      const d = Math.abs(o.py - 34);
+      if (!cur || d < cur.d) byNotice.set(o.notice, { o, d });
+    }
+    for (const { o } of byNotice.values()) {
+      /* 규모·평형은 공고 전엔 모르므로 국민평형 기본값으로 고정 */
+      const guess = { ...o, pyBand: "국민", size: "중형" };
+      errs.push(Math.abs(m.predict(guess) - o.pyPrice) / o.pyPrice * 100);
+    }
+  }
+  return {
+    n: errs.length,
+    mae: +(errs.reduce((a, b) => a + b, 0) / errs.length).toFixed(2),
+    p50: +median(errs).toFixed(2),
+    p80: +pct(errs, 0.8).toFixed(2),
+    w10: +(errs.filter((e) => e <= 10).length / errs.length * 100).toFixed(0),
+    w15: +(errs.filter((e) => e <= 15).length / errs.length * 100).toFixed(0),
+    w20: +(errs.filter((e) => e <= 20).length / errs.length * 100).toFixed(0),
+  };
+}
+
+console.log("\n실사용 지표 — 공고당 국민평형 1건, 지역+브랜드만 알고 예측");
+console.log("─".repeat(78));
+console.log(`${"모델".padEnd(26)}${"평균".padStart(8)}${"중앙".padStart(8)}${"80분위".padStart(9)}${"±10%".padStart(8)}${"±15%".padStart(8)}${"±20%".padStart(8)}`);
+let bestN = null;
+for (const [label, steps] of TRIALS) {
+  const r = cvNational(steps);
+  if (!bestN || r.mae < bestN.r.mae) bestN = { label, steps, r };
+  console.log(`${label.padEnd(26)}${(r.mae + "%").padStart(8)}${(r.p50 + "%").padStart(8)}`
+    + `${(r.p80 + "%").padStart(9)}${(r.w10 + "%").padStart(8)}${(r.w15 + "%").padStart(8)}${(r.w20 + "%").padStart(8)}`);
+}
+console.log(`\n실사용 최적: ${bestN.label} → 평균 ${bestN.r.mae}% · 중앙 ${bestN.r.p50}% · ±10% 안에 ${bestN.r.w10}% (공고 ${bestN.r.n}건)`);
+
+/* ── 축소계수·집계방식 탐색 ────────────────────────────────
+   K 가 작으면 잎(동 단위)을 믿고, 크면 부모(시·도)로 끌어당깁니다.
+   어느 쪽이 나은지는 데이터가 정합니다. */
+console.log("\n축소계수 K · 집계방식 탐색 (실사용 지표 기준)");
+console.log("─".repeat(78));
+const STEPS_BEST = ["rural", "supply", "pyBand", "size", "capped", "tier", "redev"];
+let bestCfg = null;
+for (const useMed of [false, true]) {
+  const line = [];
+  for (const k of [1, 2, 3, 4, 6, 10, 16]) {
+    K_SHRINK = k; USE_MEDIAN = useMed;
+    const r = cvNational(STEPS_BEST);
+    line.push(`K=${String(k).padStart(2)} ${r.mae}%/${r.p50}%`);
+    if (!bestCfg || r.mae < bestCfg.r.mae) bestCfg = { k, useMed, r };
+  }
+  console.log(`${useMed ? "로그중앙값" : "로그평균  "}  ${line.join("  ")}`);
+}
+K_SHRINK = bestCfg.k; USE_MEDIAN = bestCfg.useMed;
+console.log(`\n최적: K=${bestCfg.k} · ${bestCfg.useMed ? "로그중앙값" : "로그평균"}`
+  + ` → 평균 ${bestCfg.r.mae}% · 중앙 ${bestCfg.r.p50}% · ±10% 안에 ${bestCfg.r.w10}% · ±20% 안에 ${bestCfg.r.w20}%`);
+
+/* ── 지역별 신뢰구간 ───────────────────────────────────────
+   평균 오차를 한 자리로 내리는 건 지역·브랜드만 아는 상태에선 무리입니다.
+   같은 광명시 안에 철산역자이(4,594만/평)와 그 절반짜리가 같이 있습니다.
+   그러면 점 하나를 우기는 대신, **그 지역이 실제로 얼마나 흩어지는지**를
+   구간으로 같이 내미는 게 맞습니다.
+   표본이 촘촘하고 편차가 작은 지역은 좁게, 넓은 지역은 넓게. */
+function cvInterval(steps, mult) {
+  let inBand = 0, n = 0, widthSum = 0;
+  for (let k = 0; k < K; k++) {
+    const train = obs.filter((o) => foldOf.get(o.notice) !== k);
+    const test = obs.filter((o) => foldOf.get(o.notice) === k);
+    const m = buildModel(train, steps);
+    /* 학습셋에서 지역별 상대편차(로그 표준편차)를 잰다 */
+    const dev = new Map();
+    for (const o of train) {
+      for (let i = o.path.length; i >= 1; i--) {
+        const key = o.path.slice(0, i).join(" ");
+        (dev.get(key) ?? dev.set(key, []).get(key)).push(Math.log(o.pyPrice / m.predict(o)));
+      }
+    }
+    const sd = (arr) => {
+      const mu = arr.reduce((a, b) => a + b, 0) / arr.length;
+      return Math.sqrt(arr.reduce((a, b) => a + (b - mu) ** 2, 0) / Math.max(1, arr.length - 1));
+    };
+    const devOf = (path) => {
+      for (let i = path.length; i >= 1; i--) {
+        const v = dev.get(path.slice(0, i).join(" "));
+        if (v && v.length >= 8) return sd(v);
+      }
+      return 0.25;   /* 근거가 없으면 넉넉히 */
+    };
+    const byNotice = new Map();
+    for (const o of test) {
+      const cur = byNotice.get(o.notice);
+      const d = Math.abs(o.py - 34);
+      if (!cur || d < cur.d) byNotice.set(o.notice, { o, d });
+    }
+    for (const { o } of byNotice.values()) {
+      const pred = m.predict({ ...o, pyBand: "국민", size: "중형" });
+      const w = devOf(o.path) * mult;
+      const lo = pred * Math.exp(-w), hi = pred * Math.exp(w);
+      n++; widthSum += (hi - lo) / pred * 100;
+      if (o.pyPrice >= lo && o.pyPrice <= hi) inBand++;
+    }
+  }
+  return { cover: +(inBand / n * 100).toFixed(0), width: +(widthSum / n).toFixed(0) };
+}
+
+console.log("\n지역별 신뢰구간 — 실제 분양가가 구간 안에 들어오는 비율");
+console.log("─".repeat(78));
+console.log(`${"배수".padStart(6)}${"적중률".padStart(9)}${"평균 구간폭".padStart(13)}`);
+for (const mult of [0.8, 1.0, 1.28, 1.5, 1.65, 2.0]) {
+  const r = cvInterval(STEPS_BEST, mult);
+  console.log(`${String(mult).padStart(6)}${(r.cover + "%").padStart(9)}${("±" + Math.round(r.width / 2) + "%").padStart(13)}`);
+}
+
 /* ── 채택 모델의 보정계수를 전체 데이터로 다시 학습해 저장 ── */
 const final = buildModel(obs, best.steps);
 console.log("\n보정계수 (전체 학습)");
@@ -210,6 +344,8 @@ fs.writeFileSync("data/model-search.json", JSON.stringify({
   at: new Date().toISOString(), obs: obs.length, notices: notices.length,
   trials: TRIALS.map(([label, steps]) => ({ label, steps, ...cv(steps) })),
   chosen: { label: best.label, steps: best.steps, ...best.r },
+  national: { label: bestN.label, steps: bestN.steps, ...bestN.r },
+  tuned: bestCfg ? { k: bestCfg.k, useMedian: bestCfg.useMed, ...bestCfg.r } : null,
   factors: final.factors,
 }, null, 2) + "\n");
 console.log("\ndata/model-search.json 저장");

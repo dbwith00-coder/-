@@ -2,18 +2,28 @@
    분양예정가 추정 모델
    ------------------------------------------------------------
    아직 모집공고가 안 난 현장은 분양가를 알 수 없습니다.
-   그래서 원가를 쌓아 올려 추정합니다.
+   그래서 **이미 분양한 단지들의 실제 분양가**로 학습한 모델로 추정합니다.
 
-       평당 분양가 = (평당 택지비 + 평당 건축비) × (1 + 가산비율)
+       평당 분양가 = 지역 기준값 × 보정계수들
        예상 분양가 = 평당 분양가 × 공급면적(평)
 
-   ⚠️ 아래 파라미터(지역별 택지비·건축비·가산비율)는 시장 상황을 보고
-      정한 값이지 실측 데이터가 아닙니다. 백테스트가 맞았다고 해서
-      모든 단지에서 맞는다는 뜻이 아닙니다.
+   지역 기준값은 주소를 토큰 경로(시도 › 시군구 › 읍면동)로 보고
+   뿌리에서 잎으로 값을 물려주되, 표본이 적은 잎은 부모 쪽으로 끌어당긴
+   값입니다(축소추정). scripts/calibrate.js 가 만들어 둔
+   src/data/price-model-fit.js 를 그대로 읽어 씁니다.
+
+   성능은 지어낸 값이 아니라 **공고 단위 5겹 교차검증** 결과입니다
+   (학습에 안 쓴 공고를 지역+브랜드만 보고 맞혀 본 것). FIT_CV 참고.
+
+   학습 표에 아예 없는 지역만 아래 원가식으로 떨어집니다.
    ============================================================ */
 
 import { PY_PRICE_REGIONS, PY_PRICE_FINE, PY_PRICE_ALIAS, PY_PRICE_ALIAS_FINE,
          PY_PRICE_META } from "../data/py-price.js";
+import { FIT_REGION, FIT_REGION_N, FIT_FACTORS, FIT_CV, FIT_META }
+  from "../data/price-model-fit.js";
+
+export { FIT_CV, FIT_META };
 
 /* ── 1. 평당 택지비 (만원, 2026년 기준) ─────────────────────
    추정 결과를 가장 크게 흔드는 값입니다. 위에서부터 먼저 걸리는 것을 씁니다. */
@@ -76,36 +86,94 @@ const pick = (table, text, fallback) => {
   return fallback;
 };
 
+/* ── 학습 모델 조회 ──────────────────────────────────────────
+   주소 토큰 경로를 잎에서 뿌리로 훑어 가장 세밀한 노드를 씁니다.
+   "경기도 화성시 오산동" 이 있으면 그걸 쓰고, 없으면 "경기도 화성시",
+   그것도 없으면 "경기도" 로 물러납니다. */
+function fitBase(tokens) {
+  for (let i = tokens.length; i >= 1; i--) {
+    const k = tokens.slice(0, i).join(" ");
+    if (FIT_REGION[k] != null) return { logPy: FIT_REGION[k], key: k, n: FIT_REGION_N[k] || 0 };
+  }
+  return null;
+}
+
+/* 지역 문자열을 학습 노드로 연결합니다.
+   주소처럼 생겼으면(토큰 2개 이상) 그대로, 아니면 별칭 표를 거칩니다. */
+export function fitLookup(text) {
+  const t = String(text || "").trim();
+  if (!t) return null;
+  const toks = t.split(/\s+/).slice(0, 4);
+  if (toks.length >= 2) {
+    const b = fitBase(toks);
+    if (b && b.key.split(" ").length >= 2) return b;
+  }
+  const hit = lookupRegion(t);
+  if (hit?.key) {
+    const b = fitBase(hit.key.split(/\s+/));
+    if (b) return { ...b, word: hit.word };
+  }
+  return toks.length >= 2 ? fitBase(toks) : null;
+}
+
+/* 학습에 쓴 것과 같은 구간 나누기 — 여기가 어긋나면 보정이 헛돕니다 */
+const pyBandOf = (py) => (py < 22 ? "소형" : py < 30 ? "중소형" : py < 38 ? "국민" : "대형");
+const sizeOf = (total) =>
+  !total ? null : total >= 1500 ? "초대형" : total >= 700 ? "대단지" : total >= 300 ? "중형" : "소규모";
+/* 노드 키의 마지막 토큰으로만 판단합니다. 시군구까지밖에 모르면 건너뜁니다. */
+const ruralOf = (key) => {
+  const last = String(key || "").split(" ").pop() || "";
+  if (/[면리]$/.test(last)) return "읍면리";
+  if (/[동가]$/.test(last)) return "동";
+  return null;
+};
+
 /* ── 추정 ───────────────────────────────────────────────────
-   평당가는 **실측 테이블**(청약홈 실제 분양가에서 뽑은 시군구별 중앙값)을
-   1순위로 씁니다. 표에 없는 지역만 원가식으로 떨어집니다.
-
-   화면에는 "택지비 + 건축비 × (1+가산비율)" 형태로 보여줘야 하므로,
-   평당가에서 건축비·가산비율을 거꾸로 빼서 택지비를 역산해 표시합니다.
-   숫자를 지어내는 게 아니라 같은 값을 다른 형태로 보여주는 것뿐입니다.
-
-   region  지역 문자열(단지명·주소 등)
+   region  지역 문자열(주소 또는 단지명·지명)
    brand   브랜드/시공사 문자열
    py      공급면적(평). 기본 34평(전용 84㎡)
    year    분양 시점. 기본 2026
    capped  분양가상한제 여부
+   supply  "민영" | "공공"      (모르면 민영)
+   total   총 세대수            (모르면 0 — 규모 보정을 건너뜁니다)
+   redev   정비사업 여부
+
+   화면에는 "택지비 + 건축비 × (1+가산비율)" 형태로 보여줘야 하므로,
+   평당가에서 건축비·가산비율을 거꾸로 빼서 택지비를 역산해 표시합니다.
+   숫자를 지어내는 게 아니라 같은 값을 다른 형태로 보여주는 것뿐입니다.
 */
-export function estimatePrice({ region = "", brand = "", py = 34, year = 2026, capped = false } = {}) {
+export function estimatePrice({ region = "", brand = "", py = 34, year = 2026,
+                                capped = false, supply = "민영", total = 0, redev = false } = {}) {
   const [tier, tierLabel] = pick(BRAND_TIER, `${brand} ${region}`, BRAND_DEFAULT);
   const [margin, marginLabel] = marginFor({ region, capped });
   const constPy = Math.round(CONST_PY_BASE * tier * (idx(CONST_INDEX, year) / idx(CONST_INDEX, 2026)));
 
-  /* 1순위 — 실측 시군구 평당가 */
-  const hit = lookupRegion(region);
-  let pyPrice, landPy, source, landLabel;
-  if (hit) {
-    const adj = idx(LAND_INDEX, year) / idx(LAND_INDEX, 2026);   /* 과거 시점이면 되돌림 */
-    pyPrice = Math.round(hit.pyPrice * adj);
+  const fit = fitLookup(region);
+  let pyPrice, landPy, source, landLabel, applied = [];
+
+  if (fit) {
+    /* 1순위 — 학습 모델. 지역 기준값에 아는 조건만 곱합니다. */
+    const feats = {
+      rural: ruralOf(fit.key),
+      supply,
+      pyBand: pyBandOf(py),
+      size: sizeOf(total),
+      capped: capped ? "Y" : "N",
+      tier: tierLabel === "하이엔드" ? "하이엔드" : tierLabel === "1군 브랜드" ? "1군" : "일반",
+      redev: redev ? "Y" : "N",
+    };
+    let v = Math.exp(fit.logPy);
+    for (const f of FIT_FACTORS) {
+      const m = feats[f.key] == null ? null : f.tab[feats[f.key]];
+      if (m) { v *= m; applied.push(`${feats[f.key]} ×${m}`); }
+    }
+    /* 과거 시점 검증용 되돌림 — 학습 데이터는 지금 공고 기준입니다 */
+    pyPrice = Math.round(v * (idx(LAND_INDEX, year) / idx(LAND_INDEX, 2026)));
     landPy = Math.max(0, Math.round(pyPrice / (1 + margin) - constPy));
-    source = "실측";
-    landLabel = `${hit.key} 실적 ${hit.n}건`;
+    source = "학습모델";
+    landLabel = `${fit.key} 실적 ${fit.n}건`;
   } else {
-    /* 2순위 — 지역 표에도 없으면 원가식 */
+    /* 2순위 — 학습 표에도 없는 지역이면 원가식 */
     const [land2026, label] = pick([...LAND_PY, LAND_CITY], region, LAND_DEFAULT);
     landPy = Math.round(land2026 * (idx(LAND_INDEX, year) / idx(LAND_INDEX, 2026)));
     pyPrice = Math.round((landPy + constPy) * (1 + margin));
@@ -113,13 +181,16 @@ export function estimatePrice({ region = "", brand = "", py = 34, year = 2026, c
     landLabel = label;
   }
 
-  const total = Math.round(pyPrice * py);
-  /* 범위는 임의로 정하지 않고 실측 오차 분위수를 씁니다 */
-  const band = (PY_PRICE_META?.stats?.p80 ?? 15) / 100;
+  const totalPrice = Math.round(pyPrice * py);
+  /* 범위는 임의로 정하지 않고 교차검증 오차의 80분위를 씁니다.
+     원가식으로 떨어진 지역은 학습 표본이 아예 없어 따로 잴 방법이 없습니다.
+     그렇다고 더 좁게 잡을 근거는 없으므로 같은 폭을 씁니다. */
+  const band = (FIT_CV?.p80 ?? 20) / 100;
   return {
-    landPy, constPy, margin, pyPrice, total, py, year, source,
-    lo: Math.round(total * (1 - band)),
-    hi: Math.round(total * (1 + band)),
+    landPy, constPy, margin, pyPrice, total: totalPrice, py, year, source, applied,
+    fitKey: fit?.key || null, fitN: fit?.n || 0,
+    lo: Math.round(totalPrice * (1 - band)),
+    hi: Math.round(totalPrice * (1 + band)),
     bandPct: Math.round(band * 100),
     labels: { land: landLabel, brand: tierLabel, margin: marginLabel },
   };

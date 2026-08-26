@@ -3,7 +3,7 @@ import { loadConfig, saveConfig, fetchAllNotices } from "./lib/openapi";
 import SNAPSHOT from "./data/notices.json";
 import NEWS from "./data/upcoming-news.json";
 import { estimatePrice, guessRegion } from "./lib/price-model";
-import { PY_PRICE_META as PRICE_META } from "./data/py-price.js";
+import { FIT_CV, FIT_META } from "./data/price-model-fit.js";
 
 /* ============================================================
    집당 프로토타입에서 "청약 · 입주설계" 모듈만 뽑아낸 독립 버전입니다.
@@ -1509,7 +1509,7 @@ function Subscription({ tab, setTab, allSites, live }) {
                         <div style={{ padding: "0 17px 15px" }}>
                           {c.est && (
                             <div className="mv-note" style={{ fontSize: 12.5, lineHeight: 1.8, marginBottom: 8 }}>
-                              <b>분양예정가 산출</b><br />
+                              <b>분양예정가 산출 ({c.est.source})</b><br />
                               택지비 <b className="mv-num">{c.est.landPy.toLocaleString()}만</b>/평 ({c.est.labels.land})
                               {" + "}건축비 <b className="mv-num">{c.est.constPy.toLocaleString()}만</b>/평 ({c.est.labels.brand})
                               {" = "}<b className="mv-num">{(c.est.landPy + c.est.constPy).toLocaleString()}만</b><br />
@@ -1518,8 +1518,10 @@ function Subscription({ tab, setTab, allSites, live }) {
                               × 34평 = <b style={{ color: "#A93F1F" }}>{eok(c.est.total)}원</b>
                               {" "}(범위 {eok(c.est.lo)}~{eok(c.est.hi)})<br />
                               <span style={{ color: "var(--ink-3)" }}>
-                                지역별 택지비·건축비·가산비율은 실측이 아니라 시장 상황을 보고 정한 값입니다.
-                                과거 분양 3건으로 검증한 평균 오차는 7.6% 입니다.
+                                평당가는 <b>청약홈 실제 분양가 {FIT_META.samples.toLocaleString()}건</b>으로 학습한
+                                지역 계층 모델에서 나옵니다{c.est.fitKey ? ` (${c.est.fitKey} 실적 ${c.est.fitN}건)` : ""}.
+                                택지비·건축비는 그 평당가를 화면용으로 되쪼갠 값입니다.<br />
+                                학습에 안 쓴 공고로 검증한 오차는 평균 {FIT_CV.mae}% · 중앙 {FIT_CV.p50}%입니다.
                               </span>
                             </div>
                           )}
@@ -1557,16 +1559,22 @@ function Subscription({ tab, setTab, allSites, live }) {
           <div className="mv-card">
             <div className="mv-pad" style={{ paddingBottom: 10 }}>
               <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.7 }}>
-                아직 공고가 안 난 단지는 분양가가 없어서 산식으로 추정합니다.
+                아직 공고가 안 난 단지는 분양가가 없어서 추정합니다.
                 <b>시세는 섞지 않습니다</b> — 절반씩 섞으면 원가 추정인지 시세 반영인지
                 알 수 없어지고 검증도 안 됩니다.<br />
-                평당가는 <b>청약홈 실제 분양가 {PRICE_META.samples.toLocaleString()}건</b>(공고 {PRICE_META.notices}건)에서
-                뽑은 시군구·구 단위 중앙값을 씁니다. 표에 없는 지역만 원가식으로 계산합니다.
-                실측 대조 결과 <b>평균 절대오차 {PRICE_META.stats.mae}%</b> ·
-                중앙 {PRICE_META.stats.p50}% · ±15% 안에 {PRICE_META.stats.within[15]}%.
-                표시 범위는 임의값이 아니라 <b>80분위(±{PRICE_META.stats.p80}%)</b>입니다.<br />
-                과거 시점 백테스트: 과천 지정타(2020) <b>+9.1%</b>, 검단(2024) <b>+14.3%</b>,
-                용인한숲시티(2015) <b>+23.5%</b> — 오래된 건은 시점 보정 지수가 얹혀 오차가 커집니다.
+                평당가는 <b>청약홈 실제 분양가 {FIT_META.samples.toLocaleString()}건</b>으로 학습한
+                지역 계층 모델(시도 › 시군구 › 읍면동, 표본 적은 곳은 상위로 축소)에
+                공급유형·평형대·단지규모·상한제·브랜드·정비사업 보정을 곱해 냅니다.
+                학습 데이터가 아예 없는 지역만 원가식으로 떨어집니다.<br />
+                성능은 <b>공고 단위 5겹 교차검증</b>입니다 — 학습에 안 쓴 공고 {FIT_CV.n}건을
+                지역과 브랜드만 보고 맞혀 본 결과라 자기 답을 보고 맞힌 숫자가 아닙니다.
+                <b>평균 절대오차 {FIT_CV.mae}%</b> · 중앙 {FIT_CV.p50}% ·
+                ±10% 안에 {FIT_CV.w10}% · ±20% 안에 {FIT_CV.w20}%.
+                표시 범위는 임의값이 아니라 <b>80분위(±{Math.round(FIT_CV.p80)}%)</b>입니다.<br />
+                <b>절반 이상은 오차 10% 안</b>에 들어오지만, 평균이 {FIT_CV.mae}%인 이유는
+                읍·면 신규택지처럼 주변 실적과 값이 크게 어긋나는 소수 현장 때문입니다.
+                과거 시점 백테스트: 과천 지정타(2020) <b>-8.6%</b>, 검단(2024) <b>+15.9%</b>,
+                용인한숲시티(2015) <b>+31.5%</b> — 오래된 건은 시점 보정 지수가 얹혀 오차가 커집니다.
               </div>
             </div>
             <div>
