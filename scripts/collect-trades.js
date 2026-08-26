@@ -52,6 +52,35 @@ const ENDPOINT = "https://apis.data.go.kr/1613000/RTMSDataSvcAptTrade/getRTMSDat
 const tradeUrl = (code, ym, rows = 1000) =>
   `${ENDPOINT}?${q({ serviceKey: KEY, LAWD_CD: code, DEAL_YMD: ym, numOfRows: rows, pageNo: 1, _type: "json" })}`;
 
+/* 한도 초과·키 오류는 **JSON 으로도** 옵니다. 형식이 달라서
+     정상   {"response":{"body":{"items":{...}}}}
+     오류   {"OpenAPI_ServiceResponse":{"cmmMsgHeader":{"errMsg":"..."}}}
+   앞 판에서는 뒤엣것을 그냥 "빈 결과"로 읽어 버려, 충남부터 제주까지
+   전부 0개로 조용히 지나갔습니다(실패 0건으로 표시되면서).
+   이제는 오류로 인식하고, 한도 초과면 즉시 멈춥니다 — 계속 두드려 봐야
+   호출만 태우고 결과는 다 비어 있습니다. */
+class QuotaError extends Error {}
+function parseResponse(text) {
+  let j = null;
+  try { j = JSON.parse(text); } catch { /* XML */ }
+  const errMsg = j?.OpenAPI_ServiceResponse?.cmmMsgHeader?.errMsg
+    ?? (!j ? /<errMsg>(.*?)<\/errMsg>/.exec(text)?.[1] : null)
+    ?? (!j ? /<returnAuthMsg>(.*?)<\/returnAuthMsg>/.exec(text)?.[1] : null);
+  if (errMsg) {
+    if (/LIMIT|EXCEEDS|초과/i.test(errMsg)) throw new QuotaError(errMsg);
+    throw new Error(errMsg);
+  }
+  const code = j?.response?.header?.resultCode;
+  if (code != null && !/^0+$/.test(String(code))) {
+    const msg = j?.response?.header?.resultMsg || `resultCode ${code}`;
+    if (/LIMIT|EXCEEDS|초과/i.test(msg)) throw new QuotaError(msg);
+    throw new Error(msg);
+  }
+  if (!j) throw new Error(text.replace(/\s+/g, " ").slice(0, 120));
+  const it = j?.response?.body?.items?.item;
+  return Array.isArray(it) ? it : it ? [it] : [];
+}
+
 async function fetchTrades(code, ym, rows = 1000, tries = 2) {
   let last = null;
   for (let i = 0; i < tries; i++) {
@@ -60,13 +89,11 @@ async function fetchTrades(code, ym, rows = 1000, tries = 2) {
         signal: AbortSignal.timeout(25000),
         headers: { Accept: "application/json", "User-Agent": "jipdang/1.0" },
       });
-      const text = await res.text();
-      let j = null;
-      try { j = JSON.parse(text); } catch { /* XML 오류응답 */ }
-      if (!j) { last = new Error(text.slice(0, 120)); await sleep(500); continue; }
-      const it = j?.response?.body?.items?.item;
-      return Array.isArray(it) ? it : it ? [it] : [];
-    } catch (e) { last = e; await sleep(500 * (i + 1)); }
+      return parseResponse(await res.text());
+    } catch (e) {
+      if (e instanceof QuotaError) throw e;      /* 재시도 의미 없음 */
+      last = e; await sleep(500 * (i + 1));
+    }
   }
   throw last || new Error("unknown");
 }
@@ -99,14 +126,16 @@ async function scanLawd() {
   }
   console.log(`코드표를 훑습니다 (${todo.length}개 시도 × 900) — 기준월 ${probeYm}`);
 
+  let quota = null;
   for (const prefix of todo) {
+    if (quota) break;
     const codes = [];
     for (let n = 100; n <= 999; n++) codes.push(prefix + String(n));
     const queue = [...codes];
-    let hits = 0, calls = 0, errs = 0;
+    let hits = 0, calls = 0, errs = 0, lastErr = null;
     const t0 = Date.now();
     await Promise.all(Array.from({ length: 5 }, async () => {
-      while (queue.length) {
+      while (queue.length && !quota) {
         const code = queue.shift();
         try {
           const list = await fetchTrades(code, probeYm, 30, 1);
@@ -115,16 +144,29 @@ async function scanLawd() {
             const dongs = [...new Set(list.map((r) => String(r.umdNm ?? r.법정동 ?? "").trim()).filter(Boolean))];
             if (dongs.length) { store.codes[code] = dongs; hits++; }
           }
-        } catch { errs++; }
+        } catch (e) {
+          if (e instanceof QuotaError) { quota = e.message; break; }
+          errs++; lastErr = e;
+        }
         await sleep(25);
       }
     }));
-    store.done.push(prefix);
+    /* 한도로 끊겼으면 그 시도는 "끝났다"고 표시하면 안 됩니다 — 다음에 다시 */
+    if (!quota) store.done.push(prefix);
     store.at = new Date().toISOString();
     fs.writeFileSync(LAWD_FILE, JSON.stringify(store));
-    console.log(`  ${prefix}xxx — 시군구 ${hits}개 · ${calls}회 · 실패 ${errs} · ${((Date.now() - t0) / 1000).toFixed(0)}초`);
+    console.log(`  ${prefix}xxx — 시군구 ${hits}개 · ${calls}회 · 실패 ${errs}`
+      + `${lastErr ? ` (${String(lastErr.message).slice(0, 50)})` : ""} · ${((Date.now() - t0) / 1000).toFixed(0)}초`);
   }
-  console.log(`코드표 완성 — 시군구 ${Object.keys(store.codes).length}개`);
+  if (quota) {
+    console.log(`\n⚠ 일일 호출 한도에 걸렸습니다: ${quota}`);
+    console.log(`  여기까지 시군구 ${Object.keys(store.codes).length}개를 저장했습니다.`);
+    console.log(`  남은 시도: ${SIDO.filter((p) => !store.done.includes(p)).join(" ")}`);
+    console.log(`  한도는 자정(KST)에 초기화됩니다. 다시 돌리면 이어서 합니다.`);
+    store.quota = quota;
+  } else {
+    console.log(`코드표 완성 — 시군구 ${Object.keys(store.codes).length}개`);
+  }
   return store;
 }
 
@@ -188,7 +230,7 @@ console.log(`받을 것 ${jobs.size}건 (시군구 × 연월)`);
 /* ── 3단계 · 거래 받기 ────────────────────────────────────── */
 const PY_PER_M2 = 1.35 / 3.3058;
 const bucket = {};
-let done = 0, failed = 0, rows = 0;
+let done = 0, failed = 0, rows = 0, quotaHit = false;
 const queue = [...jobs.keys()];
 const CONC = Number(process.env.CONCURRENCY || 5);
 await Promise.all(Array.from({ length: CONC }, async () => {
@@ -209,6 +251,12 @@ await Promise.all(Array.from({ length: CONC }, async () => {
         rows++;
       }
     } catch (e) {
+      if (e instanceof QuotaError) {
+        if (!quotaHit) console.log(`\n⚠ 거래 수집 중 일일 한도: ${e.message}`);
+        quotaHit = true;
+        queue.length = 0;                       /* 더 두드려도 다 비어서 옵니다 */
+        break;
+      }
       failed++;
       if (failed <= 5) console.log(`  실패 ${key}: ${String(e?.message || e).slice(0, 80)}`);
     }
@@ -223,6 +271,7 @@ for (const [k, v] of Object.entries(bucket)) cells[k] = [Math.round(median(v)), 
 fs.writeFileSync(`${OUT}/trades.json`, JSON.stringify({
   at: new Date().toISOString(), notices: SNAP.collectedAt,
   monthsBack: BACK, requested: jobs.size, failed, trades: rows,
+  partial: quotaHit || !!lawd.quota,
   matched: Object.fromEntries(matched), cells,
 }));
 const mb = (fs.statSync(`${OUT}/trades.json`).size / 1024 / 1024).toFixed(2);
