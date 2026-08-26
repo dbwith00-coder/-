@@ -19,7 +19,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { fetchLh, fetchApplyhome, normalizeRows, normalizeApplyhome, APPLYHOME }
+import { fetchLh, fetchApplyhome, normalizeRows, APPLYHOME }
   from "../src/lib/notices-core.js";
 
 const OUT = "data";
@@ -35,8 +35,13 @@ const cfg = {
   /* 청약홈 APT 분양정보 — Swagger 확정 경로 */
   odcPath: process.env.ODC_PATH || APPLYHOME.detail,
   odcModelPath: process.env.ODC_MODEL_PATH || APPLYHOME.model,
-  detailLimit: Number(process.env.DETAIL_LIMIT || 30) || 30,
-  sinceDays: Number(process.env.SINCE_DAYS || 240) || 240,
+  /* 0 = 제한 없음(전량). 전국 물량을 다 받는 게 기본입니다. */
+  detailLimit: Number(process.env.DETAIL_LIMIT || 0) || 0,
+  sinceDays: Number(process.env.SINCE_DAYS || 365) || 365,
+  perPage: Number(process.env.PER_PAGE || 100) || 100,
+  maxPages: Number(process.env.MAX_PAGES || 30) || 30,
+  concurrency: Number(process.env.CONCURRENCY || 6) || 6,
+  sets: (process.env.SETS || "").split(",").map((x) => x.trim()).filter(Boolean),
   rows: ROWS,
 };
 
@@ -48,14 +53,18 @@ async function one(label, mode) {
   const t0 = Date.now();
   try {
     if (!cfg.serviceKey) throw new Error("ODCLOUD_KEY 시크릿이 비어 있습니다");
-    let rows, pickedFrom, sites;
+    let rows, pickedFrom, sites, perSet = null;
     if (mode === "applyhome") {
       /* 공고(Detail) + 주택형(Mdl) 을 조인해 타입·특별공급 물량까지 채웁니다 */
       const r = await fetchApplyhome(cfg);
       rows = r.rows;
       pickedFrom = r.pickedFrom;
-      sites = r.rows.map((d, i) => normalizeApplyhome(d, r.models[i] || []));
-      console.log(`  ${label}: 공고 ${rows.length}건 (전체 매칭 ${r.totalMatched}건), 주택형 ${r.models.reduce((a, m) => a + m.length, 0)}행`);
+      sites = r.sites;
+      perSet = r.perSet;
+      for (const p of r.perSet) {
+        console.log(`  ${p.label}: ${p.count}건 수집 (API 전체 ${p.total}건)${p.error ? " · 오류 " + p.error : ""}`);
+      }
+      console.log(`  주택형 ${r.models.reduce((a, m) => a + m.length, 0)}행`);
     } else {
       const r = await fetchLh(cfg);
       rows = r.rows;
@@ -67,6 +76,7 @@ async function one(label, mode) {
       ms: Date.now() - t0, error: null,
       fields: rows[0] ? Object.keys(rows[0]) : [],
       sample: rows.slice(0, 3),
+      perSet,
       sites,
     };
   } catch (e) {
@@ -100,7 +110,7 @@ const main = async () => {
     collectedAt: at,
     sources: {
       lh:  { ok: lh.ok,  count: lh.count,  rawCount: lh.rawCount,  pickedFrom: lh.pickedFrom,  ms: lh.ms,  error: lh.error,  fields: lh.fields },
-      odc: { ok: odc.ok, count: odc.count, rawCount: odc.rawCount, pickedFrom: odc.pickedFrom, ms: odc.ms, error: odc.error, fields: odc.fields },
+      odc: { ok: odc.ok, count: odc.count, rawCount: odc.rawCount, pickedFrom: odc.pickedFrom, ms: odc.ms, error: odc.error, fields: odc.fields, perSet: odc.perSet ?? null },
     },
   };
 

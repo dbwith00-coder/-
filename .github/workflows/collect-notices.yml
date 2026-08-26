@@ -6,14 +6,18 @@ name: 분양공고 수집
 on:
   workflow_dispatch:
     inputs:
-      odc_path:
-        description: "odcloud 오퍼레이션 경로 (Swagger stage 37000 에서 확인). 비우면 LH만 수집"
+      sets:
+        description: "수집할 청약홈 세트 (쉼표구분). 비우면 apt,remndr. 전체: apt,remndr,urbty,pblpvt,opt"
         required: false
         default: ""
-      rows:
-        description: "조회 건수"
+      since_days:
+        description: "모집공고일 하한 (일). 기본 365"
         required: false
-        default: "100"
+        default: "365"
+      detail_limit:
+        description: "공고 수 상한 (0 = 제한 없음)"
+        required: false
+        default: "0"
   schedule:
     - cron: "0 21 * * *"   # 매일 06:00 KST
     - cron: "0 3 * * *"    # 매일 12:00 KST
@@ -48,8 +52,9 @@ jobs:
       - name: 공고 수집
         env:
           ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
-          ODC_PATH: ${{ inputs.odc_path }}
-          ROWS: ${{ inputs.rows || '100' }}
+          SETS: ${{ inputs.sets }}
+          SINCE_DAYS: ${{ inputs.since_days || '365' }}
+          DETAIL_LIMIT: ${{ inputs.detail_limit || '0' }}
         run: node scripts/collect.js
 
       - name: 변경분 커밋

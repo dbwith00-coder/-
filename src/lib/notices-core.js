@@ -263,9 +263,10 @@ export async function fetchAllNotices(cfg, signal) {
       if (mode === "applyhome") {
         /* 청약홈은 스키마가 확정돼 있어 전용 정규화를 씁니다 */
         const r = await fetchApplyhome(cfg, signal);
-        sites = r.rows.map((d, i) => normalizeApplyhome(d, r.models[i] || []));
+        sites = r.sites;
         pickedFrom = r.pickedFrom;
         sample = r.rows[0] ?? null;
+        out.sources.odc.perSet = r.perSet;
       } else {
         const r = await fetchLh(cfg, signal);
         sites = normalizeRows(r.rows, "lh");
@@ -300,9 +301,36 @@ export const APPLYHOME = {
   model:  "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancMdl",
 };
 
+/* 청약홈이 제공하는 분양정보 세트.
+   가점제와 무관한 오피스텔·생활형숙박시설·민간임대는 기본에서 뺐습니다
+   (필요하면 cfg.sets 로 켜면 됩니다). */
+export const APPLYHOME_SETS = [
+  { key: "apt", label: "APT 분양", category: "APT", defaultOn: true,
+    detail: "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancDetail",
+    model:  "/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancMdl" },
+  { key: "remndr", label: "무순위·잔여세대", category: "무순위", defaultOn: true,
+    detail: "/ApplyhomeInfoDetailSvc/v1/getRemndrLttotPblancDetail",
+    model:  "/ApplyhomeInfoDetailSvc/v1/getRemndrLttotPblancMdl" },
+  { key: "urbty", label: "오피스텔·도시형·민간임대", category: "오피스텔등", defaultOn: false,
+    detail: "/ApplyhomeInfoDetailSvc/v1/getUrbtyOfctlLttotPblancDetail",
+    model:  "/ApplyhomeInfoDetailSvc/v1/getUrbtyOfctlLttotPblancMdl" },
+  { key: "pblpvt", label: "공공지원 민간임대", category: "공공지원민간임대", defaultOn: false,
+    detail: "/ApplyhomeInfoDetailSvc/v1/getPblPvtRentLttotPblancDetail",
+    model:  "/ApplyhomeInfoDetailSvc/v1/getPblPvtRentLttotPblancMdl" },
+  { key: "opt", label: "임의공급", category: "임의공급", defaultOn: false,
+    detail: "/ApplyhomeInfoDetailSvc/v1/getOPTLttotPblancDetail",
+    model:  "/ApplyhomeInfoDetailSvc/v1/getOPTLttotPblancMdl" },
+];
+
 const pad2 = (n) => String(n).padStart(2, "0");
 const isoDay = (d) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
 const daysAgo = (n) => { const d = new Date(); d.setDate(d.getDate() - n); return isoDay(d); };
+/* 세트마다 날짜 표기가 YYYY-MM-DD 이기도 YYYYMMDD 이기도 합니다 */
+const normDate = (v) => {
+  const t = String(v ?? "").trim();
+  if (/^\d{8}$/.test(t)) return `${t.slice(0, 4)}-${t.slice(4, 6)}-${t.slice(6, 8)}`;
+  return t;
+};
 
 /* HOUSE_TY 는 "084.9500A" 같은 형식입니다 → "84㎡A" */
 export function houseTypeLabel(ty) {
@@ -313,10 +341,17 @@ export function houseTypeLabel(ty) {
   return `${Math.floor(parseFloat(m[1]))}㎡${suffix}`;
 }
 
-/* 이 API 에는 진행상태 필드가 없어서 접수일로 파생합니다 */
+/* 이 API 에는 진행상태 필드가 없어서 접수일로 파생합니다.
+   세트마다 접수일 필드 이름이 달라 후보를 모두 봅니다. */
+const RCEPT_START = ["SPSPLY_RCEPT_BGNDE", "RCEPT_BGNDE", "SUBSCRPT_RCEPT_BGNDE", "GNRL_RCEPT_BGNDE"];
+const RCEPT_END = ["RCEPT_ENDDE", "SUBSCRPT_RCEPT_ENDDE", "GNRL_RCEPT_ENDDE", "GNRL_RNK1_ETC_AREA_ENDDE"];
+const firstDate = (row, keys) => {
+  for (const k of keys) { const v = normDate(row[k]); if (v) return v; }
+  return "";
+};
 export function deriveStatus(row, today = isoDay(new Date())) {
-  const start = String(row.SPSPLY_RCEPT_BGNDE || row.RCEPT_BGNDE || "").trim();
-  const end = String(row.RCEPT_ENDDE || row.GNRL_RNK1_ETC_AREA_ENDDE || "").trim();
+  const start = firstDate(row, RCEPT_START);
+  const end = firstDate(row, RCEPT_END);
   if (!start && !end) return "공고";
   if (start && today < start) return "접수 예정";
   if (end && today > end) return "접수 마감";
@@ -328,42 +363,50 @@ const isY = (v) => String(v ?? "").trim().toUpperCase() === "Y";
 /* 앱의 특별공급 유형 키(SPECIALS2.k)와 API 필드를 맞춰둡니다 */
 export const SPECIAL_UNIT_FIELDS = [
   ["newly", "NWWDS_HSHLDCO", "신혼부부"],
+  ["newly", "SPSPLY_NEW_MRRG_HSHLDCO", "신혼부부"],
   ["first", "LFE_FRST_HSHLDCO", "생애최초"],
   ["multi", "MNYCH_HSHLDCO", "다자녀가구"],
   ["old", "OLD_PARNTS_SUPORT_HSHLDCO", "노부모부양"],
   ["inst", "INSTT_RECOMEND_HSHLDCO", "기관추천"],
   ["baby", "NWBB_HSHLDCO", "신생아"],
   ["young", "YGMN_HSHLDCO", "청년"],
+  ["young", "SPSPLY_YGMN_HSHLDCO", "청년"],
+  ["aged", "SPSPLY_AGED_HSHLDCO", "고령자"],
   ["transfer", "TRANSR_INSTT_ENFSN_HSHLDCO", "이전기관"],
   ["etc", "ETC_HSHLDCO", "기타"],
 ];
 
-export function normalizeApplyhome(d, models = []) {
+const MODEL_TYPE = ["HOUSE_TY", "TP", "EXCLUSE_AR"];
+const MODEL_PRICE = ["LTTOT_TOP_AMOUNT", "SUPLY_AMOUNT"];
+const MODEL_GENERAL = ["SUPLY_HSHLDCO", "GNSPLY_HSHLDCO"];
+
+export function normalizeApplyhome(d, models = [], set = APPLYHOME_SETS[0]) {
   const addr = String(d.HSSPLY_ADRES ?? "").trim();
   const areaNm = String(d.SUBSCRPT_AREA_CODE_NM ?? "").trim();
   const gu = addr ? addr.split(/\s+/).slice(0, 3).join(" ") : areaNm || "지역 미상";
 
-  /* LTTOT_TOP_AMOUNT 는 문서상 단위가 이미 "만원" 이라 환산하지 않습니다 */
+  /* 금액 필드는 문서상 단위가 이미 "만원" 이라 환산하지 않습니다 */
   const types = models
     .map((m) => ({
-      t: houseTypeLabel(m.HOUSE_TY),
-      n: toNum(m.SUPLY_HSHLDCO) + toNum(m.SPSPLY_HSHLDCO),
-      price: toNum(m.LTTOT_TOP_AMOUNT),
-      general: toNum(m.SUPLY_HSHLDCO),
+      t: houseTypeLabel(val(m, MODEL_TYPE, "")),
+      n: toNum(val(m, MODEL_GENERAL, 0)) + toNum(m.SPSPLY_HSHLDCO),
+      price: toNum(val(m, MODEL_PRICE, 0)),
+      general: toNum(val(m, MODEL_GENERAL, 0)),
       special: toNum(m.SPSPLY_HSHLDCO),
     }))
     .filter((t) => t.t !== "면적 미상" || t.n > 0);
 
-  const general = models.reduce((a, m) => a + toNum(m.SUPLY_HSHLDCO), 0);
+  const general = models.reduce((a, m) => a + toNum(val(m, MODEL_GENERAL, 0)), 0);
   const total = toNum(d.TOT_SUPLY_HSHLDCO) || types.reduce((a, t) => a + t.n, 0);
 
   const specialUnits = {};
   for (const [key, field, label] of SPECIAL_UNIT_FIELDS) {
     const n = models.reduce((a, m) => a + toNum(m[field]), 0);
-    if (n > 0) specialUnits[key] = { n, label };
+    if (n > 0) specialUnits[key] = { n: (specialUnits[key]?.n || 0) + n, label };
   }
 
   const tags = ["실시간"];
+  if (set.category !== "APT") tags.push(set.category);
   if (isY(d.PARCPRC_ULS_AT)) tags.push("분양가상한제");
   if (isY(d.SPECLT_RDN_EARTH_AT)) tags.push("투기과열지구");
   if (isY(d.MDAT_TRGET_AREA_SECD)) tags.push("조정대상지역");
@@ -378,15 +421,20 @@ export function normalizeApplyhome(d, models = []) {
   const noteBits = [
     developer && `시행 ${developer}`,
     builder && `시공 ${builder}`,
-    d.PRZWNER_PRESNATN_DE && `당첨자발표 ${d.PRZWNER_PRESNATN_DE}`,
+    d.PRZWNER_PRESNATN_DE && `당첨자발표 ${normDate(d.PRZWNER_PRESNATN_DE)}`,
     d.MVN_PREARNGE_YM && `입주예정 ${d.MVN_PREARNGE_YM}`,
   ].filter(Boolean);
 
+  /* 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교가 의미 없습니다 */
+  const scoreless = set.category !== "APT";
+
   return {
-    id: `applyhome-${d.HOUSE_MANAGE_NO ?? "x"}-${d.PBLANC_NO ?? "x"}`,
+    id: `applyhome-${set.key}-${d.HOUSE_MANAGE_NO ?? "x"}-${d.PBLANC_NO ?? "x"}`,
     live: true,
     source: "applyhome",
-    /* HOUSE_DTL_SECD — 01: 민영, 03: 국민(공공) */
+    set: set.key,
+    category: set.category,
+    scoreless,
     supply: String(d.HOUSE_DTL_SECD ?? "").trim() === "03" ? "공공" : "민영",
     kind: String(d.HOUSE_SECD_NM ?? "").trim(),
     n: String(d.HOUSE_NM ?? "").trim() || "(주택명 없음)",
@@ -394,12 +442,15 @@ export function normalizeApplyhome(d, models = []) {
     brand: builder || developer || "청약홈",
     total,
     general: general || total,
-    when: String(d.RCRIT_PBLANC_DE ?? "").trim() || "일정 미상",
+    when: normDate(d.RCRIT_PBLANC_DE) || "일정 미상",
+    rceptStart: firstDate(d, RCEPT_START),
+    rceptEnd: firstDate(d, RCEPT_END),
     status: deriveStatus(d),
     receipt: {
-      special: [d.SPSPLY_RCEPT_BGNDE, d.SPSPLY_RCEPT_ENDDE].filter(Boolean).join(" ~ "),
-      rank1: [d.GNRL_RNK1_CRSPAREA_RCPTDE, d.GNRL_RNK1_CRSPAREA_ENDDE].filter(Boolean).join(" ~ "),
-      result: String(d.PRZWNER_PRESNATN_DE ?? "").trim(),
+      special: [d.SPSPLY_RCEPT_BGNDE, d.SPSPLY_RCEPT_ENDDE].filter(Boolean).map(normDate).join(" ~ "),
+      rank1: [d.GNRL_RNK1_CRSPAREA_RCPTDE, d.GNRL_RNK1_CRSPAREA_ENDDE].filter(Boolean).map(normDate).join(" ~ "),
+      general: [firstDate(d, RCEPT_START), firstDate(d, RCEPT_END)].filter(Boolean).join(" ~ "),
+      result: normDate(d.PRZWNER_PRESNATN_DE),
     },
     types: types.length ? types : [{ t: "주택형 미상", n: 0, price: 0 }],
     specialUnits,
@@ -409,45 +460,98 @@ export function normalizeApplyhome(d, models = []) {
     cutAmtEstimated: true,
     tags,
     url: String(d.PBLANC_URL ?? "").trim(),
-    note: `청약홈 분양정보 API 에서 받아온 공고입니다.${noteBits.length ? " " + noteBits.join(" · ") + "." : ""} 예상 당첨선(${cut}점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다.`,
+    note: `청약홈 ${set.label} API 에서 받아온 공고입니다.${noteBits.length ? " " + noteBits.join(" · ") + "." : ""}${scoreless ? " 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다." : ` 예상 당첨선(${cut}점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다.`}`,
     raw: d,
   };
 }
 
-/* 공고 목록 → 상위 N건의 주택형 상세를 이어서 조회 */
-export async function fetchApplyhome(cfg, signal) {
-  if (!cfg.serviceKey) throw new Error("인증키가 비어 있습니다");
+/* ── 페이지네이션 ────────────────────────────────────────
+   전국 물량을 다 받으려면 한 페이지로는 부족합니다.
+   currentCount 가 perPage 보다 작아지거나 totalCount 를 채우면 멈춥니다. */
+async function fetchPaged(base, path, cfg, signal, extra = {}) {
+  const perPage = cfg.perPage || 100;
+  const maxPages = cfg.maxPages || 20;
+  const rows = [];
+  let pickedFrom = null, total = 0;
+  for (let page = 1; page <= maxPages; page++) {
+    const q = new URLSearchParams({
+      serviceKey: cfg.serviceKey, page: String(page), perPage: String(perPage),
+    });
+    for (const [k, v] of Object.entries(extra)) if (v) q.set(k, v);
+    const json = await callJson(`${base}${path}?${q}`, signal);
+    const r = extractRecords(json);
+    pickedFrom = pickedFrom || r.pickedFrom;
+    total = Number(json?.totalCount ?? json?.matchCount ?? 0) || total;
+    rows.push(...r.rows);
+    if (r.rows.length < perPage) break;
+    if (total && rows.length >= total) break;
+  }
+  return { rows, pickedFrom, total: total || rows.length, pages: Math.ceil(rows.length / perPage) };
+}
+
+/* 동시 실행 개수를 묶어둡니다 — 공고 수만큼 주택형을 조회하므로 */
+async function mapLimit(items, limit, fn) {
+  const out = new Array(items.length);
+  let i = 0;
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (i < items.length) { const idx = i++; out[idx] = await fn(items[idx], idx); }
+  }));
+  return out;
+}
+
+/* 세트 하나를 전량 조회 (공고 전체 + 각 공고의 주택형) */
+export async function fetchApplyhomeSet(set, cfg, signal) {
   const base = cfg.odcBase;
-  const detailPath = cfg.odcPath || APPLYHOME.detail;
-
-  const q = new URLSearchParams({
-    serviceKey: cfg.serviceKey,
-    page: "1",
-    perPage: String(cfg.rows || 50),
+  const since = cfg.since || daysAgo(cfg.sinceDays ?? 365);
+  const { rows, pickedFrom, total } = await fetchPaged(base, set.detail, cfg, signal, {
+    "cond[RCRIT_PBLANC_DE::GTE]": since,
   });
-  /* 오래된 공고까지 다 끌어오지 않도록 모집공고일 하한을 겁니다 */
-  q.set("cond[RCRIT_PBLANC_DE::GTE]", cfg.since || daysAgo(cfg.sinceDays ?? 240));
-
-  const json = await callJson(`${base}${detailPath}?${q}`, signal);
-  const { rows, pickedFrom } = extractRecords(json);
-
   const sorted = [...rows].sort((a, b) =>
     String(b.RCRIT_PBLANC_DE ?? "").localeCompare(String(a.RCRIT_PBLANC_DE ?? "")));
-  const targets = sorted.slice(0, cfg.detailLimit || 12);
+  const targets = cfg.detailLimit ? sorted.slice(0, cfg.detailLimit) : sorted;
 
-  const modelPath = cfg.odcModelPath || APPLYHOME.model;
-  const models = await Promise.all(targets.map(async (r) => {
+  const models = await mapLimit(targets, cfg.concurrency || 6, async (r) => {
     try {
-      const mq = new URLSearchParams({ serviceKey: cfg.serviceKey, page: "1", perPage: "60" });
+      const mq = new URLSearchParams({ serviceKey: cfg.serviceKey, page: "1", perPage: "100" });
       mq.set("cond[HOUSE_MANAGE_NO::EQ]", String(r.HOUSE_MANAGE_NO ?? ""));
       mq.set("cond[PBLANC_NO::EQ]", String(r.PBLANC_NO ?? ""));
-      const mj = await callJson(`${base}${modelPath}?${mq}`, signal);
+      const mj = await callJson(`${base}${set.model}?${mq}`, signal);
       return extractRecords(mj).rows;
     } catch {
-      /* 주택형 조회가 실패해도 공고 자체는 살립니다 */
-      return [];
+      return [];   /* 주택형 조회가 실패해도 공고 자체는 살립니다 */
     }
-  }));
+  });
 
-  return { rows: targets, models, pickedFrom, totalMatched: rows.length };
+  return { set, rows: targets, models, pickedFrom, total, fetched: rows.length };
+}
+
+/* 켜져 있는 세트를 모두 조회해 하나의 공고 목록으로 */
+export async function fetchApplyhome(cfg, signal) {
+  const wanted = cfg.sets?.length
+    ? APPLYHOME_SETS.filter((s) => cfg.sets.includes(s.key))
+    : APPLYHOME_SETS.filter((s) => s.defaultOn);
+
+  const results = [];
+  for (const set of wanted) {
+    try {
+      results.push(await fetchApplyhomeSet(set, cfg, signal));
+    } catch (e) {
+      results.push({ set, rows: [], models: [], pickedFrom: null, total: 0, fetched: 0,
+        error: String(e?.message || e) });
+    }
+  }
+
+  const sites = results.flatMap((r) => r.rows.map((d, i) => normalizeApplyhome(d, r.models[i] || [], r.set)));
+  const first = results.find((r) => r.rows.length);
+  return {
+    sites,
+    rows: results.flatMap((r) => r.rows),
+    models: results.flatMap((r) => r.models),
+    perSet: results.map((r) => ({
+      key: r.set.key, label: r.set.label, count: r.rows.length,
+      total: r.total, error: r.error ?? null,
+    })),
+    pickedFrom: first?.pickedFrom ?? null,
+    totalMatched: results.reduce((a, r) => a + r.total, 0),
+  };
 }
