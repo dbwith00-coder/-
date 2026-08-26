@@ -1945,7 +1945,7 @@ function Subscription({ tab, setTab, allSites, live }) {
 
 /* ============================================================
    커뮤니티 (게시판 + 댓글)
-   window.storage(shared=true)로 아티팩트 사용자 전체에 공유됩니다.
+   글·댓글은 브라우저의 localStorage 에 저장됩니다 — 이 기기 안에서만 남습니다.
    ============================================================ */
 function timeAgo(iso) {
   const diff = (Date.now() - new Date(iso).getTime()) / 1000;
@@ -1960,167 +1960,100 @@ function communityId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 }
 
+/* ── 저장 ─────────────────────────────────────────────────
+   예전에는 window.storage 라는 API 에 저장하려 했는데, 이 화면에는
+   그런 API 가 아예 없습니다. 그래서 글이 화면에만 남고 새로고침하면
+   전부 사라졌습니다.
+
+   브라우저가 원래 주는 localStorage 를 씁니다. 아티팩트에서도, 파일을
+   그냥 열었을 때도 똑같이 동작하고, 창을 닫아도 남습니다.
+
+   사생활 보호 모드나 저장 공간 부족이면 접근 자체가 예외를 던지므로
+   읽기·쓰기를 모두 감싸고, 실패는 화면에 그대로 알립니다 —
+   저장 안 된 걸 저장된 것처럼 보이게 하면 안 됩니다. */
+const BOARD_KEY = "jipdang:community:posts:v1";
+const NICK_KEY = "jipdang:community:nickname";
+
+function readLS(key) {
+  try { return window.localStorage.getItem(key); } catch (e) { return null; }
+}
+function writeLS(key, value) {
+  try { window.localStorage.setItem(key, value); return null; }
+  catch (e) { return String((e && e.message) || e); }
+}
+
+function loadBoard() {
+  const raw = readLS(BOARD_KEY);
+  if (!raw) return [];
+  try {
+    const list = JSON.parse(raw);
+    if (!Array.isArray(list)) return [];
+    /* 저장된 자료가 깨져 있어도 화면이 죽지 않게 최소한만 추립니다 */
+    return list
+      .filter((p) => p && typeof p.id === "string" && typeof p.title === "string")
+      .map((p) => ({ ...p, comments: Array.isArray(p.comments) ? p.comments : [] }));
+  } catch (e) {
+    return [];
+  }
+}
+function saveBoard(list) {
+  return writeLS(BOARD_KEY, JSON.stringify(list));   /* null 이면 성공 */
+}
+
 function CommunityBoard() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState(() => loadBoard());
   const [openId, setOpenId] = useState(null);
-  const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState(() => readLS(NICK_KEY) || "");
   const [newTitle, setNewTitle] = useState("");
   const [newBody, setNewBody] = useState("");
   const [commentBody, setCommentBody] = useState("");
-  const [busy, setBusy] = useState(false);
-  /* "unknown" → 아직 모름 / "shared" → 모두에게 공유 / "personal" → 이 계정에만 저장
-     / "memory" → 이 화면이 저장 API 연결을 거부해서(양쪽 모두 "Unexpected response type")
-       세션 메모리에만 보관. 창을 닫으면 사라지며, 게시된 링크에서는 정상 저장될 수 있음. */
-  const [mode, setMode] = useState("unknown");
-  const [storageDiag, setStorageDiag] = useState("");
+  const [err, setErr] = useState("");
 
-  const storageOk = typeof window !== "undefined" && !!window.storage;
-
-  const readPosts = async (shared) => {
-    try {
-      const res = shared
-        ? await window.storage.get("community:posts", true)
-        : await window.storage.get("community:posts");
-      if (res && res.value) {
-        const list = JSON.parse(res.value);
-        return Array.isArray(list) ? list : null;
-      }
-      return null;
-    } catch (e) {
-      /* 키가 아직 없거나 이 환경에서 해당 모드가 막힌 경우 */
-      return null;
-    }
+  /* 저장은 이 기기 안에서만 이뤄집니다. 왜 그런지는 boardStorageNote 참고. */
+  const save = (next) => {
+    setPosts(next);
+    const msg = saveBoard(next);
+    setErr(msg || "");
+    return !msg;
   };
 
-  const loadPosts = async () => {
-    /* 메모리 모드로 확정된 뒤의 새로고침은 읽을 곳이 없으므로,
-       지금 화면에 있는 글을 지우지 않고 그대로 둡니다 */
-    if (mode === "memory") return;
-    if (!storageOk) {
-      setMode("memory");
-      setStorageDiag("window.storage API 자체가 없는 환경");
-      setLoading(false);
-      return;
-    }
-    setLoading(true);
-    const sharedList = await readPosts(true);
-    if (sharedList !== null) {
-      setPosts(sharedList);
-      setMode("shared");
-      setLoading(false);
-      return;
-    }
-    const personalList = await readPosts(false);
-    if (personalList !== null) {
-      setPosts(personalList);
-      setMode((m) => (m === "shared" ? m : "personal"));
-      setLoading(false);
-      return;
-    }
-    setPosts([]);
-    setLoading(false);
+  const submitPost = () => {
+    const nick = nickname.trim(), title = newTitle.trim(), body = newBody.trim();
+    if (!nick || !title || !body) return;
+    const post = { id: communityId(), nickname: nick, title, body,
+                   createdAt: new Date().toISOString(), comments: [] };
+    if (save([post, ...posts])) { setNewTitle(""); setNewBody(""); }
+    writeLS(NICK_KEY, nick);
   };
 
-  useEffect(() => {
-    loadPosts();
-    if (!storageOk) return;
-    (async () => {
-      try {
-        const res = await window.storage.get("community:my-nickname");
-        if (res && res.value) setNickname(res.value);
-      } catch (e) {
-        /* 처음 쓰는 경우 키가 없을 수 있음 — 무시 */
-      }
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const writePosts = async (next, shared) => {
-    const res = shared
-      ? await window.storage.set("community:posts", JSON.stringify(next), true)
-      : await window.storage.set("community:posts", JSON.stringify(next));
-    if (!res) throw new Error("저장 응답이 비어 있음 (null 반환)");
+  const submitComment = (postId) => {
+    const nick = nickname.trim(), body = commentBody.trim();
+    if (!nick || !body) return;
+    const comment = { id: communityId(), nickname: nick, body, createdAt: new Date().toISOString() };
+    const next = posts.map((p) =>
+      p.id === postId ? { ...p, comments: [...(p.comments || []), comment] } : p);
+    if (save(next)) setCommentBody("");
+    writeLS(NICK_KEY, nick);
   };
 
-  const persistPosts = async (next) => {
-    /* 메모리 모드로 확정 → React 상태 자체가 저장소. 항상 성공. */
-    if (mode === "memory") {
-      return true;
-    }
-    /* 개인 모드로 확정 → 개인 저장 시도, 실패하면 메모리로 강등 */
-    if (mode === "personal") {
-      try {
-        await writePosts(next, false);
-        return true;
-      } catch (e) {
-        setMode("memory");
-        setStorageDiag(String((e && e.message) || e));
-        return true;
-      }
-    }
-    /* 아직 모름 → 공유 → 개인 → 메모리 순서로 시도 */
-    try {
-      await writePosts(next, true);
-      setMode("shared");
-      return true;
-    } catch (e1) {
-      try {
-        await writePosts(next, false);
-        setMode("personal");
-        return true;
-      } catch (e2) {
-        /* 양쪽 다 거부 → 세션 메모리 모드로 전환. 글은 화면에 남고,
-           아래 배너로 임시 보관 상태임을 알립니다. */
-        setMode("memory");
-        setStorageDiag(String((e2 && e2.message) || e2));
-        return true;
-      }
-    }
+  const removePost = (postId) => {
+    save(posts.filter((p) => p.id !== postId));
+    setOpenId(null);
   };
-
-  const rememberNickname = (v) => {
-    if (!storageOk) return;
-    try {
-      window.storage.set("community:my-nickname", v).catch(() => {});
-    } catch (e) { /* 무시 */ }
-  };
-
-  const submitPost = async () => {
-    if (!nickname.trim() || !newTitle.trim() || !newBody.trim() || busy) return;
-    setBusy(true);
-    const post = {
-      id: communityId(), nickname: nickname.trim(), title: newTitle.trim(), body: newBody.trim(),
-      createdAt: new Date().toISOString(), comments: [],
-    };
-    const next = [post, ...posts];
-    const ok = await persistPosts(next);
-    if (ok) { setPosts(next); setNewTitle(""); setNewBody(""); rememberNickname(nickname.trim()); }
-    setBusy(false);
-  };
-
-  const submitComment = async (postId) => {
-    if (!nickname.trim() || !commentBody.trim() || busy) return;
-    setBusy(true);
-    const comment = { id: communityId(), nickname: nickname.trim(), body: commentBody.trim(), createdAt: new Date().toISOString() };
-    const next = posts.map((p) => (p.id === postId ? { ...p, comments: [...p.comments, comment] } : p));
-    const ok = await persistPosts(next);
-    if (ok) { setPosts(next); setCommentBody(""); rememberNickname(nickname.trim()); }
-    setBusy(false);
+  const removeComment = (postId, commentId) => {
+    save(posts.map((p) => p.id === postId
+      ? { ...p, comments: (p.comments || []).filter((c) => c.id !== commentId) } : p));
   };
 
   const openPost = posts.find((p) => p.id === openId);
 
-  const memoryNotice = mode === "memory" && (
+  const errNotice = err && (
     <div className="mv-note" style={{ marginBottom: 12, borderLeft: "3px solid #C1440E" }}>
-      이 화면에서는 저장 공간 연결이 거부돼서{storageDiag ? ` (${storageDiag})` : ""}, 글이 <b>임시로만</b> 보관돼요.
-      이 창을 닫으면 사라집니다. 아티팩트를 <b>게시(퍼블리시)한 링크</b>에서 열면 정상 저장될 수 있어요.
+      저장에 실패했습니다 — {err}<br />
+      브라우저가 사생활 보호 모드이거나 저장 공간이 꽉 찬 경우입니다.
+      글은 화면에 남아 있지만 <b>창을 닫으면 사라집니다</b>.
     </div>
   );
-
-  if (loading) {
-    return <div className="mv-note">불러오는 중…</div>;
-  }
 
   if (openPost) {
     return (
@@ -2128,11 +2061,13 @@ function CommunityBoard() {
         <button className="mv-btn mv-ghost mv-sm" style={{ marginBottom: 16 }} onClick={() => setOpenId(null)}>
           ← 목록으로
         </button>
-
-        {memoryNotice}
+        {errNotice}
 
         <div className="mv-card mv-pad">
-          <div className="mv-eyebrow">{openPost.nickname} · {timeAgo(openPost.createdAt)}</div>
+          <div className="mv-between">
+            <div className="mv-eyebrow">{openPost.nickname} · {timeAgo(openPost.createdAt)}</div>
+            <button className="mv-btn mv-ghost mv-sm" onClick={() => removePost(openPost.id)}>삭제</button>
+          </div>
           <h3 style={{ fontSize: 21, fontWeight: 900, letterSpacing: "-.04em", marginTop: 6 }}>
             {openPost.title}
           </h3>
@@ -2142,16 +2077,20 @@ function CommunityBoard() {
         </div>
 
         <div style={{ marginTop: 24 }}>
-          <strong style={{ fontSize: 15 }}>댓글 {openPost.comments.length}개</strong>
+          <strong style={{ fontSize: 15 }}>댓글 {(openPost.comments || []).length}개</strong>
           <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
-            {openPost.comments.length === 0 && (
+            {(openPost.comments || []).length === 0 && (
               <div className="mv-note">아직 댓글이 없습니다. 첫 댓글을 남겨보세요.</div>
             )}
-            {openPost.comments.map((c) => (
+            {(openPost.comments || []).map((c) => (
               <div key={c.id} className="mv-card mv-pad" style={{ padding: 14 }}>
                 <div className="mv-between">
                   <b style={{ fontSize: 13.5 }}>{c.nickname}</b>
-                  <small style={{ color: "var(--ink-3)", fontSize: 12 }}>{timeAgo(c.createdAt)}</small>
+                  <span style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                    <small style={{ color: "var(--ink-3)", fontSize: 12 }}>{timeAgo(c.createdAt)}</small>
+                    <button className="mv-btn mv-ghost mv-sm" style={{ padding: "2px 8px", fontSize: 11 }}
+                      onClick={() => removeComment(openPost.id, c.id)}>삭제</button>
+                  </span>
                 </div>
                 <p style={{ fontSize: 14, marginTop: 6, color: "var(--ink-2)", whiteSpace: "pre-wrap" }}>
                   {c.body}
@@ -2166,7 +2105,7 @@ function CommunityBoard() {
             <textarea className="mv-in" style={{ height: "auto", minHeight: 80, padding: "12px 14px", resize: "vertical" }}
               placeholder="댓글을 남겨주세요" value={commentBody} onChange={(e) => setCommentBody(e.target.value)} />
             <button className="mv-btn mv-primary" style={{ width: "100%", marginTop: 10 }}
-              disabled={busy || !nickname.trim() || !commentBody.trim()}
+              disabled={!nickname.trim() || !commentBody.trim()}
               onClick={() => submitComment(openPost.id)}>
               댓글 등록
             </button>
@@ -2187,7 +2126,7 @@ function CommunityBoard() {
         <textarea className="mv-in" style={{ height: "auto", minHeight: 100, padding: "12px 14px", resize: "vertical" }}
           placeholder="같이 나누고 싶은 이야기를 적어주세요" value={newBody} onChange={(e) => setNewBody(e.target.value)} />
         <button className="mv-btn mv-primary" style={{ width: "100%", marginTop: 12 }}
-          disabled={busy || !nickname.trim() || !newTitle.trim() || !newBody.trim()}
+          disabled={!nickname.trim() || !newTitle.trim() || !newBody.trim()}
           onClick={submitPost}>
           등록
         </button>
@@ -2195,17 +2134,12 @@ function CommunityBoard() {
 
       <div className="mv-between" style={{ marginBottom: 12 }}>
         <strong style={{ fontSize: 16 }}>전체 글 {posts.length}개</strong>
-        <button className="mv-btn mv-ghost mv-sm" onClick={loadPosts}>새로고침</button>
+        <span style={{ fontSize: 12, color: "var(--ink-3)" }}>
+          댓글 {posts.reduce((a, p) => a + (p.comments || []).length, 0)}개
+        </span>
       </div>
 
-      {memoryNotice}
-
-      {mode === "personal" && (
-        <div className="mv-note" style={{ marginBottom: 12 }}>
-          지금 이 화면에서는 공유 저장이 막혀 있어서, 글이 <b>이 계정에만 보이게</b> 저장되고 있어요.
-          게시(퍼블리시)된 링크에서 열면 모두에게 공유되는 게시판으로 동작할 수 있습니다.
-        </div>
-      )}
+      {errNotice}
 
       <div className="mv-card">
         {posts.length === 0 && (
@@ -2215,7 +2149,7 @@ function CommunityBoard() {
           <button key={p.id} className="mv-listrow" onClick={() => setOpenId(p.id)}>
             <div className="mv-between">
               <strong>{p.title}</strong>
-              <span style={{ fontSize: 12, color: "var(--ink-3)" }}>댓글 {p.comments.length}</span>
+              <span style={{ fontSize: 12, color: "var(--ink-3)" }}>댓글 {(p.comments || []).length}</span>
             </div>
             <small>{p.nickname} · {timeAgo(p.createdAt)}</small>
           </button>
@@ -2223,11 +2157,11 @@ function CommunityBoard() {
       </div>
 
       <div className="mv-note" style={{ marginTop: 18 }}>
-        {mode === "memory"
-          ? "지금은 임시 보관 모드예요. 게시된 링크에서 열면 저장과 공유가 정상 동작할 수 있습니다."
-          : mode === "personal"
-          ? "지금은 개인 저장 모드예요. 닉네임은 기억해뒀다가 다음에 글 쓸 때 자동으로 채워드립니다."
-          : "이 게시판은 이 아티팩트를 쓰는 모든 사람에게 공유돼요. 닉네임은 기억해뒀다가 다음에 글 쓸 때 자동으로 채워드립니다."}
+        글과 댓글은 <b>이 브라우저에 저장</b>됩니다. 창을 닫았다 열어도 그대로 남아 있어요.<br />
+        <span style={{ color: "var(--ink-3)" }}>
+          다만 다른 사람 화면에는 보이지 않습니다 — 여럿이 같이 쓰는 게시판으로 만들려면
+          글을 받아 둘 서버가 따로 있어야 합니다.
+        </span>
       </div>
     </div>
   );
