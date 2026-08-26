@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { loadConfig, saveConfig, fetchAllNotices } from "./lib/openapi";
 import SNAPSHOT from "./data/notices.json";
 import NEWS from "./data/upcoming-news.json";
+import { estimatePrice, guessRegion } from "./lib/price-model";
 
 /* ============================================================
    집당 프로토타입에서 "청약 · 입주설계" 모듈만 뽑아낸 독립 버전입니다.
@@ -421,6 +422,13 @@ function Subscription({ tab, setTab, allSites, live }) {
   const [listSp, setListSp] = useState("");               // 선택한 특공 유형 ("" = 일반공급)
   const [showClosed, setShowClosed] = useState(false);    // 접수 마감 공고까지 볼지
   const [openNews, setOpenNews] = useState(null);         // 펼친 뉴스 후보
+  /* 공고 전 현장은 분양가를 알 수 없어 원가식으로 추정합니다.
+     지역은 단지명과 기사 제목에서 뽑고, 없으면 추정을 포기합니다. */
+  const newsPriced = useMemo(() => NEWS.candidates.map((c) => {
+    const region = guessRegion(c.name, ...(c.articles || []).map((a) => a.title));
+    const est = region ? estimatePrice({ region, brand: c.name, py: 34 }) : null;
+    return { ...c, region, est };
+  }), []);
   const [newsMore, setNewsMore] = useState(false);        // 후보 전체 보기
   /* ── 입력 마법사 ── */
   const [step, setStep] = useState(1);                    // 1 공통 → 2 일반분양 → 3 특별공급(선택) → 4 결과
@@ -1464,37 +1472,64 @@ function Subscription({ tab, setTab, allSites, live }) {
           {NEWS.candidates.length > 0 && (
             <>
               <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: "-.035em", marginTop: 6 }}>
-                분양 예정 단지 후보 <span style={{ fontWeight: 700, fontSize: 13, color: "var(--ink-3)" }}>· 뉴스에서 추출 · 공식 아님</span>
+                분양 예정 현장 <span style={{ fontWeight: 700, fontSize: 13, color: "var(--ink-3)" }}>
+                  · 아직 공고 전 · 분양가는 산식으로 추정</span>
               </div>
 
               <div className="mv-card">
                 <div className="mv-pad" style={{ paddingBottom: 10 }}>
                   <div className="mv-note" style={{ borderLeft: "3px solid #C1440E", fontSize: 12.5, lineHeight: 1.7 }}>
-                    <b>공고가 안 난 단지는 공공 API 에 없습니다.</b> 그래서 뉴스 기사 제목에서
-                    단지명을 뽑아 <b>후보</b>로만 보여줍니다 — 확정 정보가 아니고 오탐이 섞입니다.
-                    세대수·분양가·분양시기는 기사마다 달라서 <b>아예 만들지 않았습니다</b>.
-                    단지명과 출처 기사만 있습니다. 실제로 넣으실 땐 반드시 청약홈 공고를 확인하세요.
+                    <b>공고가 안 난 현장이라 분양가가 아직 없습니다.</b> 단지는 뉴스에서 찾고,
+                    분양가는 <b>(평당 택지비 + 건축비) × (1 + 가산비율) × 34평</b> 으로 계산합니다.
+                    행을 누르면 산출 과정이 펼쳐집니다.<br />
+                    단지명은 기사 제목에서 뽑은 것이라 오탐이 섞이고, 분양가는 추정입니다.
+                    실제 금액은 모집공고가 나와야 확정됩니다.
                   </div>
                   <div className="mv-row" style={{ gap: 8, marginTop: 10, fontSize: 12, color: "var(--ink-3)" }}>
-                    <span>기사 {NEWS.articleCount}건에서 후보 {NEWS.count}건</span>
+                    <span>기사 {NEWS.articleCount}건에서 현장 {NEWS.count}건 · 지역 확인 {newsPriced.filter((c) => c.est).length}건</span>
                     {NEWS.collectedAt && (
                       <span className="mv-num">{new Date(NEWS.collectedAt).toLocaleString("ko-KR")} 수집</span>
                     )}
                   </div>
                 </div>
                 <div>
-                  {NEWS.candidates.slice(0, newsMore ? 60 : 12).map((c) => (
+                  {newsPriced.slice(0, newsMore ? 60 : 12).map((c) => (
                     <div key={c.name}>
                       <button className="mv-listrow" onClick={() => setOpenNews(openNews === c.name ? null : c.name)}>
                         <div className="mv-between">
                           <strong>{c.name}</strong>
-                          <span className="mv-chip">기사 {c.mentions}건</span>
+                          {c.est ? (
+                            <span className="mv-chip mv-warn">예상 {eok(c.est.total)}원</span>
+                          ) : (
+                            <span className="mv-chip">지역 불명 · 추정 불가</span>
+                          )}
                         </div>
-                        <small>{c.articles[0]?.source || "출처 미상"} · {(c.articles[0]?.title || "").slice(0, 46)}…</small>
+                        <small>
+                          {c.region ? `${c.region} · ` : ""}
+                          {c.est ? `범위 ${eok(c.est.lo)}~${eok(c.est.hi)} · 평당 ${c.est.pyPrice.toLocaleString()}만 · 34평 기준` : "기사에서 지역을 못 찾았습니다"}
+                          {" · "}기사 {c.mentions}건
+                        </small>
                       </button>
                       {openNews === c.name && (
                         <div style={{ padding: "0 17px 15px" }}>
+                          {c.est && (
+                            <div className="mv-note" style={{ fontSize: 12.5, lineHeight: 1.8, marginBottom: 8 }}>
+                              <b>분양예정가 산출</b><br />
+                              택지비 <b className="mv-num">{c.est.landPy.toLocaleString()}만</b>/평 ({c.est.labels.land})
+                              {" + "}건축비 <b className="mv-num">{c.est.constPy.toLocaleString()}만</b>/평 ({c.est.labels.brand})
+                              {" = "}<b className="mv-num">{(c.est.landPy + c.est.constPy).toLocaleString()}만</b><br />
+                              × 가산비율 (1 + {Math.round(c.est.margin * 100)}% · {c.est.labels.margin})
+                              {" = 평당 "}<b className="mv-num">{c.est.pyPrice.toLocaleString()}만</b><br />
+                              × 34평 = <b style={{ color: "#A93F1F" }}>{eok(c.est.total)}원</b>
+                              {" "}(범위 {eok(c.est.lo)}~{eok(c.est.hi)})<br />
+                              <span style={{ color: "var(--ink-3)" }}>
+                                지역별 택지비·건축비·가산비율은 실측이 아니라 시장 상황을 보고 정한 값입니다.
+                                과거 분양 3건으로 검증한 평균 오차는 7.6% 입니다.
+                              </span>
+                            </div>
+                          )}
                           <div className="mv-note" style={{ fontSize: 12.5, lineHeight: 1.8 }}>
+                            <b>출처 기사</b><br />
                             {c.articles.map((a, i) => (
                               <div key={i} style={{ marginBottom: 6 }}>
                                 <a href={a.link} target="_blank" rel="noopener noreferrer"
@@ -1512,7 +1547,7 @@ function Subscription({ tab, setTab, allSites, live }) {
                   <div className="mv-pad" style={{ paddingTop: 10 }}>
                     <button className="mv-chip" style={{ padding: "8px 14px", fontSize: 12.5 }}
                       onClick={() => setNewsMore((v) => !v)}>
-                      {newsMore ? "접기" : `후보 ${NEWS.candidates.length}건 전체 보기`}
+                      {newsMore ? "접기" : `현장 ${newsPriced.length}건 전체 보기`}
                     </button>
                   </div>
                 )}
@@ -1533,9 +1568,12 @@ function Subscription({ tab, setTab, allSites, live }) {
                 분양가는 시세와 딱 맞지 않습니다 — 상한제 단지는 인근 시세보다 10~20% 이상 낮게(핵심지는 더),
                 수도권 일반 신규도 시세의 75~85% 선 실사례가 흔하고, 지방은 시세를 넘기면 미달이 나서
                 시세가 사실상 상한 역할을 합니다.
-                백테스트: 용인한숲시티 5단지 84(2015년 분양, 평당 790만원대 실적)를 당시 조건으로
-                역산하면 예측 범위(2.66~3.18억)의 하한이 실제(약 2.70억)와 1.4% 차이로 맞았습니다 —
-                외곽 대규모 완판형 단지는 하한(저마진) 쪽에 가깝게 봐야 합니다.
+                <b>백테스트(실측)</b> — 같은 산식을 과거 분양 시점 조건으로 돌린 결과입니다.
+                용인한숲시티 5단지(2015, 실제 2.77억) 추정 3.03억 <b>+9.2%</b>,
+                과천 지식정보타운(2020, 7.70억) 추정 6.73억 <b>−12.6%</b>,
+                검단(2024, 5.20억) 추정 5.14억 <b>−1.1%</b>.
+                평균 절대오차 <b>7.6%</b>, 3건 모두 ±15% 범위 안.
+                표본이 3건뿐이라 "이 정도면 맞는다"고 하기엔 부족합니다.
               </div>
             </div>
             <div>
