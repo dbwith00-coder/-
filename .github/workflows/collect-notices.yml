@@ -1,0 +1,73 @@
+name: 분양공고 수집
+
+# 공공데이터 API 는 브라우저에서 직접 못 부르고(CORS), 아티팩트에서도 못 부릅니다(CSP).
+# GitHub 러너는 나갈 수 있으므로 여기서 받아 data/ 에 커밋해 둡니다.
+
+on:
+  workflow_dispatch:
+    inputs:
+      odc_path:
+        description: "odcloud 오퍼레이션 경로 (Swagger stage 37000 에서 확인). 비우면 LH만 수집"
+        required: false
+        default: ""
+      rows:
+        description: "조회 건수"
+        required: false
+        default: "100"
+  schedule:
+    - cron: "0 21 * * *"   # 매일 06:00 KST
+    - cron: "0 3 * * *"    # 매일 12:00 KST
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-notices
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 인증키 확인
+        env:
+          KEY: ${{ secrets.ODCLOUD_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "::error::저장소 시크릿 ODCLOUD_KEY 가 없습니다. Settings → Secrets and variables → Actions 에서 등록하세요."
+            exit 1
+          fi
+          echo "인증키 길이: ${#KEY}자"
+
+      - name: 공고 수집
+        env:
+          ODCLOUD_KEY: ${{ secrets.ODCLOUD_KEY }}
+          ODC_PATH: ${{ inputs.odc_path }}
+          ROWS: ${{ inputs.rows || '100' }}
+        run: node scripts/collect.js
+
+      - name: 변경분 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "변경 없음 — 커밋 생략"
+          else
+            git commit -m "chore(data): 분양공고 수집 $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
+
+      - name: 수집 결과 아티팩트 업로드
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: notices-${{ github.run_number }}
+          path: data/
+          if-no-files-found: warn
