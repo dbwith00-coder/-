@@ -12,6 +12,9 @@
       모든 단지에서 맞는다는 뜻이 아닙니다.
    ============================================================ */
 
+import { PY_PRICE_REGIONS, PY_PRICE_FINE, PY_PRICE_ALIAS, PY_PRICE_ALIAS_FINE,
+         PY_PRICE_META } from "../data/py-price.js";
+
 /* ── 1. 평당 택지비 (만원, 2026년 기준) ─────────────────────
    추정 결과를 가장 크게 흔드는 값입니다. 위에서부터 먼저 걸리는 것을 씁니다. */
 export const LAND_PY = [
@@ -74,33 +77,116 @@ const pick = (table, text, fallback) => {
 };
 
 /* ── 추정 ───────────────────────────────────────────────────
-   region  지역 문자열(단지명·주소 등 아무거나 — 정규식으로 훑습니다)
+   평당가는 **실측 테이블**(청약홈 실제 분양가에서 뽑은 시군구별 중앙값)을
+   1순위로 씁니다. 표에 없는 지역만 원가식으로 떨어집니다.
+
+   화면에는 "택지비 + 건축비 × (1+가산비율)" 형태로 보여줘야 하므로,
+   평당가에서 건축비·가산비율을 거꾸로 빼서 택지비를 역산해 표시합니다.
+   숫자를 지어내는 게 아니라 같은 값을 다른 형태로 보여주는 것뿐입니다.
+
+   region  지역 문자열(단지명·주소 등)
    brand   브랜드/시공사 문자열
    py      공급면적(평). 기본 34평(전용 84㎡)
    year    분양 시점. 기본 2026
    capped  분양가상한제 여부
 */
 export function estimatePrice({ region = "", brand = "", py = 34, year = 2026, capped = false } = {}) {
-  const [land2026, landLabel] = pick(
-    [...LAND_PY, LAND_CITY], region, LAND_DEFAULT);
   const [tier, tierLabel] = pick(BRAND_TIER, `${brand} ${region}`, BRAND_DEFAULT);
   const [margin, marginLabel] = marginFor({ region, capped });
-
-  /* 시점 보정 — 2026 기준값을 해당 연도로 되돌립니다 */
-  const landPy = Math.round(land2026 * (idx(LAND_INDEX, year) / idx(LAND_INDEX, 2026)));
   const constPy = Math.round(CONST_PY_BASE * tier * (idx(CONST_INDEX, year) / idx(CONST_INDEX, 2026)));
 
-  const pyPrice = Math.round((landPy + constPy) * (1 + margin));
+  /* 1순위 — 실측 시군구 평당가 */
+  const hit = lookupRegion(region);
+  let pyPrice, landPy, source, landLabel;
+  if (hit) {
+    const adj = idx(LAND_INDEX, year) / idx(LAND_INDEX, 2026);   /* 과거 시점이면 되돌림 */
+    pyPrice = Math.round(hit.pyPrice * adj);
+    landPy = Math.max(0, Math.round(pyPrice / (1 + margin) - constPy));
+    source = "실측";
+    landLabel = `${hit.key} 실적 ${hit.n}건`;
+  } else {
+    /* 2순위 — 지역 표에도 없으면 원가식 */
+    const [land2026, label] = pick([...LAND_PY, LAND_CITY], region, LAND_DEFAULT);
+    landPy = Math.round(land2026 * (idx(LAND_INDEX, year) / idx(LAND_INDEX, 2026)));
+    pyPrice = Math.round((landPy + constPy) * (1 + margin));
+    source = "원가식";
+    landLabel = label;
+  }
+
   const total = Math.round(pyPrice * py);
-
-  /* 단일 숫자로 내밀면 확정처럼 보입니다. ±15% 범위를 함께 냅니다. */
-  const lo = Math.round(total * 0.85);
-  const hi = Math.round(total * 1.15);
-
+  /* 범위는 임의로 정하지 않고 실측 오차 분위수를 씁니다 */
+  const band = (PY_PRICE_META?.stats?.p80 ?? 15) / 100;
   return {
-    landPy, constPy, margin, pyPrice, total, lo, hi, py, year,
+    landPy, constPy, margin, pyPrice, total, py, year, source,
+    lo: Math.round(total * (1 - band)),
+    hi: Math.round(total * (1 + band)),
+    bandPct: Math.round(band * 100),
     labels: { land: landLabel, brand: tierLabel, margin: marginLabel },
   };
+}
+
+/* 기사에 자주 나오는 동·역세권 이름 → 시군구.
+   실측 표는 시군구 단위라 이 다리가 없으면 "반포"가 강남권 원가식으로 떨어집니다. */
+export const DONG_TO_SGG = {
+  반포: "서울특별시 서초구", 잠원: "서울특별시 서초구", 방배: "서울특별시 서초구",
+  압구정: "서울특별시 강남구", 청담: "서울특별시 강남구", 개포: "서울특별시 강남구",
+  대치: "서울특별시 강남구", 도곡: "서울특별시 강남구",
+  잠실: "서울특별시 송파구", 문정: "서울특별시 송파구",
+  성수: "서울특별시 성동구", 왕십리: "서울특별시 성동구",
+  서울대입구: "서울특별시 관악구", 봉천: "서울특별시 관악구",
+  흑석: "서울특별시 동작구", 노량진: "서울특별시 동작구", 상도: "서울특별시 동작구",
+  여의도: "서울특별시 영등포구", 신길: "서울특별시 영등포구",
+  홍은: "서울특별시 서대문구", 충정로: "서울특별시 서대문구",
+  월계: "서울특별시 노원구", 중화: "서울특별시 중랑구", 강일: "서울특별시 강동구",
+  서면: "부산광역시 부산진구", 연산: "부산광역시 연제구", 당리: "부산광역시 사하구",
+  대연: "부산광역시 남구", 문현: "부산광역시 남구", 해운대: "부산광역시 해운대구",
+  첨단: "광주광역시 광산구", 둔산: "대전광역시 서구",
+  두정: "충청남도 천안시", 백석: "충청남도 천안시", 탕정: "충청남도 아산시",
+  동탄: "경기도 화성시", 판교: "경기도 성남시", 분당: "경기도 성남시",
+  위례: "경기도 하남시", 풍무: "경기도 김포시", 신곡: "경기도 의정부시",
+  은계: "경기도 시흥시", 대야: "경기도 시흥시", 오남: "경기도 남양주시",
+  상동: "경기도 부천시", 소사: "경기도 부천시", 남사: "경기도 용인시 처인구",
+  처인: "경기도 용인시 처인구", 수지: "경기도 용인시 수지구", 기흥: "경기도 용인시 기흥구",
+  검단: "인천광역시 서구", 청라: "인천광역시 서구", 검암: "인천광역시 서구",
+  송도: "인천광역시 연수구", 학익: "인천광역시 미추홀구",
+  판문: "경상남도 진주시", 이현: "경상남도 진주시",
+};
+const ALIAS_KEYS = Object.keys(PY_PRICE_ALIAS).sort((a, b) => b.length - a.length);
+const FINE_KEYS = Object.keys(PY_PRICE_ALIAS_FINE).sort((a, b) => b.length - a.length);
+
+/* 지역 단어("천안", "반포")를 실측 시군구 키로 연결합니다 */
+export function lookupRegion(text) {
+  const t = String(text || "");
+  if (!t) return null;
+  /* 구 단위가 가장 정확합니다 — "경기도 용인시 처인구" 처럼 통째로 온 경우 */
+  const three = t.split(/\s+/).slice(0, 3).join(" ");
+  if (PY_PRICE_FINE[three]) return { key: three, ...PY_PRICE_FINE[three] };
+  if (PY_PRICE_REGIONS[t]) return { key: t, ...PY_PRICE_REGIONS[t] };
+  /* "처인", "수지" 같은 구 이름 */
+  for (const word of FINE_KEYS) {
+    if (t.includes(word)) {
+      const r = PY_PRICE_FINE[PY_PRICE_ALIAS_FINE[word]];
+      if (r) return { key: PY_PRICE_ALIAS_FINE[word], word, ...r };
+    }
+  }
+  /* 동 단위 지명은 시군구로 먼저 바꿉니다 (표는 시군구 단위입니다) */
+  for (const [dong, sgg] of Object.entries(DONG_TO_SGG)) {
+    if (t.includes(dong)) {
+      const r = PY_PRICE_FINE[sgg] || PY_PRICE_REGIONS[sgg];
+      if (r) return { key: sgg, word: dong, ...r };
+    }
+  }
+  /* 별칭은 긴 것부터 — "부천" 이 "부"보다 먼저 걸려야 합니다 */
+  for (const word of ALIAS_KEYS) {
+    if (t.includes(word)) {
+      const r = PY_PRICE_REGIONS[PY_PRICE_ALIAS[word]];
+      if (r) return { key: PY_PRICE_ALIAS[word], word, ...r };
+    }
+  }
+  /* "경기도 부천시 원미구" 처럼 앞 두 토큰이 키인 경우 */
+  const two = t.split(/\s+/).slice(0, 2).join(" ");
+  if (PY_PRICE_REGIONS[two]) return { key: two, ...PY_PRICE_REGIONS[two] };
+  return null;
 }
 
 /* 단지명·기사 제목에서 지역 힌트를 뽑습니다 (뉴스 후보에는 주소가 없습니다) */

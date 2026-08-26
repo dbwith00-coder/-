@@ -8,11 +8,13 @@
       아래 케이스들은 price-model.js 를 손대지 않은 상태로 돌립니다.
    ============================================================ */
 
+import fs from "node:fs";
 import { estimatePrice } from "../src/lib/price-model.js";
+import { PY_PRICE_META } from "../src/data/py-price.js";
 
 /* 실제 분양 사례 — 공개 보도된 값 */
 const CASES = [
-  { n: "e편한세상 용인한숲시티 5단지", region: "용인 처인 남사", brand: "e편한세상",
+  { n: "e편한세상 용인한숲시티 5단지", region: "남사", brand: "e편한세상",
     year: 2015, py: 34, capped: false, actual: 27700,
     src: "2015.10 분양 · 84㎡ 약 2억 7,700만원 · 평당 790만원대" },
   { n: "과천 지식정보타운 (지정타)", region: "과천", brand: "일반",
@@ -46,6 +48,13 @@ for (const c of CASES) {
 }
 
 console.log("\n" + "─".repeat(74));
-console.log(`평균 절대오차 ${(sumAbs / CASES.length).toFixed(1)}% · 범위 적중 ${hit}/${CASES.length}`);
-console.log("\n※ 지역별 택지비·건축비·가산비율은 실측이 아니라 시장 상황을 보고 정한 값입니다.");
-console.log("   백테스트가 맞았다고 해서 다른 단지에서도 맞는다는 뜻은 아닙니다.");
+console.log(`과거 사례 ${CASES.length}건 — 평균 절대오차 ${(sumAbs / CASES.length).toFixed(1)}% · 범위 적중 ${hit}/${CASES.length}`);
+console.log("과거 사례는 표본이 적고 시점 보정 지수까지 얹혀 있어 참고용입니다.\n");
+
+/* 진짜 성능은 "지금 공고" 를 맞히는 정확도입니다 — 표본이 훨씬 많습니다 */
+const m = PY_PRICE_META.stats;
+console.log("─".repeat(74));
+console.log(`현재 공고 실측 대조 — 관측 ${PY_PRICE_META.samples}건 / 공고 ${PY_PRICE_META.notices}건`);
+console.log(`  평균 절대오차 ${m.mae}% · 중앙 ${m.p50}% · 80분위 ${m.p80}% · 90분위 ${m.p90}%`);
+for (const [b, v] of Object.entries(m.within)) console.log(`  ±${String(b).padStart(2)}% 안에 ${v}%`);
+console.log(`\n표시 범위는 80분위(±${m.p80}%)를 씁니다 — 임의로 정한 값이 아닙니다.`);

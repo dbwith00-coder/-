@@ -3,6 +3,7 @@ import { loadConfig, saveConfig, fetchAllNotices } from "./lib/openapi";
 import SNAPSHOT from "./data/notices.json";
 import NEWS from "./data/upcoming-news.json";
 import { estimatePrice, guessRegion } from "./lib/price-model";
+import { PY_PRICE_META as PRICE_META } from "./data/py-price.js";
 
 /* ============================================================
    집당 프로토타입에서 "청약 · 입주설계" 모듈만 뽑아낸 독립 버전입니다.
@@ -227,7 +228,6 @@ const SITES = SNAPSHOT.sites;
 const PRE_SITES = [
   { id: "p1", supply: "민영", n: "아크메르 동탄", gu: "경기 화성시 반송동(동탄1)", brand: "주상복합 · 하이엔드",
     when: "2026.4분기~2027 상반기 공고 예정", land: 1200, constCost: 1100, margin: 0.30, py: 34,
-    marketEst: 120000, marketBasis: "시장 예상 컨센서스 11~13억(일부 15억설)의 중심값 · 전용 84 기준",
     note: "메타폴리스 2단계 부지, 약 1,800세대 최고 49층. 실제 분양가는 주변 시세·분양시장 상황을 종합해 결정됩니다." },
 ];
 
@@ -594,36 +594,31 @@ function Subscription({ tab, setTab, allSites, live }) {
   const rightSites = mine
     .filter((s) => s.status === "접수 중" || (showClosed && s.status === "접수 마감"))
     .sort((a, b) => statusRank(a) - statusRank(b) || byCut(a, b));
-  /* 분양공고 전 단지: 원가식(하한 성격)과 시세·시장예상(marketEst)을 결합해 범위로 추정.
-     대표값(estMid) = 두 값의 중간(50:50). 시세 근거가 없으면 원가식 단일값. */
   /* 공고는 났고 접수가 아직 시작되지 않은 공고 — 접수 시작일 빠른 순.
-     분양가·세대수는 공고에 이미 확정돼 있어서 추정이 아닙니다. */
-  /* 곧 열리는 공고는 전국에 몇 건 안 되므로 민영·공공을 같이 봅니다.
-     공급유형으로 좁히면 4건 중 3건이 숨겨져서 "다가올 공고" 구실을 못 합니다.
+     곧 열리는 공고는 전국에 몇 건 안 되므로 민영·공공을 같이 봅니다.
      무순위·잔여세대는 아래 전용 섹션이 있어 제외합니다. */
   const upcoming = scored
-    .filter((s) => s.status === "접수 예정")
-    .filter((s) => inArea(s, listRegion))
-    .sort((a, b) => String(a.rceptStart || "9999").localeCompare(String(b.rceptStart || "9999")));
+    .filter((x) => x.status === "접수 예정")
+    .filter((x) => inArea(x, listRegion))
+    .sort((a2, b2) => String(a2.rceptStart || "9999").localeCompare(String(b2.rceptStart || "9999")));
   /* 무순위·잔여세대 */
   const noScoreSites = allSites
-    .filter((s) => s.scoreless)
-    .filter((s) => showClosed || s.status !== "접수 마감")
-    .filter((s) => inArea(s, listRegion))
-    .sort((a, b) => s2r(a) - s2r(b) || String(b.when).localeCompare(String(a.when)));
+    .filter((x) => x.scoreless)
+    .filter((x) => showClosed || x.status !== "접수 마감")
+    .filter((x) => inArea(x, listRegion))
+    .sort((a2, b2) => s2r(a2) - s2r(b2) || String(b2.when).localeCompare(String(a2.when)));
+
+  /* 공고 전 단지 — 시세 혼합을 걷어내고 산식 하나로만 계산합니다.
+     절반씩 섞으면 원가 추정인지 시세 반영인지 알 수 없어지고 검증도 안 됩니다. */
   const rightPre = PRE_SITES
-    .filter((s) => s.supply === supplyType)
-    .filter((s) => inArea(s, listRegion))
-    .map((s) => {
-      const pyPrice = Math.round((s.land + s.constCost) * (1 + s.margin));
-      const costTotal = pyPrice * s.py;
-      const hasMarket = typeof s.marketEst === "number";
-      const estLo = hasMarket ? Math.min(costTotal, s.marketEst) : costTotal;
-      const estHi = hasMarket ? Math.max(costTotal, s.marketEst) : costTotal;
-      const estMid = hasMarket ? Math.round((costTotal + s.marketEst) / 2) : costTotal;
-      return { ...s, pyPrice, costTotal, hasMarket, estLo, estHi, estMid };
+    .filter((x) => x.supply === supplyType)
+    .filter((x) => inArea(x, listRegion))
+    .map((x) => {
+      const est = estimatePrice({ region: `${x.gu} ${x.n}`, brand: x.n, py: x.py });
+      const manualPy = Math.round((x.land + x.constCost) * (1 + x.margin));
+      return { ...x, est, manualPy, manualTotal: manualPy * x.py };
     })
-    .sort((a, b) => a.estMid - b.estMid);
+    .sort((a2, b2) => a2.est.total - b2.est.total);
   const [openPre, setOpenPre] = useState(null); // 산출 과정 펼친 공고전 단지 id
   /* 프로필을 바꿔서 자격이 사라진 특공 유형이 선택된 채 남지 않도록 */
   const activeSp = listSp && specialFit.some((x) => x.k === listSp && x.ok === true) ? listSp : "";
@@ -1562,18 +1557,16 @@ function Subscription({ tab, setTab, allSites, live }) {
           <div className="mv-card">
             <div className="mv-pad" style={{ paddingBottom: 10 }}>
               <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.7 }}>
-                아직 공고가 안 난 단지는 API 에 없어서, <b>택지비·건축비·가산비율을 직접 넣어</b> 원가식으로
-                계산하고 시장 예상과 결합해 범위로 추정합니다. 아래는 그렇게 넣어둔 단지입니다 —
-                수집된 실제 공고가 아니라 <b>추정치</b>입니다. 행을 누르면 산출 과정이 펼쳐집니다.<br />
-                분양가는 시세와 딱 맞지 않습니다 — 상한제 단지는 인근 시세보다 10~20% 이상 낮게(핵심지는 더),
-                수도권 일반 신규도 시세의 75~85% 선 실사례가 흔하고, 지방은 시세를 넘기면 미달이 나서
-                시세가 사실상 상한 역할을 합니다.
-                <b>백테스트(실측)</b> — 같은 산식을 과거 분양 시점 조건으로 돌린 결과입니다.
-                용인한숲시티 5단지(2015, 실제 2.77억) 추정 3.03억 <b>+9.2%</b>,
-                과천 지식정보타운(2020, 7.70억) 추정 6.73억 <b>−12.6%</b>,
-                검단(2024, 5.20억) 추정 5.14억 <b>−1.1%</b>.
-                평균 절대오차 <b>7.6%</b>, 3건 모두 ±15% 범위 안.
-                표본이 3건뿐이라 "이 정도면 맞는다"고 하기엔 부족합니다.
+                아직 공고가 안 난 단지는 분양가가 없어서 산식으로 추정합니다.
+                <b>시세는 섞지 않습니다</b> — 절반씩 섞으면 원가 추정인지 시세 반영인지
+                알 수 없어지고 검증도 안 됩니다.<br />
+                평당가는 <b>청약홈 실제 분양가 {PRICE_META.samples.toLocaleString()}건</b>(공고 {PRICE_META.notices}건)에서
+                뽑은 시군구·구 단위 중앙값을 씁니다. 표에 없는 지역만 원가식으로 계산합니다.
+                실측 대조 결과 <b>평균 절대오차 {PRICE_META.stats.mae}%</b> ·
+                중앙 {PRICE_META.stats.p50}% · ±15% 안에 {PRICE_META.stats.within[15]}%.
+                표시 범위는 임의값이 아니라 <b>80분위(±{PRICE_META.stats.p80}%)</b>입니다.<br />
+                과거 시점 백테스트: 과천 지정타(2020) <b>+9.1%</b>, 검단(2024) <b>+14.3%</b>,
+                용인한숲시티(2015) <b>+23.5%</b> — 오래된 건은 시점 보정 지수가 얹혀 오차가 커집니다.
               </div>
             </div>
             <div>
@@ -1582,23 +1575,28 @@ function Subscription({ tab, setTab, allSites, live }) {
                   <button className="mv-listrow" onClick={() => setOpenPre(openPre === s.id ? null : s.id)}>
                     <div className="mv-between">
                       <strong>{s.n}</strong>
-                      <span className="mv-chip mv-warn">예측 {eok(s.estMid)}원{s.hasMarket ? "" : " (원가식만)"}</span>
+                      <span className="mv-chip mv-warn">예상 {eok(s.est.total)}원</span>
                     </div>
-                    <small>{s.gu} · {s.hasMarket ? `범위 ${eok(s.estLo)}~${eok(s.estHi)}` : `평당 ${s.pyPrice.toLocaleString()}만 · 시세 근거 미확보`} · {s.py}평 기준 · {s.when}</small>
+                    <small>
+                      {s.gu} · 범위 {eok(s.est.lo)}~{eok(s.est.hi)} · 평당 {s.est.pyPrice.toLocaleString()}만 ·
+                      {" "}{s.py}평 기준 · {s.when}
+                    </small>
                   </button>
                   {openPre === s.id && (
                     <div style={{ padding: "0 17px 15px" }}>
                       <div className="mv-note" style={{ fontSize: 12.5, lineHeight: 1.8 }}>
-                        택지비 {s.land.toLocaleString()} + 건축비 {s.constCost.toLocaleString()} = 평당 원가 <b className="mv-num">{(s.land + s.constCost).toLocaleString()}만</b><br />
-                        × 가산비율 (1 + {Math.round(s.margin * 100)}%) = 평당 <b className="mv-num">{s.pyPrice.toLocaleString()}만</b><br />
-                        × {s.py}평 = 원가식 <b className="mv-num">{eok(s.costTotal)}원</b><br />
-                        {s.hasMarket ? (
-                          <>시세 기반 <b className="mv-num">{eok(s.marketEst)}원</b> — {s.marketBasis}<br />
-                          <b style={{ color: "#A93F1F" }}>종합 예측 {eok(s.estLo)}~{eok(s.estHi)}원 · 대표 {eok(s.estMid)}원</b> (원가·시세 50:50)<br /></>
-                        ) : (
-                          <><b style={{ color: "#A93F1F" }}>시세 근거 미확보 — 원가식 단일 추정 {eok(s.costTotal)}원</b><br /></>
-                        )}
-                        <span style={{ color: "var(--ink-3)" }}>{s.note}</span>
+                        <b>산식 ({s.est.source})</b><br />
+                        택지비 <b className="mv-num">{s.est.landPy.toLocaleString()}만</b>/평 ({s.est.labels.land})
+                        {" + "}건축비 <b className="mv-num">{s.est.constPy.toLocaleString()}만</b>/평 ({s.est.labels.brand})<br />
+                        × 가산비율 (1 + {Math.round(s.est.margin * 100)}% · {s.est.labels.margin})
+                        {" = 평당 "}<b className="mv-num">{s.est.pyPrice.toLocaleString()}만</b><br />
+                        × {s.py}평 = <b style={{ color: "#A93F1F" }}>{eok(s.est.total)}원</b>
+                        {" "}(범위 ±{s.est.bandPct}% · {eok(s.est.lo)}~{eok(s.est.hi)})<br />
+                        <span style={{ color: "var(--ink-3)" }}>
+                          직접 넣은 변수(택지비 {s.land.toLocaleString()} + 건축비 {s.constCost.toLocaleString()},
+                          {" "}가산 {Math.round(s.margin * 100)}%)로 계산하면 평당 {s.manualPy.toLocaleString()}만 ·
+                          {" "}{eok(s.manualTotal)}원입니다.<br />{s.note}
+                        </span>
                       </div>
                     </div>
                   )}
