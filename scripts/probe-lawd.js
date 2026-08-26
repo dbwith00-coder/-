@@ -85,32 +85,63 @@ for (const [name, url] of DATASETS) {
 }
 
 /* ── ③ 실거래가 API 로 코드를 직접 훑기 ────────────────────
-   유효한 코드면 지역명이 응답에 들어옵니다. 한 시도만 재 봅니다.
-   전체를 돌 가치가 있는지(=시간·호출수)를 여기서 판단합니다. */
-console.log("\n③ 코드 훑기 실현성 — 서울(11xxx) 250개만 시험");
+   유효한 코드면 응답에 지역명(estateAgentSggNm)이 들어옵니다.
+   앞 시도에서 250회를 6.5초에 끝내고 0개를 찾은 건 너무 빨랐다는 뜻 —
+   전부 거부당하고 빈 catch 에 먹힌 것으로 보입니다.
+   이번엔 동시 3, 실패 사유를 남기고, 서울 실제 구 코드 대역만 훑습니다. */
+console.log("\n③ 코드 훑기 — 서울 11110~11380 (271개), 동시 3, 실패 사유 기록");
 const found = {};
+const errs = {};
 let calls = 0, t0 = Date.now();
 const codes = [];
-for (let i = 0; i < 250; i++) codes.push(`11${String(i).padStart(3, "0")}`);
+for (let i = 11110; i <= 11380; i++) codes.push(String(i));
 const queue = [...codes];
-await Promise.all(Array.from({ length: 10 }, async () => {
+await Promise.all(Array.from({ length: 3 }, async () => {
   while (queue.length) {
     const code = queue.shift();
     try {
       const r = await get(tradeUrl("RTMSDataSvcAptTrade/getRTMSDataSvcAptTrade", code), 15000);
       calls++;
       const j = (() => { try { return JSON.parse(r.text); } catch { return null; } })();
+      if (!j) { errs[short(r.text, 60)] = (errs[short(r.text, 60)] || 0) + 1; continue; }
+      const hdr = j?.response?.header?.resultCode ?? j?.OpenAPI_ServiceResponse?.cmmMsgHeader?.errMsg;
+      if (hdr && !/^0+$/.test(String(hdr))) { errs[String(hdr)] = (errs[String(hdr)] || 0) + 1; continue; }
       const it = j?.response?.body?.items?.item;
       const one = Array.isArray(it) ? it[0] : it;
       if (one?.estateAgentSggNm) found[code] = String(one.estateAgentSggNm).trim();
-    } catch { /* 무시 */ }
+    } catch (e) {
+      const k = String(e?.message || e).slice(0, 50);
+      errs[k] = (errs[k] || 0) + 1;
+    }
+    await sleep(40);
   }
 }));
 const secs = ((Date.now() - t0) / 1000).toFixed(1);
-out.scan = { tried: codes.length, calls, found, secs: +secs };
+out.scan = { tried: codes.length, calls, found, errs, secs: +secs };
 console.log(`   ${calls}회 호출 ${secs}초 · 찾은 코드 ${Object.keys(found).length}개`);
-console.log("   " + Object.entries(found).slice(0, 30).map(([c, n]) => `${c}=${n}`).join("  "));
-console.log(`\n   전국(17개 시도 × 1000) 환산: 약 ${Math.round(17000 / calls * secs / 60)}분 · 17,000회 호출`);
+console.log("   " + Object.entries(found).map(([c, n]) => `${c}=${n}`).join("  "));
+if (Object.keys(errs).length) {
+  console.log("   실패 사유:");
+  for (const [k, v] of Object.entries(errs).slice(0, 6)) console.log(`     ${v}회 · ${k}`);
+}
+const per = calls ? Number(secs) / calls : 0;
+console.log(`   전국 환산(17개 시도 × 1000): 약 ${Math.round(17000 * per / 60)}분 · 17,000회 호출`);
+
+/* ── ④ 화성시가 왜 0건인지 — 2025년에 구가 생겼습니다 ────── */
+console.log("\n④ 화성시 구 신설 확인 (41590 이 0건이었습니다)");
+out.hwaseong = {};
+for (const code of ["41590", "41591", "41592", "41593", "41594", "41595"]) {
+  try {
+    const r = await get(tradeUrl("RTMSDataSvcAptTrade/getRTMSDataSvcAptTrade", code), 15000);
+    const j = (() => { try { return JSON.parse(r.text); } catch { return null; } })();
+    const it = j?.response?.body?.items?.item;
+    const one = Array.isArray(it) ? it[0] : it;
+    const total = j?.response?.body?.totalCount ?? "?";
+    out.hwaseong[code] = { total, name: one?.estateAgentSggNm ?? "" };
+    console.log(`   ${code}  totalCount=${String(total).padStart(4)}  ${one?.estateAgentSggNm ?? ""}`);
+  } catch (e) { console.log(`   ${code}  ✗ ${String(e.message).slice(0, 40)}`); }
+  await sleep(150);
+}
 
 fs.mkdirSync("data", { recursive: true });
 fs.writeFileSync("data/probe-lawd.json", JSON.stringify(out, null, 2));
