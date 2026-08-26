@@ -52,6 +52,31 @@ const later = await p.innerText("body");
 t("진행 중 에러 없음", errs.length === 0, errs.slice(0, 2).join(" | "));
 t("분양 관련 화면 도달", /공고|분양가|접수/.test(later));
 
+/* ── 동봉한 소스 코드 ──────────────────────────────────────
+   합치면서 HTML 이스케이프가 깨지면 코드가 잘려 나가거나 페이지가
+   망가집니다. 실제로 펼쳐서 내용이 온전한지 봅니다. */
+await p.goto("file://" + file, { waitUntil: "load" });
+await p.waitForTimeout(1500);
+const srcEl = await p.$("#src");
+t("소스 코드 섹션 존재", !!srcEl);
+if (srcEl) {
+  const summary = await p.innerText("#src > summary");
+  t("파일 개수 표기", /\d+개 파일/.test(summary), summary.trim());
+  await p.click("#src > summary");
+  await p.waitForTimeout(400);
+  const names = await p.$$eval("#src .f code", (els) => els.map((e) => e.textContent));
+  t("주요 파일이 다 들어 있음",
+    ["src/App.jsx", "src/lib/price-model.js", "scripts/calibrate.js", "scripts/collect.js"]
+      .every((f) => names.includes(f)), `${names.length}개`);
+  /* App.jsx 를 펼쳐서 내용이 잘리지 않았는지 */
+  await p.click('#src .f:has(code:text-is("src/App.jsx")) > summary');
+  await p.waitForTimeout(400);
+  const code = await p.innerText('#src .f:has(code:text-is("src/App.jsx")) pre');
+  t("소스 내용이 온전함", code.length > 100000 && code.includes("CommunityBoard"), `${code.length}자`);
+  t("이스케이프가 살아 있음", code.includes("<div") || code.includes("=>"), "");
+}
+t("소스 펼친 뒤에도 에러 없음", errs.length === 0, errs.slice(0, 2).join(" | "));
+
 await b.close();
 console.log(`\n결과: ${pass} PASS / ${fail} FAIL`);
 process.exit(fail ? 1 : 0);
