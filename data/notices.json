@@ -1,7 +1,193 @@
 {
-  "collectedAt": "2026-08-26T08:56:33.832Z",
-  "count": 754,
+  "collectedAt": "2026-08-28T02:27:31.302Z",
+  "count": 759,
   "sites": [
+    {
+      "id": "applyhome-apt-2026000416-2026000416",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "공공",
+      "kind": "APT",
+      "n": "양주회천지구 A-26블록 공공분양주택",
+      "gu": "경기도 양주시 덕정동 일원",
+      "brand": "양우종합건설 주식회사, (주)우호건설, 주식회사 대명건설",
+      "total": 792,
+      "general": 119,
+      "when": "2026-08-27",
+      "rceptStart": "2026-09-14",
+      "rceptEnd": "2026-09-17",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "2026-09-14 ~ 2026-09-15",
+        "general": "2026-09-14 ~ 2026-09-17",
+        "result": "2026-10-07"
+      },
+      "types": [
+        {
+          "t": "59㎡A",
+          "n": 262,
+          "price": 35708,
+          "general": 41,
+          "special": 221
+        },
+        {
+          "t": "59㎡B",
+          "n": 132,
+          "price": 35093,
+          "general": 20,
+          "special": 112
+        },
+        {
+          "t": "74㎡A",
+          "n": 87,
+          "price": 43704,
+          "general": 13,
+          "special": 74
+        },
+        {
+          "t": "74㎡B",
+          "n": 81,
+          "price": 43718,
+          "general": 12,
+          "special": 69
+        },
+        {
+          "t": "84㎡A",
+          "n": 230,
+          "price": 49201,
+          "general": 33,
+          "special": 197
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 79,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 119,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 79,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 40,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 119,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 158,
+          "label": "신생아"
+        },
+        "etc": {
+          "n": 79,
+          "label": "기타"
+        }
+      },
+      "cut": 42,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "분양가상한제",
+        "공공주택지구",
+        "대규모택지"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000416&pblancNo=2026000416",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 한국토지주택공사 경기북부지역본부 · 시공 양우종합건설 주식회사, (주)우호건설, 주식회사 대명건설 · 당첨자발표 2026-10-07 · 입주예정 202910. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-apt-2026000409-2026000409",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "공공",
+      "kind": "APT",
+      "n": "의정부우정 A2블록 공공분양주택(본청약)",
+      "gu": "경기도 의정부시 녹양동 일원",
+      "brand": "남광토건 주식회사, 금광기업(주), 경안종합건설 주식회사, 중앙건설 주식회사",
+      "total": 463,
+      "general": 27,
+      "when": "2026-08-26",
+      "rceptStart": "2026-09-07",
+      "rceptEnd": "2026-09-17",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "2026-09-07 ~ 2026-09-15",
+        "general": "2026-09-07 ~ 2026-09-17",
+        "result": "2026-10-08"
+      },
+      "types": [
+        {
+          "t": "59㎡A",
+          "n": 140,
+          "price": 40646,
+          "general": 20,
+          "special": 120
+        },
+        {
+          "t": "59㎡B",
+          "n": 45,
+          "price": 40419,
+          "general": 7,
+          "special": 38
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 17,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 26,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 17,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 9,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 26,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 35,
+          "label": "신생아"
+        },
+        "etc": {
+          "n": 28,
+          "label": "기타"
+        }
+      },
+      "cut": 49,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "분양가상한제",
+        "공공주택지구"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000409&pblancNo=2026000409",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 한국토지주택공사 경기북부지역본부 · 시공 남광토건 주식회사, 금광기업(주), 경안종합건설 주식회사, 중앙건설 주식회사 · 당첨자발표 2026-10-08 · 입주예정 202905. 예상 당첨선(49점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
     {
       "id": "applyhome-apt-2026000404-2026000404",
       "live": true,
@@ -262,7 +448,7 @@
       "when": "2026-08-14",
       "rceptStart": "2026-08-24",
       "rceptEnd": "2026-08-26",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-08-24 ~ 2026-08-24",
         "rank1": "2026-08-25 ~ 2026-08-25",
@@ -367,7 +553,7 @@
       "when": "2026-08-14",
       "rceptStart": "2026-08-24",
       "rceptEnd": "2026-08-27",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-08-24 ~ 2026-08-24",
         "rank1": "2026-08-25 ~ 2026-08-25",
@@ -452,7 +638,7 @@
       "when": "2026-08-14",
       "rceptStart": "2026-08-24",
       "rceptEnd": "2026-08-26",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-08-24 ~ 2026-08-24",
         "rank1": "2026-08-25 ~ 2026-08-25",
@@ -542,7 +728,7 @@
       "when": "2026-08-14",
       "rceptStart": "2026-08-24",
       "rceptEnd": "2026-08-26",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-08-24 ~ 2026-08-24",
         "rank1": "2026-08-25 ~ 2026-08-25",
@@ -688,7 +874,7 @@
       "when": "2026-08-14",
       "rceptStart": "2026-08-24",
       "rceptEnd": "2026-08-26",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-08-24 ~ 2026-08-24",
         "rank1": "2026-08-25 ~ 2026-08-25",
@@ -779,7 +965,7 @@
       "when": "2026-08-13",
       "rceptStart": "2026-08-24",
       "rceptEnd": "2026-08-27",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-08-24 ~ 2026-08-24",
         "rank1": "2026-08-25 ~ 2026-08-25",
@@ -872,7 +1058,7 @@
       "when": "2026-08-13",
       "rceptStart": "2026-08-24",
       "rceptEnd": "2026-08-26",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-08-24 ~ 2026-08-24",
         "rank1": "2026-08-25 ~ 2026-08-25",
@@ -1136,7 +1322,7 @@
       "when": "2026-08-07",
       "rceptStart": "2026-08-18",
       "rceptEnd": "2026-08-26",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "2026-08-18 ~ 2026-08-25",
@@ -34590,6 +34776,336 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 신영부동산신탁 주식회사 · 시공 (주)포스코이앤씨 · 당첨자발표 2025-09-17 · 입주예정 202807. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
+      "id": "applyhome-remndr-2026910226-2026910226",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "에스아이팰리스 강동 센텀Ⅱ(4차)",
+      "gu": "서울특별시 강동구 길동 386-4",
+      "brand": "길동 386-4외 2필지",
+      "total": 7,
+      "general": 7,
+      "when": "2026-08-27",
+      "rceptStart": "2026-09-03",
+      "rceptEnd": "2026-09-04",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-03 ~ 2026-09-04",
+        "result": "2026-09-09"
+      },
+      "types": [
+        {
+          "t": "27㎡A",
+          "n": 3,
+          "price": 36900,
+          "general": 3,
+          "special": 0
+        },
+        {
+          "t": "29㎡A",
+          "n": 1,
+          "price": 39400,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "42㎡A",
+          "n": 1,
+          "price": 57000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "42㎡B",
+          "n": 1,
+          "price": 60900,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "42㎡C",
+          "n": 1,
+          "price": 61900,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910226&pblancNo=2026910226",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 길동 386-4외 2필지 · 당첨자발표 2026-09-09 · 입주예정 202609. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910224-2026910224",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "장위 푸르지오 마크원(2차)",
+      "gu": "서울특별시 성북구 장위동 68-37",
+      "brand": "장위10구역주택재개발정비사업조합",
+      "total": 4,
+      "general": 4,
+      "when": "2026-08-27",
+      "rceptStart": "2026-09-01",
+      "rceptEnd": "2026-09-01",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-01 ~ 2026-09-01",
+        "result": "2026-09-04"
+      },
+      "types": [
+        {
+          "t": "39㎡A",
+          "n": 4,
+          "price": 73220,
+          "general": 4,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910224&pblancNo=2026910224",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 장위10구역주택재개발정비사업조합 · 당첨자발표 2026-09-04 · 입주예정 203009. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910223-2026910223",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "창원 한신더휴 메가센텀",
+      "gu": "경상남도 창원시 마산회원구 회원동",
+      "brand": "회원2구역주택재개발정비사업조합",
+      "total": 430,
+      "general": 430,
+      "when": "2026-08-27",
+      "rceptStart": "2026-09-01",
+      "rceptEnd": "2026-09-01",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-01 ~ 2026-09-01",
+        "result": "2026-09-04"
+      },
+      "types": [
+        {
+          "t": "38㎡A",
+          "n": 13,
+          "price": 27100,
+          "general": 13,
+          "special": 0
+        },
+        {
+          "t": "46㎡A",
+          "n": 4,
+          "price": 33990,
+          "general": 4,
+          "special": 0
+        },
+        {
+          "t": "74㎡A",
+          "n": 22,
+          "price": 53080,
+          "general": 22,
+          "special": 0
+        },
+        {
+          "t": "74㎡B",
+          "n": 32,
+          "price": 52080,
+          "general": 32,
+          "special": 0
+        },
+        {
+          "t": "84㎡A",
+          "n": 142,
+          "price": 61150,
+          "general": 142,
+          "special": 0
+        },
+        {
+          "t": "84㎡B",
+          "n": 19,
+          "price": 58100,
+          "general": 19,
+          "special": 0
+        },
+        {
+          "t": "84㎡C",
+          "n": 105,
+          "price": 60840,
+          "general": 105,
+          "special": 0
+        },
+        {
+          "t": "101㎡A",
+          "n": 24,
+          "price": 71380,
+          "general": 24,
+          "special": 0
+        },
+        {
+          "t": "101㎡B",
+          "n": 66,
+          "price": 71320,
+          "general": 66,
+          "special": 0
+        },
+        {
+          "t": "136㎡A",
+          "n": 3,
+          "price": 150340,
+          "general": 3,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 42,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910223&pblancNo=2026910223",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 회원2구역주택재개발정비사업조합 · 당첨자발표 2026-09-04 · 입주예정 202908. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910221-2026910221",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "대방역 여의도 더로드캐슬(5차)",
+      "gu": "서울특별시 영등포구 신길동 449-11",
+      "brand": "(주)무궁화신탁",
+      "total": 3,
+      "general": 3,
+      "when": "2026-08-27",
+      "rceptStart": "2026-09-01",
+      "rceptEnd": "2026-09-07",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-01 ~ 2026-09-07",
+        "result": "2026-09-10"
+      },
+      "types": [
+        {
+          "t": "24㎡",
+          "n": 2,
+          "price": 48550,
+          "general": 2,
+          "special": 0
+        },
+        {
+          "t": "25㎡",
+          "n": 1,
+          "price": 47750,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910221&pblancNo=2026910221",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)무궁화신탁 · 당첨자발표 2026-09-10 · 입주예정 202609. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910229-2026910229",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "호반써밋 풍무Ⅲ",
+      "gu": "김포 풍무역세권 B4블록 (경기도",
+      "brand": "주식회사 호반산업",
+      "total": 4,
+      "general": 4,
+      "when": "2026-08-26",
+      "rceptStart": "2026-08-31",
+      "rceptEnd": "2026-08-31",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-08-31 ~ 2026-08-31",
+        "result": "2026-09-03"
+      },
+      "types": [
+        {
+          "t": "84㎡B",
+          "n": 3,
+          "price": 72210,
+          "general": 3,
+          "special": 0
+        },
+        {
+          "t": "84㎡D",
+          "n": 1,
+          "price": 68440,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 49,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910229&pblancNo=2026910229",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 주식회사 호반산업 · 당첨자발표 2026-09-03 · 입주예정 202905. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
       "id": "applyhome-remndr-2026910222-2026910222",
       "live": true,
       "source": "applyhome",
@@ -34658,7 +35174,7 @@
       "when": "2026-08-21",
       "rceptStart": "2026-08-26",
       "rceptEnd": "2026-08-26",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -55693,138 +56209,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910147&pblancNo=2025910147",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 마륵파크 주식회사 · 당첨자발표 2025-09-05 · 입주예정 202601. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910152-2025910152",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "르엘 리버파크 센텀",
-      "gu": "부산광역시 해운대구 재송동 856-6번지",
-      "brand": "주식회사 하나자산신탁",
-      "total": 672,
-      "general": 672,
-      "when": "2025-08-27",
-      "rceptStart": "2025-09-01",
-      "rceptEnd": "2025-09-01",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-01 ~ 2025-09-01",
-        "result": "2025-09-04"
-      },
-      "types": [
-        {
-          "t": "104㎡A",
-          "n": 135,
-          "price": 184500,
-          "general": 135,
-          "special": 0
-        },
-        {
-          "t": "104㎡B",
-          "n": 126,
-          "price": 180500,
-          "general": 126,
-          "special": 0
-        },
-        {
-          "t": "104㎡D",
-          "n": 7,
-          "price": 177800,
-          "general": 7,
-          "special": 0
-        },
-        {
-          "t": "125㎡A",
-          "n": 399,
-          "price": 267600,
-          "general": 399,
-          "special": 0
-        },
-        {
-          "t": "244㎡",
-          "n": 5,
-          "price": 900000,
-          "general": 5,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 45,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910152&pblancNo=2025910152",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 주식회사 하나자산신탁 · 당첨자발표 2025-09-04 · 입주예정 203005. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910151-2025910151",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "힐스테이트 회룡역파크뷰",
-      "gu": "경기도 의정부시 호원동 281-21번지",
-      "brand": "신한자산신탁 주식회사",
-      "total": 80,
-      "general": 80,
-      "when": "2025-08-27",
-      "rceptStart": "2025-09-01",
-      "rceptEnd": "2025-09-01",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-01 ~ 2025-09-01",
-        "result": "2025-09-04"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 6,
-          "price": 59490,
-          "general": 6,
-          "special": 0
-        },
-        {
-          "t": "59㎡B",
-          "n": 43,
-          "price": 58340,
-          "general": 43,
-          "special": 0
-        },
-        {
-          "t": "59㎡C",
-          "n": 31,
-          "price": 58670,
-          "general": 31,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910151&pblancNo=2025910151",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 신한자산신탁 주식회사 · 당첨자발표 2025-09-04 · 입주예정 202604. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
