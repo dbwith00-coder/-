@@ -1,7 +1,158 @@
 {
-  "collectedAt": "2026-08-28T02:27:31.302Z",
-  "count": 759,
+  "collectedAt": "2026-08-28T21:14:21.808Z",
+  "count": 764,
   "sites": [
+    {
+      "id": "applyhome-apt-2026000401-2026000401",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "공공",
+      "kind": "APT",
+      "n": "문수데시앙2단지 공가세대 일반공급",
+      "gu": "울산광역시 울주군 청량읍 율리영해2길",
+      "brand": "(주)태영건설",
+      "total": 22,
+      "general": 22,
+      "when": "2026-08-28",
+      "rceptStart": "2026-09-07",
+      "rceptEnd": "2026-09-08",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "2026-09-07 ~ 2026-09-07",
+        "general": "2026-09-07 ~ 2026-09-08",
+        "result": "2026-09-14"
+      },
+      "types": [
+        {
+          "t": "59㎡A",
+          "n": 11,
+          "price": 22100,
+          "general": 11,
+          "special": 0
+        },
+        {
+          "t": "59㎡B",
+          "n": 9,
+          "price": 22350,
+          "general": 9,
+          "special": 0
+        },
+        {
+          "t": "74㎡A",
+          "n": 2,
+          "price": 27900,
+          "general": 2,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "공공주택지구"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000401&pblancNo=2026000401",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 울산광역시도시공사 · 시공 (주)태영건설 · 당첨자발표 2026-09-14 · 입주예정 202610. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-apt-2026000399-2026000399",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "브라운스톤 월곡 센트럴",
+      "gu": "서울특별시 성북구 하월곡동 70-4번지",
+      "brand": "이수건설 주식회사",
+      "total": 62,
+      "general": 27,
+      "when": "2026-08-28",
+      "rceptStart": "2026-09-07",
+      "rceptEnd": "2026-09-10",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-09-07 ~ 2026-09-07",
+        "rank1": "2026-09-08 ~ 2026-09-08",
+        "general": "2026-09-07 ~ 2026-09-10",
+        "result": "2026-09-16"
+      },
+      "types": [
+        {
+          "t": "59㎡A",
+          "n": 28,
+          "price": 91000,
+          "general": 7,
+          "special": 21
+        },
+        {
+          "t": "59㎡B",
+          "n": 11,
+          "price": 89200,
+          "general": 6,
+          "special": 5
+        },
+        {
+          "t": "59㎡C",
+          "n": 18,
+          "price": 86200,
+          "general": 9,
+          "special": 9
+        },
+        {
+          "t": "74㎡",
+          "n": 5,
+          "price": 107500,
+          "general": 5,
+          "special": 0
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 10,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 4,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 6,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 2,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 7,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 6,
+          "label": "신생아"
+        }
+      },
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "투기과열지구",
+        "조정대상지역"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000399&pblancNo=2026000399",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 동신아파트 소규모재건축정비사업조합 · 시공 이수건설 주식회사 · 당첨자발표 2026-09-16 · 입주예정 202903. 예상 당첨선(61점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
     {
       "id": "applyhome-apt-2026000416-2026000416",
       "live": true,
@@ -34776,6 +34927,148 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 신영부동산신탁 주식회사 · 시공 (주)포스코이앤씨 · 당첨자발표 2025-09-17 · 입주예정 202807. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
+      "id": "applyhome-remndr-2026930030-2026930030",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "불법행위 재공급",
+      "n": "제일풍경채 검단Ⅳ",
+      "gu": "인천광역시 검단구 불로동 검단신도시",
+      "brand": "인천검단3차피에프브이 주식회사",
+      "total": 1,
+      "general": 1,
+      "when": "2026-08-28",
+      "rceptStart": "2026-09-02",
+      "rceptEnd": "2026-09-02",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-02 ~ 2026-09-02",
+        "result": "2026-09-07"
+      },
+      "types": [
+        {
+          "t": "84㎡A",
+          "n": 1,
+          "price": 54900,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 49,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930030&pblancNo=2026930030",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 인천검단3차피에프브이 주식회사 · 당첨자발표 2026-09-07 · 입주예정 202702. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026930029-2026930029",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "불법행위 재공급",
+      "n": "세종 한신더휴 리저브Ⅱ(행정중심복합도시 1-5생활권 H5블록) [한뜰마을4단지]",
+      "gu": "세종특별자치시 다솜1로 9",
+      "brand": "한신공영(주)",
+      "total": 1,
+      "general": 1,
+      "when": "2026-08-28",
+      "rceptStart": "2026-09-02",
+      "rceptEnd": "2026-09-02",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-09-02 ~ 2026-09-02",
+        "rank1": "",
+        "general": "2026-09-02 ~ 2026-09-02",
+        "result": "2026-09-07"
+      },
+      "types": [
+        {
+          "t": "84㎡B",
+          "n": 1,
+          "price": 39200,
+          "general": 0,
+          "special": 1
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930029&pblancNo=2026930029",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 한신공영(주) · 당첨자발표 2026-09-07 · 입주예정 202609. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910225-2026910225",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "의왕역 SK VIEW",
+      "gu": "경기도 의왕시 삼동 192-244번지",
+      "brand": "부곡가구역주택재개발정비사업조합",
+      "total": 17,
+      "general": 17,
+      "when": "2026-08-28",
+      "rceptStart": "2026-09-02",
+      "rceptEnd": "2026-09-02",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-02 ~ 2026-09-02",
+        "result": "2026-09-07"
+      },
+      "types": [
+        {
+          "t": "59㎡A",
+          "n": 4,
+          "price": 87300,
+          "general": 4,
+          "special": 0
+        },
+        {
+          "t": "84㎡A",
+          "n": 13,
+          "price": 109300,
+          "general": 13,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 58,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910225&pblancNo=2026910225",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 부곡가구역주택재개발정비사업조합 · 당첨자발표 2026-09-07 · 입주예정 202912. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
       "id": "applyhome-remndr-2026910226-2026910226",
       "live": true,
       "source": "applyhome",
@@ -36029,18 +36322,9 @@
       },
       "types": [
         {
-          "t": "99㎡B",
-          "n": 1,
-          "price": 61809,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "115㎡B",
-          "n": 3,
-          "price": 70707,
-          "general": 3,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -37475,11 +37759,9 @@
       },
       "types": [
         {
-          "t": "84㎡B",
-          "n": 1,
-          "price": 49676,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -37520,18 +37802,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 246,
-          "price": 58390,
-          "general": 246,
-          "special": 0
-        },
-        {
-          "t": "84㎡E",
-          "n": 15,
-          "price": 58300,
-          "general": 15,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
