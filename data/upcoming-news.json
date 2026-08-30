@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-08-30T03:08:47.246Z",
+ "collectedAt": "2026-08-30T21:07:36.323Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -20,12 +20,12 @@
   },
   {
    "query": "다음달 분양 아파트",
-   "count": 76,
+   "count": 75,
    "error": null
   },
   {
    "query": "청약 예정 아파트",
-   "count": 79,
+   "count": 80,
    "error": null
   },
   {
@@ -35,7 +35,7 @@
   },
   {
    "query": "선착순 분양 예정",
-   "count": 77,
+   "count": 78,
    "error": null
   },
   {
@@ -44,8 +44,8 @@
    "error": null
   }
  ],
- "articleCount": 609,
- "count": 25,
+ "articleCount": 602,
+ "count": 22,
  "candidates": [
   {
    "name": "반포디에이치클래스트 등판8월",
@@ -197,45 +197,6 @@
    "freq": {}
   },
   {
-   "name": "대림산업 e편한세상 태재",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "대림산업, ‘e편한세상 태재’ 624가구 다음달 분양",
-     "source": "edaily.co.kr",
-     "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNMjJqNkxKZlNsejRDZ0M1Tm5haG1USWJsWTI1MTNXVWxvQnhRdXV5Y0J3MUJYc01DOHA3WDdRLVNQbWpTYkFRMGJydU1IeVpRQ09OQ3V1c2h6NVFTei1LZXlUUklxNzZ6bHNyMUdDNUdmdTlDMFg3Q2IyczlyOUNrag?oc=5",
-     "pubDate": "Wed, 24 Feb 2016 08:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "대림산업 e편한세상 태재",
-    "e편한세상 태재"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "두정역 푸르지오 그랑피크",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "대우건설, ‘두정역 푸르지오 그랑피크’ 9월 분양 예정",
-     "source": "edaily.co.kr",
-     "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOZEVBYjJWVkE0Z3RiQlh3ZG5hLUg0VG1zVzRaV3ZrLWF6SjJ1YzNpdnhFdVNRMHpnOE8zSEtjUnF0RlllN0pWTHJhWDNpWVdxVTdvYWl5eXJyRlFLT1FEUTNsTVA3cnFneEpLUVRqRnVyd3ZxcXg5WHI0RDc2NEFLUw?oc=5",
-     "pubDate": "Wed, 19 Aug 2026 21:09:01 GMT"
-    },
-    {
-     "title": "대우건설, 천안 ‘두정역 푸르지오 그랑피크’ 8월 분양 예정",
-     "source": "브릿지경제",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9GTzNQOFVScERQOTZwTW9sMU1HS2xMVUlSc0tDTlpTWG1melhkV0xDclVHOVhucEtLMG1XTWJ6TUw2cFd4bldfLXRTUnVWUWFpYzhPY2JCUVpIUQ?oc=5",
-     "pubDate": "Wed, 15 Jul 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "두정역 푸르지오 그랑피크"
-   ],
-   "freq": {}
-  },
-  {
    "name": "떴다성수 오티에르 포레",
    "mentions": 2,
    "articles": [
@@ -351,23 +312,6 @@
    "aliases": [
     "쌍용 더 플래티넘 서면",
     "더 플래티넘 서면"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "앞둔 호반써밋 풍무II의",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "[분양 현장] 개관 앞둔 '호반써밋 풍무II'의 모델하우스",
-     "source": "스트레이트뉴스",
-     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB6NzFUT05FSVlxdHYxSUJibmtPWW5TaWpuWk9lV2IyM2tXNllSbVpfNFBiQ08wdHNqdGR1dXFCaG9vQzVLMkVOdm1CQmNzZDhIRkpSZVlJbTlNd2hyVGhZeGRRdXZIQ3JvUW15cEtCOXJtNzTSAXdBVV95cUxPZHJFVDVLOWEyY25hVHg4Z1c4dGRPWkd6Tjd1Z0pmU3Z2UVZ4YTJsdXBKaHBfQmV6T0NZWXJDY2dpZ2pHUEl2Qjd3NmRNalZqS01XcjVISnFsRjRyVXlHMklVU01ibDBuajYtLVFZWWwyZm12a0xLbw?oc=5",
-     "pubDate": "Fri, 22 May 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "앞둔 호반써밋 풍무II의",
-    "호반써밋 풍무II"
    ],
    "freq": {}
   },
