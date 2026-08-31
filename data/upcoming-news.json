@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-08-31T03:09:41.438Z",
+ "collectedAt": "2026-08-31T21:07:01.568Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -35,18 +35,41 @@
   },
   {
    "query": "선착순 분양 예정",
-   "count": 77,
+   "count": 79,
    "error": null
   },
   {
    "query": "재건축 일반분양 예정",
-   "count": 100,
+   "count": 99,
    "error": null
   }
  ],
- "articleCount": 611,
- "count": 22,
+ "articleCount": 619,
+ "count": 24,
  "candidates": [
+  {
+   "name": "e편한세상 동탄역 어반원",
+   "mentions": 4,
+   "articles": [
+    {
+     "title": "DL이앤씨, ‘e편한세상 동탄역 어반원’ 2월 분양 예정 - 조선비즈",
+     "source": "Chosunbiz",
+     "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPN3p4T181Zlg4eXhoejJ6dzNacnptejBvemwtTW5FREdRWldaYVlqN3hiU2E4UUlZU1g2WkQzd052c19HbmE3aDlHaFFnMVhnb1BuZVZXa1drSkhzRUZ1ZXllREpQZGtLUDBSZkUzRzQ3NzlrM1JLbTd4TWw2ZmtJc1NFdHphMnhuazJsSkE2TVFxNUFnZFR4OdIBrAFBVV95cUxNZEFDMEVKaXo5TGhub1lvbGF1dVdWajRjblNjVzR6TktOczJNYVVZVU1fOTlvcDFrQjVMUjNmejdXZ0JodG1IcjIwUDRlUlAwMEFCQ0RXS0liYm1sVkhqQzNVQmNpUHVxdS02UG0xQUoyeklJVFdvakVLbTVNM1E2bHI1UkNnM1VkZ25mblJldzVfT1FNaVhFUi0tQnE5V08xMWIzMHZfR3ZIeVVy?oc=5",
+     "pubDate": "Fri, 16 Jan 2026 08:00:00 GMT"
+    },
+    {
+     "title": "DL이앤씨, ‘e편한세상 동탄역 어반원’ 다음달 분양",
+     "source": "경향신문",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8tWWpXUlZEQVdBbWE3akt0QW5IOXlVZy1ZaGVMMWctYnl5SldnaHpQT0plbUFxbkE2WGhIQi1QaHNFMmRwQ2FPTHVhazlEZmtIakNBcy1FYkV6QdIBX0FVX3lxTE9qWTNlMWVHOWlLSm5mMjhkMm52Q1dReFJ5bU5RanE0Nk5QZnBQZjRJVmQzLXZ4Q1QxaGdhMVU1bjd2bTk5eVNUcFFldjFwa01DQlFBYzhaX3pqa2lHOTRF?oc=5",
+     "pubDate": "Thu, 25 Dec 2025 08:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "e편한세상 동탄역 어반원",
+    "e편한세상 동탄역"
+   ],
+   "freq": {}
+  },
   {
    "name": "반포디에이치클래스트 등판8월",
    "mentions": 4,
@@ -111,13 +134,13 @@
    "articles": [
     {
      "title": "성적 부진? 무순위∙선착순에서 전부 소진! ‘호반써밋 이스트파크’도 훈풍",
-     "source": "리얼캐스트",
+     "source": "rcast.co.kr",
      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE00eWpUc2dnYkpRME54Q3FzYUpld0hRM3AxUVFwOHVoelhFUlZzZy1CS0Vvd2pPd0VybGlKal9CVF95VDc4dHl0SkpXb2VEX2VmbEkwQjMtZ3hvVElGYTZ2TWVPcjJLeGV10gFsQVVfeXFMUFZXVjcyWHVqSl9GbDJWT1VqcDJIeTFISTdaZ0w1Q1ktREJId3BCclNNUzdoR3g2QjJvdmdnTG1zT3VLSDB5d01OZjFRU2xrWmFWaG5oY2otSXJzSFVkdHZ3cnRVTTJMamRXa2RJ?oc=5",
      "pubDate": "Sun, 03 Sep 2023 07:00:00 GMT"
     },
     {
      "title": "분양가 1년 새 ‘확’ 뛰었다… ‘호반써밋 이스트파크’ 선착순 계약 ‘순항’",
-     "source": "리얼캐스트",
+     "source": "rcast.co.kr",
      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBQRmJ0cHBxOFR3RUJYS3RBZkowNDFpcnBQZ1dyTDRsMDkzT1pZM1lFY2U0dGdMR25JaE1UV2hfSDROR0xZV3FDaFY2UTBTekVGdkRXTUlLUnQtRklyYktsOEFQdlM4MXFL0gFsQVVfeXFMTUZUU0l2ODFnRFpLY0hicUNxVXVFdXFGZEM3ZzdIV25GaXdNTWU5Y1lJZjdiR19rLXEyWEJkcW80WGI2NlRHZmJMd2M0Yl8wcUpyQVFZclhvR19IVFFYbDFDX004QzNKNDlQbE45?oc=5",
      "pubDate": "Sat, 16 Sep 2023 07:00:00 GMT"
     }
@@ -125,23 +148,6 @@
    "aliases": [
     "소진 호반써밋 이스트파크도",
     "호반써밋 이스트파크"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "e편한세상 동탄역 어반원",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "DL이앤씨, ‘e편한세상 동탄역 어반원’ 다음달 분양",
-     "source": "경향신문",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8tWWpXUlZEQVdBbWE3akt0QW5IOXlVZy1ZaGVMMWctYnl5SldnaHpQT0plbUFxbkE2WGhIQi1QaHNFMmRwQ2FPTHVhazlEZmtIakNBcy1FYkV6QdIBX0FVX3lxTE9qWTNlMWVHOWlLSm5mMjhkMm52Q1dReFJ5bU5RanE0Nk5QZnBQZjRJVmQzLXZ4Q1QxaGdhMVU1bjd2bTk5eVNUcFFldjFwa01DQlFBYzhaX3pqa2lHOTRF?oc=5",
-     "pubDate": "Thu, 25 Dec 2025 08:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "e편한세상 동탄역 어반원",
-    "e편한세상 동탄역"
    ],
    "freq": {}
   },
@@ -180,6 +186,23 @@
    "freq": {}
   },
   {
+   "name": "과천주공4단지 프레스티어자이",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "과천주공4단지 ‘프레스티어자이’ 9월 분양 예정",
+     "source": "하우징헤럴드",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1RWGw4M05SNGhLWUFwN3JMZWFIcUZ2bThVUTVtMFBRMUJldldQclN1Z1M3XzRhRWF6Z1pIS0FMRkNFWXV1SkNpMFBpanZFNGcyY0NjcHo2cTZkWGk1OTRRNmlHTEpIWXdyNVBKeUZkLXRkUDA?oc=5",
+     "pubDate": "Mon, 19 Aug 2024 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "과천주공4단지 프레스티어자이",
+    "프레스티어자이"
+   ],
+   "freq": {}
+  },
+  {
    "name": "기대금정역 푸르지오 그랑블",
    "mentions": 2,
    "articles": [
@@ -193,6 +216,29 @@
    "aliases": [
     "기대금정역 푸르지오 그랑블",
     "금정역 푸르지오 그랑블"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "김포풍무 호반써밋 풍무역세권",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "[르포] 김포풍무 호반써밋, 풍무역세권 청약 열기 '고조'",
+     "source": "스트레이트뉴스",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBSVXlsMkRmRjRoOHptZUdaSnA2QVBFaUVlSU5ZeU54OURWM0Nyd0NZbDNtYnV2aHBMel9XdkJyYldUZDhwS2VUbi1ZbVdCQzREa3phM2NQeEh5R2xKVFN5cHZaOFg1X19SYl81QmxqTEx3OGPSAXdBVV95cUxNV0ZuS1hSekJ4T3RKdUNjY21HZDVmS1hUVEpEX05sTHUxaTZWMGtkSlRfQTJPQ2pxYVpXX05WT0U0MXlWQ1RySTQ3UGtNQTUwRW1JWVljeUk4dVl2V2xWZzM0QkFZTGJUSGx5VnNwM2h6emIyS0ZSOA?oc=5",
+     "pubDate": "Mon, 27 Oct 2025 07:00:00 GMT"
+    },
+    {
+     "title": "호반건설, 분양가상한제 적용 김포풍무 호반써밋 956가구 이달 분양",
+     "source": "퍼블릭타임스",
+     "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE14LUE4WWVYSGpkNDVnaWYyZXZCOTFQaW93R0VWbWVvZFFWeThKN1BQdEVPcDlDN0RSdGdRZ3hiUzRCaS1KNklTTzhEMFhxc1l3aEczMUdkV1h3YWZxNlB3c1I2ZDRmTERxblHSAW5BVV95cUxNR3BuZnhJcjFtNElzYllPR2VBYXdqaG1CbVVDVm8yNEVlMjhRbVY1dTZvSWtDNF81b19Mb21WTjV4RnR5TmhJelgzNHU3VllaUU9KZ0thWEhXU0hMVGVDaDRTRzYyVzh2QnhEbTZjQQ?oc=5",
+     "pubDate": "Thu, 16 Oct 2025 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "김포풍무 호반써밋 풍무역세권",
+    "김포풍무 호반써밋"
    ],
    "freq": {}
   },
@@ -219,7 +265,7 @@
    "articles": [
     {
      "title": "\"천안·아산 뜬다\"…GS건설 ‘아산탕정자이 퍼스트시티’ 다음달 분양",
-     "source": "뉴스톱",
+     "source": "newstopkorea.com",
      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5yQ244Sm9Bb3JJTlkxYVFfcFpwenoxUDFwczVFcUZ4bXJIRzVYRTgyem5ESGhBMEtJYTlwVGJmVUhZenRuUkJmQ19tX3JHdXpDWDg2RVdRcmhTSllYZXY5UUp2WHJ6MTI4blhNX1hLMA?oc=5",
      "pubDate": "Tue, 29 Oct 2024 07:00:00 GMT"
     }
@@ -304,7 +350,7 @@
    "articles": [
     {
      "title": "쌍용건설, ‘쌍용 더 플래티넘 서면’ 견본주택 오픈…이달 분양 예정",
-     "source": "뉴스톱",
+     "source": "newstopkorea.com",
      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5veGVFOTZNSUEyOUdhcUt0aC1QRDlkRnhjbnFZdFhmVXBWdlFUSUpldXFGUFlHT3VCWFZHbXdOYXNWQ0FYR2NzTWlLekszaTZfdGJ0bG1zQnZEVmlrQmlRYzJiTUE3VUIxQmFyQUQ1MA?oc=5",
      "pubDate": "Thu, 03 Jul 2025 07:00:00 GMT"
     }
