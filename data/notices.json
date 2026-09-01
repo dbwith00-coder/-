@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-08-31T21:06:57.950Z",
+  "collectedAt": "2026-09-01T03:15:54.037Z",
   "count": 754,
   "sites": [
     {
@@ -24587,7 +24587,7 @@
       "gu": "경기도 시흥시 시흥거모 공공주택지구",
       "brand": "(주)모아주택산업,(주)로제비앙건설",
       "total": 480,
-      "general": 177,
+      "general": 480,
       "when": "2025-11-28",
       "rceptStart": "2025-12-08",
       "rceptEnd": "2025-12-10",
@@ -24600,49 +24600,12 @@
       },
       "types": [
         {
-          "t": "61㎡",
-          "n": 117,
-          "price": 45880,
-          "general": 44,
-          "special": 73
-        },
-        {
-          "t": "84㎡A",
-          "n": 268,
-          "price": 58670,
-          "general": 97,
-          "special": 171
-        },
-        {
-          "t": "84㎡B",
-          "n": 95,
-          "price": 57890,
-          "general": 36,
-          "special": 59
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
-      "specialUnits": {
-        "newly": {
-          "n": 108,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 90,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 46,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 13,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 46,
-          "label": "기관추천"
-        }
-      },
+      "specialUnits": {},
       "cut": 42,
       "cutEstimated": true,
       "cutAmt": 0,
@@ -34597,7 +34560,7 @@
       "when": "2026-08-27",
       "rceptStart": "2026-09-01",
       "rceptEnd": "2026-09-01",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34642,7 +34605,7 @@
       "when": "2026-08-27",
       "rceptStart": "2026-09-01",
       "rceptEnd": "2026-09-01",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34750,7 +34713,7 @@
       "when": "2026-08-27",
       "rceptStart": "2026-09-01",
       "rceptEnd": "2026-09-07",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34802,7 +34765,7 @@
       "when": "2026-08-26",
       "rceptStart": "2026-08-31",
       "rceptEnd": "2026-08-31",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34854,7 +34817,7 @@
       "when": "2026-08-25",
       "rceptStart": "2026-08-31",
       "rceptEnd": "2026-08-31",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -46784,25 +46747,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 89,
-          "price": 92610,
-          "general": 89,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 62,
-          "price": 93390,
-          "general": 62,
-          "special": 0
-        },
-        {
-          "t": "168㎡",
-          "n": 1,
-          "price": 240435,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
