@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-01T21:12:41.520Z",
-  "count": 754,
+  "collectedAt": "2026-09-02T03:15:32.940Z",
+  "count": 752,
   "sites": [
     {
       "id": "applyhome-apt-2026820009-2026820009",
@@ -34382,7 +34382,7 @@
       "when": "2026-08-28",
       "rceptStart": "2026-09-02",
       "rceptEnd": "2026-09-02",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34427,7 +34427,7 @@
       "when": "2026-08-28",
       "rceptStart": "2026-09-02",
       "rceptEnd": "2026-09-02",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-09-02 ~ 2026-09-02",
         "rank1": "",
@@ -34472,7 +34472,7 @@
       "when": "2026-08-28",
       "rceptStart": "2026-09-02",
       "rceptEnd": "2026-09-02",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34597,7 +34597,7 @@
       "when": "2026-08-27",
       "rceptStart": "2026-09-01",
       "rceptEnd": "2026-09-01",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34642,7 +34642,7 @@
       "when": "2026-08-27",
       "rceptStart": "2026-09-01",
       "rceptEnd": "2026-09-01",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -55695,103 +55695,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910163&pblancNo=2025910163",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 금호건설(주),한국토지주택공사 · 당첨자발표 2025-09-11 · 입주예정 202711. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025930041-2025930041",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "불법행위 재공급",
-      "n": "송도자이 크리스탈오션",
-      "gu": "인천광역시 연수구 송도동 396-7",
-      "brand": "지에스건설(주)",
-      "total": 2,
-      "general": 1,
-      "when": "2025-09-01",
-      "rceptStart": "2025-09-08",
-      "rceptEnd": "2025-09-09",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "2025-09-08 ~ 2025-09-08",
-        "rank1": "",
-        "general": "2025-09-08 ~ 2025-09-09",
-        "result": "2025-09-12"
-      },
-      "types": [
-        {
-          "t": "84㎡C",
-          "n": 1,
-          "price": 76720,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡D",
-          "n": 1,
-          "price": 76620,
-          "general": 0,
-          "special": 1
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025930041&pblancNo=2025930041",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 지에스건설(주) · 당첨자발표 2025-09-12 · 입주예정 202603. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910154-2025910154",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "송도자이 크리스탈오션",
-      "gu": "인천광역시 연수구 송도동 396-7",
-      "brand": "지에스건설(주)",
-      "total": 1,
-      "general": 1,
-      "when": "2025-09-01",
-      "rceptStart": "2025-09-08",
-      "rceptEnd": "2025-09-08",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-08 ~ 2025-09-08",
-        "result": "2025-09-11"
-      },
-      "types": [
-        {
-          "t": "98㎡D",
-          "n": 1,
-          "price": 87300,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910154&pblancNo=2025910154",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 지에스건설(주) · 당첨자발표 2025-09-11 · 입주예정 202603. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
