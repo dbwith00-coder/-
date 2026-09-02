@@ -1,7 +1,293 @@
 {
-  "collectedAt": "2026-09-02T03:15:32.940Z",
-  "count": 752,
+  "collectedAt": "2026-09-02T21:12:18.890Z",
+  "count": 754,
   "sites": [
+    {
+      "id": "applyhome-apt-2026000419-2026000419",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "올 뉴 챔피언스시티 1차",
+      "gu": "전남광주통합특별시 북구 임동 100-1",
+      "brand": "우미건설(주), 신영씨앤디(주)",
+      "total": 3216,
+      "general": 1736,
+      "when": "2026-09-02",
+      "rceptStart": "2026-09-14",
+      "rceptEnd": "2026-09-16",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-09-14 ~ 2026-09-14",
+        "rank1": "2026-09-15 ~ 2026-09-15",
+        "general": "2026-09-14 ~ 2026-09-16",
+        "result": "2026-09-22"
+      },
+      "types": [
+        {
+          "t": "84㎡A",
+          "n": 313,
+          "price": 87000,
+          "general": 141,
+          "special": 172
+        },
+        {
+          "t": "84㎡B",
+          "n": 313,
+          "price": 87000,
+          "general": 141,
+          "special": 172
+        },
+        {
+          "t": "84㎡C",
+          "n": 536,
+          "price": 84200,
+          "general": 242,
+          "special": 294
+        },
+        {
+          "t": "84㎡D",
+          "n": 530,
+          "price": 86500,
+          "general": 237,
+          "special": 293
+        },
+        {
+          "t": "84㎡E",
+          "n": 306,
+          "price": 85400,
+          "general": 138,
+          "special": 168
+        },
+        {
+          "t": "84㎡F",
+          "n": 536,
+          "price": 85400,
+          "general": 241,
+          "special": 295
+        },
+        {
+          "t": "103㎡A",
+          "n": 223,
+          "price": 105300,
+          "general": 195,
+          "special": 28
+        },
+        {
+          "t": "103㎡B",
+          "n": 230,
+          "price": 103600,
+          "general": 200,
+          "special": 30
+        },
+        {
+          "t": "112㎡A",
+          "n": 131,
+          "price": 119500,
+          "general": 115,
+          "special": 16
+        },
+        {
+          "t": "128㎡A",
+          "n": 92,
+          "price": 135500,
+          "general": 80,
+          "special": 12
+        },
+        {
+          "t": "200㎡B",
+          "n": 1,
+          "price": 292000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "207㎡F",
+          "n": 1,
+          "price": 295000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "209㎡C",
+          "n": 1,
+          "price": 304000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "211㎡E",
+          "n": 1,
+          "price": 303000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "214㎡A",
+          "n": 1,
+          "price": 316000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "214㎡D",
+          "n": 1,
+          "price": 313000,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 380,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 177,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 321,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 96,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 253,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 253,
+          "label": "신생아"
+        }
+      },
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000419&pblancNo=2026000419",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 (주) 챔피언스시티복합개발피에프브이 · 시공 우미건설(주), 신영씨앤디(주) · 당첨자발표 2026-09-22 · 입주예정 203011. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-apt-2026000403-2026000403",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "그랑라크 에일린의 뜰",
+      "gu": "울산광역시 남구 야음동 350-5번지",
+      "brand": "아이에스동서(주)",
+      "total": 1153,
+      "general": 540,
+      "when": "2026-09-02",
+      "rceptStart": "2026-09-14",
+      "rceptEnd": "2026-09-16",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-09-14 ~ 2026-09-14",
+        "rank1": "2026-09-15 ~ 2026-09-15",
+        "general": "2026-09-14 ~ 2026-09-16",
+        "result": "2026-09-22"
+      },
+      "types": [
+        {
+          "t": "59㎡A",
+          "n": 89,
+          "price": 57600,
+          "general": 40,
+          "special": 49
+        },
+        {
+          "t": "59㎡B",
+          "n": 114,
+          "price": 57600,
+          "general": 53,
+          "special": 61
+        },
+        {
+          "t": "59㎡C",
+          "n": 52,
+          "price": 56600,
+          "general": 23,
+          "special": 29
+        },
+        {
+          "t": "74㎡",
+          "n": 139,
+          "price": 68700,
+          "general": 62,
+          "special": 77
+        },
+        {
+          "t": "84㎡",
+          "n": 709,
+          "price": 76600,
+          "general": 319,
+          "special": 390
+        },
+        {
+          "t": "102㎡A",
+          "n": 29,
+          "price": 86900,
+          "general": 25,
+          "special": 4
+        },
+        {
+          "t": "102㎡B",
+          "n": 21,
+          "price": 85000,
+          "general": 18,
+          "special": 3
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 165,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 78,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 115,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 35,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 110,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 110,
+          "label": "신생아"
+        }
+      },
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "정비사업"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000403&pblancNo=2026000403",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 남구비14구역주택재개발정비사업조합 · 시공 아이에스동서(주) · 당첨자발표 2026-09-22 · 입주예정 202911. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
     {
       "id": "applyhome-apt-2026820009-2026820009",
       "live": true,
