@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-03T21:13:39.813Z",
-  "count": 756,
+  "collectedAt": "2026-09-04T03:15:45.130Z",
+  "count": 753,
   "sites": [
     {
       "id": "applyhome-apt-2026000394-2026000394",
@@ -40222,18 +40222,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 261,
-          "price": 49100,
-          "general": 261,
-          "special": 0
-        },
-        {
-          "t": "84㎡F",
-          "n": 13,
-          "price": 48600,
-          "general": 13,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -48440,11 +48431,9 @@
       },
       "types": [
         {
-          "t": "84㎡B",
-          "n": 2,
-          "price": 43800,
-          "general": 2,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -55939,225 +55928,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910157&pblancNo=2025910157",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 케이비부동산신탁(주) · 당첨자발표 2025-09-12 · 입주예정 202509. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910160-2025910160",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "대야미역 금강펜테리움 레이크포레(B1BL)",
-      "gu": "경기도 군포시 군포대야미 공공주택지구",
-      "brand": "(주)금강주택",
-      "total": 195,
-      "general": 195,
-      "when": "2025-09-03",
-      "rceptStart": "2025-09-08",
-      "rceptEnd": "2025-09-08",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-08 ~ 2025-09-08",
-        "result": "2025-09-11"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 88,
-          "price": 70340,
-          "general": 88,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 99,
-          "price": 70260,
-          "general": 99,
-          "special": 0
-        },
-        {
-          "t": "84㎡C",
-          "n": 8,
-          "price": 70310,
-          "general": 8,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 58,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910160&pblancNo=2025910160",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)금강주택 · 당첨자발표 2025-09-11 · 입주예정 202805. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910156-2025910156",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "청주 센텀 푸르지오 자이",
-      "gu": "충청북도 청주시 서원구 사직동",
-      "brand": "사직1구역주택재개발정비사업조합",
-      "total": 700,
-      "general": 700,
-      "when": "2025-09-03",
-      "rceptStart": "2025-09-08",
-      "rceptEnd": "2025-09-08",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-08 ~ 2025-09-08",
-        "result": "2025-09-11"
-      },
-      "types": [
-        {
-          "t": "59㎡B",
-          "n": 38,
-          "price": 33080,
-          "general": 38,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 261,
-          "price": 49680,
-          "general": 261,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 7,
-          "price": 48190,
-          "general": 7,
-          "special": 0
-        },
-        {
-          "t": "84㎡D",
-          "n": 294,
-          "price": 49050,
-          "general": 294,
-          "special": 0
-        },
-        {
-          "t": "99㎡A",
-          "n": 31,
-          "price": 59120,
-          "general": 31,
-          "special": 0
-        },
-        {
-          "t": "114㎡A",
-          "n": 61,
-          "price": 67800,
-          "general": 61,
-          "special": 0
-        },
-        {
-          "t": "114㎡B",
-          "n": 6,
-          "price": 63360,
-          "general": 6,
-          "special": 0
-        },
-        {
-          "t": "145㎡A",
-          "n": 1,
-          "price": 129240,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "145㎡B",
-          "n": 1,
-          "price": 129220,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910156&pblancNo=2025910156",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 사직1구역주택재개발정비사업조합 · 당첨자발표 2025-09-11 · 입주예정 202812. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910155-2025910155",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "에코델타시티 대성베르힐 17블록",
-      "gu": "부산광역시 강서구 강동동 에코델타시티",
-      "brand": "주식회사 부산에코델타시티피에프브이",
-      "total": 3,
-      "general": 3,
-      "when": "2025-09-03",
-      "rceptStart": "2025-09-08",
-      "rceptEnd": "2025-09-08",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-08 ~ 2025-09-08",
-        "result": "2025-09-11"
-      },
-      "types": [
-        {
-          "t": "84㎡B",
-          "n": 1,
-          "price": 48500,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡P",
-          "n": 1,
-          "price": 48700,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "106㎡P",
-          "n": 1,
-          "price": 61600,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 45,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910155&pblancNo=2025910155",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 주식회사 부산에코델타시티피에프브이 · 당첨자발표 2025-09-11 · 입주예정 202603. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }

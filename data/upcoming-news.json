@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-09-03T21:13:43.622Z",
+ "collectedAt": "2026-09-04T03:15:47.856Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -25,7 +25,7 @@
   },
   {
    "query": "청약 예정 아파트",
-   "count": 79,
+   "count": 80,
    "error": null
   },
   {
@@ -40,12 +40,12 @@
   },
   {
    "query": "재건축 일반분양 예정",
-   "count": 75,
+   "count": 79,
    "error": null
   }
  ],
- "articleCount": 607,
- "count": 27,
+ "articleCount": 601,
+ "count": 23,
  "candidates": [
   {
    "name": "반도건설 더샵 천안라크원",
@@ -77,6 +77,60 @@
    "freq": {}
   },
   {
+   "name": "반포디에이치클래스트일반분양",
+   "mentions": 4,
+   "articles": [
+    {
+     "title": "조합원 1+1 분양 나서는 '반포디에이치클래스트'…일반분양 줄어들듯[집슐랭]",
+     "source": "서울경제",
+     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB3UF9sbFpyRnVPY1N6Nk5JS1NRZjljMWFXclBMQTA2VHFlTEdBdUNHRnZxZXJYc3VfYURCWnlCWGNYQ0JJRlpGb2ZtQlVuRHpZX3fSAVNBVV95cUxPXzJFZExVeF9pakxaTjlFQmtGbmU1bE5uUUg1MjQtUHhCQ2FRcVk1UGQtdXdtZzRJbnNmTDBVWFFMOC1JY2dqUVNJVFQzMDBaa25uWQ?oc=5",
+     "pubDate": "Thu, 31 Jul 2025 07:00:00 GMT"
+    },
+    {
+     "title": "8월 서울 일반분양 2530세대, 5천 세대 대단지 '디에이치클래스트' 대부분 차지",
+     "source": "비즈니스포스트",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0xdjVtbUtzQ1dsY29tcVdaTy1sRmtndk9EQVlpYWxjQWYzV3cyczJmSDlubTZTb1hKWkpKQjZDd3BWYXhwOUQ1UXZxYTd0OEY4aWdvd3F0ZUV6U29EZUQzTWV5YmpfMXRvaEl3eW9NOTJWakU?oc=5",
+     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "디에이치 클래스트, 6500억 PF 조달…현대건설 보증",
+     "source": "딜사이트",
+     "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13dnl6M3UyVVlRN3pOekM1QVFzNmlweThKV2ZGUXZPek84cEw3UE00akpEdzIxZXRXQUlielZzRFlOVlhkMF9UenhkWWZubnM?oc=5",
+     "pubDate": "Wed, 05 Nov 2025 08:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "반포디에이치클래스트일반분양",
+    "반포디에이치클래스트",
+    "디에이치클래스트",
+    "디에이치 클래스트"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "화성 향남 롯데캐슬 시그니처",
+   "mentions": 4,
+   "articles": [
+    {
+     "title": "롯데건설 '화성 향남 롯데캐슬 시그니처' 10월 분양 예정",
+     "source": "네이트",
+     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBySlUwMVg4WTVKNENlQm5rUUg2THN6V1dCYmloTmFSNjhDOFdWdmdSQzJJcjZnb1JETVB1SjZhQ3NaZDNEMUFqNEFOWExCdVkxX3ljSmkxMlZXc2VfUmRrTw?oc=5",
+     "pubDate": "Thu, 03 Sep 2026 00:42:00 GMT"
+    },
+    {
+     "title": "롯데건설, ‘화성 향남 롯데캐슬 시그니처’ 10월 분양 예정 - 조선비즈",
+     "source": "Chosunbiz",
+     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPSWZGbEpzeVBOanh6UGZFN0RmWk9TLUJIcm5zMDg4REFfcDMyNks1X1pCRkdoS2ZHeUhVeDRrdnRScmZFcFdhRmNoeUxVUlVlZVFGTkJkUmltV3NBdHdGZDZIRkU3RHBwTERjVF91NzYwSVdhU2tHVllFVEV4aHVZb2JWSGNtVlFGaWJJYdIBoAFBVV95cUxQa1NOWTJ3UUFWYUd0bjBRTV94N2dDUkNLV1B3WS1sODhkbEV2QjczR09mS1l3ODdZYy1falo2UllBTEdrMVJERHJCNmpFa3ItelNKRFlIT0pCTml4ZEliMC1iX1c5eU9WM3J3aXkwWmpvc3NiMVlta1NFVEdWRjdDakc5ZUZlNENfMHNyRnlwbGVWV2hQcC1Uek15WVRKMW9o?oc=5",
+     "pubDate": "Thu, 27 Aug 2026 02:18:00 GMT"
+    }
+   ],
+   "aliases": [
+    "화성 향남 롯데캐슬 시그니처",
+    "향남 롯데캐슬 시그니처"
+   ],
+   "freq": {}
+  },
+  {
    "name": "동작구 상도 푸르지오 클라베뉴",
    "mentions": 3,
    "articles": [
@@ -100,66 +154,26 @@
    "freq": {}
   },
   {
-   "name": "디에이치클래스트 대부분",
+   "name": "서초 아크로리버뷰강남권",
    "mentions": 3,
    "articles": [
     {
-     "title": "8월 서울 일반분양 2530세대, 5천 세대 대단지 '디에이치클래스트' 대부분 차지",
-     "source": "비즈니스포스트",
-     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0xdjVtbUtzQ1dsY29tcVdaTy1sRmtndk9EQVlpYWxjQWYzV3cyczJmSDlubTZTb1hKWkpKQjZDd3BWYXhwOUQ1UXZxYTd0OEY4aWdvd3F0ZUV6U29EZUQzTWV5YmpfMXRvaEl3eW9NOTJWakU?oc=5",
-     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
+     "title": "송파 '헬리오시티'·서초 '아크로리버뷰'…강남권 '분양 풍년'",
+     "source": "한국경제",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9vMDhOb3dQSXRNZ2M2VHRQQnoxT2syWmZfVlVDLUhZUjhRUE5QMjZjRUJlVFpHc29RUE5OY3d2eEhXZnNNRlJHdF9MMWFuLXQ4QnBhV1A0TnU1dw?oc=5",
+     "pubDate": "Thu, 22 Oct 2015 07:00:00 GMT"
     },
     {
-     "title": "디에이치 클래스트, 6500억 PF 조달…현대건설 보증",
-     "source": "dealsite.co.kr",
-     "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13dnl6M3UyVVlRN3pOekM1QVFzNmlweThKV2ZGUXZPek84cEw3UE00akpEdzIxZXRXQUlielZzRFlOVlhkMF9UenhkWWZubnM?oc=5",
-     "pubDate": "Wed, 05 Nov 2025 08:00:00 GMT"
+     "title": "서울 아파트 2곳 분양 맞대결...문래 ‘더샵’ vs 서초 ‘아크로’ 분양 시작",
+     "source": "스마트투데이",
+     "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5yQXBPQmNoYjhJN3F0a1hpd3I3eHdGWVR2bFhzNm5mZGhLZldfX29FRnZ1cHV2NjZTeTU4M1hsTkwzWWtXSC1xeU9nWkhsTTFydEJiREFNNUZZRlkzSE04?oc=5",
+     "pubDate": "Fri, 20 Mar 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "디에이치클래스트 대부분",
-    "디에이치클래스트",
-    "디에이치 클래스트"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "재건축 평촌자이 퍼스니티",
-   "mentions": 3,
-   "articles": [
-    {
-     "title": "뉴타운맨션삼호 재건축 ‘평촌자이 퍼스니티’ 11월 분양 예정",
-     "source": "housingherald.co.kr",
-     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE50SVk4d0d1V2VEbHBOQUlsWkthcHRSNXR2WkNDbFVlZV9Pd2J5M2RZVjg4TlNDV1FDNkkxUXNzSFg3X0JWTm9uTWVEbW5wdDRndnp0U0Nia1lwYmZqV043Y0tnYU42N2ZvNEtmeVpReHFUQ1U?oc=5",
-     "pubDate": "Wed, 30 Oct 2024 07:00:00 GMT"
-    },
-    {
-     "title": "GS건설, 평촌자이 퍼스니티 11월 분양 예정",
-     "source": "한국주택경제신문",
-     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBXNFVvV3VxRFlDUEJxcm5NZU8xazdMZE9ScnV6N3RWUE5tT1JNbmlUdHhuSG5DUkdYaGN4VzhycHpwd0I5em5UZldKN1owNXg0RWZreXRRNzFoNEZUUGlHNEpqbi1NV1Bo?oc=5",
-     "pubDate": "Thu, 31 Oct 2024 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "재건축 평촌자이 퍼스니티",
-    "평촌자이 퍼스니티"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "e편한세상 평택 라씨엘로·하이센트",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "'e편한세상 평택 라씨엘로·하이센트' 동호지정 선착순 분양중",
-     "source": "경상일보",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9uSXVMWmhqeGdxdDBfX3hoekNkV1pDYjh5VktXUVdDbF9GV2I1RmkyMHJZTkdoR0xDSUQzQ2JaNHRlSHZtYXJYdlRyTmsyY1N6bUpCZlZob042WWtRNUpUMXlMR3BLOGFLTFJF?oc=5",
-     "pubDate": "Sat, 08 Oct 2022 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "e편한세상 평택 라씨엘로·하이센트",
-    "e편한세상 평택"
+    "서초 아크로리버뷰강남권",
+    "아크로리버뷰",
+    "서초 아크로"
    ],
    "freq": {}
   },
@@ -169,7 +183,7 @@
    "articles": [
     {
      "title": "과천주공4단지 ‘프레스티어자이’ 9월 분양 예정",
-     "source": "housingherald.co.kr",
+     "source": "하우징헤럴드",
      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1RWGw4M05SNGhLWUFwN3JMZWFIcUZ2bThVUTVtMFBRMUJldldQclN1Z1M3XzRhRWF6Z1pIS0FMRkNFWXV1SkNpMFBpanZFNGcyY0NjcHo2cTZkWGk1OTRRNmlHTEpIWXdyNVBKeUZkLXRkUDA?oc=5",
      "pubDate": "Mon, 19 Aug 2024 07:00:00 GMT"
     }
@@ -194,23 +208,6 @@
    "aliases": [
     "기대금정역 푸르지오 그랑블",
     "금정역 푸르지오 그랑블"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "동탄 어울림 파밀리에·숨마 데시앙",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "‘동탄 어울림 파밀리에·숨마 데시앙’ 7일 선착순 계약 돌입",
-     "source": "한국건설경제뉴스",
-     "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9LQkdfRzVuV1RyV0pLTG9Hdlh1MXJDOU9YZGJMV0ljSUxvZjhhQXh4emJkY3B4X2pDY1dNUXNNSjRkZ0hlMTVzWHRURlBsbmRVdmVPWXpsSmN4MV9aM3R30gFuQVVfeXFMTms5Rk1BYUd5VDF5MU5MNlBuU0hGZF9KdFBmRFZDOXpVTjhqRFA2akE3MWlvRWVjaG9fQ3pOdWh6UjlGaDFpSEpqU0J1TWJmMkwxUVF5dDQ1R0RlanRPZ0draFNKMzJVSFFSeFpIS0E?oc=5",
-     "pubDate": "Fri, 06 Jan 2023 08:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "동탄 어울림 파밀리에·숨마 데시앙",
-    "어울림 파밀리에 숨마"
    ],
    "freq": {}
   },
@@ -249,40 +246,6 @@
    "freq": {}
   },
   {
-   "name": "뜬다GS건설 아산탕정자이 퍼스트시티",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "\"천안·아산 뜬다\"…GS건설 ‘아산탕정자이 퍼스트시티’ 다음달 분양",
-     "source": "뉴스톱",
-     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5yQ244Sm9Bb3JJTlkxYVFfcFpwenoxUDFwczVFcUZ4bXJIRzVYRTgyem5ESGhBMEtJYTlwVGJmVUhZenRuUkJmQ19tX3JHdXpDWDg2RVdRcmhTSllYZXY5UUp2WHJ6MTI4blhNX1hLMA?oc=5",
-     "pubDate": "Tue, 29 Oct 2024 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "뜬다GS건설 아산탕정자이 퍼스트시티",
-    "아산탕정자이 퍼스트시티"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "래미안 원베일리 일반분양",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "올해 강남 최대어 '래미안 원베일리' 일반분양 예정대로",
-     "source": "뉴스1",
-     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBpS2YwblJtQmlyZmVkU0ZYcWRLOG92VEhJS3podTNnQXZYdk1JZnpHYjRPTzB6WmFXTmpJeDAxZ1A3QlIya1VNbjFOMGNuZmZmNlBROUdwcFJHanlwYUZ3TDRn0gFnQVVfeXFMUHluUmlqOGlyS01SSTFlaTdlYUozQzcyT1pyQ0c3N0ZwaThTYnVZX2xWRjQ4SllPZTVoRDBKRFFIQzVia3hkSjhZTlUyX1BfU3YtcEhwTktQNHBMak1aQ05qbHlzREVTQQ?oc=5",
-     "pubDate": "Fri, 09 Apr 2021 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "래미안 원베일리 일반분양",
-    "래미안 원베일리"
-   ],
-   "freq": {}
-  },
-  {
    "name": "민간임대 모아엘가 비스타",
    "mentions": 2,
    "articles": [
@@ -317,23 +280,6 @@
    "freq": {}
   },
   {
-   "name": "서초 아크로리버뷰강남권",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "송파 '헬리오시티'·서초 '아크로리버뷰'…강남권 '분양 풍년'",
-     "source": "한국경제",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9vMDhOb3dQSXRNZ2M2VHRQQnoxT2syWmZfVlVDLUhZUjhRUE5QMjZjRUJlVFpHc29RUE5OY3d2eEhXZnNNRlJHdF9MMWFuLXQ4QnBhV1A0TnU1dw?oc=5",
-     "pubDate": "Thu, 22 Oct 2015 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "서초 아크로리버뷰강남권",
-    "아크로리버뷰"
-   ],
-   "freq": {}
-  },
-  {
    "name": "성수동 아크로서울 전셋값",
    "mentions": 2,
    "articles": [
@@ -347,6 +293,23 @@
    "aliases": [
     "성수동 아크로서울 전셋값",
     "아크로서울"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "소사벌 더샵 선착순",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "포스코건설, 평택 '소사벌 더샵' 선착순 분양중",
+     "source": "비즈워치",
+     "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBPaVZ6NG9qQk5mTGljaTd6NTg1NThzZHRWQ202VHBMZ3FUSDYxNVZMQU1XVTRXcEZjQ3pkM1V3VzZ0c0RWT0I4WmJIRndYWjZNMzB5Y015T25KYWJzS0xmQXJQOHBtZWdvTlhGSEM1bFc?oc=5",
+     "pubDate": "Mon, 12 Dec 2016 08:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "소사벌 더샵 선착순",
+    "소사벌 더샵"
    ],
    "freq": {}
   },
@@ -492,7 +455,7 @@
    "articles": [
     {
      "title": "GS건설, 천안 ‘백석시그니처자이’ 이달 분양…1174가구 공급",
-     "source": "마켓인",
+     "source": "marketin.edaily.co.kr",
      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5kbU1RVzYzOXZXR243VmliUWc5eFNzZDZNd0p5dS1ZT2VYeHVUdkFvd0ptRHF1LVlDV0NUbXdpUlJ3REM1X3RvVG85TFp6b09uaUNPUnB1UWN2VV9sZUhHcng4ZTRBRGxlb2dubmZJWVppS1U?oc=5",
      "pubDate": "Wed, 06 May 2026 07:00:00 GMT"
     },
@@ -509,36 +472,19 @@
    "freq": {}
   },
   {
-   "name": "화성 향남 롯데캐슬 시그니처",
+   "name": "힐스테이트 문수로 센트럴",
    "mentions": 2,
    "articles": [
     {
-     "title": "롯데건설 '화성 향남 롯데캐슬 시그니처' 10월 분양 예정",
-     "source": "네이트",
-     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBySlUwMVg4WTVKNENlQm5rUUg2THN6V1dCYmloTmFSNjhDOFdWdmdSQzJJcjZnb1JETVB1SjZhQ3NaZDNEMUFqNEFOWExCdVkxX3ljSmkxMlZXc2VfUmRrTw?oc=5",
-     "pubDate": "Thu, 03 Sep 2026 00:42:00 GMT"
+     "title": "현대엔지니어링, '힐스테이트 문수로 센트럴' 선착순 분양 진행",
+     "source": "데일리안",
+     "link": "https://news.google.com/rss/articles/CBMirgJBVV95cUxNUzRsQnlWUW13MVdRS1hZQjM1REZyMUZLQTVnMlg5Q0gwT3lJYUliRmJLbW5GYUJFRGlibmxqZ3dfSUFpRnZ4RjM0QWYtZkU3azRrdkR6ZHEzQm5JalJrNllWbDFDRFBZeWRZT0drZG00SlFtRG5rdjRCV0I0R2xaZ1BwdDd1S2d0S0dPa3B4YjZyQmVXV251c3Q0Z3VUMTlOSk1SV0ZRLTZKbjV0TVdzX3hQTm9Ic2kyTGJCZUt6M3lfOEVfNWZtbHU2ZzF4aTE2QW5VZTRKMkpabU9PM3FyTEE2Y2N2NWdjSnppTmVsVlVjS0hSaURuT2xMNmJrc0xGTlJoUzRsRHBHdGxGRldpWEI4d0ppOUo2T3c0MFMzLVU2eUZBMEFkazBxSm45dw?oc=5",
+     "pubDate": "Mon, 02 Jan 2023 08:00:00 GMT"
     }
    ],
    "aliases": [
-    "화성 향남 롯데캐슬 시그니처",
-    "향남 롯데캐슬 시그니처"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "힐스테이트 평택 화양",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "'힐스테이트 평택 화양' 잔여세대 선착순 분양... 모델하우스 운영중",
-     "source": "경상일보",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBiUHE2aS1aVHlSd1FCcGh5dEY1MjNrb011ZEV1cDVGUno4X1UzM1NwM0MxZUpuZzRWc3IxdlJ2WU03czdmSHpXdnlyR1dScGtkc2J6MkVqMjhOVVVtSHBQWU1wUkJGYml2cnRJ?oc=5",
-     "pubDate": "Sat, 22 Apr 2023 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "힐스테이트 평택 화양",
-    "힐스테이트 평택"
+    "힐스테이트 문수로 센트럴",
+    "힐스테이트 문수로"
    ],
    "freq": {}
   }
