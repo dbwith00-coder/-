@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-05T21:11:36.461Z",
-  "count": 754,
+  "collectedAt": "2026-09-06T03:15:44.553Z",
+  "count": 749,
   "sites": [
     {
       "id": "applyhome-apt-2026000426-2026000426",
@@ -35097,193 +35097,6 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 숭의1구역지역주택조합 · 시공 (주)현대건설 · 당첨자발표 2025-09-30 · 입주예정 202510. 예상 당첨선(49점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
-      "id": "applyhome-apt-2025000417-2025000417",
-      "live": true,
-      "source": "applyhome",
-      "set": "apt",
-      "category": "APT",
-      "scoreless": false,
-      "supply": "공공",
-      "kind": "APT",
-      "n": "문수데시앙2단지 공가세대 일반공급",
-      "gu": "울산광역시 울주군 청량읍 율리영해2길",
-      "brand": "태영건설 주식회사",
-      "total": 27,
-      "general": 27,
-      "when": "2025-09-05",
-      "rceptStart": "2025-09-15",
-      "rceptEnd": "2025-09-16",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "2025-09-15 ~ 2025-09-15",
-        "general": "2025-09-15 ~ 2025-09-16",
-        "result": "2025-09-22"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 15,
-          "price": 22100,
-          "general": 15,
-          "special": 0
-        },
-        {
-          "t": "59㎡B",
-          "n": 11,
-          "price": 22350,
-          "general": 11,
-          "special": 0
-        },
-        {
-          "t": "74㎡A",
-          "n": 1,
-          "price": 27900,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 45,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "공공주택지구"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000417&pblancNo=2025000417",
-      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 울산광역시도시공사 · 시공 태영건설 주식회사 · 당첨자발표 2025-09-22 · 입주예정 202511. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
-    },
-    {
-      "id": "applyhome-apt-2025000259-2025000259",
-      "live": true,
-      "source": "applyhome",
-      "set": "apt",
-      "category": "APT",
-      "scoreless": false,
-      "supply": "민영",
-      "kind": "APT",
-      "n": "다산 월드메르디앙 센텀하이",
-      "gu": "경상북도 고령군 다산면 좌학리",
-      "brand": "은성산업(주), 은성건설(주)",
-      "total": 463,
-      "general": 222,
-      "when": "2025-09-05",
-      "rceptStart": "2025-09-15",
-      "rceptEnd": "2025-09-17",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "2025-09-15 ~ 2025-09-15",
-        "rank1": "2025-09-16 ~ 2025-09-16",
-        "general": "2025-09-15 ~ 2025-09-17",
-        "result": "2025-09-23"
-      },
-      "types": [
-        {
-          "t": "74㎡A",
-          "n": 74,
-          "price": 32770,
-          "general": 35,
-          "special": 39
-        },
-        {
-          "t": "74㎡B",
-          "n": 36,
-          "price": 33110,
-          "general": 18,
-          "special": 18
-        },
-        {
-          "t": "76㎡",
-          "n": 36,
-          "price": 33600,
-          "general": 18,
-          "special": 18
-        },
-        {
-          "t": "84㎡A",
-          "n": 243,
-          "price": 38250,
-          "general": 112,
-          "special": 131
-        },
-        {
-          "t": "84㎡B",
-          "n": 68,
-          "price": 37620,
-          "general": 33,
-          "special": 35
-        },
-        {
-          "t": "103㎡",
-          "n": 2,
-          "price": 56530,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "115㎡",
-          "n": 1,
-          "price": 62320,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "121㎡A",
-          "n": 1,
-          "price": 64950,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "121㎡B",
-          "n": 1,
-          "price": 66280,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "121㎡C",
-          "n": 1,
-          "price": 66010,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {
-        "newly": {
-          "n": 103,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 39,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 43,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 13,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 43,
-          "label": "기관추천"
-        }
-      },
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000259&pblancNo=2025000259",
-      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 한국투자부동산신탁 주식회사 · 시공 은성산업(주), 은성건설(주) · 당첨자발표 2025-09-23 · 입주예정 202607. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
-    },
-    {
       "id": "applyhome-remndr-2026910231-2026910231",
       "live": true,
       "source": "applyhome",
@@ -36582,32 +36395,9 @@
       },
       "types": [
         {
-          "t": "39㎡A",
-          "n": 21,
-          "price": 73220,
-          "general": 21,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 8,
-          "price": 174970,
-          "general": 8,
-          "special": 0
-        },
-        {
-          "t": "84㎡C",
-          "n": 6,
-          "price": 176350,
-          "general": 6,
-          "special": 0
-        },
-        {
-          "t": "101㎡",
-          "n": 4,
-          "price": 194570,
-          "general": 4,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -39949,11 +39739,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 116,
-          "price": 56710,
-          "general": 116,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -43661,25 +43449,9 @@
       },
       "types": [
         {
-          "t": "59㎡",
-          "n": 3,
-          "price": 37655,
-          "general": 3,
-          "special": 0
-        },
-        {
-          "t": "64㎡",
-          "n": 3,
-          "price": 39990,
-          "general": 3,
-          "special": 0
-        },
-        {
-          "t": "84㎡",
-          "n": 2,
-          "price": 52684,
-          "general": 2,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -56117,155 +55889,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910166&pblancNo=2025910166",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 아이비투자검단(주) · 당첨자발표 2025-09-18 · 입주예정 202511. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910169-2025910169",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "전주 라온프라이빗 퍼스티브",
-      "gu": "전북특별자치도 전주시 완산구 평화동2가",
-      "brand": "코리아신탁(주)",
-      "total": 226,
-      "general": 226,
-      "when": "2025-09-05",
-      "rceptStart": "2025-09-10",
-      "rceptEnd": "2025-09-10",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-10 ~ 2025-09-10",
-        "result": "2025-09-15"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 226,
-          "price": 48900,
-          "general": 226,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910169&pblancNo=2025910169",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 코리아신탁(주) · 당첨자발표 2025-09-15 · 입주예정 202803. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910168-2025910168",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "파주운정 경남아너스빌 리버(A48블록)(2차)",
-      "gu": "경기도 파주시 파주운정3지구 A48BL",
-      "brand": "삼환기업(주)",
-      "total": 6,
-      "general": 6,
-      "when": "2025-09-05",
-      "rceptStart": "2025-09-10",
-      "rceptEnd": "2025-09-10",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-10 ~ 2025-09-10",
-        "result": "2025-09-15"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 2,
-          "price": 39550,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "59㎡B",
-          "n": 1,
-          "price": 37000,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 3,
-          "price": 48460,
-          "general": 3,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910168&pblancNo=2025910168",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 삼환기업(주) · 당첨자발표 2025-09-15 · 입주예정 202510. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910165-2025910165",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "트리븐 삼척",
-      "gu": "강원특별자치도 삼척시 교동 205-6번지",
-      "brand": "대한토지신탁(주)",
-      "total": 11,
-      "general": 11,
-      "when": "2025-09-05",
-      "rceptStart": "2025-09-10",
-      "rceptEnd": "2025-09-10",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-10 ~ 2025-09-10",
-        "result": "2025-09-15"
-      },
-      "types": [
-        {
-          "t": "99㎡",
-          "n": 11,
-          "price": 56750,
-          "general": 11,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910165&pblancNo=2025910165",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 대한토지신탁(주) · 당첨자발표 2025-09-15 · 입주예정 202808. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
