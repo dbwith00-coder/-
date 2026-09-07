@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-09-06T21:12:08.672Z",
+ "collectedAt": "2026-09-07T03:16:45.951Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -45,7 +45,7 @@
   }
  ],
  "articleCount": 624,
- "count": 27,
+ "count": 26,
  "candidates": [
   {
    "name": "반포디에이치클래스트 등판8월",
@@ -59,7 +59,7 @@
     },
     {
      "title": "8월 서울 6770가구 분양…수십억 로또 '반포디에이치클래스트' 주목",
-     "source": "theguru.co.kr",
+     "source": "더구루",
      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9PbFlkZnF5LThHMURvbFBQN2Y3ZXUzX2ZzRXE2YjViNGkxWXFxUVhCYWU4Q3VQWXpaeDhXS3NFbnl2RXdtQm5vNjF2Q1hNQXBFTW5BMEplQVFWVFVMZTFaUw?oc=5",
      "pubDate": "Sat, 08 Aug 2026 07:00:00 GMT"
     },
@@ -137,6 +137,29 @@
    "freq": {}
   },
   {
+   "name": "화성 향남 롯데캐슬 시그니처",
+   "mentions": 4,
+   "articles": [
+    {
+     "title": "롯데건설, ‘화성 향남 롯데캐슬 시그니처’ 10월 분양 예정 - 조선비즈",
+     "source": "Chosunbiz",
+     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPSWZGbEpzeVBOanh6UGZFN0RmWk9TLUJIcm5zMDg4REFfcDMyNks1X1pCRkdoS2ZHeUhVeDRrdnRScmZFcFdhRmNoeUxVUlVlZVFGTkJkUmltV3NBdHdGZDZIRkU3RHBwTERjVF91NzYwSVdhU2tHVllFVEV4aHVZb2JWSGNtVlFGaWJJYdIBoAFBVV95cUxQa1NOWTJ3UUFWYUd0bjBRTV94N2dDUkNLV1B3WS1sODhkbEV2QjczR09mS1l3ODdZYy1falo2UllBTEdrMVJERHJCNmpFa3ItelNKRFlIT0pCTml4ZEliMC1iX1c5eU9WM3J3aXkwWmpvc3NiMVlta1NFVEdWRjdDakc5ZUZlNENfMHNyRnlwbGVWV2hQcC1Uek15WVRKMW9o?oc=5",
+     "pubDate": "Thu, 27 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "롯데건설 '화성 향남 롯데캐슬 시그니처' 10월 분양 예정",
+     "source": "네이트",
+     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBySlUwMVg4WTVKNENlQm5rUUg2THN6V1dCYmloTmFSNjhDOFdWdmdSQzJJcjZnb1JETVB1SjZhQ3NaZDNEMUFqNEFOWExCdVkxX3ljSmkxMlZXc2VfUmRrTw?oc=5",
+     "pubDate": "Thu, 03 Sep 2026 00:42:00 GMT"
+    }
+   ],
+   "aliases": [
+    "화성 향남 롯데캐슬 시그니처",
+    "향남 롯데캐슬 시그니처"
+   ],
+   "freq": {}
+  },
+  {
    "name": "e편한세상 신곡 시그니처뷰",
    "mentions": 3,
    "articles": [
@@ -165,29 +188,6 @@
    "freq": {}
   },
   {
-   "name": "기대금정역 푸르지오 그랑블",
-   "mentions": 3,
-   "articles": [
-    {
-     "title": "GTX-C 호재 기대…‘금정역 푸르지오 그랑블’ 잔여세대 선착순 분양",
-     "source": "geconomy.co.kr",
-     "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE15QTZBRHdQYXl3THBjZzlSRFVkV1BwMG40RWVuMVZ2eGFVdS1RcV8wYVhNRUFMMk1YVjY0N1pvdFRrZG5vc3k0OTItWVY0TzZTd19FS1dibDN2R3FabGtDaWhoV2o?oc=5",
-     "pubDate": "Thu, 13 Feb 2025 08:00:00 GMT"
-    },
-    {
-     "title": "대규모 산업단지 배후지 '금정역 푸르지오 그랑블', 선착순 분양",
-     "source": "geconomy.co.kr",
-     "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5vNG5QLU1hX2c4QVhXUWJFNW9UcDE2ZFJ3NnljVDBOUUd0cHQ5VU1BdGRtazZXVEI4RGpsLVB5bEZuTXo0Uk5nTWU2eS1wYXdtS0w2a2ZwbWZ1THZ6UEhzN3hPUTE?oc=5",
-     "pubDate": "Tue, 04 Mar 2025 08:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "기대금정역 푸르지오 그랑블",
-    "금정역 푸르지오 그랑블"
-   ],
-   "freq": {}
-  },
-  {
    "name": "e편한세상 에코델타 센터포인트",
    "mentions": 2,
    "articles": [
@@ -205,12 +205,29 @@
    "freq": {}
   },
   {
+   "name": "e편한세상 평택 라씨엘로·하이센트",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "'e편한세상 평택 라씨엘로·하이센트' 동호지정 선착순 분양중",
+     "source": "경상일보",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9uSXVMWmhqeGdxdDBfX3hoekNkV1pDYjh5VktXUVdDbF9GV2I1RmkyMHJZTkdoR0xDSUQzQ2JaNHRlSHZtYXJYdlRyTmsyY1N6bUpCZlZob042WWtRNUpUMXlMR3BLOGFLTFJF?oc=5",
+     "pubDate": "Sat, 08 Oct 2022 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "e편한세상 평택 라씨엘로·하이센트",
+    "e편한세상 평택"
+   ],
+   "freq": {}
+  },
+  {
    "name": "과천주공4단지 프레스티어자이",
    "mentions": 2,
    "articles": [
     {
      "title": "과천주공4단지 ‘프레스티어자이’ 9월 분양 예정",
-     "source": "하우징헤럴드",
+     "source": "housingherald.co.kr",
      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1RWGw4M05SNGhLWUFwN3JMZWFIcUZ2bThVUTVtMFBRMUJldldQclN1Z1M3XzRhRWF6Z1pIS0FMRkNFWXV1SkNpMFBpanZFNGcyY0NjcHo2cTZkWGk1OTRRNmlHTEpIWXdyNVBKeUZkLXRkUDA?oc=5",
      "pubDate": "Mon, 19 Aug 2024 07:00:00 GMT"
     }
@@ -233,7 +250,7 @@
     },
     {
      "title": "호반건설, 분양가상한제 적용 김포풍무 호반써밋 956가구 이달 분양",
-     "source": "public25.com",
+     "source": "퍼블릭타임스",
      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE14LUE4WWVYSGpkNDVnaWYyZXZCOTFQaW93R0VWbWVvZFFWeThKN1BQdEVPcDlDN0RSdGdRZ3hiUzRCaS1KNklTTzhEMFhxc1l3aEczMUdkV1h3YWZxNlB3c1I2ZDRmTERxblHSAW5BVV95cUxNR3BuZnhJcjFtNElzYllPR2VBYXdqaG1CbVVDVm8yNEVlMjhRbVY1dTZvSWtDNF81b19Mb21WTjV4RnR5TmhJelgzNHU3VllaUU9KZ0thWEhXU0hMVGVDaDRTRzYyVzh2QnhEbTZjQQ?oc=5",
      "pubDate": "Thu, 16 Oct 2025 07:00:00 GMT"
     }
@@ -250,7 +267,7 @@
    "articles": [
     {
      "title": "라온건설 전주 첫 진출 단지…'전주 라온프라이빗 퍼스티브' 이달 분양",
-     "source": "hankyung.com",
+     "source": "한국경제",
      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBHREtSdEJGRjRLWURXaVF5V19fY0wzdDdWTFhkS2lpOHh1Y2JQeHBTVkFIOXpEUXRwcFVuUkVsVnlpekxubUVsT19KQ1JpWVJnb3E4WEh4VkQxUQ?oc=5",
      "pubDate": "Tue, 01 Jul 2025 07:00:00 GMT"
     }
@@ -267,7 +284,7 @@
    "articles": [
     {
      "title": "태영건설, 대구 ‘더 팰리스트 데시앙’ 다음달 분양",
-     "source": "daily.hankooki.com",
+     "source": "데일리한국",
      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE15RURxR3dvQkFqa0RRbld4THY2LXllQ1hiY25uc1F5YW5lWFJBWlQxaFh0anY2djNCbmhOR29uRGJxN29MYnFJNlg0MlhObndicUtfZmZVeWVOM2hBOUgzNnVjbGRGb01uOHhqQlE3NNIBc0FVX3lxTE0zT0NnbzhNaTVrODZNX0IySzl3MUZSSzVOSUxpVWZKeHE0czJHQV9ZdVFSTTFja3F5MG5kaU9ULVlBTkpra0FPeGczSHM2MHlQdDRsSW44Ul9HVmhZb05xQlhOYnVndVQ0WHZQRk1ySkxBZms?oc=5",
      "pubDate": "Tue, 12 Nov 2024 08:00:00 GMT"
     }
@@ -284,13 +301,13 @@
    "articles": [
     {
      "title": "2만5000가구 대단지 도마 포레나 해모로 선착순 분양 중…2027년 입주 예정",
-     "source": "문화일보",
+     "source": "munhwa.com",
      "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1qY2J0UjFISmNvQ2p1R25LZi1PcC1jN1haMlluRmJxekxZbmJpWHVmWEtITGtZcHVheDRIaUNFQ21GbUt0WFNIZTdqZDBINjhz?oc=5",
      "pubDate": "Wed, 04 Jun 2025 07:00:00 GMT"
     },
     {
      "title": "한화건설, 대전 '도마 포레나해모로' 568가구 선착순 분양",
-     "source": "theguru.co.kr",
+     "source": "더구루",
      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFA3WXBfdUJlZW82NDlVN0dfN0puYW5SQ1JpN0N4SXJqZVVhampFQV9BQlRHMl80cVhQQWxqalVkclN0UEpSZDY0dnZoZllUNnM1MURCb1dCM3phSHZyN2h6b0Jn?oc=5",
      "pubDate": "Tue, 21 May 2024 07:00:00 GMT"
     }
@@ -307,7 +324,7 @@
    "articles": [
     {
      "title": "'10억 로또' 떴다…성수 '오티에르 포레' 내달 7일부터 청약",
-     "source": "hankyung.com",
+     "source": "한국경제",
      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0wS3dPc3BSMXNiSXlZN2lYRHVxbzRra0c2bVF3UndoNzVIWUpFdElhZ2VaQjZxckxiUDVsREJsUUVMc05jRXJnUjM4UVQyRGh2VjdvUXJzdlpHdw?oc=5",
      "pubDate": "Thu, 26 Jun 2025 07:00:00 GMT"
     }
@@ -353,29 +370,12 @@
    "freq": {}
   },
   {
-   "name": "부산 힐스테이트 연산",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "[얼마집] 부산 '힐스테이트 연산' 잔여가구 3일 선착순 분양",
-     "source": "hankyung.com",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE10X2RKZUp2R196cEZpZUN6TS1OMXZWR3ZYNzk1M3BybE5FODdTWUpCVndFU09xcTNsTWNLX24zQ0hzajA1MnJVWGk5NzZJLXdTNUVITnd1SjZudw?oc=5",
-     "pubDate": "Mon, 01 Oct 2018 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "부산 힐스테이트 연산",
-    "힐스테이트 연산"
-   ],
-   "freq": {}
-  },
-  {
    "name": "소사벌 더샵 선착순",
    "mentions": 2,
    "articles": [
     {
      "title": "포스코건설, 평택 '소사벌 더샵' 선착순 분양중",
-     "source": "비즈워치",
+     "source": "news.bizwatch.co.kr",
      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBPaVZ6NG9qQk5mTGljaTd6NTg1NThzZHRWQ202VHBMZ3FUSDYxNVZMQU1XVTRXcEZjQ3pkM1V3VzZ0c0RWT0I4WmJIRndYWjZNMzB5Y015T25KYWJzS0xmQXJQOHBtZWdvTlhGSEM1bFc?oc=5",
      "pubDate": "Mon, 12 Dec 2016 08:00:00 GMT"
     }
@@ -409,7 +409,7 @@
    "articles": [
     {
      "title": "'신경주 데시앙' 잔여분 선착순 분양",
-     "source": "hankyung.com",
+     "source": "한국경제",
      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5yODVmNmp5Zmd0ZzQxMkdtZVdLcUlJaXVteVV2bVRpUkJHU040WFhOUi0yMnl4M3RZMU9zenNQZWJ3c1JIS3VKeTEtT09DV1ZISmJ6LUxQdmhGZw?oc=5",
      "pubDate": "Mon, 01 Nov 2021 07:00:00 GMT"
     }
@@ -426,7 +426,7 @@
    "articles": [
     {
      "title": "쌍용건설, ‘쌍용 더 플래티넘 서면’ 견본주택 오픈…이달 분양 예정",
-     "source": "newstopkorea.com",
+     "source": "뉴스톱",
      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5veGVFOTZNSUEyOUdhcUt0aC1QRDlkRnhjbnFZdFhmVXBWdlFUSUpldXFGUFlHT3VCWFZHbXdOYXNWQ0FYR2NzTWlLekszaTZfdGJ0bG1zQnZEVmlrQmlRYzJiTUE3VUIxQmFyQUQ1MA?oc=5",
      "pubDate": "Thu, 03 Jul 2025 07:00:00 GMT"
     }
@@ -460,7 +460,7 @@
    "articles": [
     {
      "title": "'용인 푸르지오 원클러스터 2·3단지' 잔여 가구 선착순 분양",
-     "source": "hankyung.com",
+     "source": "한국경제",
      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1MbFA3VzVLUmZId2V3TTJwbU9ucW9MWmRVV0h6Q2hrYjR1M2wzamtGMkZhYzZTV2F6QzQ2VUo1WlhlRTFIaW1IVlE2UXZmN2M5NENRTEhzWVRzdw?oc=5",
      "pubDate": "Fri, 23 May 2025 07:00:00 GMT"
     },
@@ -546,23 +546,6 @@
    "aliases": [
     "첨단3지구 A6블록 제일풍경채",
     "A6블록 제일풍경채"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "화성 향남 롯데캐슬 시그니처",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "롯데건설, ‘화성 향남 롯데캐슬 시그니처’ 10월 분양 예정 - 조선비즈",
-     "source": "Chosunbiz",
-     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPSWZGbEpzeVBOanh6UGZFN0RmWk9TLUJIcm5zMDg4REFfcDMyNks1X1pCRkdoS2ZHeUhVeDRrdnRScmZFcFdhRmNoeUxVUlVlZVFGTkJkUmltV3NBdHdGZDZIRkU3RHBwTERjVF91NzYwSVdhU2tHVllFVEV4aHVZb2JWSGNtVlFGaWJJYdIBoAFBVV95cUxQa1NOWTJ3UUFWYUd0bjBRTV94N2dDUkNLV1B3WS1sODhkbEV2QjczR09mS1l3ODdZYy1falo2UllBTEdrMVJERHJCNmpFa3ItelNKRFlIT0pCTml4ZEliMC1iX1c5eU9WM3J3aXkwWmpvc3NiMVlta1NFVEdWRjdDakc5ZUZlNENfMHNyRnlwbGVWV2hQcC1Uek15WVRKMW9o?oc=5",
-     "pubDate": "Thu, 27 Aug 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "화성 향남 롯데캐슬 시그니처",
-    "향남 롯데캐슬 시그니처"
    ],
    "freq": {}
   },
