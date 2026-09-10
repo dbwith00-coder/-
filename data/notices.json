@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-09T21:11:47.811Z",
+  "collectedAt": "2026-09-10T03:16:59.336Z",
   "count": 754,
   "sites": [
     {
@@ -1086,7 +1086,7 @@
       "when": "2026-08-31",
       "rceptStart": "2026-09-08",
       "rceptEnd": "2026-09-09",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "2026-09-08 ~ 2026-09-08",
@@ -35536,7 +35536,7 @@
       "when": "2026-09-04",
       "rceptStart": "2026-09-09",
       "rceptEnd": "2026-09-09",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
