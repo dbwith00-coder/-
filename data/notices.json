@@ -1,7 +1,107 @@
 {
-  "collectedAt": "2026-09-10T03:16:59.336Z",
-  "count": 754,
+  "collectedAt": "2026-09-10T21:11:48.487Z",
+  "count": 758,
   "sites": [
+    {
+      "id": "applyhome-apt-2026000314-2026000314",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "중동역 다채로움 더원",
+      "gu": "경기도 부천시 소사구 송내동",
+      "brand": "주식회사 부성종합건설",
+      "total": 39,
+      "general": 18,
+      "when": "2026-09-10",
+      "rceptStart": "2026-09-21",
+      "rceptEnd": "2026-09-23",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-09-21 ~ 2026-09-21",
+        "rank1": "2026-09-22 ~ 2026-09-22",
+        "general": "2026-09-21 ~ 2026-09-23",
+        "result": "2026-10-08"
+      },
+      "types": [
+        {
+          "t": "54㎡",
+          "n": 7,
+          "price": 54900,
+          "general": 3,
+          "special": 4
+        },
+        {
+          "t": "59㎡B",
+          "n": 4,
+          "price": 61000,
+          "general": 3,
+          "special": 1
+        },
+        {
+          "t": "60㎡",
+          "n": 8,
+          "price": 61200,
+          "general": 3,
+          "special": 5
+        },
+        {
+          "t": "84㎡A",
+          "n": 2,
+          "price": 75300,
+          "general": 2,
+          "special": 0
+        },
+        {
+          "t": "84㎡B",
+          "n": 7,
+          "price": 79300,
+          "general": 2,
+          "special": 5
+        },
+        {
+          "t": "84㎡C",
+          "n": 11,
+          "price": 79600,
+          "general": 5,
+          "special": 6
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 6,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 3,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 4,
+          "label": "다자녀가구"
+        },
+        "inst": {
+          "n": 4,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 4,
+          "label": "신생아"
+        }
+      },
+      "cut": 42,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000314&pblancNo=2026000314",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 송내동 성우아파트 소규모재건축정비사업조합 · 시공 주식회사 부성종합건설 · 당첨자발표 2026-10-08 · 입주예정 202808. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
     {
       "id": "applyhome-apt-2026000431-2026000431",
       "live": true,
@@ -35185,6 +35285,148 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000319&pblancNo=2025000319",
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 숭의1구역지역주택조합 · 시공 (주)현대건설 · 당첨자발표 2025-09-30 · 입주예정 202510. 예상 당첨선(49점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910242-2026910242",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "더샵 송도마리나베이(조합원 자격상실세대 3회차)",
+      "gu": "인천광역시 연수구 송도동 308-1번지(송도국제도시",
+      "brand": "센토피아송도랜드마크시티지역주택조합",
+      "total": 1,
+      "general": 1,
+      "when": "2026-09-10",
+      "rceptStart": "2026-09-15",
+      "rceptEnd": "2026-09-15",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-15 ~ 2026-09-15",
+        "result": "2026-09-21"
+      },
+      "types": [
+        {
+          "t": "84㎡C",
+          "n": 1,
+          "price": 78400,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 49,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910242&pblancNo=2026910242",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 센토피아송도랜드마크시티지역주택조합 · 당첨자발표 2026-09-21 · 입주예정 202612. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910239-2026910239",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "더샵 트리센트",
+      "gu": "부산광역시 남구 문현동 334번지",
+      "brand": "문현마루지역주택조합",
+      "total": 28,
+      "general": 28,
+      "when": "2026-09-10",
+      "rceptStart": "2026-09-15",
+      "rceptEnd": "2026-09-15",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-15 ~ 2026-09-15",
+        "result": "2026-09-18"
+      },
+      "types": [
+        {
+          "t": "75㎡",
+          "n": 7,
+          "price": 74300,
+          "general": 7,
+          "special": 0
+        },
+        {
+          "t": "84㎡",
+          "n": 21,
+          "price": 84900,
+          "general": 21,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910239&pblancNo=2026910239",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 문현마루지역주택조합 · 당첨자발표 2026-09-18 · 입주예정 202912. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910238-2026910238",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "북오산자이 드포레",
+      "gu": "경기도 오산시 내삼미동 288번지",
+      "brand": "한국투자부동산신탁 주식회사",
+      "total": 2,
+      "general": 2,
+      "when": "2026-09-10",
+      "rceptStart": "2026-09-15",
+      "rceptEnd": "2026-09-15",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-15 ~ 2026-09-15",
+        "result": "2026-09-18"
+      },
+      "types": [
+        {
+          "t": "124㎡P",
+          "n": 2,
+          "price": 148640,
+          "general": 2,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 42,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910238&pblancNo=2026910238",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 한국투자부동산신탁 주식회사 · 당첨자발표 2026-09-18 · 입주예정 202910. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     },
     {
       "id": "applyhome-remndr-2026910234-2026910234",
