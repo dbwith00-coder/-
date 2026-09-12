@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-11T21:12:29.435Z",
-  "count": 759,
+  "collectedAt": "2026-09-12T03:15:47.064Z",
+  "count": 758,
   "sites": [
     {
       "id": "applyhome-apt-2026000449-2026000449",
@@ -35705,120 +35705,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000367&pblancNo=2025000367",
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 메디컬카운티지역주택조합 · 시공 (주)태영건설 · 당첨자발표 2025-10-01 · 입주예정 202709. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
-    },
-    {
-      "id": "applyhome-apt-2025000319-2025000319",
-      "live": true,
-      "source": "applyhome",
-      "set": "apt",
-      "category": "APT",
-      "scoreless": false,
-      "supply": "민영",
-      "kind": "APT",
-      "n": "인천 힐스테이트 숭의역",
-      "gu": "인천광역시 미추홀구 인주대로 5",
-      "brand": "(주)현대건설",
-      "total": 17,
-      "general": 10,
-      "when": "2025-09-11",
-      "rceptStart": "2025-09-22",
-      "rceptEnd": "2025-09-24",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "2025-09-22 ~ 2025-09-22",
-        "rank1": "2025-09-23 ~ 2025-09-23",
-        "general": "2025-09-22 ~ 2025-09-24",
-        "result": "2025-09-30"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 3,
-          "price": 46500,
-          "general": 1,
-          "special": 2
-        },
-        {
-          "t": "59㎡B",
-          "n": 2,
-          "price": 50810,
-          "general": 1,
-          "special": 1
-        },
-        {
-          "t": "59㎡C",
-          "n": 2,
-          "price": 49860,
-          "general": 1,
-          "special": 1
-        },
-        {
-          "t": "59㎡D",
-          "n": 2,
-          "price": 50810,
-          "general": 1,
-          "special": 1
-        },
-        {
-          "t": "59㎡E",
-          "n": 2,
-          "price": 47460,
-          "general": 1,
-          "special": 1
-        },
-        {
-          "t": "59㎡F",
-          "n": 1,
-          "price": 48900,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "59㎡G",
-          "n": 1,
-          "price": 47940,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "74㎡",
-          "n": 4,
-          "price": 60300,
-          "general": 3,
-          "special": 1
-        }
-      ],
-      "specialUnits": {
-        "newly": {
-          "n": 3,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 1,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 1,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 1,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 1,
-          "label": "기관추천"
-        }
-      },
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000319&pblancNo=2025000319",
-      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 숭의1구역지역주택조합 · 시공 (주)현대건설 · 당첨자발표 2025-09-30 · 입주예정 202510. 예상 당첨선(49점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
       "id": "applyhome-remndr-2026910242-2026910242",
