@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-09-13T03:15:43.823Z",
+ "collectedAt": "2026-09-13T21:12:10.663Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -20,7 +20,7 @@
   },
   {
    "query": "다음달 분양 아파트",
-   "count": 79,
+   "count": 78,
    "error": null
   },
   {
@@ -35,17 +35,17 @@
   },
   {
    "query": "선착순 분양 예정",
-   "count": 76,
+   "count": 77,
    "error": null
   },
   {
    "query": "재건축 일반분양 예정",
-   "count": 96,
+   "count": 94,
    "error": null
   }
  ],
- "articleCount": 610,
- "count": 25,
+ "articleCount": 612,
+ "count": 24,
  "candidates": [
   {
    "name": "부산 연제갤러리자이",
@@ -168,29 +168,6 @@
    "freq": {}
   },
   {
-   "name": "첨단 제일풍경채 분양완료",
-   "mentions": 4,
-   "articles": [
-    {
-     "title": "제일건설, 광주 첨단3지구 ‘첨단 제일풍경채’ 분양완료 임박… 59㎡등 일부 세대 선착순 분양 예정",
-     "source": "서울경제",
-     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE53aVFUWU5UcTFNUzdvdWVhSDRXQXZzMjVoWTNfY0VXdVVvX0VMV3FKN2xmandKLUwzVlV6WEs3YVBmUTBhR2JBT0ZmNUN5c1hyc1E?oc=5",
-     "pubDate": "Wed, 01 Nov 2023 07:00:00 GMT"
-    },
-    {
-     "title": "제일건설, 광주 첨단3지구 ‘첨단 제일풍경채’ 분양완료 임박… 59㎡등 일부 세대 선착순 분양 예정",
-     "source": "서울경제",
-     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE94YXd5UWk1RUtkUjQ2TTlsTlQ3LVBuWldkVnhLNDhUVVN0bWhXNDBQcWFPRnJhX0Q2bGNoaU9PM0QtdkkweG9adzRKOUZXRFB2Mk9R?oc=5",
-     "pubDate": "Wed, 01 Nov 2023 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "첨단 제일풍경채 분양완료",
-    "첨단 제일풍경채"
-   ],
-   "freq": {}
-  },
-  {
    "name": "e편한세상 신곡 시그니처뷰",
    "mentions": 3,
    "articles": [
@@ -258,7 +235,7 @@
    "articles": [
     {
      "title": "‘곤지암역 제일풍경채’ 경강선∙GTX-D노선(예정) 곤지암역 초역세권, 선착순 분양",
-     "source": "경상일보",
+     "source": "ksilbo.co.kr",
      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE81amRoRlQzZHZVZXlqM2paWFA2R0V4bU5VX0xDZVZOQ0NwQ1Fta3YwMlNOQjFocjczQnZLcFFqbTBrWlZfd2JRMktxM1V4b2F3UnF4Qk9TdHhjbXB4X1pNMm9qcnhqeVN5YW9SSQ?oc=5",
      "pubDate": "Mon, 13 Jan 2025 08:00:00 GMT"
     }
@@ -304,19 +281,19 @@
    "freq": {}
   },
   {
-   "name": "더 팰리스트 데시앙",
+   "name": "단지전주 라온프라이빗 퍼스티브",
    "mentions": 2,
    "articles": [
     {
-     "title": "태영건설, 대구 ‘더 팰리스트 데시앙’ 다음달 분양",
-     "source": "daily.hankooki.com",
-     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE15RURxR3dvQkFqa0RRbld4THY2LXllQ1hiY25uc1F5YW5lWFJBWlQxaFh0anY2djNCbmhOR29uRGJxN29MYnFJNlg0MlhObndicUtfZmZVeWVOM2hBOUgzNnVjbGRGb01uOHhqQlE3NNIBc0FVX3lxTE0zT0NnbzhNaTVrODZNX0IySzl3MUZSSzVOSUxpVWZKeHE0czJHQV9ZdVFSTTFja3F5MG5kaU9ULVlBTkpra0FPeGczSHM2MHlQdDRsSW44Ul9HVmhZb05xQlhOYnVndVQ0WHZQRk1ySkxBZms?oc=5",
-     "pubDate": "Tue, 12 Nov 2024 08:00:00 GMT"
+     "title": "라온건설 전주 첫 진출 단지…'전주 라온프라이빗 퍼스티브' 이달 분양",
+     "source": "한국경제",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBHREtSdEJGRjRLWURXaVF5V19fY0wzdDdWTFhkS2lpOHh1Y2JQeHBTVkFIOXpEUXRwcFVuUkVsVnlpekxubUVsT19KQ1JpWVJnb3E4WEh4VkQxUQ?oc=5",
+     "pubDate": "Tue, 01 Jul 2025 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "더 팰리스트 데시앙",
-    "팰리스트 데시앙"
+    "단지전주 라온프라이빗 퍼스티브",
+    "전주 라온프라이빗 퍼스티브"
    ],
    "freq": {}
   },
@@ -385,40 +362,6 @@
    "aliases": [
     "신경주 데시앙 잔여분",
     "신경주 데시앙"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "쌍용 더 플래티넘 서면",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "쌍용건설, ‘쌍용 더 플래티넘 서면’ 견본주택 오픈…이달 분양 예정",
-     "source": "newstopkorea.com",
-     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5veGVFOTZNSUEyOUdhcUt0aC1QRDlkRnhjbnFZdFhmVXBWdlFUSUpldXFGUFlHT3VCWFZHbXdOYXNWQ0FYR2NzTWlLekszaTZfdGJ0bG1zQnZEVmlrQmlRYzJiTUE3VUIxQmFyQUQ1MA?oc=5",
-     "pubDate": "Thu, 03 Jul 2025 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "쌍용 더 플래티넘 서면",
-    "더 플래티넘 서면"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "앞둔 호반써밋 풍무II의",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "[분양 현장] 개관 앞둔 '호반써밋 풍무II'의 모델하우스",
-     "source": "straightnews.co.kr",
-     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB6NzFUT05FSVlxdHYxSUJibmtPWW5TaWpuWk9lV2IyM2tXNllSbVpfNFBiQ08wdHNqdGR1dXFCaG9vQzVLMkVOdm1CQmNzZDhIRkpSZVlJbTlNd2hyVGhZeGRRdXZIQ3JvUW15cEtCOXJtNzTSAXdBVV95cUxPZHJFVDVLOWEyY25hVHg4Z1c4dGRPWkd6Tjd1Z0pmU3Z2UVZ4YTJsdXBKaHBfQmV6T0NZWXJDY2dpZ2pHUEl2Qjd3NmRNalZqS01XcjVISnFsRjRyVXlHMklVU01ibDBuajYtLVFZWWwyZm12a0xLbw?oc=5",
-     "pubDate": "Fri, 22 May 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "앞둔 호반써밋 풍무II의",
-    "호반써밋 풍무II"
    ],
    "freq": {}
   },
@@ -508,6 +451,23 @@
    "freq": {}
   },
   {
+   "name": "진주 판문지구 레이크써밋 웰가",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "‘진주 판문지구 레이크써밋 웰가’ 9월 분양 예정, 690가구 규모 - 조선비즈",
+     "source": "Chosunbiz",
+     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNeWxVU181NmZidnFyS25fMGJNUDNha0Jpb040cGxWckduamQ1RVlfNWVoLUt0U1Boc05aemtXcllXZ3FoWGFSakVlbUl2X3gzRUdKTmI2VmY3SkF4VnY1WnVjbVRTTTFFSUl5bEZINUNsRjdKc3JPb2VySTBzM2NheU9uSWlFXzNNaXVkUNIBoAFBVV95cUxOQjVHbmxwa2s5NFBnc2lGbHphV3VzV0J4LVIwemFYb2NtY3ZBRDlwYlQwM1ZSY1g0WV85STkwRFg4MkRHQy1ITGZTdEpjWm5jSjNnTGs5U0NnZ2I3b1F6RExkWTFaTXNTZlJ6ZWI1RTFyYnFXNHhRcTkyTlBCdFRLclJYcFJ6Q2gyTHQzUjFtME50S3J5NXpEWE1uNGxLNm5a?oc=5",
+     "pubDate": "Thu, 10 Sep 2026 01:31:00 GMT"
+    }
+   ],
+   "aliases": [
+    "진주 판문지구 레이크써밋 웰가",
+    "판문지구 레이크써밋 웰가"
+   ],
+   "freq": {}
+  },
+  {
    "name": "천안 백석시그니처자이",
    "mentions": 2,
    "articles": [
@@ -526,6 +486,23 @@
    ],
    "aliases": [
     "천안 백석시그니처자이"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "첨단 제일풍경채 분양완료",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "제일건설, 광주 첨단3지구 ‘첨단 제일풍경채’ 분양완료 임박… 59㎡등 일부 세대 선착순 분양 예정",
+     "source": "서울경제",
+     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE53aVFUWU5UcTFNUzdvdWVhSDRXQXZzMjVoWTNfY0VXdVVvX0VMV3FKN2xmandKLUwzVlV6WEs3YVBmUTBhR2JBT0ZmNUN5c1hyc1E?oc=5",
+     "pubDate": "Wed, 01 Nov 2023 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "첨단 제일풍경채 분양완료",
+    "첨단 제일풍경채"
    ],
    "freq": {}
   },
