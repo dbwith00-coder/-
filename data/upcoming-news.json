@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-09-13T21:12:10.663Z",
+ "collectedAt": "2026-09-14T03:17:27.463Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -20,7 +20,7 @@
   },
   {
    "query": "다음달 분양 아파트",
-   "count": 78,
+   "count": 77,
    "error": null
   },
   {
@@ -40,16 +40,16 @@
   },
   {
    "query": "재건축 일반분양 예정",
-   "count": 94,
+   "count": 93,
    "error": null
   }
  ],
- "articleCount": 612,
- "count": 24,
+ "articleCount": 608,
+ "count": 23,
  "candidates": [
   {
    "name": "부산 연제갤러리자이",
-   "mentions": 9,
+   "mentions": 8,
    "articles": [
     {
      "title": "GS건설, 부산 '연제갤러리자이' 10월 분양 예정",
@@ -71,15 +71,15 @@
     },
     {
      "title": "GS건설, 연제갤러리자이 내달 분양 예정",
-     "source": "한국주택경제신문",
+     "source": "arunews.com",
      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE4wYjJDTnEzX1RhT2cwUkUyVEtxY2tobDRUaXJubUY2a1pnWkhQVHZkTGxhRWhnVFZGZWlWdmZoZlJFUHczT1BaZ1kzZmEyUHhFT3l5ZzYtQWh4Nk4weUNpb2VoVzE5WDV2?oc=5",
      "pubDate": "Tue, 08 Sep 2026 00:22:08 GMT"
     },
     {
-     "title": "GS건설 '연제갤러리자이' 10월 분양 예정",
-     "source": "한국경제",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0yc242NEpUR3Eyc0w3T1Q4NEY2Z3AxaHptOE9QRERCTFZrZVQ1bFdRRS1ud24yV3VTQzBUREFZNEFPUlZucTNGQUxvcW9hX1BoV0EyUUt4V2dZdw?oc=5",
-     "pubDate": "Tue, 08 Sep 2026 01:11:23 GMT"
+     "title": "GS건설 ‘연제갤러리자이’ 10월 분양 예정",
+     "source": "오피니언뉴스",
+     "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFBHYXA4NWpTeFZxRGFZTzZLZlZYNTNTY01zN2NKNzA1LWdzRWJPeldNc3FnVVdOSDZ3QUVXbDFtMFhGT1dOM3lSa0t2UWpjT2pEMlprYlBhUWg3X3NGY2NtZW9mcmlRWW9lQU5zZWxCcmRBdw?oc=5",
+     "pubDate": "Tue, 08 Sep 2026 02:27:49 GMT"
     }
    ],
    "aliases": [
@@ -112,7 +112,7 @@
     },
     {
      "title": "포스코이앤씨, 더샵 천안라크원 10월 분양 예정",
-     "source": "한국주택경제신문",
+     "source": "arunews.com",
      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9EeDYzUHo4TVVLMlp6S0dELWhZNmdsVjdYb2hleVFTQ2F0LVp0NmFoSG5DZzZJYUFHUEJ3Z0dadUFuNzBDYUhGRkdHZXpra2NUNENGVFFNcm1kVnBQQ3IzazA3VUxyVk5K?oc=5",
      "pubDate": "Tue, 01 Sep 2026 03:25:40 GMT"
     }
@@ -135,7 +135,7 @@
     },
     {
      "title": "\"30억 로또?\" 반포 디에이치 클래스트, 11월 일반분양 나선다 - 머니투데이",
-     "source": "머니투데이",
+     "source": "mt.co.kr",
      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5wS3hJc0ROQTFZV2FFOUlPUzMtSlhZU084UEZqY2JWMnBiU2JfQ2QtWmlxZDdzOU13c3lLYzRkNUd5bU1kdTFrd3htSGNNUXR2ZzFRVFY4LXpkd2ZGd0pJUTNZbXFwWkJvaEHSAW9BVV95cUxNUm5KLWowdXlRN0F3Z3ZSNFAyelRJN2NyVGNYcHdraHR4dFJDZmJjQ3BDal90cWVhTmRtN3pXRXBKWFNHUXdUcUNJaVMxYUI1c1MtOENnblhCRVh4NEFjdWdHZnVNNGRNSlgxRThoSEU?oc=5",
      "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
     },
@@ -168,6 +168,29 @@
    "freq": {}
   },
   {
+   "name": "화성 향남 롯데캐슬 시그니처",
+   "mentions": 4,
+   "articles": [
+    {
+     "title": "산업단지 배후수요 갖춘 '화성 향남 롯데캐슬 시그니처', 10월 분양 예정",
+     "source": "한국경제",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBsYnEweDZ5ajQ5eGVEazQxaUdtUHBxeDFuSEFZVHpxa2tmVGhHUlpyU0E0ZTN5S1NyLW0tb3Z1cE5oTzIwd1VjY3p3eFdIX1A0c29TWG96WFI5Zw?oc=5",
+     "pubDate": "Thu, 10 Sep 2026 04:45:17 GMT"
+    },
+    {
+     "title": "롯데건설, ‘화성 향남 롯데캐슬 시그니처’ 10월 분양 예정 - 조선비즈",
+     "source": "Chosunbiz",
+     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPSWZGbEpzeVBOanh6UGZFN0RmWk9TLUJIcm5zMDg4REFfcDMyNks1X1pCRkdoS2ZHeUhVeDRrdnRScmZFcFdhRmNoeUxVUlVlZVFGTkJkUmltV3NBdHdGZDZIRkU3RHBwTERjVF91NzYwSVdhU2tHVllFVEV4aHVZb2JWSGNtVlFGaWJJYdIBoAFBVV95cUxQa1NOWTJ3UUFWYUd0bjBRTV94N2dDUkNLV1B3WS1sODhkbEV2QjczR09mS1l3ODdZYy1falo2UllBTEdrMVJERHJCNmpFa3ItelNKRFlIT0pCTml4ZEliMC1iX1c5eU9WM3J3aXkwWmpvc3NiMVlta1NFVEdWRjdDakc5ZUZlNENfMHNyRnlwbGVWV2hQcC1Uek15WVRKMW9o?oc=5",
+     "pubDate": "Thu, 27 Aug 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "화성 향남 롯데캐슬 시그니처",
+    "향남 롯데캐슬 시그니처"
+   ],
+   "freq": {}
+  },
+  {
    "name": "e편한세상 신곡 시그니처뷰",
    "mentions": 3,
    "articles": [
@@ -179,13 +202,13 @@
     },
     {
      "title": "의정부 ‘e편한세상 신곡 시그니처뷰’ 단지 내 상가 분양 예정…주거·교육 수요 갖춘 입지",
-     "source": "미주중앙일보",
+     "source": "koreadaily.com",
      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VUG80ZTBfellGbjB5WTFIcGl1ZG8yYlBNVjl4dy1FVklwMjJReHY0cTdhSm5GTXZUU0FPRkgzY053eS1ha1hWRFBzemQzQVJscjdBUlpVZ280MmtwN3ZfVXV3?oc=5",
      "pubDate": "Tue, 04 Aug 2026 07:00:00 GMT"
     },
     {
      "title": "‘e편한세상 신곡 시그니처뷰’ 단지 내 상가 분양 예정",
-     "source": "이코노미스트",
+     "source": "economist.co.kr",
      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE92bUhlSWRaN1VSakJWZWFEbXpkcmpOQlZ6NzJ6YTQxaUxDVDJHSWhyMjBFZU9WTGNYUmI2STAtXzRUb0gtSXFlaHBLX2tmWHdJdTUyem02azBOOVcwdUhCZl9n?oc=5",
      "pubDate": "Mon, 20 Jul 2026 07:00:00 GMT"
     }
@@ -235,7 +258,7 @@
    "articles": [
     {
      "title": "‘곤지암역 제일풍경채’ 경강선∙GTX-D노선(예정) 곤지암역 초역세권, 선착순 분양",
-     "source": "ksilbo.co.kr",
+     "source": "경상일보",
      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE81amRoRlQzZHZVZXlqM2paWFA2R0V4bU5VX0xDZVZOQ0NwQ1Fta3YwMlNOQjFocjczQnZLcFFqbTBrWlZfd2JRMktxM1V4b2F3UnF4Qk9TdHhjbXB4X1pNMm9qcnhqeVN5YW9SSQ?oc=5",
      "pubDate": "Mon, 13 Jan 2025 08:00:00 GMT"
     }
@@ -362,23 +385,6 @@
    "aliases": [
     "신경주 데시앙 잔여분",
     "신경주 데시앙"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "영통 푸르지오 트레센츠·파인베르",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "대우건설, ‘영통 푸르지오 트레센츠·파인베르’ 선착순 동‧호수 지정 분양",
-     "source": "이투데이",
-     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBEUk0tNEV1b19RbHFQLUVkYndKRDdpWnA0VWJqVDZfZXRWdFV2N3A2VDFVUGJqV2dQeTBZMS1yWVpZU0lBcFRjTXYyZmdRTHp1WDBtLQ?oc=5",
-     "pubDate": "Wed, 17 Aug 2022 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "영통 푸르지오 트레센츠·파인베르",
-    "영통 푸르지오 트레센츠"
    ],
    "freq": {}
   },
@@ -520,23 +526,6 @@
    "aliases": [
     "첨단3지구 A6블록 제일풍경채",
     "A6블록 제일풍경채"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "화성 향남 롯데캐슬 시그니처",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "산업단지 배후수요 갖춘 '화성 향남 롯데캐슬 시그니처', 10월 분양 예정",
-     "source": "한국경제",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBsYnEweDZ5ajQ5eGVEazQxaUdtUHBxeDFuSEFZVHpxa2tmVGhHUlpyU0E0ZTN5S1NyLW0tb3Z1cE5oTzIwd1VjY3p3eFdIX1A0c29TWG96WFI5Zw?oc=5",
-     "pubDate": "Thu, 10 Sep 2026 04:45:17 GMT"
-    }
-   ],
-   "aliases": [
-    "화성 향남 롯데캐슬 시그니처",
-    "향남 롯데캐슬 시그니처"
    ],
    "freq": {}
   }
