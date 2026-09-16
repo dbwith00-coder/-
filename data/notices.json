@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-15T21:13:21.651Z",
-  "count": 756,
+  "collectedAt": "2026-09-16T03:16:19.536Z",
+  "count": 755,
   "sites": [
     {
       "id": "applyhome-apt-2026000449-2026000449",
@@ -35486,7 +35486,7 @@
       "when": "2026-09-10",
       "rceptStart": "2026-09-15",
       "rceptEnd": "2026-09-15",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35531,7 +35531,7 @@
       "when": "2026-09-10",
       "rceptStart": "2026-09-15",
       "rceptEnd": "2026-09-15",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35583,7 +35583,7 @@
       "when": "2026-09-10",
       "rceptStart": "2026-09-15",
       "rceptEnd": "2026-09-15",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -56334,51 +56334,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025930043&pblancNo=2025930043",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 문정동136번지일원 재건축정비사업조합 · 당첨자발표 2025-09-26 · 입주예정 202511. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910176-2025910176",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "선운지구다사로움 공가세대 일반공급",
-      "gu": "광주광역시 광산구 선운로 34",
-      "brand": "광주광역시도시공사",
-      "total": 4,
-      "general": 4,
-      "when": "2025-09-15",
-      "rceptStart": "2025-09-22",
-      "rceptEnd": "2025-09-24",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-22 ~ 2025-09-24",
-        "result": "2025-09-29"
-      },
-      "types": [
-        {
-          "t": "76㎡A",
-          "n": 4,
-          "price": 27850,
-          "general": 4,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 45,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910176&pblancNo=2025910176",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 광주광역시도시공사 · 당첨자발표 2025-09-29 · 입주예정 202512. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
