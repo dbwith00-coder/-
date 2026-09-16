@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-09-16T03:16:22.803Z",
+ "collectedAt": "2026-09-16T21:13:30.390Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -20,7 +20,7 @@
   },
   {
    "query": "다음달 분양 아파트",
-   "count": 78,
+   "count": 75,
    "error": null
   },
   {
@@ -40,12 +40,12 @@
   },
   {
    "query": "재건축 일반분양 예정",
-   "count": 97,
+   "count": 98,
    "error": null
   }
  ],
- "articleCount": 619,
- "count": 25,
+ "articleCount": 618,
+ "count": 27,
  "candidates": [
   {
    "name": "부산 연제갤러리자이",
@@ -53,7 +53,7 @@
    "articles": [
     {
      "title": "GS건설, 부산 '연제갤러리자이' 10월 분양 예정",
-     "source": "뉴시스",
+     "source": "newsis.com",
      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE96aUlCYW9CVU85VVJrMTl0UEVTdWY3eEFaaEVyT0dzR3dheGF4TDBNUWJlb2F0bHQ2TDVGVXpwUjVlWm0wRlllQ2NwYmQ2NURvU3pMZTVHMzY1Vm5oa3FLZNIBeEFVX3lxTE9Fem5vaWFLd1dsQWdjXzdjbEdRcDE1QUd5ZXFWMTZFeGhJY0pUTndCcEFpRVA2NzY5Wm9NbUZEam5jWnFaQjFzVkJLZ2Fpc1ByS3NSUUk2OWYxZVJ2MlZlamh0RGozU1o3b1E2V3BYSEJVTE80eFZfQg?oc=5",
      "pubDate": "Tue, 08 Sep 2026 02:41:26 GMT"
     },
@@ -71,7 +71,7 @@
     },
     {
      "title": "GS건설, 연제갤러리자이 내달 분양 예정",
-     "source": "한국주택경제신문",
+     "source": "arunews.com",
      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE4wYjJDTnEzX1RhT2cwUkUyVEtxY2tobDRUaXJubUY2a1pnWkhQVHZkTGxhRWhnVFZGZWlWdmZoZlJFUHczT1BaZ1kzZmEyUHhFT3l5ZzYtQWh4Nk4weUNpb2VoVzE5WDV2?oc=5",
      "pubDate": "Tue, 08 Sep 2026 00:22:08 GMT"
     },
@@ -94,19 +94,19 @@
    "articles": [
     {
      "title": "'반포디에이치클래스트' 등판…8월 아파트 2.8만가구 분양",
-     "source": "뉴시스",
+     "source": "newsis.com",
      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1NTWYzOVNleWUtbU95RDlxcWxhc0d4TEtpNnVRTmNIajNTQl8yMWd0LXk3Z0tkNHJ0Z2JTbnRQcDQ2RVI3NllTVjVidEZuYmdLdEhyUzJYOGFJbnd1ZmloS9IBeEFVX3lxTE9HX0poS2RhNWMwZFhQRU9aWUN2dF9aTTAxVl9GUEF1V0hyT0RZMVRDc3FWTF9nX0Q2MmlycnZjbmlDMkU5ZTJGN2NUZ2RMcW1CUXZTU3ctakx1a050My1wbC1oUkszUzJ2S3k5bE9ncHBKTTh6STdndw?oc=5",
      "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
     },
     {
      "title": "\"30억 로또?\" 반포 디에이치 클래스트, 11월 일반분양 나선다 - 머니투데이",
-     "source": "머니투데이",
+     "source": "mt.co.kr",
      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5wS3hJc0ROQTFZV2FFOUlPUzMtSlhZU084UEZqY2JWMnBiU2JfQ2QtWmlxZDdzOU13c3lLYzRkNUd5bU1kdTFrd3htSGNNUXR2ZzFRVFY4LXpkd2ZGd0pJUTNZbXFwWkJvaEHSAW9BVV95cUxNUm5KLWowdXlRN0F3Z3ZSNFAyelRJN2NyVGNYcHdraHR4dFJDZmJjQ3BDal90cWVhTmRtN3pXRXBKWFNHUXdUcUNJaVMxYUI1c1MtOENnblhCRVh4NEFjdWdHZnVNNGRNSlgxRThoSEU?oc=5",
      "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
     },
     {
      "title": "조합원 1+1 분양 나서는 '반포디에이치클래스트'…일반분양 줄어들듯[집슐랭]",
-     "source": "서울경제",
+     "source": "sedaily.com",
      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB3UF9sbFpyRnVPY1N6Nk5JS1NRZjljMWFXclBMQTA2VHFlTEdBdUNHRnZxZXJYc3VfYURCWnlCWGNYQ0JJRlpGb2ZtQlVuRHpZX3fSAVNBVV95cUxPXzJFZExVeF9pakxaTjlFQmtGbmU1bE5uUUg1MjQtUHhCQ2FRcVk1UGQtdXdtZzRJbnNmTDBVWFFMOC1JY2dqUVNJVFQzMDBaa25uWQ?oc=5",
      "pubDate": "Thu, 31 Jul 2025 07:00:00 GMT"
     },
@@ -118,7 +118,7 @@
     },
     {
      "title": "디에이치 클래스트, 6500억 PF 조달…현대건설 보증",
-     "source": "딜사이트",
+     "source": "dealsite.co.kr",
      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13dnl6M3UyVVlRN3pOekM1QVFzNmlweThKV2ZGUXZPek84cEw3UE00akpEdzIxZXRXQUlielZzRFlOVlhkMF9UenhkWWZubnM?oc=5",
      "pubDate": "Wed, 05 Nov 2025 08:00:00 GMT"
     }
@@ -138,13 +138,13 @@
    "articles": [
     {
      "title": "포스코이앤씨, 천안 부대동 ‘더샵 천안라크원’ 10월 분양 예정",
-     "source": "국토일보",
+     "source": "ikld.kr",
      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBDc041U0NNTGFWcmpqQnF6RDlTLXJaNlV5Qk5UZGNUQjNjMFhseTQwdDYtUk1JR2hlc0tnT2dGZ09GMXQ5ZGR4eFNDYTZiN2hNZnJnc1VnRDliVVJpcnRMYUZhQ1I?oc=5",
      "pubDate": "Tue, 01 Sep 2026 00:09:00 GMT"
     },
     {
      "title": "포스코이앤씨, 천안 부대동 ‘더샵 천안라크원’ 10월 분양 예정",
-     "source": "이코리아",
+     "source": "ekoreanews.co.kr",
      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9telo4R1pWNkRvc2VmcjBRbi1sVVlMeUpZZkk3Q3Y3bGZQZDBsR1BCekdsbzNUZkNvVVIyMDRXdWhPWkNIXzFja3FqaXVrQlJwdVFqVkZYNndtNEpOeDA4eXpZUGdULTRFLVhfU3llaw?oc=5",
      "pubDate": "Tue, 01 Sep 2026 00:26:53 GMT"
     },
@@ -173,7 +173,7 @@
     },
     {
      "title": "롯데건설, ‘화성 향남 롯데캐슬 시그니처’ 10월 분양 예정 - 조선비즈",
-     "source": "Chosunbiz",
+     "source": "biz.chosun.com",
      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPSWZGbEpzeVBOanh6UGZFN0RmWk9TLUJIcm5zMDg4REFfcDMyNks1X1pCRkdoS2ZHeUhVeDRrdnRScmZFcFdhRmNoeUxVUlVlZVFGTkJkUmltV3NBdHdGZDZIRkU3RHBwTERjVF91NzYwSVdhU2tHVllFVEV4aHVZb2JWSGNtVlFGaWJJYdIBoAFBVV95cUxQa1NOWTJ3UUFWYUd0bjBRTV94N2dDUkNLV1B3WS1sODhkbEV2QjczR09mS1l3ODdZYy1falo2UllBTEdrMVJERHJCNmpFa3ItelNKRFlIT0pCTml4ZEliMC1iX1c5eU9WM3J3aXkwWmpvc3NiMVlta1NFVEdWRjdDakc5ZUZlNENfMHNyRnlwbGVWV2hQcC1Uek15WVRKMW9o?oc=5",
      "pubDate": "Thu, 27 Aug 2026 07:00:00 GMT"
     }
@@ -235,7 +235,7 @@
    "articles": [
     {
      "title": "‘곤지암역 제일풍경채’ 경강선∙GTX-D노선(예정) 곤지암역 초역세권, 선착순 분양",
-     "source": "경상일보",
+     "source": "ksilbo.co.kr",
      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE81amRoRlQzZHZVZXlqM2paWFA2R0V4bU5VX0xDZVZOQ0NwQ1Fta3YwMlNOQjFocjczQnZLcFFqbTBrWlZfd2JRMktxM1V4b2F3UnF4Qk9TdHhjbXB4X1pNMm9qcnhqeVN5YW9SSQ?oc=5",
      "pubDate": "Mon, 13 Jan 2025 08:00:00 GMT"
     }
@@ -264,12 +264,29 @@
    "freq": {}
   },
   {
+   "name": "구미 파크원 데시앙",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "태영건설, '구미 파크원 데시앙' 11월 분양 예정",
+     "source": "한국경제",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBmOTBDZ3l3bm4xUHBjMXFzLWpYbU1jRlFrVHZvTUFidW0zTGM0cHBjbldJcGlteDlVcmtheFVfQkV3V0RmekI2dS11WnhjTFlmZ2dCRXJxVEExUQ?oc=5",
+     "pubDate": "Wed, 16 Sep 2026 05:56:27 GMT"
+    }
+   ],
+   "aliases": [
+    "구미 파크원 데시앙",
+    "파크원 데시앙"
+   ],
+   "freq": {}
+  },
+  {
    "name": "기대금정역 푸르지오 그랑블",
    "mentions": 2,
    "articles": [
     {
      "title": "GTX-C 호재 기대…‘금정역 푸르지오 그랑블’ 잔여세대 선착순 분양",
-     "source": "지이코노미",
+     "source": "geconomy.co.kr",
      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE15QTZBRHdQYXl3THBjZzlSRFVkV1BwMG40RWVuMVZ2eGFVdS1RcV8wYVhNRUFMMk1YVjY0N1pvdFRrZG5vc3k0OTItWVY0TzZTd19FS1dibDN2R3FabGtDaWhoV2o?oc=5",
      "pubDate": "Thu, 13 Feb 2025 08:00:00 GMT"
     }
@@ -355,12 +372,29 @@
    "freq": {}
   },
   {
+   "name": "부산 더샵 당리센트리체",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "포스코이앤씨, 부산 '더샵 당리센트리체' 이달 분양",
+     "source": "한국경제",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE01SHUyZ21Pbi1LRElSXzlBOW9XUldGdnhYQzZ6QWNaOTJvUmJUemYwU0d2Ukh3U2NJSlhEN19raUM5T2wxM1RxMTBoaWJfWkVNMzgwNVJ2X1hVUQ?oc=5",
+     "pubDate": "Thu, 10 Apr 2025 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "부산 더샵 당리센트리체",
+    "더샵 당리센트리체"
+   ],
+   "freq": {}
+  },
+  {
    "name": "부산 래미안 어반파크",
    "mentions": 2,
    "articles": [
     {
      "title": "삼성물산, 부산 '래미안 어반파크' 온라인 선착순 분양",
-     "source": "뉴시스",
+     "source": "newsis.com",
      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBJcE1JYS1XMzJrbDV6bFRkWVpDbm1Vc2R5R2lPVGVTVjI1STNBbkYyTk5sM2J5V19OaHJQR1RReEZ1VjRjRVlabjFMa0x6Qy1nMFF3UHJYNGMzMlhrZGFKV9IBeEFVX3lxTE5UYWlrOWl0TWpVMURQTmZwSm4tSzJsRDRqVWN5bWlNV0ZCR3dVTXp5aGo5LUNDNVJvNnBhcWx3VnQ1THJueXlkdWRNdE92R1BCMk5DbmVsWGRoc2FlUlZkSnJpUDFfV292elo0TlV0S3pLT0JxS3Jrdg?oc=5",
      "pubDate": "Tue, 06 Aug 2019 07:00:00 GMT"
     }
@@ -377,36 +411,19 @@
    "articles": [
     {
      "title": "대우건설, 블랑 써밋 74 오피스텔 이달 분양",
-     "source": "한국주택경제신문",
+     "source": "arunews.com",
      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1vNUNONFBoY3FOX3dLS05DOW9pRVlaNkh0S1VKRnBOSGEtRDQ2S191MGRmMVhEREFad25CU0VTWnA0Q05oR3NpYzltRDVBSEJtNWlfcHp6NzJiQkw1Njh3Mng4a0pkbkFf?oc=5",
      "pubDate": "Thu, 06 Feb 2025 08:00:00 GMT"
     },
     {
      "title": "대우건설, 부산 하이엔드 아파트 '블랑 써밋 74' 다음달 공급",
-     "source": "팍스경제TV",
+     "source": "paxetv.com",
      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBuWWZIZUotSXhCa2Zla3BYdWEwRzNtM041UHM5MWVyRmttTVpVWmtGeXg4dHNLZERnNU5UbTNLTnRFcWhkVkUxVlVxTXUxYlpVbktPdEhXZ3VtR3RfQTM2a2o5WVNYNFps?oc=5",
      "pubDate": "Tue, 14 May 2024 07:00:00 GMT"
     }
    ],
    "aliases": [
     "블랑 써밋"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "소진 호반써밋 이스트파크도",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "성적 부진? 무순위∙선착순에서 전부 소진! ‘호반써밋 이스트파크’도 훈풍",
-     "source": "리얼캐스트",
-     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE00eWpUc2dnYkpRME54Q3FzYUpld0hRM3AxUVFwOHVoelhFUlZzZy1CS0Vvd2pPd0VybGlKal9CVF95VDc4dHl0SkpXb2VEX2VmbEkwQjMtZ3hvVElGYTZ2TWVPcjJLeGV10gFsQVVfeXFMUFZXVjcyWHVqSl9GbDJWT1VqcDJIeTFISTdaZ0w1Q1ktREJId3BCclNNUzdoR3g2QjJvdmdnTG1zT3VLSDB5d01OZjFRU2xrWmFWaG5oY2otSXJzSFVkdHZ3cnRVTTJMamRXa2RJ?oc=5",
-     "pubDate": "Sun, 03 Sep 2023 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "소진 호반써밋 이스트파크도",
-    "호반써밋 이스트파크"
    ],
    "freq": {}
   },
@@ -445,12 +462,29 @@
    "freq": {}
   },
   {
+   "name": "앞둔 호반써밋 풍무II의",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "[분양 현장] 개관 앞둔 '호반써밋 풍무II'의 모델하우스",
+     "source": "스트레이트뉴스",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB6NzFUT05FSVlxdHYxSUJibmtPWW5TaWpuWk9lV2IyM2tXNllSbVpfNFBiQ08wdHNqdGR1dXFCaG9vQzVLMkVOdm1CQmNzZDhIRkpSZVlJbTlNd2hyVGhZeGRRdXZIQ3JvUW15cEtCOXJtNzTSAXdBVV95cUxPZHJFVDVLOWEyY25hVHg4Z1c4dGRPWkd6Tjd1Z0pmU3Z2UVZ4YTJsdXBKaHBfQmV6T0NZWXJDY2dpZ2pHUEl2Qjd3NmRNalZqS01XcjVISnFsRjRyVXlHMklVU01ibDBuajYtLVFZWWwyZm12a0xLbw?oc=5",
+     "pubDate": "Fri, 22 May 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "앞둔 호반써밋 풍무II의",
+    "호반써밋 풍무II"
+   ],
+   "freq": {}
+  },
+  {
    "name": "용인 기흥 효성해링턴 플레이스",
    "mentions": 2,
    "articles": [
     {
      "title": "'용인 기흥 효성해링턴 플레이스' 다음달 분양…'테라스' 주택형 공개",
-     "source": "미디어펜",
+     "source": "mediapen.com",
      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9kSUVmYzBRX054TjZUd25ab1JZVmh5TnlrVVNfd2JLQ25UU2o5QTFuRHJWd2pQa0R3ejhqUDFQcVhCMTBFc1pMX1lsM0xHVnJGekHSAVZBVV95cUxNQWczRmk0SjloX04yY0lDcjM2VkttNmJ5Y3JwREp0X1VvN0I3RU13TDF6dVFlaEVUbkY3TmZqcHpwdDRHaDVwWkJnWWQzVHJrT3JZa2twZw?oc=5",
      "pubDate": "Tue, 01 Sep 2015 07:00:00 GMT"
     }
@@ -489,7 +523,7 @@
    "articles": [
     {
      "title": "“검증된 주거 가치” … 청약 흥행 지역 새 아파트 주목! ‘의왕시청역 SK뷰 아이파크’ 11월 분양 예정",
-     "source": "서울경제",
+     "source": "sedaily.com",
      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1ueWwzbXdKblJwSVRrZ29xMG93czdyLVFhQ3dPRWh3dmNvYzNJYWsxVHFpalY4VjFJbkNUNmhONHcwbkQ5aUZ4ckFza0FkUzdna0HSAVNBVV95cUxOMnlQQWtOUWJSYUVmLXFNMU9ZWVgzWFVWSkFqT1M0cFFQZVNzQTZ3NkN4OWtIY3d4SlhZTmJLOUM2YWpnMjdZMG53SExZMm5MSXcxWQ?oc=5",
      "pubDate": "Thu, 23 Oct 2025 07:00:00 GMT"
     }
@@ -497,23 +531,6 @@
    "aliases": [
     "의왕시청역 SK뷰 아이파크",
     "SK뷰 아이파크"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "진주 판문지구 레이크써밋 웰가",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "‘진주 판문지구 레이크써밋 웰가’ 9월 분양 예정, 690가구 규모 - 조선비즈",
-     "source": "Chosunbiz",
-     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNeWxVU181NmZidnFyS25fMGJNUDNha0Jpb040cGxWckduamQ1RVlfNWVoLUt0U1Boc05aemtXcllXZ3FoWGFSakVlbUl2X3gzRUdKTmI2VmY3SkF4VnY1WnVjbVRTTTFFSUl5bEZINUNsRjdKc3JPb2VySTBzM2NheU9uSWlFXzNNaXVkUNIBoAFBVV95cUxOQjVHbmxwa2s5NFBnc2lGbHphV3VzV0J4LVIwemFYb2NtY3ZBRDlwYlQwM1ZSY1g0WV85STkwRFg4MkRHQy1ITGZTdEpjWm5jSjNnTGs5U0NnZ2I3b1F6RExkWTFaTXNTZlJ6ZWI1RTFyYnFXNHhRcTkyTlBCdFRLclJYcFJ6Q2gyTHQzUjFtME50S3J5NXpEWE1uNGxLNm5a?oc=5",
-     "pubDate": "Thu, 10 Sep 2026 01:31:00 GMT"
-    }
-   ],
-   "aliases": [
-    "진주 판문지구 레이크써밋 웰가",
-    "판문지구 레이크써밋 웰가"
    ],
    "freq": {}
   },
@@ -545,7 +562,7 @@
    "articles": [
     {
      "title": "제일건설, 광주 첨단3지구 ‘첨단 제일풍경채’ 분양완료 임박… 59㎡등 일부 세대 선착순 분양 예정",
-     "source": "서울경제",
+     "source": "sedaily.com",
      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE53aVFUWU5UcTFNUzdvdWVhSDRXQXZzMjVoWTNfY0VXdVVvX0VMV3FKN2xmandKLUwzVlV6WEs3YVBmUTBhR2JBT0ZmNUN5c1hyc1E?oc=5",
      "pubDate": "Wed, 01 Nov 2023 07:00:00 GMT"
     }
@@ -562,7 +579,7 @@
    "articles": [
     {
      "title": "전남광주 '첨단3지구 A6블록 제일풍경채', 오는 8월 분양 예정",
-     "source": "realty.chosun.com",
+     "source": "땅집고",
      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBOUmFBS1RMMDctUUtkdVNuNGkyeW5TWW94LXFUMXQ1QWxIc3V0RjdwNnZfYy13Sl9yeFNQVGR2NDFZM1dDeXpZampDNXFmbWZFT3diWXk0N1k3M09IdXhERElDZlBFM1BaRWplQ2RhWHloRkoyQXdlUTN4aWFhNlnSAXNBVV95cUxNaXRaWDJvTEhQVzVtSFg3ajhac2RYXzMzYU05UmNYSk5Ob21yZndRUnRzc0hpWTBQNWk1a3dPbFhpb1UzdzNQUGxoUFdwcTNBNlFwYkl3S09mdGFUWm9fU1FFZEk2NFBUNWZpVDBXVHlqZ2Vz?oc=5",
      "pubDate": "Wed, 15 Jul 2026 07:00:00 GMT"
     }
@@ -570,6 +587,23 @@
    "aliases": [
     "첨단3지구 A6블록 제일풍경채",
     "A6블록 제일풍경채"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "힐스테이트 평택 화양",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "'힐스테이트 평택 화양' 잔여세대 선착순 분양... 모델하우스 운영중",
+     "source": "ksilbo.co.kr",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBiUHE2aS1aVHlSd1FCcGh5dEY1MjNrb011ZEV1cDVGUno4X1UzM1NwM0MxZUpuZzRWc3IxdlJ2WU03czdmSHpXdnlyR1dScGtkc2J6MkVqMjhOVVVtSHBQWU1wUkJGYml2cnRJ?oc=5",
+     "pubDate": "Sat, 22 Apr 2023 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "힐스테이트 평택 화양",
+    "힐스테이트 평택"
    ],
    "freq": {}
   }
