@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-17T21:13:26.421Z",
-  "count": 759,
+  "collectedAt": "2026-09-18T03:16:01.730Z",
+  "count": 756,
   "sites": [
     {
       "id": "applyhome-apt-2026000454-2026000454",
@@ -1203,7 +1203,7 @@
       "when": "2026-09-04",
       "rceptStart": "2026-09-15",
       "rceptEnd": "2026-09-17",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-15 ~ 2026-09-15",
         "rank1": "2026-09-16 ~ 2026-09-16",
@@ -2136,7 +2136,7 @@
       "when": "2026-08-27",
       "rceptStart": "2026-09-14",
       "rceptEnd": "2026-09-17",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "2026-09-14 ~ 2026-09-15",
@@ -2240,7 +2240,7 @@
       "when": "2026-08-26",
       "rceptStart": "2026-09-07",
       "rceptEnd": "2026-09-17",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "2026-09-07 ~ 2026-09-15",
@@ -38366,25 +38366,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 2,
-          "price": 41750,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 1,
-          "price": 40670,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡C",
-          "n": 1,
-          "price": 42690,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -39770,18 +39754,9 @@
       },
       "types": [
         {
-          "t": "24㎡",
-          "n": 4,
-          "price": 48550,
-          "general": 4,
-          "special": 0
-        },
-        {
-          "t": "25㎡",
-          "n": 1,
-          "price": 47750,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -39822,11 +39797,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 24,
-          "price": 58890,
-          "general": 24,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -42708,18 +42681,9 @@
       },
       "types": [
         {
-          "t": "59㎡B",
-          "n": 1,
-          "price": 204760,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 1,
-          "price": 258510,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -56371,197 +56335,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910178&pblancNo=2025910178",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)태영유니시티 · 당첨자발표 2025-09-29 · 입주예정 202510. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910177-2025910177",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "서면 써밋 더뉴",
-      "gu": "부산광역시 부산진구 전포동 668-1번지",
-      "brand": "(주)대우건설",
-      "total": 222,
-      "general": 222,
-      "when": "2025-09-17",
-      "rceptStart": "2025-09-22",
-      "rceptEnd": "2025-09-22",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-22 ~ 2025-09-22",
-        "result": "2025-09-25"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 36,
-          "price": 112830,
-          "general": 36,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 52,
-          "price": 113160,
-          "general": 52,
-          "special": 0
-        },
-        {
-          "t": "122㎡",
-          "n": 127,
-          "price": 168950,
-          "general": 127,
-          "special": 0
-        },
-        {
-          "t": "131㎡T",
-          "n": 7,
-          "price": 178800,
-          "general": 7,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 45,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910177&pblancNo=2025910177",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)대우건설 · 당첨자발표 2025-09-25 · 입주예정 203104. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910174-2025910174",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "청계 노르웨이숲(3차)",
-      "gu": "서울특별시 중구 황학동 1756번지",
-      "brand": "황학동청계지역주택조합",
-      "total": 42,
-      "general": 42,
-      "when": "2025-09-17",
-      "rceptStart": "2025-09-22",
-      "rceptEnd": "2025-09-22",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-22 ~ 2025-09-22",
-        "result": "2025-09-26"
-      },
-      "types": [
-        {
-          "t": "39㎡",
-          "n": 38,
-          "price": 76112,
-          "general": 38,
-          "special": 0
-        },
-        {
-          "t": "59㎡A",
-          "n": 1,
-          "price": 106395,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "59㎡B",
-          "n": 1,
-          "price": 104195,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "59㎡D",
-          "n": 2,
-          "price": 104195,
-          "general": 2,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 61,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910174&pblancNo=2025910174",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 황학동청계지역주택조합 · 당첨자발표 2025-09-26 · 입주예정 202807. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910167-2025910167",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "동탄 꿈의숲 자연앤 데시앙(A78BL)",
-      "gu": "경기도 화성시 산척동 746번지",
-      "brand": "경기주택도시공사",
-      "total": 6,
-      "general": 6,
-      "when": "2025-09-17",
-      "rceptStart": "2025-09-22",
-      "rceptEnd": "2025-09-22",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-22 ~ 2025-09-22",
-        "result": "2025-09-25"
-      },
-      "types": [
-        {
-          "t": "84㎡B",
-          "n": 1,
-          "price": 51970,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡C",
-          "n": 3,
-          "price": 54400,
-          "general": 3,
-          "special": 0
-        },
-        {
-          "t": "84㎡D",
-          "n": 2,
-          "price": 54380,
-          "general": 2,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 58,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910167&pblancNo=2025910167",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 경기주택도시공사 · 당첨자발표 2025-09-25 · 입주예정 202806. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
