@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-18T21:12:15.937Z",
-  "count": 765,
+  "collectedAt": "2026-09-19T03:15:12.925Z",
+  "count": 764,
   "sites": [
     {
       "id": "applyhome-apt-2026820011-2026820011",
@@ -36013,64 +36013,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000364&pblancNo=2025000364",
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 대신자산신탁 주식회사 · 시공 ㈜한화 건설부문 · 당첨자발표 2025-10-15 · 입주예정 202811. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
-    },
-    {
-      "id": "applyhome-apt-2025000380-2025000380",
-      "live": true,
-      "source": "applyhome",
-      "set": "apt",
-      "category": "APT",
-      "scoreless": false,
-      "supply": "민영",
-      "kind": "APT",
-      "n": "힐스테이트 오산 더퍼스트(조합원 자격상실 및 제명세대)",
-      "gu": "경기도 오산시 경기대로 24-27",
-      "brand": "현대건설 주식회사",
-      "total": 17,
-      "general": 17,
-      "when": "2025-09-18",
-      "rceptStart": "2025-09-29",
-      "rceptEnd": "2025-09-30",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "2025-09-29 ~ 2025-09-29",
-        "general": "2025-09-29 ~ 2025-09-30",
-        "result": "2025-10-13"
-      },
-      "types": [
-        {
-          "t": "59㎡",
-          "n": 9,
-          "price": 37655,
-          "general": 9,
-          "special": 0
-        },
-        {
-          "t": "64㎡",
-          "n": 3,
-          "price": 39990,
-          "general": 3,
-          "special": 0
-        },
-        {
-          "t": "84㎡",
-          "n": 5,
-          "price": 52684,
-          "general": 5,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000380&pblancNo=2025000380",
-      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 오산시현대지역주택조합 · 시공 현대건설 주식회사 · 당첨자발표 2025-10-13 · 입주예정 202512. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
       "id": "applyhome-remndr-2026910247-2026910247",
