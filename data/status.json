@@ -1,21 +1,21 @@
 {
-  "collectedAt": "2026-09-19T21:12:26.680Z",
+  "collectedAt": "2026-09-20T03:16:18.167Z",
   "sources": {
     "lh": {
       "ok": false,
       "count": 0,
       "rawCount": 0,
       "pickedFrom": null,
-      "ms": 21054,
+      "ms": 21113,
       "error": "연결 실패 (fetch failed) · 2회 시도",
       "fields": []
     },
     "odc": {
       "ok": true,
-      "count": 764,
-      "rawCount": 764,
+      "count": 745,
+      "rawCount": 745,
       "pickedFrom": "data",
-      "ms": 37075,
+      "ms": 43912,
       "error": null,
       "fields": [
         "BSNS_MBY_NM",
@@ -72,15 +72,15 @@
         {
           "key": "apt",
           "label": "APT 분양",
-          "count": 380,
-          "total": 380,
+          "count": 362,
+          "total": 362,
           "error": null
         },
         {
           "key": "remndr",
           "label": "무순위·잔여세대",
-          "count": 384,
-          "total": 384,
+          "count": 383,
+          "total": 383,
           "error": null
         }
       ]
