@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-21T03:16:24.474Z",
-  "count": 745,
+  "collectedAt": "2026-09-21T21:12:55.764Z",
+  "count": 747,
   "sites": [
     {
       "id": "applyhome-apt-2026820011-2026820011",
@@ -34217,6 +34217,110 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 세흥건설(주) · 시공 (주)시티종합건설,(주)시티 · 당첨자발표 2025-10-20 · 입주예정 202511. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
+      "id": "applyhome-remndr-2026930035-2026930035",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "불법행위 재공급",
+      "n": "더샵 청주그리니티",
+      "gu": "충청북도 청주시 서원구 개신동",
+      "brand": "구룡개발(주)",
+      "total": 2,
+      "general": 2,
+      "when": "2026-09-21",
+      "rceptStart": "2026-09-28",
+      "rceptEnd": "2026-09-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-09-28 ~ 2026-09-28",
+        "rank1": "",
+        "general": "2026-09-28 ~ 2026-09-28",
+        "result": "2026-10-06"
+      },
+      "types": [
+        {
+          "t": "84㎡A",
+          "n": 1,
+          "price": 35550,
+          "general": 0,
+          "special": 1
+        },
+        {
+          "t": "99㎡A",
+          "n": 1,
+          "price": 37708,
+          "general": 0,
+          "special": 1
+        }
+      ],
+      "specialUnits": {},
+      "cut": 42,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930035&pblancNo=2026930035",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 구룡개발(주) · 당첨자발표 2026-10-06 · 입주예정 202612. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910243-2026910243",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "더샵 청주그리니티",
+      "gu": "충청북도 청주시 서원구 개신동",
+      "brand": "구룡개발(주)",
+      "total": 2,
+      "general": 2,
+      "when": "2026-09-21",
+      "rceptStart": "2026-09-28",
+      "rceptEnd": "2026-09-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-28 ~ 2026-09-28",
+        "result": "2026-10-06"
+      },
+      "types": [
+        {
+          "t": "84㎡B",
+          "n": 1,
+          "price": 35400,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "99㎡A",
+          "n": 1,
+          "price": 39338,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 42,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910243&pblancNo=2026910243",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 구룡개발(주) · 당첨자발표 2026-10-06 · 입주예정 202612. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
       "id": "applyhome-remndr-2026910247-2026910247",
       "live": true,
       "source": "applyhome",
@@ -52358,9 +52462,11 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "104㎡",
+          "n": 1,
+          "price": 56610,
+          "general": 1,
+          "special": 0
         }
       ],
       "specialUnits": {},
