@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-23T03:16:17.543Z",
-  "count": 747,
+  "collectedAt": "2026-09-23T21:13:09.201Z",
+  "count": 751,
   "sites": [
     {
       "id": "applyhome-apt-2026820011-2026820011",
@@ -34215,6 +34215,186 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000400&pblancNo=2025000400",
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 세흥건설(주) · 시공 (주)시티종합건설,(주)시티 · 당첨자발표 2025-10-20 · 입주예정 202511. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-remndr-2026930040-2026930040",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "불법행위 재공급",
+      "n": "강변역 센트럴 아이파크",
+      "gu": "서울특별시 광진구 구의동 592-39번지",
+      "brand": "(주)한국토지신탁",
+      "total": 1,
+      "general": 1,
+      "when": "2026-09-23",
+      "rceptStart": "2026-10-06",
+      "rceptEnd": "2026-10-06",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-06 ~ 2026-10-06",
+        "result": "2026-10-12"
+      },
+      "types": [
+        {
+          "t": "84㎡C",
+          "n": 1,
+          "price": 122202,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930040&pblancNo=2026930040",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)한국토지신탁 · 당첨자발표 2026-10-12 · 입주예정 202611. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026930037-2026930037",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "불법행위 재공급",
+      "n": "과천 푸르지오 벨라르테",
+      "gu": "경기도 과천시 과천지식정보타운 공공주택지구",
+      "brand": "(주)대우건설",
+      "total": 1,
+      "general": 1,
+      "when": "2026-09-23",
+      "rceptStart": "2026-09-28",
+      "rceptEnd": "2026-09-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-28 ~ 2026-09-28",
+        "result": "2026-10-02"
+      },
+      "types": [
+        {
+          "t": "99㎡B",
+          "n": 1,
+          "price": 95218,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 63,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930037&pblancNo=2026930037",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)대우건설 · 당첨자발표 2026-10-02 · 입주예정 202612. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026930036-2026930036",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "불법행위 재공급",
+      "n": "과천 푸르지오 라비엔오",
+      "gu": "경기도 과천시 과천지식정보타운 공공주택지구",
+      "brand": "(주)대우건설",
+      "total": 2,
+      "general": 2,
+      "when": "2026-09-23",
+      "rceptStart": "2026-09-28",
+      "rceptEnd": "2026-09-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-09-28 ~ 2026-09-28",
+        "rank1": "",
+        "general": "2026-09-28 ~ 2026-09-28",
+        "result": "2026-10-02"
+      },
+      "types": [
+        {
+          "t": "84㎡D",
+          "n": 2,
+          "price": 80338,
+          "general": 0,
+          "special": 2
+        }
+      ],
+      "specialUnits": {},
+      "cut": 63,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930036&pblancNo=2026930036",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)대우건설 · 당첨자발표 2026-10-02 · 입주예정 202612. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910220-2026910220",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "아크로 리버스카이(2차)",
+      "gu": "서울특별시 동작구 대방동 23-61번지",
+      "brand": "노량진8재정비촉진구역주택재개발정비사업조합",
+      "total": 3,
+      "general": 3,
+      "when": "2026-09-23",
+      "rceptStart": "2026-09-28",
+      "rceptEnd": "2026-09-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-09-28 ~ 2026-09-28",
+        "result": "2026-10-06"
+      },
+      "types": [
+        {
+          "t": "140㎡P",
+          "n": 3,
+          "price": 492800,
+          "general": 3,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910220&pblancNo=2026910220",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 노량진8재정비촉진구역주택재개발정비사업조합 · 당첨자발표 2026-10-06 · 입주예정 202908. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     },
     {
       "id": "applyhome-remndr-2026910248-2026910248",
