@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>현장 손익·정산 관리</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --panel: #ffffff; --sheet-head: #f0efec; --sheet-sub: #f7f6f3;
+  --text: #0b0b0b; --text-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10); --cell: #d6d5ce;
+  --chip: #f0efec; --hover: rgba(11,11,11,0.04);
+  --accent: #2a78d6;
+  --s-1: #2a78d6; --s-2: #eb6834; --s-3: #1baf7a;
+  --good: #0ca30c; --warning: #fab219; --critical: #d03b3b;
+  --up-text: #006300; --down-text: #b3261e; --sat: #2a78d6;
+  --future: rgba(42,120,214,0.06);
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --panel: #1a1a19; --sheet-head: #262624; --sheet-sub: #1f1f1d;
+    --text: #ffffff; --text-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --cell: #383835;
+    --chip: #262624; --hover: rgba(255,255,255,0.05);
+    --accent: #3987e5; --s-1: #3987e5; --s-2: #d95926; --s-3: #199e70;
+    --up-text: #0ca30c; --down-text: #e66767; --sat: #6da7ec;
+    --future: rgba(57,135,229,0.10);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --panel: #1a1a19; --sheet-head: #262624; --sheet-sub: #1f1f1d;
+  --text: #ffffff; --text-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --cell: #383835;
+  --chip: #262624; --hover: rgba(255,255,255,0.05);
+  --accent: #3987e5; --s-1: #3987e5; --s-2: #d95926; --s-3: #199e70;
+  --up-text: #0ca30c; --down-text: #e66767; --sat: #6da7ec;
+  --future: rgba(57,135,229,0.10);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--text);
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+button, input, select { font: inherit; color: inherit; }
+a { color: var(--accent); }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 16px 56px; }
+
+header.top { position: sticky; top: 0; z-index: 10; background: var(--page); border-bottom: 1px solid var(--border); }
+.top-in { max-width: 1280px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; }
+.brand { font-weight: 700; font-size: 16px; }
+nav.tabs { display: flex; gap: 2px; overflow-x: auto; max-width: 100%; }
+nav.tabs button { border: 0; background: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; color: var(--text-2); white-space: nowrap; }
+nav.tabs button:hover { background: var(--hover); }
+nav.tabs button[aria-selected="true"] { background: var(--chip); color: var(--text); font-weight: 600; }
+.sync { margin-left: auto; display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); display: inline-block; }
+.dot.ok { background: var(--good); } .dot.err { background: var(--critical); } .dot.busy { background: var(--warning); }
+
+.btn { border: 1px solid var(--border); background: var(--panel); padding: 6px 12px; border-radius: 8px; cursor: pointer; white-space: nowrap; }
+.btn:hover { background: var(--hover); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:disabled { opacity: .5; cursor: default; }
+
+.filters { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 20px 0 16px; }
+.filters select { border: 1px solid var(--border); background: var(--panel); border-radius: 8px; padding: 6px 10px; max-width: 100%; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--panel); }
+.seg button { border: 0; background: none; padding: 6px 12px; cursor: pointer; color: var(--text-2); white-space: nowrap; }
+.seg button + button { border-left: 1px solid var(--border); }
+.seg button[aria-pressed="true"] { background: var(--text); color: var(--page); }
+.chk { display: inline-flex; gap: 6px; align-items: center; color: var(--text-2); font-size: 13px; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.tile { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; }
+.tile .k { color: var(--text-2); font-size: 13px; }
+.tile .v { font-size: 22px; font-weight: 700; margin-top: 2px; }
+.tile .d { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.up { color: var(--up-text); } .down { color: var(--down-text); }
+
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; min-width: 0; }
+.card h3 { margin: 0 0 12px; font-size: 15px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.card h3 .sub { font-weight: 400; color: var(--muted); font-size: 13px; }
+
+.legend { display: flex; gap: 14px; font-size: 13px; color: var(--text-2); margin-bottom: 8px; flex-wrap: wrap; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 5px; }
+.legend i.line { height: 2px; border-radius: 1px; vertical-align: 3px; }
+.legend i.fut { background: var(--future); border: 1px dashed var(--axis); }
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; }
+.chart .tick { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0,0,0,.12); border-radius: 8px; padding: 8px 10px; font-size: 12px; min-width: 170px; display: none; z-index: 30; }
+.tip .t { color: var(--text-2); margin-bottom: 4px; }
+.tip .r { display: flex; align-items: center; gap: 10px; justify-content: space-between; }
+.tip .r b { font-variant-numeric: tabular-nums; }
+.tip .r span { color: var(--text-2); display: flex; align-items: center; gap: 6px; }
+.tip .r span::before { content: ""; width: 10px; height: 2px; background: var(--c); border-radius: 1px; }
+
+.tbl-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { padding: 7px 8px; border-bottom: 1px solid var(--grid); text-align: left; white-space: nowrap; }
+th { color: var(--text-2); font-weight: 600; background: var(--panel); }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+tbody tr:hover td { background: var(--hover); }
+tr.sum td { font-weight: 700; border-top: 1px solid var(--axis); }
+tr.sub td { background: var(--sheet-sub); font-weight: 600; }
+tr.link { cursor: pointer; }
+td.fut, th.fut { background: var(--future); }
+.stmt td:first-child, .stmt th:first-child { position: sticky; left: 0; background: var(--panel); z-index: 1; }
+.stmt tr.sum td:first-child, .stmt tr.sub td:first-child { background: var(--sheet-sub); }
+.stmt .ind td:first-child { padding-left: 22px; color: var(--text-2); }
+.bar { height: 6px; background: var(--chip); border-radius: 3px; overflow: hidden; min-width: 70px; }
+.bar > span { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+.pbar { display: flex; gap: 8px; align-items: center; }
+.pbar .bar { flex: 1; }
+
+.badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; padding: 1px 8px; border-radius: 999px; background: var(--chip); color: var(--text); white-space: nowrap; }
+.badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--c, var(--muted)); }
+.badge.paid { --c: var(--good); } .badge.assumed { --c: var(--axis); } .badge.partial, .badge.due { --c: var(--warning); } .badge.overdue { --c: var(--critical); }
+.role { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-2); }
+.est { font-size: 11px; color: var(--muted); border: 1px dashed var(--axis); border-radius: 4px; padding: 0 4px; margin-left: 4px; font-weight: 400; }
+
+.notice { background: var(--chip); border-radius: 10px; padding: 10px 14px; font-size: 13px; color: var(--text-2); margin: 12px 0; }
+.notice.err { border-left: 3px solid var(--critical); }
+.notice.warn { border-left: 3px solid var(--warning); }
+.hint { font-size: 12px; color: var(--muted); }
+.empty { text-align: center; padding: 60px 16px; color: var(--text-2); }
+.empty h2 { color: var(--text); margin: 0 0 8px; }
+.empty .row { display: flex; gap: 8px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+
+/* 기성관리 양식 */
+.gs-sheet { overflow-x: auto; }
+.gs { border-collapse: collapse; min-width: 780px; font-size: 13px; }
+.gs td { border: 1px solid var(--cell); padding: 6px 10px; white-space: nowrap; }
+.gs .h { background: var(--sheet-head); font-weight: 600; text-align: center; color: var(--text); }
+.gs .t { background: var(--sheet-head); font-weight: 700; }
+.gs .n { text-align: right; font-variant-numeric: tabular-nums; }
+.gs .c { text-align: center; }
+.gs .tot td { font-weight: 700; background: var(--sheet-sub); }
+.gs .calc { background: var(--future); }
+.gs .sp td { border: 0; height: 14px; padding: 0; }
+.gs tbody tr:hover td { background: inherit; }
+
+/* 캘린더 */
+.cal-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 20px 0 16px; }
+.cal-head h2 { margin: 0 8px; font-size: 20px; min-width: 130px; text-align: center; }
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid var(--cell); border-left: 1px solid var(--cell); background: var(--panel); }
+.cal .dow { padding: 6px 2px; text-align: center; font-weight: 600; font-size: 12px; background: var(--sheet-head); border-right: 1px solid var(--cell); border-bottom: 1px solid var(--cell); overflow: hidden; white-space: nowrap; }
+.cal .day { min-height: 112px; padding: 4px 5px; border-right: 1px solid var(--cell); border-bottom: 1px solid var(--cell); cursor: pointer; min-width: 0; }
+.cal .day:hover { background: var(--hover); }
+.cal .day.off { background: var(--sheet-sub); cursor: default; }
+.cal .day.sel { outline: 2px solid var(--accent); outline-offset: -2px; }
+.cal .dn { font-size: 12px; font-weight: 600; display: flex; justify-content: space-between; gap: 4px; }
+.cal .dn .tot { font-weight: 400; color: var(--muted); font-variant-numeric: tabular-nums; font-size: 11px; }
+.cal .today .dn > span:first-child { background: var(--accent); color: #fff; border-radius: 999px; padding: 0 6px; }
+.sun { color: var(--down-text); } .sat { color: var(--sat); }
+.ev { font-size: 11px; line-height: 1.35; padding: 1px 4px 1px 6px; margin-top: 2px; border-left: 2px solid var(--c, var(--muted)); background: var(--hover);
+  border-radius: 0 3px 3px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ev.in { --c: var(--s-1); } .ev.out { --c: var(--s-2); } .ev.info { --c: var(--axis); color: var(--text-2); }
+.ev.est { border-left-style: dashed; }
+.more { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.cnt { display: none; }
+@media (max-width: 760px) {
+  .cal .day { min-height: 58px; }
+  .cal .ev, .cal .more, .cal .dn .tot { display: none; }
+  .cal .cnt { display: block; font-size: 10px; color: var(--muted); }
+  .cal .dow .en { display: none; }
+}
+
+.fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px 16px; }
+.field label { display: block; font-size: 13px; color: var(--text-2); margin-bottom: 4px; }
+.field input, .field select { border: 1px solid var(--border); background: var(--page); border-radius: 8px; padding: 6px 10px; max-width: 100%; }
+ol.guide { padding-left: 20px; color: var(--text-2); margin: 6px 0 0; }
+ol.guide li { margin-bottom: 4px; }
+code { background: var(--chip); padding: 0 4px; border-radius: 4px; font-size: 12px; }
+
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--text); color: var(--page);
+  padding: 10px 16px; border-radius: 10px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 40; max-width: calc(100% - 32px); }
+.toast.show { opacity: 1; }
+.dim { opacity: .55; transition: opacity .2s; }
+[hidden] { display: none !important; }
+@media print { header.top, .filters, #alerts { display: none !important; } .card { border: 0; } body { background: #fff; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <span class="brand">현장 손익·정산</span>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="pl">손익·현금흐름</button>
+      <button role="tab" data-tab="sites">현장 채권·채무</button>
+      <button role="tab" data-tab="gs">기성관리</button>
+      <button role="tab" data-tab="cal">월간 캘린더</button>
+      <button role="tab" data-tab="data">데이터 연결</button>
+    </nav>
+    <div class="sync">
+      <span><span class="dot" id="syncDot"></span> <span id="syncText">연결 안 됨</span></span>
+      <button class="btn" id="btnRefresh" title="스프레드시트에서 지금 다시 불러오기" hidden>새로고침</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div id="alerts"></div>
+
+  <section id="v-empty" hidden>
+    <div class="empty">
+      <h2>스프레드시트를 연결해 주세요</h2>
+      <div>기성관리 시트와 고정지출 시트를 읽어서 손익·현금흐름, 현장별 미수·미지급, 월간 일정을 자동으로 만듭니다.</div>
+      <div class="row">
+        <button class="btn primary" data-goto="data">연결 방법 보기</button>
+        <button class="btn" data-action="pick">엑셀 파일로 바로 보기</button>
+        <button class="btn" data-action="demo">샘플 데이터로 둘러보기</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 손익·현금흐름 -->
+  <section id="v-pl" hidden>
+    <div class="filters">
+      <div class="seg" id="plGran">
+        <button data-g="M">월별</button><button data-g="Q">분기별</button><button data-g="H">반기별</button><button data-g="Y">연도별</button>
+      </div>
+      <select id="plYear" aria-label="연도"></select>
+      <select id="plSite" aria-label="현장"></select>
+      <label class="chk"><input type="checkbox" id="plFixed" checked> 고정비 포함</label>
+    </div>
+    <div class="tiles" id="plTiles"></div>
+    <div class="card">
+      <h3>손익 <span class="sub">공급가액 기준 · 부가세 제외</span></h3>
+      <div class="legend">
+        <span><i style="background:var(--s-1)"></i>매출</span>
+        <span><i style="background:var(--s-2)"></i>비용 (도급 원가 + 고정비)</span>
+        <span><i class="line" style="background:var(--s-3)"></i>영업이익</span>
+        <span><i class="fut"></i>예정 기간</span>
+      </div>
+      <div class="chart" id="plChart"></div>
+      <div class="tbl-wrap" id="plTable" style="margin-top:12px"></div>
+    </div>
+    <div class="card">
+      <h3>현금흐름 <span class="sub">부가세 포함 입출금 기준 · 입금 기록이 없으면 결제조건으로 추정</span></h3>
+      <div class="legend">
+        <span><i style="background:var(--s-1)"></i>현금 유입</span>
+        <span><i style="background:var(--s-2)"></i>현금 유출</span>
+        <span><i class="line" style="background:var(--s-3)"></i>순현금흐름</span>
+        <span><i class="fut"></i>예정 기간</span>
+      </div>
+      <div class="chart" id="cfChart"></div>
+      <div class="tbl-wrap" id="cfTable" style="margin-top:12px"></div>
+    </div>
+  </section>
+
+  <!-- 현장 채권·채무 -->
+  <section id="v-sites" hidden>
+    <div class="filters">
+      <select id="siteSel" aria-label="현장"></select>
+      <div class="seg" id="siteRole">
+        <button data-r="all">전체</button><button data-r="AR">원청 (받을 돈)</button><button data-r="AP">도급업체 (줄 돈)</button>
+      </div>
+      <label class="chk"><input type="checkbox" id="siteOpen"> 미수·미지급 있는 것만</label>
+    </div>
+    <div class="tiles" id="siteTiles"></div>
+    <div class="card">
+      <h3>현장별 원청·도급 정산 현황 <span class="sub">행을 누르면 기성관리 양식으로 열립니다</span></h3>
+      <div class="tbl-wrap" id="siteTable"></div>
+    </div>
+    <div class="card">
+      <h3>미수금·미지급금 상세 <span class="sub">세금계산서 건별</span></h3>
+      <div class="tbl-wrap" id="openTable"></div>
+    </div>
+  </section>
+
+  <!-- 기성관리 양식 -->
+  <section id="v-gs" hidden>
+    <div class="filters">
+      <select id="gsSite" aria-label="현장"></select>
+      <select id="gsContract" aria-label="거래처"></select>
+      <button class="btn" onclick="window.print()">인쇄</button>
+    </div>
+    <div id="gsBody"></div>
+  </section>
+
+  <!-- 캘린더 -->
+  <section id="v-cal" hidden>
+    <div class="cal-head">
+      <button class="btn" id="calPrev" aria-label="이전 달">◀</button>
+      <h2 id="calTitle"></h2>
+      <button class="btn" id="calNext" aria-label="다음 달">▶</button>
+      <button class="btn" id="calToday">이번 달</button>
+      <div class="seg" id="calFilter">
+        <button data-f="all">전체</button><button data-f="in">입금</button><button data-f="out">지출·지급</button><button data-f="info">청구·직불</button>
+      </div>
+    </div>
+    <div class="tiles" id="calTiles"></div>
+    <div class="cal" id="calGrid"></div>
+    <div class="legend" style="margin-top:8px">
+      <span><i style="background:var(--s-1)"></i>입금</span><span><i style="background:var(--s-2)"></i>지출·지급</span><span><i style="background:var(--axis)"></i>청구·직불 (현금 이동 없음)</span>
+      <span class="hint">점선 = 예정·추정</span>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3 id="calListTitle">이달 일정</h3>
+      <div class="tbl-wrap" id="calList"></div>
+    </div>
+  </section>
+
+  <!-- 데이터 연결 -->
+  <section id="v-data" hidden>
+    <div class="card" style="margin-top:20px">
+      <h3>연결 상태</h3>
+      <div id="dataMode"></div>
+      <div class="tbl-wrap" id="dataSheets" style="margin-top:12px"></div>
+    </div>
+    <div class="card">
+      <h3>계산 기준</h3>
+      <div class="fields">
+        <div class="field"><label for="setArTerm">원청 입금 조건 (세금계산서 발행 후 일수)</label><input type="number" id="setArTerm" min="0" max="365"></div>
+        <div class="field"><label for="setApTerm">도급업체 지급 조건 (세금계산서 수취 후 일수)</label><input type="number" id="setApTerm" min="0" max="365"></div>
+        <div class="field"><label for="setAssume">입금·지급 기록이 없는 시트는</label>
+          <select id="setAssume"><option value="1">조건일이 지나면 정산된 것으로 추정</option><option value="0">기록이 생길 때까지 모두 미수·미지급</option></select></div>
+        <div class="field"><label for="setFixedFrom">고정비 반영 시작 월</label><input type="month" id="setFixedFrom"><div class="hint">비우면 첫 기성 월부터</div></div>
+        <div class="field"><label for="setRefresh">자동 새로고침 (구글 시트 연결 시)</label>
+          <select id="setRefresh"><option value="1">1분마다</option><option value="3">3분마다</option><option value="5">5분마다</option><option value="15">15분마다</option><option value="0">끄기</option></select></div>
+      </div>
+      <p class="hint" style="margin:12px 0 0">
+        · 손익은 <b>정산월(기성월)</b>의 공급가액으로 잡습니다. <b>직불(인건비)</b> 차감분은 기성 진행률·계약 잔액에는 넣고, 우리 통장을 거치지 않으므로 손익·현금흐름에서는 뺍니다.<br>
+        · 기성 시트의 세금계산서 표 오른쪽(비고 다음)에 <code>입금일</code>·<code>입금액</code> 열(도급은 <code>지급일</code>·<code>지급액</code>)을 추가하면 추정 대신 실제 입금으로 미수금을 계산합니다.<br>
+        · 고정지출 마스터는 매월 반복되는 것으로 보고 "당월 최종금액"을 매달 적용합니다. 급여는 지정일이 주말이면 직전 금요일로 옮깁니다.
+      </p>
+    </div>
+    <div class="card">
+      <h3>구글 스프레드시트 실시간 연결 (Apps Script)</h3>
+      <ol class="guide">
+        <li><a href="https://script.google.com/home/projects/create" target="_blank" rel="noopener">script.google.com</a> 에서 새 프로젝트를 만듭니다.</li>
+        <li><code>Code.gs</code> 에 저장소의 <code>settlement/apps-script/Code.gs</code> 내용을 붙여넣고, 맨 위 <code>SPREADSHEET_IDS</code> 에 시트 ID를 넣습니다.</li>
+        <li>파일 추가(+) → HTML → 이름을 <code>Index</code> 로 만들고 <code>settlement/index.html</code> 내용을 그대로 붙여넣습니다.</li>
+        <li>배포 → 새 배포 → 유형 <b>웹 앱</b> · 실행 사용자 <b>나</b> · 액세스 <b>나만</b> (또는 조직 내 사용자)로 배포하고 나온 주소를 즐겨찾기합니다.</li>
+      </ol>
+      <p class="hint">시트는 공개하지 않은 채로 두면 됩니다. 시트를 고치면 이 화면이 설정한 주기마다, 그리고 창으로 돌아올 때마다 다시 읽어 옵니다.</p>
+    </div>
+    <div class="card">
+      <h3>엑셀 파일로 보기</h3>
+      <p class="hint" style="margin-top:0">구글 시트에서 파일 → 다운로드 → Microsoft Excel(.xlsx)로 받은 파일을 넣으면 바로 볼 수 있습니다. 파일은 이 브라우저 안에서만 읽고, 자동 업데이트는 되지 않습니다.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn primary" data-action="pick">엑셀 파일 선택 (여러 개 가능)</button>
+        <button class="btn" data-action="demo">샘플 데이터</button>
+        <button class="btn" data-action="clear">불러온 파일 지우기</button>
+      </div>
+      <input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm,.csv" multiple hidden>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+<div class="tip" id="tip"></div>
+
+<script>
+(() => {
+"use strict";
+
+/* =====================================================================
+   유틸
+   ===================================================================== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const str = v => v == null ? "" : String(v).trim();
+const norm = v => str(v).toLowerCase().replace(/[\s_()\[\]·.:%]/g, "");
+const pad = n => String(n).padStart(2, "0");
+const won = n => Math.round(n || 0).toLocaleString("ko-KR");
+function short(n) {
+  const a = Math.abs(n), s = n < 0 ? "−" : "";
+  if (a >= 1e8) return s + (a / 1e8).toFixed(a >= 1e10 ? 0 : 2).replace(/\.?0+$/, "") + "억";
+  if (a >= 1e4) return s + Math.round(a / 1e4).toLocaleString("ko-KR") + "만";
+  return s + Math.round(a).toLocaleString("ko-KR");
+}
+const fmtPct = v => Number.isFinite(v) ? (v * 100).toFixed(1) + "%" : "–";
+
+function num(v) {
+  if (typeof v === "number") return v;
+  let s = str(v);
+  if (!s || s === "-") return NaN;
+  let neg = false;
+  if (/^\(.*\)$/.test(s)) { neg = true; s = s.slice(1, -1); }
+  if (/^[△▲]/.test(s)) { neg = true; s = s.slice(1); }
+  s = s.replace(/[₩원,\s$￦]/g, "");
+  if (s.startsWith("-")) { neg = !neg; s = s.slice(1); } else if (s.startsWith("+")) s = s.slice(1);
+  if (!/^\d*\.?\d+(e[+-]?\d+)?$/i.test(s)) return NaN;
+  const n = parseFloat(s);
+  return Number.isFinite(n) ? (neg ? -n : n) : NaN;
+}
+// 날짜 → Date(로컬 자정). "2026-01-31", "2026.1.31", "2026년 1월 31일" 등
+function parseDate(v) {
+  const s = str(v); if (!s) return null;
+  let m;
+  if ((m = s.match(/^(\d{4})\s*[.\-\/년]\s*(\d{1,2})\s*[.\-\/월]\s*(\d{1,2})/))) return mk(+m[1], +m[2], +m[3]);
+  if ((m = s.match(/^(\d{4})(\d{2})(\d{2})$/))) return mk(+m[1], +m[2], +m[3]);
+  if ((m = s.match(/^(\d{2})[.\-\/](\d{1,2})[.\-\/](\d{1,2})$/))) return mk(2000 + +m[1], +m[2], +m[3]);
+  return null;
+}
+function mk(y, mo, d) { if (mo < 1 || mo > 12 || d < 1 || d > 31) return null; return new Date(y, mo - 1, d); }
+// 정산월: 숫자 2025.11 / 2026.1(=10월, 시트가 끝 0을 지움) / 문자 "2026.01" / 날짜 → "YYYY-MM"
+function periodMonth(v) {
+  if (typeof v === "number" && v > 1990 && v < 2200) {
+    const y = Math.floor(v), mo = Math.round((v - y) * 100);
+    return mo >= 1 && mo <= 12 ? `${y}-${pad(mo)}` : null;
+  }
+  const s = str(v); let m;
+  if ((m = s.match(/^(\d{4})\s*[.\-\/년]\s*(\d{1,2})/))) return +m[2] >= 1 && +m[2] <= 12 ? `${m[1]}-${pad(+m[2])}` : null;
+  return null;
+}
+const ym = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}`;
+const iso = d => `${ym(d)}-${pad(d.getDate())}`;
+const fmtDate = d => d ? `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())}` : "";
+const lastDay = (y, m0) => new Date(y, m0 + 1, 0).getDate();
+const monthEnd = s => { const [y, m] = s.split("-").map(Number); return new Date(y, m - 1, lastDay(y, m - 1)); };
+const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+function addMonths(s, k) { const [y, m] = s.split("-").map(Number); return ym(new Date(y, m - 1 + k, 1)); }
+function monthsBetween(a, b) { const out = []; for (let c = a; c <= b && out.length < 600; c = addMonths(c, 1)) out.push(c); return out; }
+const today0 = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
+let toastT;
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 3400); }
+function safeGet(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }
+function safeSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch { return false; } }
+function safeDel(k) { try { localStorage.removeItem(k); } catch {} }
+
+/* =====================================================================
+   설정
+   ===================================================================== */
+const SKEY = "hs.settings.v1", FKEY = "hs.files.v1";
+const DEF = { arTerm: 30, apTerm: 30, assume: true, fixedFrom: "", refreshMin: 5, roles: {} };
+let S = { ...DEF, ...safeGet(SKEY, {}) };
+const saveS = () => safeSet(SKEY, S);
+
+/* =====================================================================
+   데이터 불러오기 — books: [{ id, name, sheets: [{ name, values: [[...]] }] }]
+   ===================================================================== */
+const hasGAS = typeof google !== "undefined" && google.script && google.script.run;
+const state = {
+  mode: hasGAS ? "gas" : "none", books: [], sig: "", busy: false, error: null, lastSync: null,
+  tab: safeGet("hs.tab", "pl"), model: null,
+};
+
+function gasCall(fn) {
+  return new Promise((res, rej) => google.script.run.withSuccessHandler(res).withFailureHandler(e => rej(new Error(e && e.message || String(e))))[fn]());
+}
+async function sync({ quiet } = {}) {
+  if (state.mode !== "gas") { rebuild(); return; }
+  if (state.busy) return;
+  state.busy = true; renderSync(); $("#main").classList.add("dim");
+  try {
+    const books = await gasCall("getWorkbooks");
+    const sig = JSON.stringify(books);
+    const changed = state.sig && sig !== state.sig;
+    state.books = books; state.sig = sig; state.error = null; state.lastSync = new Date();
+    const failed = books.filter(b => b.error);
+    if (failed.length) state.error = failed.map(b => `시트 ${String(b.id).slice(0, 8)}… 를 열지 못했습니다: ${b.error}`).join(" / ");
+    if (changed && quiet) toast("스프레드시트 변경 사항을 반영했습니다.");
+  } catch (e) { state.error = "구글 시트를 불러오지 못했습니다: " + e.message; }
+  state.busy = false; $("#main").classList.remove("dim");
+  rebuild();
+}
+
+// 엑셀 파일 (SheetJS, 필요할 때만 로드)
+let xlsxLib = null;
+function loadXLSX() {
+  if (xlsxLib) return xlsxLib;
+  xlsxLib = new Promise((res, rej) => {
+    const s = document.createElement("script");
+    s.src = "https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";
+    s.onload = () => res(window.XLSX); s.onerror = () => { xlsxLib = null; rej(new Error("엑셀 읽기 모듈을 불러오지 못했습니다.")); };
+    document.head.appendChild(s);
+  });
+  return xlsxLib;
+}
+function sheetToValues(XLSX, ws) {
+  if (!ws["!ref"]) return [];
+  const r = XLSX.utils.decode_range(ws["!ref"]), out = [];
+  for (let R = 0; R <= r.e.r; R++) {
+    const row = [];
+    for (let C = 0; C <= r.e.c; C++) {
+      const cell = ws[XLSX.utils.encode_cell({ r: R, c: C })];
+      let v = null;
+      if (cell) {
+        if (cell.t === "d") v = iso(cell.v);
+        else if (cell.t === "n" && cell.z && XLSX.SSF.is_date(cell.z)) { const p = XLSX.SSF.parse_date_code(cell.v); v = `${p.y}-${pad(p.m)}-${pad(p.d)}`; }
+        else if (cell.t === "e") v = null;
+        else v = cell.v ?? null;
+      }
+      row.push(v);
+    }
+    out.push(row);
+  }
+  return out;
+}
+async function readFiles(files) {
+  const XLSX = await loadXLSX();
+  const books = state.mode === "file" ? state.books.slice() : safeGet(FKEY, []);
+  for (const f of files) {
+    const wb = XLSX.read(await f.arrayBuffer(), { type: "array" });
+    const book = { id: "file:" + f.name, name: f.name.replace(/\.(xlsx|xlsm|xls|csv)$/i, ""), sheets: wb.SheetNames.map(n => ({ name: n, values: sheetToValues(XLSX, wb.Sheets[n]) })) };
+    const i = books.findIndex(b => b.id === book.id);
+    if (i >= 0) books[i] = book; else books.push(book);
+  }
+  if (!safeSet(FKEY, books)) toast("파일이 커서 브라우저에 저장하지 못했습니다. 새로고침하면 다시 넣어야 합니다.");
+  else toast(`${files.length}개 파일을 읽었습니다.`);
+  state.mode = "file"; state.books = books; state.lastSync = new Date(); state.error = null;
+  rebuild();
+}
+
+/* =====================================================================
+   시트 해석
+   ===================================================================== */
+function findCell(g, pred, maxRow = g.length) {
+  for (let r = 0; r < Math.min(g.length, maxRow); r++) for (let c = 0; c < (g[r] || []).length; c++) if (pred(g[r][c], r, c)) return { r, c };
+  return null;
+}
+const rightOf = (g, p) => { if (!p) return null; const row = g[p.r] || []; for (let c = p.c + 1; c < row.length; c++) if (str(row[c]) !== "") return row[c]; return null; };
+
+function classify(sheet) {
+  const g = sheet.values || [];
+  if (/달력|캘린더/.test(sheet.name)) return "skip";
+  if (findCell(g, v => norm(v) === "현장명", 12)) return "giseong";
+  const hdr = findCell(g, v => /결제일/.test(norm(v)), 15);
+  if (hdr && (g[hdr.r] || []).some(v => /지출내역|^내역$|항목/.test(norm(v)))) return "fixed";
+  return "other";
+}
+
+// 세금계산서 표 헤더 → 열 번호
+const COLS = [
+  ["cashDate", /^(입금|수금|지급|결제|송금)(일|일자|날짜)$/],
+  ["cashAmt", /^(입금|수금|지급|결제|송금)(액|금액)$/],
+  ["period", /정산일자|정산월|기성월|기성년월|청구월/],
+  ["date", /세금계산서|계산서|발행일|수취일|작성일/],
+  ["supply", /공급가/],
+  ["vat", /부가세|세액/],
+  ["total", /^합계$|합계금액|총액/],
+  ["note", /비고|메모|적요/],
+];
+function headerIndex(row) {
+  const idx = {};
+  (row || []).forEach((h, c) => {
+    const n = norm(h); if (!n) return;
+    for (const [k, re] of COLS) if (!(k in idx) && re.test(n)) { idx[k] = c; break; }
+  });
+  return idx;
+}
+
+function parseGiseong(book, sheet) {
+  const g = sheet.values;
+  const site = str(rightOf(g, findCell(g, v => norm(v) === "현장명", 12))) || sheet.name;
+  const party = str(rightOf(g, findCell(g, v => ["거래처", "원청", "도급업체", "업체명"].includes(norm(v)), 12)));
+  // 품목·수량·단가: "내역" 라벨 행 + 바로 아래 값 행
+  let item = "", qty = NaN, unit = NaN, qtyLabel = "수량", unitLabel = "단가", colLabels = [];
+  for (let r = 0; r < Math.min(g.length - 1, 20); r++) {
+    if (norm((g[r] || [])[0]) !== "내역") continue;
+    const labels = g[r], vals = g[r + 1] || [];
+    if (!item && !["내역", "계약내역"].includes(norm(vals[0]))) {
+      item = str(vals[0]);
+      labels.forEach((l, c) => {
+        const n = norm(l);
+        if (/대수|수량|물량/.test(n)) { qty = num(vals[c]); qtyLabel = str(l); }
+        else if (/단가/.test(n)) { unit = num(vals[c]); unitLabel = str(l); }
+      });
+    } else if (!colLabels.length) colLabels = labels.slice(1).map(str).filter(Boolean);
+  }
+  const cp = findCell(g, v => /^계약(내역|금액)?$/.test(norm(v)), 25);
+  let contract = NaN;
+  if (cp) for (let c = cp.c + 1; c < (g[cp.r] || []).length; c++) { const n = num(g[cp.r][c]); if (Number.isFinite(n) && n) { contract = n; break; } }
+  if (!Number.isFinite(contract) && Number.isFinite(qty) && Number.isFinite(unit)) contract = qty * unit;
+
+  // 세금계산서 표: "공급가액" 이 있는 행이 헤더, 바로 위 행이 표 제목
+  const sections = [];
+  for (let r = 0; r < g.length; r++) {
+    if (!(g[r] || []).some(v => /공급가/.test(norm(v)))) continue;
+    const idx = headerIndex(g[r]);
+    if (!("supply" in idx)) continue;
+    const titleRow = g[r - 1] || [];
+    const title = str(titleRow[0]), desc = titleRow.slice(1).map(str).filter(Boolean).join(" ");
+    const kind = /직불|차감|대지급|공제/.test(title + desc) ? "direct" : "invoice";
+    const rows = [];
+    let rr = r + 1;
+    for (; rr < g.length; rr++) {
+      const row = g[rr] || [];
+      const first = norm(row[0]);
+      if (/^(합계|소계|총계|계)$/.test(first)) break;
+      if (row.some(v => /공급가/.test(norm(v)))) { rr -= 2; break; }
+      const supply = num(row[idx.supply]);
+      if (!Number.isFinite(supply) || supply === 0) continue;
+      const date = parseDate(row[idx.date]);
+      const month = periodMonth(row[idx.period]) || (date && ym(date));
+      if (!month) continue;
+      let vat = num(row[idx.vat]);
+      if (!Number.isFinite(vat)) vat = kind === "invoice" ? Math.round(supply * 0.1) : 0;
+      const cashDate = "cashDate" in idx ? parseDate(row[idx.cashDate]) : null;
+      const cashAmt = "cashAmt" in idx ? num(row[idx.cashAmt]) : NaN;
+      rows.push({ month, periodRaw: row[idx.period], date: date || monthEnd(month), dateGiven: !!date, supply, vat, total: supply + vat,
+        note: str(row[idx.note]), cashDate, cashAmt });
+    }
+    sections.push({ title: title || (kind === "direct" ? "직불" : "기성"), desc, kind, rows, hasCash: "cashDate" in idx || "cashAmt" in idx });
+    r = Math.max(r, rr);
+  }
+  const key = `${book.id}::${sheet.name}`;
+  const text = sections.map(s => s.title + " " + s.desc).join(" ");
+  const guess = /매입|도급|외주|하도급|협력|지급/.test(sheet.name) ? "AP" : /매출|원청|수금|청구/.test(sheet.name) ? "AR"
+    : /매입|수취/.test(text) ? "AP" : "AR";
+  return { key, book: book.name, sheet: sheet.name, site, party: party || "(거래처 미기재)", item, qty, unit, qtyLabel, unitLabel, colLabels,
+    contract: Number.isFinite(contract) ? contract : 0, sections, guess, role: S.roles[key] && S.roles[key] !== "skip" ? S.roles[key] : guess };
+}
+
+function parseFixed(book, sheet) {
+  const g = sheet.values;
+  const h = findCell(g, v => /결제일/.test(norm(v)), 15);
+  const idx = {};
+  (g[h.r] || []).forEach((v, c) => {
+    const n = norm(v);
+    const k = /결제일/.test(n) ? "day" : /지출내역|^내역$|항목/.test(n) ? "name" : /결제방법|방법/.test(n) ? "method"
+      : /고정금액/.test(n) ? "fixed" : /외화|\$/.test(n) ? "fx" : /변동/.test(n) ? "variable" : /최종|당월/.test(n) ? "final"
+      : /결제구분|구분/.test(n) ? "cls" : /표시명/.test(n) ? "label" : /비고/.test(n) ? "note" : null;
+    if (k && !(k in idx)) idx[k] = c;
+  });
+  const rateP = findCell(g, v => /환율/.test(norm(v)), h.r);
+  const rate = rateP ? num(rightOf(g, rateP)) : NaN;
+  const items = [];
+  for (let r = h.r + 1; r < g.length; r++) {
+    const row = g[r] || [];
+    const name = str(row[idx.name]), day = num(row[idx.day]);
+    if (!name || !Number.isFinite(day) || day < 1 || day > 31) continue;
+    let fixed = num(row[idx.fixed]); const fx = num(row[idx.fx]), variable = num(row[idx.variable]);
+    if (!Number.isFinite(fixed) && Number.isFinite(fx) && Number.isFinite(rate)) fixed = Math.round(fx * rate);
+    let amount = num(row[idx.final]);
+    if (!Number.isFinite(amount)) amount = (Number.isFinite(fixed) ? fixed : 0) + (Number.isFinite(variable) ? variable : 0);
+    const method = str(row[idx.method]);
+    const cls = str(row[idx.cls]) || (/법인카드/.test(method) ? "법인카드" : "기타/이체");
+    items.push({ day: Math.round(day), name, method, amount, cls, label: str(row[idx.label]) || (method ? `${name} (${method})` : name) });
+  }
+  return items;
+}
+// 급여: 지정일이 토요일이면 전날, 일요일이면 이틀 전(금요일). 지정일이 말일보다 크면 말일.
+function fixedDate(item, y, m0) {
+  const d = new Date(y, m0, Math.min(item.day, lastDay(y, m0)));
+  if (/급여/.test(item.name)) { const w = d.getDay(); if (w === 6) return addDays(d, -1); if (w === 0) return addDays(d, -2); }
+  return d;
+}
+const fixedEvent = (it, d, T) => ({ d, kind: "out", cls: it.cls === "법인카드" ? "법인카드" : "기타/이체", amt: it.amount, text: it.label, fixed: it, est: d > T || !it.amount, cash: true, isFixed: true });
+
+/* =====================================================================
+   모델 계산
+   ===================================================================== */
+function rebuild() {
+  const contracts = [], fixed = [], sheets = [];
+  for (const b of state.books) {
+    if (b.error) continue;
+    for (const sh of b.sheets || []) {
+      const kind = classify(sh);
+      if (kind === "giseong") {
+        const c = parseGiseong(b, sh);
+        if (S.roles[c.key] === "skip") { sheets.push({ b, sh, kind: "skip", c }); continue; }
+        contracts.push(c); sheets.push({ b, sh, kind, c });
+      } else if (kind === "fixed") { const f = parseFixed(b, sh); fixed.push(...f); sheets.push({ b, sh, kind, n: f.length }); }
+      else sheets.push({ b, sh, kind });
+    }
+  }
+  const T = today0();
+  const events = []; // 캘린더·현금흐름 공통
+  for (const c of contracts) {
+    const isAR = c.role === "AR", term = isAR ? S.arTerm : S.apTerm;
+    const cls = isAR ? "원청 입금" : "도급 지급", word = isAR ? "입금" : "지급";
+    c.billed = 0; c.direct = 0; c.billedTotal = 0; c.cashDone = 0; c.outstanding = 0; c.lastMonth = "";
+    c.tracked = c.sections.some(s => s.kind === "invoice" && s.hasCash);
+    for (const s of c.sections) for (const r of s.rows) {
+      if (r.month > c.lastMonth) c.lastMonth = r.month;
+      if (s.kind === "direct") {
+        c.direct += r.supply;
+        events.push({ d: r.date, kind: "info", cls: "직불", amt: r.supply, text: `직불 차감 · ${c.site} · ${c.party}`, c, est: false });
+        continue;
+      }
+      c.billed += r.supply; c.billedTotal += r.total;
+      events.push({ d: r.date, kind: "info", cls: isAR ? "청구" : "수취", amt: r.total, text: `${isAR ? "계산서 발행" : "계산서 수취"} · ${c.site} · ${c.party}`, c, est: !r.dateGiven });
+      const due = addDays(r.date, term);
+      r.due = due;
+      let got = 0;
+      if (r.cashDate || Number.isFinite(r.cashAmt)) {
+        got = Number.isFinite(r.cashAmt) ? r.cashAmt : r.total;
+        r.status = got >= r.total ? "paid" : "partial";
+        events.push({ d: r.cashDate || due, kind: isAR ? "in" : "out", cls, amt: got, text: `${word} · ${c.site} · ${c.party}`, c, est: !r.cashDate, cash: true });
+      } else if (!c.tracked && S.assume && due <= T) {
+        got = r.total; r.status = "assumed";
+        events.push({ d: due, kind: isAR ? "in" : "out", cls, amt: got, text: `${word}(추정) · ${c.site} · ${c.party}`, c, est: true, cash: true });
+      } else r.status = due < T ? "overdue" : "due";
+      r.remain = Math.max(r.total - got, 0);
+      if (r.remain > 0 && r.status !== "overdue") {
+        // 아직 안 들어온(안 나간) 돈은 예정일에 예정 현금흐름으로. 예정일이 지났으면 오늘로.
+        events.push({ d: due < T ? T : due, kind: isAR ? "in" : "out", cls, amt: r.remain, text: `${word} 예정 · ${c.site} · ${c.party}`, c, est: true, cash: true });
+      }
+      c.cashDone += got; c.outstanding += r.remain;
+    }
+    c.progress = c.billed + c.direct;
+    c.remainContract = c.contract ? c.contract - c.progress : 0;
+    c.pct = c.contract ? c.progress / c.contract : NaN;
+  }
+  // 고정비: 시작월 ~ 이번 달 + 12개월
+  const months = contracts.flatMap(c => c.sections.flatMap(s => s.rows.map(r => r.month))).sort();
+  const nowM = ym(T);
+  const from = S.fixedFrom || months[0] || nowM;
+  const fixedMonths = fixed.length ? monthsBetween(from, addMonths(nowM, 12)) : [];
+  for (const m of fixedMonths) {
+    const [y, mo] = m.split("-").map(Number);
+    for (const it of fixed) events.push(fixedEvent(it, fixedDate(it, y, mo - 1), T));
+  }
+  events.sort((a, b) => a.d - b.d);
+  const sites = [...new Set(contracts.map(c => c.site))].sort((a, b) => a.localeCompare(b, "ko"));
+  state.model = { contracts, fixed, events, sites, sheets, fixedMonths };
+  render();
+}
+
+/* =====================================================================
+   렌더 공통
+   ===================================================================== */
+const TABS = ["pl", "sites", "gs", "cal", "data"];
+function renderSync() {
+  const dot = $("#syncDot"), txt = $("#syncText");
+  dot.className = "dot";
+  $("#btnRefresh").hidden = state.mode !== "gas";
+  if (state.mode === "demo") { dot.classList.add("ok"); txt.textContent = "샘플 데이터"; return; }
+  if (state.mode === "file") { dot.classList.add("ok"); txt.textContent = "엑셀 파일 (수동)"; return; }
+  if (state.mode === "none") { txt.textContent = "연결 안 됨"; return; }
+  if (state.busy) { dot.classList.add("busy"); txt.textContent = "불러오는 중…"; return; }
+  if (!state.lastSync) { dot.classList.add("err"); txt.textContent = "동기화 실패"; return; }
+  dot.classList.add(state.error ? "err" : "ok");
+  const sec = Math.round((Date.now() - state.lastSync) / 1000);
+  const ago = sec < 10 ? "방금" : sec < 60 ? `${sec}초 전` : `${Math.floor(sec / 60)}분 전`;
+  txt.textContent = `구글 시트 · ${ago}` + (S.refreshMin > 0 ? ` · ${S.refreshMin}분 자동` : "");
+}
+function render() {
+  renderSync();
+  const M = state.model;
+  const has = M && (M.contracts.length || M.fixed.length);
+  if (!TABS.includes(state.tab)) state.tab = "pl";
+  document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === state.tab)));
+  const alerts = [];
+  if (state.error) alerts.push(`<div class="notice err">${esc(state.error)}</div>`);
+  if (state.mode === "demo") alerts.push(`<div class="notice warn">가상의 샘플 데이터입니다. <a href="#" data-goto="data">데이터 연결</a>에서 실제 시트를 연결하세요.</div>`);
+  if (has && ["pl", "sites", "gs"].includes(state.tab) && S.assume && M.contracts.some(c => !c.tracked))
+    alerts.push(`<div class="notice">입금·지급 열이 없는 기성 시트는 <b>세금계산서 발행 후 ${S.arTerm}일(도급 ${S.apTerm}일)이 지나면 정산된 것으로 추정</b>했습니다 <span class="est">추정</span>. 실제 입금일·입금액 열을 추가하면 정확한 미수금이 나옵니다.</div>`);
+  $("#alerts").innerHTML = alerts.join("");
+  for (const t of TABS) $("#v-" + t).hidden = true;
+  $("#v-empty").hidden = true;
+  if (state.tab !== "data" && !has) { $("#v-empty").hidden = state.busy; return; }
+  $("#v-" + state.tab).hidden = false;
+  ({ pl: renderPL, sites: renderSites, gs: renderGS, cal: renderCal, data: renderData })[state.tab]();
+}
+function tile(k, v, d = "", cls = "") {
+  return `<div class="tile"><div class="k">${k}</div><div class="v ${cls}" title="${won(v)}원">${short(v)}원</div>${d ? `<div class="d">${d}</div>` : ""}</div>`;
+}
+function fillSelect(el, opts) {
+  const cur = el.value;
+  el.innerHTML = opts.map(([v, l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join("");
+  if (opts.some(([v]) => v === cur)) el.value = cur;
+}
+
+/* =====================================================================
+   손익·현금흐름
+   ===================================================================== */
+const ui = { gran: "M", role: "all", calM: ym(new Date()), calF: "all", calSel: null, gsKey: null };
+function bucketOf(m, g) {
+  const [y, mo] = m.split("-").map(Number);
+  if (g === "Y") return `${y}`;
+  if (g === "H") return `${y}-H${mo <= 6 ? 1 : 2}`;
+  if (g === "Q") return `${y}-Q${Math.ceil(mo / 3)}`;
+  return m;
+}
+function bucketLabel(k) {
+  if (/^\d{4}$/.test(k)) return `${k}년`;
+  let m;
+  if ((m = k.match(/^(\d{4})-H([12])$/))) return `${m[1].slice(2)}년 ${m[2] === "1" ? "상반기" : "하반기"}`;
+  if ((m = k.match(/^(\d{4})-Q(\d)$/))) return `${m[1].slice(2)}년 ${m[2]}분기`;
+  return `${k.slice(2, 4)}.${k.slice(5)}`;
+}
+function renderPL() {
+  const M = state.model, nowM = ym(today0());
+  const dataMonths = [...new Set([
+    ...M.contracts.flatMap(c => c.sections.flatMap(s => s.rows.map(r => r.month))),
+    ...M.events.filter(e => e.cash && !e.isFixed).map(e => ym(e.d)),
+  ])].sort();
+  const years = [...new Set([...dataMonths.map(m => m.slice(0, 4)), nowM.slice(0, 4)])].sort();
+  const yearSel = $("#plYear"), hadYear = yearSel.options.length > 0;
+  fillSelect(yearSel, years.map(y => [y, y + "년"]));
+  if (!hadYear || !years.includes(yearSel.value)) yearSel.value = nowM.slice(0, 4);
+  fillSelect($("#plSite"), [["", "전체 현장 (회사 전체)"], ...M.sites.map(s => [s, s])]);
+  document.querySelectorAll("#plGran button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.g === ui.gran)));
+  yearSel.hidden = ui.gran === "Y";
+  const site = $("#plSite").value, withFixed = $("#plFixed").checked && !site;
+  $("#plFixed").disabled = !!site;
+
+  const year = yearSel.value;
+  let months;
+  if (ui.gran === "Y") {
+    const first = [dataMonths[0], M.fixedMonths[0]].filter(Boolean).sort()[0] || nowM;
+    months = monthsBetween(first.slice(0, 4) + "-01", nowM.slice(0, 4) + "-12");
+  } else months = monthsBetween(`${year}-01`, `${year}-12`);
+  const keys = [...new Set(months.map(m => bucketOf(m, ui.gran)))];
+  const Z = () => Object.fromEntries(keys.map(k => [k, 0]));
+  const P = { rev: Z(), cogs: Z(), fixed: Z(), cin: Z(), cout: Z(), cfix: Z() };
+  const inMonths = new Set(months);
+  for (const c of M.contracts) {
+    if (site && c.site !== site) continue;
+    for (const s of c.sections) if (s.kind === "invoice") for (const r of s.rows)
+      if (inMonths.has(r.month)) (c.role === "AR" ? P.rev : P.cogs)[bucketOf(r.month, ui.gran)] += r.supply;
+  }
+  for (const e of M.events) {
+    if (!e.cash) continue;
+    const m = ym(e.d); if (!inMonths.has(m)) continue;
+    const k = bucketOf(m, ui.gran);
+    if (e.isFixed) { if (withFixed) { P.cfix[k] += e.amt; P.fixed[k] += e.amt; } continue; }
+    if (site && e.c.site !== site) continue;
+    (e.kind === "in" ? P.cin : P.cout)[k] += e.amt;
+  }
+  const firstM = k => months.find(m => bucketOf(m, ui.gran) === k);
+  const lastM = k => months.filter(m => bucketOf(m, ui.gran) === k).pop();
+  const fut = k => firstM(k) > nowM, cur = k => !fut(k) && lastM(k) > nowM;
+  const op = k => P.rev[k] - P.cogs[k] - P.fixed[k];
+  const net = k => P.cin[k] - P.cout[k] - P.cfix[k];
+  const past = keys.filter(k => !fut(k));
+  const sumK = (ks, f) => ks.reduce((a, k) => a + f(k), 0);
+  const rev = sumK(past, k => P.rev[k]), opT = sumK(past, op);
+  const scope = ui.gran === "Y" ? "누적" : `${year}년`;
+  $("#plTiles").innerHTML = [
+    tile(`매출 · ${scope}`, rev, "원청 기성 공급가액 (오늘까지)"),
+    tile("매출원가", sumK(past, k => P.cogs[k]), "도급업체 기성 공급가액"),
+    withFixed ? tile("고정비", sumK(past, k => P.fixed[k]), "고정지출 마스터 기준") : "",
+    tile("영업이익", opT, `이익률 ${fmtPct(rev ? opT / rev : NaN)}`, opT < 0 ? "down" : ""),
+    tile("순현금흐름", sumK(past, net), "입금 − 지급 − 고정지출 (이번 기간까지)", sumK(past, net) < 0 ? "down" : ""),
+  ].join("");
+
+  const labels = keys.map(bucketLabel), futIdx = keys.map(fut);
+  drawChart($("#plChart"), labels, [
+    { name: "매출", color: "--s-1", values: keys.map(k => P.rev[k]) },
+    { name: "비용", color: "--s-2", values: keys.map(k => P.cogs[k] + P.fixed[k]) },
+  ], { name: "영업이익", color: "--s-3", values: keys.map(op) }, futIdx);
+  drawChart($("#cfChart"), labels, [
+    { name: "유입", color: "--s-1", values: keys.map(k => P.cin[k]) },
+    { name: "유출", color: "--s-2", values: keys.map(k => P.cout[k] + P.cfix[k]) },
+  ], { name: "순현금흐름", color: "--s-3", values: keys.map(net) }, futIdx);
+
+  const fc = k => fut(k) || cur(k) ? " fut" : "";
+  const th = `<thead><tr><th>구분</th>${keys.map(k => `<th class="n${fc(k)}">${bucketLabel(k)}${fut(k) ? " 예정" : cur(k) ? " 진행중" : ""}</th>`).join("")}<th class="n">합계</th></tr></thead>`;
+  const line = (label, f, cls = "", fmt = won, total = fmt(sumK(keys, f))) =>
+    `<tr class="${cls}"><td>${label}</td>${keys.map(k => `<td class="n${fc(k)}">${fmt(f(k))}</td>`).join("")}<td class="n"><b>${total}</b></td></tr>`;
+  const revAll = sumK(keys, k => P.rev[k]);
+  $("#plTable").innerHTML = `<table class="stmt">${th}<tbody>
+    ${line("매출 (원청 기성)", k => P.rev[k], "sub")}
+    ${line("매출원가 (도급 기성)", k => P.cogs[k], "ind")}
+    ${line("매출총이익", k => P.rev[k] - P.cogs[k], "sub")}
+    ${withFixed ? line("고정비 (판관비)", k => P.fixed[k], "ind") : ""}
+    ${line("영업이익", op, "sum")}
+    ${line("영업이익률", k => P.rev[k] ? op(k) / P.rev[k] : NaN, "", fmtPct, fmtPct(revAll ? sumK(keys, op) / revAll : NaN))}
+  </tbody></table>`;
+  let cum = 0;
+  const cumV = Object.fromEntries(keys.map(k => [k, cum += net(k)]));
+  $("#cfTable").innerHTML = `<table class="stmt">${th}<tbody>
+    ${line("현금 유입 (원청 기성 입금)", k => P.cin[k], "sub")}
+    ${line("현금 유출", k => P.cout[k] + P.cfix[k], "sub")}
+    ${line("도급업체 지급", k => P.cout[k], "ind")}
+    ${withFixed ? line("고정지출", k => P.cfix[k], "ind") : ""}
+    ${line("순현금흐름", net, "sum")}
+    ${line("누적 현금흐름", k => cumV[k], "", won, "")}
+  </tbody></table>`;
+}
+
+/* 차트: 막대 2개 + 선 1개, 한 축 */
+function drawChart(host, labels, bars, line, futIdx) {
+  if (!labels.length) { host.innerHTML = `<div class="hint">표시할 데이터가 없습니다.</div>`; return; }
+  const W = 900, H = 260, L = 56, R = 12, T = 12, B = 28;
+  const vals = [0, ...bars.flatMap(b => b.values), ...line.values];
+  let max = Math.max(...vals), min = Math.min(...vals);
+  const step = niceStep((max - min) / 4 || 1);
+  max = Math.ceil(max / step) * step; min = Math.floor(min / step) * step; if (max === min) max = min + step;
+  const y = v => T + (max - v) / (max - min) * (H - T - B);
+  const n = labels.length, bw = (W - L - R) / n;
+  const barW = Math.max(2, Math.min(22, (bw - 8) / bars.length - 2));
+  const cx = i => L + bw * i + bw / 2;
+  const every = Math.ceil(n / 12);
+  let g = "";
+  futIdx.forEach((f, i) => { if (f) g += `<rect x="${L + bw * i}" y="${T}" width="${bw}" height="${H - T - B}" fill="var(--future)"/>`; });
+  for (let v = min; v <= max + step / 2; v += step) {
+    g += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="${Math.abs(v) < step / 2 ? "var(--axis)" : "var(--grid)"}"/>`;
+    g += `<text class="tick" x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${short(v)}</text>`;
+  }
+  const bar = (x, v, color) => {
+    const y0 = y(0), y1 = y(v), h = Math.abs(y1 - y0); if (h < 0.5) return "";
+    const r = Math.min(4, h, barW / 2), s = v >= 0 ? 1 : -1;
+    return `<path d="M${x},${y0}V${y1 + s * r}Q${x},${y1} ${x + r},${y1}H${x + barW - r}Q${x + barW},${y1} ${x + barW},${y1 + s * r}V${y0}Z" fill="var(${color})"/>`;
+  };
+  const groupW = bars.length * barW + (bars.length - 1) * 2;
+  labels.forEach((lb, i) => {
+    bars.forEach((b, j) => g += bar(cx(i) - groupW / 2 + j * (barW + 2), b.values[i], b.color));
+    if (i % every === 0) g += `<text class="tick" x="${cx(i)}" y="${H - 8}" text-anchor="middle">${esc(lb)}</text>`;
+  });
+  g += `<polyline points="${line.values.map((v, i) => `${cx(i)},${y(v)}`).join(" ")}" fill="none" stroke="var(${line.color})" stroke-width="2" stroke-linejoin="round"/>`;
+  if (n <= 24) line.values.forEach((v, i) => g += `<circle cx="${cx(i)}" cy="${y(v)}" r="4" fill="var(${line.color})" stroke="var(--panel)" stroke-width="2"/>`);
+  g += `<line class="xh" x1="0" x2="0" y1="${T}" y2="${H - B}" stroke="var(--axis)" visibility="hidden"/>`;
+  labels.forEach((lb, i) => g += `<rect class="hit" data-i="${i}" x="${L + bw * i}" y="${T}" width="${bw}" height="${H - T - B}" fill="transparent" tabindex="0"/>`);
+  host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(bars.map(b => b.name).join(", "))}, ${esc(line.name)} 차트 — 아래 표에 같은 값이 있습니다">${g}</svg>`;
+  const tip = $("#tip"), svg = host.querySelector("svg"), xh = svg.querySelector(".xh");
+  const show = el => {
+    const i = +el.dataset.i;
+    xh.setAttribute("x1", cx(i)); xh.setAttribute("x2", cx(i)); xh.setAttribute("visibility", "visible");
+    tip.replaceChildren();
+    const t = document.createElement("div"); t.className = "t"; t.textContent = labels[i] + (futIdx[i] ? " (예정)" : ""); tip.append(t);
+    [...bars, line].forEach(s => {
+      const r = document.createElement("div"); r.className = "r";
+      const sp = document.createElement("span"); sp.textContent = s.name; sp.style.setProperty("--c", `var(${s.color})`);
+      const b = document.createElement("b"); b.textContent = won(s.values[i]) + "원";
+      r.append(sp, b); tip.append(r);
+    });
+    tip.style.display = "block";
+    const hb = el.getBoundingClientRect();
+    let left = hb.left + scrollX + hb.width / 2 + 12;
+    if (left + tip.offsetWidth > scrollX + document.documentElement.clientWidth - 8) left = hb.left + scrollX + hb.width / 2 - tip.offsetWidth - 12;
+    tip.style.left = Math.max(8, left) + "px"; tip.style.top = (hb.top + scrollY + 16) + "px";
+  };
+  const hide = () => { tip.style.display = "none"; xh.setAttribute("visibility", "hidden"); };
+  svg.querySelectorAll(".hit").forEach(el => {
+    el.addEventListener("pointerenter", () => show(el)); el.addEventListener("focus", () => show(el));
+    el.addEventListener("pointerleave", hide); el.addEventListener("blur", hide);
+  });
+}
+function niceStep(raw) { const p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
+
+/* =====================================================================
+   현장 채권·채무
+   ===================================================================== */
+const roleName = r => r === "AR" ? "원청" : "도급";
+const STATUS = { paid: "정산 완료", assumed: "완료(추정)", partial: "부분 정산", due: "기한 전", overdue: "기한 경과" };
+function renderSites() {
+  const M = state.model;
+  fillSelect($("#siteSel"), [["", "전체 현장"], ...M.sites.map(s => [s, s])]);
+  document.querySelectorAll("#siteRole button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.r === ui.role)));
+  const site = $("#siteSel").value, onlyOpen = $("#siteOpen").checked;
+  const cs = M.contracts.filter(c => (!site || c.site === site) && (ui.role === "all" || c.role === ui.role) && (!onlyOpen || c.outstanding > 0));
+  const ar = cs.filter(c => c.role === "AR"), ap = cs.filter(c => c.role === "AP");
+  const s = (xs, k) => xs.reduce((a, c) => a + c[k], 0);
+  const est = xs => xs.some(c => !c.tracked) && S.assume ? '<span class="est">추정 포함</span>' : "";
+  $("#siteTiles").innerHTML = [
+    ui.role !== "AP" ? tile("받을 돈 (원청 계약 잔액)", s(ar, "remainContract"), "계약금액 − 기성 누계 · 공급가") : "",
+    ui.role !== "AP" ? tile("미수금", s(ar, "outstanding"), `청구했지만 못 받은 돈 · VAT 포함 ${est(ar)}`, s(ar, "outstanding") ? "down" : "") : "",
+    ui.role !== "AR" ? tile("줄 돈 (도급 계약 잔액)", s(ap, "remainContract"), "계약금액 − 기성 누계 · 공급가") : "",
+    ui.role !== "AR" ? tile("미지급금", s(ap, "outstanding"), `받은 계산서 중 안 준 돈 · VAT 포함 ${est(ap)}`) : "",
+  ].join("");
+
+  const bySite = {};
+  cs.forEach(c => (bySite[c.site] = bySite[c.site] || []).push(c));
+  let body = "";
+  for (const [name, list] of Object.entries(bySite).sort((a, b) => a[0].localeCompare(b[0], "ko"))) {
+    list.sort((a, b) => (a.role === "AR" ? 0 : 1) - (b.role === "AR" ? 0 : 1) || a.party.localeCompare(b.party, "ko"));
+    const all = M.contracts.filter(c => c.site === name);
+    const arB = all.filter(c => c.role === "AR").reduce((a, c) => a + c.billed, 0), apB = all.filter(c => c.role === "AP").reduce((a, c) => a + c.billed, 0);
+    body += `<tr class="sub"><td colspan="4">${esc(name)}</td><td colspan="7" class="n" style="font-weight:400">현장 이익 (기성 기준) <b class="${arB - apB < 0 ? "down" : ""}">${won(arB - apB)}원</b> = 원청 ${short(arB)} − 도급 ${short(apB)}</td></tr>`;
+    for (const c of list) body += `<tr class="link" data-key="${esc(c.key)}" tabindex="0">
+      <td><span class="role">${roleName(c.role)}</span></td><td>${esc(c.party)}</td><td>${esc(c.item)}</td>
+      <td class="n">${won(c.contract)}</td><td class="n">${won(c.progress)}</td>
+      <td><div class="pbar"><div class="bar"><span style="width:${Math.min(100, (c.pct || 0) * 100).toFixed(1)}%"></span></div>${fmtPct(c.pct)}</div></td>
+      <td class="n">${won(c.remainContract)}</td><td class="n">${won(c.billedTotal)}</td>
+      <td class="n">${won(c.cashDone)}${!c.tracked && S.assume ? '<span class="est">추정</span>' : ""}</td>
+      <td class="n ${c.outstanding ? "down" : ""}">${won(c.outstanding)}</td><td>${c.lastMonth.replace("-", ".")}</td></tr>`;
+  }
+  $("#siteTable").innerHTML = `<table><thead><tr><th>구분</th><th>거래처</th><th>내역</th><th class="n">계약금액</th><th class="n">기성 누계</th><th>진행률</th>
+    <th class="n">받을/줄 돈</th><th class="n">청구액(VAT)</th><th class="n">입금/지급</th><th class="n">미수/미지급</th><th>최근 기성월</th></tr></thead>
+    <tbody>${body || `<tr><td colspan="11" class="hint">해당하는 기성 시트가 없습니다.</td></tr>`}</tbody></table>`;
+
+  const open = cs.flatMap(c => c.sections.filter(s => s.kind === "invoice").flatMap(s => s.rows.filter(r => r.remain > 0).map(r => ({ c, r }))))
+    .sort((a, b) => a.r.due - b.r.due);
+  $("#openTable").innerHTML = `<table><thead><tr><th>상태</th><th>구분</th><th>현장</th><th>거래처</th><th>정산월</th><th>계산서일</th><th class="n">청구액(VAT)</th><th class="n">남은 금액</th><th>입금·지급 예정일</th></tr></thead><tbody>${
+    open.map(({ c, r }) => `<tr class="link" data-key="${esc(c.key)}"><td><span class="badge ${r.status}">${STATUS[r.status]}</span></td><td><span class="role">${roleName(c.role)}</span></td><td>${esc(c.site)}</td><td>${esc(c.party)}</td>
+      <td>${r.month.replace("-", ".")}</td><td>${fmtDate(r.date)}</td><td class="n">${won(r.total)}</td><td class="n">${won(r.remain)}</td><td class="${r.status === "overdue" ? "down" : ""}">${fmtDate(r.due)}</td></tr>`).join("")
+    || `<tr><td colspan="9" class="hint">미수·미지급 건이 없습니다.</td></tr>`}</tbody></table>`;
+}
+
+/* =====================================================================
+   기성관리 양식 (원본 시트 배치 그대로 + 입금·미수 계산 열)
+   ===================================================================== */
+function renderGS() {
+  const M = state.model;
+  if (!M.contracts.length) { $("#gsBody").innerHTML = `<div class="notice">기성관리 시트가 없습니다. 시트 위쪽에 "현장명" 칸이 있어야 기성 시트로 인식합니다.</div>`; return; }
+  if (!ui.gsKey || !M.contracts.some(c => c.key === ui.gsKey)) ui.gsKey = M.contracts[0].key;
+  const cur = M.contracts.find(c => c.key === ui.gsKey);
+  fillSelect($("#gsSite"), M.sites.map(s => [s, s])); $("#gsSite").value = cur.site;
+  fillSelect($("#gsContract"), M.contracts.filter(c => c.site === cur.site).map(c => [c.key, `${roleName(c.role)} · ${c.party} (${c.sheet})`])); $("#gsContract").value = cur.key;
+  $("#gsBody").innerHTML = `<div class="card"><h3>${esc(cur.site)} <span class="sub">${roleName(cur.role)} · ${esc(cur.party)} · 원본: ${esc(cur.book)} / ${esc(cur.sheet)}</span></h3>
+    <div class="gs-sheet">${gsTable(cur)}</div>
+    <p class="hint">회색 머리칸은 원본 기성관리 양식과 같은 항목이고, 파란 칸은 대시보드가 계산한 ${cur.role === "AR" ? "입금·미수" : "지급·미지급"} 정보입니다. 금액은 원 단위.</p></div>`;
+}
+function gsTable(c) {
+  const isAR = c.role === "AR", cashWord = isAR ? "입금" : "지급", remWord = isAR ? "미수" : "미지급";
+  const inv = c.sections.filter(s => s.kind === "invoice"), dir = c.sections.filter(s => s.kind === "direct");
+  const tot = (ss, k) => ss.reduce((a, s) => a + s.rows.reduce((b, r) => b + r[k], 0), 0);
+  const invSum = tot(inv, "supply"), invVat = tot(inv, "vat"), dirSum = tot(dir, "supply");
+  const colA = (inv[0] && inv[0].title) || c.colLabels[0] || "기성", colB = (dir[0] && dir[0].title) || c.colLabels[1] || "직불";
+  const pbar = `<div class="pbar"><div class="bar"><span style="width:${Math.min(100, (c.pct || 0) * 100).toFixed(1)}%"></span></div>${fmtPct(c.pct)}</div>`;
+  let h = `<table class="gs"><tbody>
+  <tr><td class="h">현장명</td><td colspan="2">${esc(c.site)}</td><td class="h">거래처</td><td colspan="2">${esc(c.party)}</td><td class="h calc">구분</td><td class="calc c">${roleName(c.role)}</td></tr>
+  <tr><td class="h" colspan="2">내역</td><td class="h" colspan="2">${esc(c.qtyLabel)}</td><td class="h" colspan="2">${esc(c.unitLabel)}</td><td class="h calc" colspan="2">진행률</td></tr>
+  <tr><td colspan="2">${esc(c.item)}</td><td class="n" colspan="2">${Number.isFinite(c.qty) ? won(c.qty) : ""}</td><td class="n" colspan="2">${Number.isFinite(c.unit) ? won(c.unit) : ""}</td><td class="calc" colspan="2">${pbar}</td></tr>
+  <tr><td class="h" colspan="2">내역</td><td class="h" colspan="2">${esc(colA)}</td><td class="h">${esc(colB)}</td><td class="h">부가세</td><td class="h calc">청구 합계(VAT)</td><td class="h calc">${remWord}금</td></tr>
+  <tr><td class="t" colspan="2">계약내역</td><td class="n" colspan="3">${won(c.contract)}</td><td class="n">${won(Math.round(c.contract * 0.1))}</td><td class="calc"></td><td class="calc"></td></tr>
+  <tr><td class="t" colspan="2">집행</td><td class="n" colspan="2">${won(invSum)}</td><td class="n">${dir.length ? won(dirSum) : ""}</td><td class="n">${won(invVat)}</td><td class="n calc">${won(c.billedTotal)}</td><td class="n calc ${c.outstanding ? "down" : ""}">${won(c.outstanding)}</td></tr>
+  <tr><td class="t" colspan="2">집행 합계</td><td class="n" colspan="3">${won(c.progress)}</td><td class="c">누계 % <b>${fmtPct(c.pct)}</b></td><td class="h calc">${cashWord} 누계</td><td class="n calc">${won(c.cashDone)}</td></tr>
+  <tr><td class="t" colspan="2">잔액</td><td class="n" colspan="3"><b>${won(c.remainContract)}</b></td><td class="c hint">${isAR ? "받을 돈" : "줄 돈"} (공급가)</td><td class="calc" colspan="2"></td></tr>
+  <tr class="sp"><td colspan="8"></td></tr>`;
+  for (const s of c.sections) {
+    const isInv = s.kind === "invoice";
+    h += `<tr><td class="t">${esc(s.title)}</td><td class="t" colspan="7">${esc(s.desc)}</td></tr>
+    <tr><td class="h">정산일자</td><td class="h">세금계산서 일자</td><td class="h">공급가액</td><td class="h">부가세</td><td class="h">합계</td><td class="h">비고</td>
+      ${isInv ? `<td class="h calc">${cashWord}일${s.hasCash ? "" : " (예정)"}</td><td class="h calc">상태 · ${remWord}</td>` : `<td class="h calc" colspan="2">처리</td>`}</tr>`;
+    let a = 0, b = 0, t = 0, rem = 0;
+    for (const r of s.rows) {
+      a += r.supply; b += r.vat; t += r.total; rem += r.remain || 0;
+      const period = typeof r.periodRaw === "number" || !str(r.periodRaw) ? r.month.replace("-", ".") : str(r.periodRaw);
+      h += `<tr><td class="c">${esc(period)}</td><td class="c">${fmtDate(r.date)}</td><td class="n">${won(r.supply)}</td><td class="n">${r.vat ? won(r.vat) : ""}</td><td class="n">${won(r.total)}</td><td>${esc(r.note)}</td>
+        ${isInv ? `<td class="c calc">${fmtDate(r.cashDate || r.due)}</td><td class="calc"><span class="badge ${r.status}">${STATUS[r.status]}</span>${r.remain ? ` <span class="down">${won(r.remain)}</span>` : ""}</td>`
+          : `<td class="calc hint" colspan="2">원청 직접 지급 · 기성 차감</td>`}</tr>`;
+    }
+    h += `<tr class="tot"><td colspan="2" class="c">합계</td><td class="n">${won(a)}</td><td class="n">${b ? won(b) : ""}</td><td class="n">${won(t)}</td><td></td>${isInv ? `<td class="calc"></td><td class="n calc">${rem ? won(rem) : "–"}</td>` : `<td class="calc" colspan="2"></td>`}</tr>
+    <tr class="sp"><td colspan="8"></td></tr>`;
+  }
+  return h + "</tbody></table>";
+}
+
+/* =====================================================================
+   월간 캘린더
+   ===================================================================== */
+function renderCal() {
+  const M = state.model, T = today0();
+  const [y, mo] = ui.calM.split("-").map(Number);
+  $("#calTitle").textContent = `${y}년 ${mo}월`;
+  document.querySelectorAll("#calFilter button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === ui.calF)));
+  const inMonth = M.events.filter(e => ym(e.d) === ui.calM);
+  if (M.fixed.length && !M.fixedMonths.includes(ui.calM)) {   // 반영 범위 밖의 달도 고정비 일정은 보여 준다
+    for (const it of M.fixed) inMonth.push(fixedEvent(it, fixedDate(it, y, mo - 1), T));
+    inMonth.sort((a, b) => a.d - b.d);
+  }
+  const vis = inMonth.filter(e => ui.calF === "all" || e.kind === ui.calF);
+  const sum = f => inMonth.filter(f).reduce((a, e) => a + e.amt, 0);
+  const card = sum(e => e.isFixed && e.cls === "법인카드"), etc = sum(e => e.isFixed && e.cls !== "법인카드");
+  const inflow = sum(e => e.cash && e.kind === "in"), apOut = sum(e => e.cash && e.kind === "out" && !e.isFixed);
+  const netM = inflow - card - etc - apOut;
+  $("#calTiles").innerHTML = [
+    tile("💳 법인카드 합계", card, "고정지출 중 법인카드"),
+    tile("🏦 기타/이체/자동이체 합계", etc, "고정지출 중 이체·자동이체"),
+    tile("도급업체 지급", apOut, "실제 + 예정"),
+    tile("원청 입금", inflow, "실제 + 예정"),
+    tile("당월 순현금", netM, "입금 − 모든 지출", netM < 0 ? "down" : ""),
+  ].join("");
+
+  const days = lastDay(y, mo - 1), lead = new Date(y, mo - 1, 1).getDay();
+  const DOW = [["일", "SUN"], ["월", "MON"], ["화", "TUE"], ["수", "WED"], ["목", "THU"], ["금", "FRI"], ["토", "SAT"]];
+  let g = DOW.map(([k, e], i) => `<div class="dow ${i === 0 ? "sun" : i === 6 ? "sat" : ""}">${k}<span class="en"> (${e})</span></div>`).join("");
+  const cells = Math.ceil((lead + days) / 7) * 7;
+  for (let i = 0; i < cells; i++) {
+    const dn = i - lead + 1;
+    if (dn < 1 || dn > days) { g += `<div class="day off"></div>`; continue; }
+    const d = new Date(y, mo - 1, dn), key = iso(d), w = d.getDay();
+    const evs = vis.filter(e => iso(e.d) === key);
+    const out = evs.filter(e => e.kind === "out").reduce((a, e) => a + e.amt, 0), inn = evs.filter(e => e.kind === "in").reduce((a, e) => a + e.amt, 0);
+    g += `<div class="day ${+d === +T ? "today" : ""} ${ui.calSel === key ? "sel" : ""}" data-day="${key}" tabindex="0" aria-label="${mo}월 ${dn}일 일정 ${evs.length}건">
+      <div class="dn"><span class="${w === 0 ? "sun" : w === 6 ? "sat" : ""}">${dn}</span><span class="tot">${inn ? `<span class="up">+${short(inn)}</span> ` : ""}${out ? `−${short(out)}` : ""}</span></div>
+      ${evs.slice(0, 4).map(e => `<div class="ev ${e.kind} ${e.est ? "est" : ""}" title="${esc(e.text)} · ${won(e.amt)}원">• ${esc(e.text)}${e.amt ? " " + short(e.amt) : ""}</div>`).join("")}
+      ${evs.length > 4 ? `<div class="more">+${evs.length - 4}건 더</div>` : ""}
+      ${evs.length ? `<span class="cnt">${evs.length}건</span>` : ""}</div>`;
+  }
+  $("#calGrid").innerHTML = g;
+  const selIn = ui.calSel && ui.calSel.startsWith(ui.calM);
+  const list = selIn ? vis.filter(e => iso(e.d) === ui.calSel) : vis;
+  $("#calListTitle").innerHTML = selIn ? `${esc(ui.calSel.replace(/-/g, "."))} 일정 <button class="btn" id="calAll" style="font-size:12px;padding:2px 8px">이달 전체 보기</button>` : "이달 일정";
+  $("#calList").innerHTML = `<table><thead><tr><th>날짜</th><th>분류</th><th>내용</th><th class="n">입금</th><th class="n">지출·지급</th><th class="n">청구·직불</th></tr></thead><tbody>${
+    list.map(e => `<tr><td>${fmtDate(e.d)}</td><td>${esc(e.cls)}${e.est ? '<span class="est">예정</span>' : ""}</td><td>${esc(e.text)}${e.isFixed && !e.amt ? ' <span class="hint">금액 미입력</span>' : ""}</td>
+      <td class="n">${e.kind === "in" ? won(e.amt) : ""}</td><td class="n">${e.kind === "out" ? won(e.amt) : ""}</td><td class="n">${e.kind === "info" ? won(e.amt) : ""}</td></tr>`).join("")
+    || `<tr><td colspan="6" class="hint">일정이 없습니다.</td></tr>`}</tbody></table>`;
+}
+
+/* =====================================================================
+   데이터 연결
+   ===================================================================== */
+function renderData() {
+  const M = state.model;
+  $("#dataMode").innerHTML = {
+    gas: `<b>구글 시트 실시간 연결</b> · 스프레드시트 ${state.books.length}개${state.lastSync ? ` · 마지막 동기화 ${state.lastSync.toLocaleTimeString("ko-KR")}` : ""}`,
+    file: `<b>엑셀 파일</b> ${state.books.length}개 — 자동 업데이트가 되지 않습니다. 아래 구글 시트 연결을 권장합니다.`,
+    demo: "<b>샘플 데이터</b> (가상)", none: "아직 연결된 데이터가 없습니다.",
+  }[state.mode];
+  $("#setArTerm").value = S.arTerm; $("#setApTerm").value = S.apTerm; $("#setAssume").value = S.assume ? "1" : "0";
+  $("#setFixedFrom").value = S.fixedFrom; $("#setRefresh").value = String(S.refreshMin);
+  $("#setRefresh").disabled = state.mode !== "gas";
+  if (!M || !M.sheets.length) { $("#dataSheets").innerHTML = ""; return; }
+  const kindText = { giseong: "기성관리", fixed: "고정지출 마스터", skip: "사용 안 함", other: "인식 안 됨" };
+  $("#dataSheets").innerHTML = `<table><thead><tr><th>파일</th><th>시트</th><th>인식</th><th>내용</th><th>원청/도급</th></tr></thead><tbody>${
+    M.sheets.map(({ b, sh, kind, c, n }) => `<tr><td>${esc(b.name)}</td><td>${esc(sh.name)}</td><td>${kindText[kind]}</td>
+      <td>${c ? `${esc(c.site)} · ${esc(c.party)} · 계약 ${short(c.contract)}원 · 계산서 ${c.sections.reduce((a, s) => a + s.rows.length, 0)}건${c.tracked ? " · 입금기록 있음" : ""}`
+        : kind === "fixed" ? `고정지출 ${n}건` : kind === "other" ? '<span class="hint">"현장명" 칸이나 "결제일" 열이 없어 건너뜀</span>' : sh.name.match(/달력|캘린더/) ? '<span class="hint">달력 화면 시트 — 마스터 시트를 대신 사용</span>' : ""}</td>
+      <td>${c ? `<select data-role="${esc(c.key)}"><option value="AR"${kind !== "skip" && c.role === "AR" ? " selected" : ""}>원청 (받을 돈)</option><option value="AP"${kind !== "skip" && c.role === "AP" ? " selected" : ""}>도급업체 (줄 돈)</option><option value="skip"${kind === "skip" ? " selected" : ""}>사용 안 함</option></select>` : ""}</td></tr>`).join("")
+  }</tbody></table><p class="hint">원청/도급은 시트 이름·표 제목의 "매출/매입/도급" 단어로 자동 판단합니다. 틀리면 여기서 바꾸세요 (이 브라우저에 저장).</p>`;
+  $("#dataSheets").insertAdjacentHTML("beforeend", state.books.filter(b => b.error).map(b => `<div class="notice err">${esc(b.id)}: ${esc(b.error)}</div>`).join(""));
+}
+
+/* =====================================================================
+   샘플 데이터 (전부 가상)
+   ===================================================================== */
+function demoBooks() {
+  const gs = ({ site, party, item, qtyLabel, unitLabel, qty, unit, secs, cash }) => {
+    const v = [
+      ["현장명", site, null, "거래처", party, null],
+      ["내역", null, qtyLabel, null, unitLabel, null],
+      [item, null, qty, null, unit, null],
+      ["내역", null, secs[0].title, null, (secs[1] || {}).title || "", "부가세"],
+      ["계약내역", null, qty * unit, null, null, qty * unit * 0.1],
+      ["집행"], ["집행 합계"], ["잔액"], [],
+    ];
+    for (const s of secs) {
+      v.push([s.title, s.desc]);
+      v.push(["정산일자", "세금계산서 일자", "공급가액", "부가세", "합계", "비고", ...(cash && s.kind !== "direct" ? cash : [])]);
+      for (const r of s.rows) {
+        const vat = s.kind === "direct" ? null : Math.round(r[2] * 0.1);
+        v.push([r[0], r[1], r[2], vat, r[2] + (vat || 0), r[3] || null, ...(cash && s.kind !== "direct" ? [r[4] || null, r[5] || null] : [])]);
+      }
+      v.push(["합계"], []);
+    }
+    return v;
+  };
+  const now = new Date(), base = new Date(now.getFullYear(), now.getMonth() - 9, 1);
+  const mEnd = k => { const d = new Date(base.getFullYear(), base.getMonth() + k + 1, 0); return { p: +(d.getFullYear() + "." + pad(d.getMonth() + 1)), d: iso(d), m: d }; };
+  const arRows = [], dirRows = [], apRows = [], ar2 = [], ap2 = [];
+  const amt = [11.8, 18, 48.8, 60.6, 40.3, 79.3, 72.3, 95, 88];
+  amt.forEach((a, k) => {
+    const e = mEnd(k);
+    arRows.push([e.p, e.d, Math.round(a * 1e6)]);
+    if (k) dirRows.push([e.p, e.d, Math.round(a * 0.3e6), k % 3 ? "" : "1동"]);
+    const paid = new Date(e.m.getFullYear(), e.m.getMonth(), e.m.getDate() + 25);
+    apRows.push([e.p, e.d, Math.round(a * 0.62e6), "", paid < now && k !== 6 ? iso(paid) : "", paid < now && k !== 6 ? Math.round(a * 0.682e6) : ""]);
+    if (k >= 3) { ar2.push([e.p, e.d, Math.round((30 + k * 4) * 1e6)]); ap2.push([e.p, e.d, Math.round((30 + k * 4) * 0.7e6)]); }
+  });
+  return [
+    { id: "demo:a", name: "가람 현장 기성관리", sheets: [
+      { name: "기성매출", values: gs({ site: "가람 아파트 신축 현장", party: "(주)가상원청건설", item: "환기설비", qtyLabel: "설치대수", unitLabel: "대당단가", qty: 3000, unit: 330000,
+        secs: [{ title: "설치 자재비", desc: "매출 세금계산서 발행", rows: arRows }, { title: "직불(인건비)", desc: "직불 차감 내역", kind: "direct", rows: dirRows }] }) },
+      { name: "기성매입_나래설비", values: gs({ site: "가람 아파트 신축 현장", party: "나래설비(가상)", item: "설치 도급", qtyLabel: "설치대수", unitLabel: "대당단가", qty: 3000, unit: 190000, cash: ["지급일", "지급액"],
+        secs: [{ title: "도급 기성", desc: "매입 세금계산서 수취", rows: apRows }] }) },
+    ] },
+    { id: "demo:b", name: "다솜 현장 기성관리", sheets: [
+      { name: "기성매출", values: gs({ site: "다솜 오피스 리모델링", party: "(주)샘플종합건설", item: "공조기", qtyLabel: "수량", unitLabel: "단가", qty: 120, unit: 5200000,
+        secs: [{ title: "기성", desc: "매출 세금계산서 발행", rows: ar2 }] }) },
+      { name: "기성매입", values: gs({ site: "다솜 오피스 리모델링", party: "라온공조(가상)", item: "시공 도급", qtyLabel: "수량", unitLabel: "단가", qty: 120, unit: 3600000,
+        secs: [{ title: "도급 기성", desc: "매입 세금계산서 수취", rows: ap2 }] }) },
+    ] },
+    { id: "demo:c", name: "월간 지출 달력", sheets: [
+      { name: "월간 지출 달력", values: [["월간 자동 연동 지출 캘린더"]] },
+      { name: "고정지출_마스터DB", values: [
+        ["고정 지출 및 결제 마스터 데이터베이스"], [],
+        ["적용 기준환율 (USD/KRW):", null, null, 1380], [],
+        ["결제일(기준)", "지출 내역", "결제 방법", "고정금액(원)", "외화($)", "변동금액(직접입력)", "당월 최종금액(원)", "결제구분", "달력 표시명", "비고"],
+        [5, "직원 급여", "이체", null, null, 18500000, null, "기타/이체"],
+        [5, "사무실 임대료", "자동이체", 1100000, null, null, null, "기타/이체"],
+        [10, "4대보험", "이체", null, null, 2300000, null, "기타/이체"],
+        [15, "법인차량 할부금", "자동이체", 420000, null, null, null, "기타/이체"],
+        [20, "회계프로그램 수수료", "자동이체", 66000, null, null, null, "기타/이체"],
+        [23, "AI 구독료", "법인카드", null, 20, null, null, "법인카드"],
+        [25, "세무회계 기장료", "자동이체", 220000, null, null, null, "기타/이체"],
+        [25, "통신비", "자동이체", 88000, null, null, null, "기타/이체"],
+        [31, "본사 관리비", "이체", null, null, 350000, null, "기타/이체"],
+      ] },
+    ] },
+  ];
+}
+
+/* =====================================================================
+   이벤트
+   ===================================================================== */
+function go(tab) { state.tab = tab; safeSet("hs.tab", tab); render(); scrollTo(0, 0); }
+document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => go(b.dataset.tab)));
+document.addEventListener("click", e => {
+  const g = e.target.closest("[data-goto]"); if (g) { e.preventDefault(); go(g.dataset.goto); return; }
+  const a = e.target.closest("[data-action]");
+  if (a) {
+    const act = a.dataset.action;
+    if (act === "pick") $("#fileInput").click();
+    if (act === "demo") { state.mode = "demo"; state.books = demoBooks(); state.error = null; rebuild(); if (state.tab === "data") go("pl"); }
+    if (act === "clear") { safeDel(FKEY); if (state.mode !== "gas") { state.mode = "none"; state.books = []; } rebuild(); }
+    return;
+  }
+  const row = e.target.closest("tr.link[data-key]"); if (row) { ui.gsKey = row.dataset.key; go("gs"); return; }
+  const day = e.target.closest(".day[data-day]"); if (day) { ui.calSel = ui.calSel === day.dataset.day ? null : day.dataset.day; renderCal(); return; }
+  if (e.target.id === "calAll") { ui.calSel = null; renderCal(); }
+});
+document.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.matches(".day[data-day], tr.link")) e.target.click(); });
+$("#fileInput").addEventListener("change", async e => {
+  const files = [...e.target.files]; e.target.value = "";
+  if (!files.length) return;
+  try { await readFiles(files); if (state.tab === "data") go("pl"); } catch (err) { state.error = "파일을 읽지 못했습니다: " + err.message; render(); }
+});
+$("#btnRefresh").addEventListener("click", () => sync());
+$("#plGran").addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (b) { ui.gran = b.dataset.g; renderPL(); } });
+["#plYear", "#plSite", "#plFixed"].forEach(s => $(s).addEventListener("change", renderPL));
+$("#siteRole").addEventListener("click", e => { const b = e.target.closest("[data-r]"); if (b) { ui.role = b.dataset.r; renderSites(); } });
+["#siteSel", "#siteOpen"].forEach(s => $(s).addEventListener("change", renderSites));
+$("#gsSite").addEventListener("change", () => { const c = state.model.contracts.find(c => c.site === $("#gsSite").value); if (c) ui.gsKey = c.key; renderGS(); });
+$("#gsContract").addEventListener("change", () => { ui.gsKey = $("#gsContract").value; renderGS(); });
+$("#calPrev").addEventListener("click", () => { ui.calM = addMonths(ui.calM, -1); ui.calSel = null; renderCal(); });
+$("#calNext").addEventListener("click", () => { ui.calM = addMonths(ui.calM, 1); ui.calSel = null; renderCal(); });
+$("#calToday").addEventListener("click", () => { ui.calM = ym(new Date()); ui.calSel = null; renderCal(); });
+$("#calFilter").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (b) { ui.calF = b.dataset.f; renderCal(); } });
+$("#v-data").addEventListener("change", e => {
+  const t = e.target;
+  if (t.dataset.role) S.roles[t.dataset.role] = t.value;
+  else if (t.id === "setArTerm") S.arTerm = Math.max(0, +t.value || 0);
+  else if (t.id === "setApTerm") S.apTerm = Math.max(0, +t.value || 0);
+  else if (t.id === "setAssume") S.assume = t.value === "1";
+  else if (t.id === "setFixedFrom") S.fixedFrom = t.value;
+  else if (t.id === "setRefresh") { S.refreshMin = +t.value; schedule(); }
+  else return;
+  saveS(); rebuild();
+});
+
+/* 자동 업데이트 (구글 시트 연결일 때) */
+let timer = null;
+function schedule() {
+  clearInterval(timer);
+  if (state.mode === "gas" && S.refreshMin > 0) timer = setInterval(() => { if (!document.hidden) sync({ quiet: true }); }, S.refreshMin * 60e3);
+}
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && state.mode === "gas" && (!state.lastSync || Date.now() - state.lastSync > 30e3)) sync({ quiet: true });
+});
+setInterval(renderSync, 10e3);
+
+/* 시작 */
+if (state.mode === "gas") { render(); sync(); schedule(); }
+else {
+  const saved = safeGet(FKEY, []);
+  if (saved.length) { state.mode = "file"; state.books = saved; }
+  rebuild();
+}
+})();
+</script>
+</body>
+</html>
