@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-22T21:12:13.347Z",
-  "count": 748,
+  "collectedAt": "2026-09-23T03:16:17.543Z",
+  "count": 747,
   "sites": [
     {
       "id": "applyhome-apt-2026820011-2026820011",
@@ -34389,7 +34389,7 @@
       "when": "2026-09-18",
       "rceptStart": "2026-09-23",
       "rceptEnd": "2026-09-23",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34514,7 +34514,7 @@
       "when": "2026-09-17",
       "rceptStart": "2026-09-22",
       "rceptEnd": "2026-09-22",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34729,7 +34729,7 @@
       "when": "2026-09-15",
       "rceptStart": "2026-09-22",
       "rceptEnd": "2026-09-22",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -55341,51 +55341,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910179&pblancNo=2025910179",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)에스떠블유산업개발 · 당첨자발표 2025-10-02 · 입주예정 202511. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025930044-2025930044",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "불법행위 재공급",
-      "n": "도심역 한양수자인 리버파인",
-      "gu": "경기도 남양주시 와부읍 도곡리",
-      "brand": "도곡2구역주택재개발정비사업조합",
-      "total": 2,
-      "general": 1,
-      "when": "2025-09-22",
-      "rceptStart": "2025-09-29",
-      "rceptEnd": "2025-09-30",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "2025-09-29 ~ 2025-09-29",
-        "rank1": "",
-        "general": "2025-09-29 ~ 2025-09-30",
-        "result": "2025-10-14"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 2,
-          "price": 47620,
-          "general": 1,
-          "special": 1
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025930044&pblancNo=2025930044",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 도곡2구역주택재개발정비사업조합 · 당첨자발표 2025-10-14 · 입주예정 202510. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
