@@ -68,6 +68,19 @@ nav.tabs button[aria-selected="true"] { background: var(--chip); color: var(--te
 .seg button { border: 0; background: none; padding: 6px 12px; cursor: pointer; color: var(--text-2); white-space: nowrap; }
 .seg button + button { border-left: 1px solid var(--border); }
 .seg button[aria-pressed="true"] { background: var(--text); color: var(--page); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { border: 1px solid var(--border); background: var(--panel); border-radius: 999px; padding: 4px 12px; cursor: pointer; font-size: 13px; }
+.chip:hover { background: var(--hover); }
+.chip[aria-pressed="true"] { background: var(--text); color: var(--page); border-color: var(--text); }
+.qbar { display: grid; gap: 12px; margin-top: 20px; }
+.qrow { display: flex; gap: 8px 10px; align-items: center; flex-wrap: wrap; }
+.ql { font-size: 12px; font-weight: 700; color: var(--text-2); min-width: 52px; }
+.qrow input[type=date], .qrow select { border: 1px solid var(--border); background: var(--page); border-radius: 8px; padding: 5px 8px; max-width: 100%; }
+.qsum { font-size: 13px; color: var(--text-2); }
+.qgroup { margin-bottom: 4px; }
+.qgroup .tiles { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.qgroup .tile .v { font-size: 20px; }
+.qgroup h4 { margin: 0 0 8px; font-size: 13px; color: var(--text-2); font-weight: 600; }
 .chk { display: inline-flex; gap: 6px; align-items: center; color: var(--text-2); font-size: 13px; }
 
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; }
@@ -187,6 +200,7 @@ code { background: var(--chip); padding: 0 4px; border-radius: 4px; font-size: 1
   <div class="top-in">
     <span class="brand">현장 손익·정산</span>
     <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="q">맞춤 집계</button>
       <button role="tab" data-tab="pl">손익·현금흐름</button>
       <button role="tab" data-tab="sites">현장 채권·채무</button>
       <button role="tab" data-tab="gs">기성관리</button>
@@ -212,6 +226,44 @@ code { background: var(--chip); padding: 0 4px; border-radius: 4px; font-size: 1
         <button class="btn" data-action="pick">엑셀 파일로 바로 보기</button>
         <button class="btn" data-action="demo">샘플 데이터로 둘러보기</button>
       </div>
+    </div>
+  </section>
+
+  <!-- 맞춤 집계 -->
+  <section id="v-q" hidden>
+    <div class="card qbar">
+      <div class="qrow"><span class="ql">현장</span><div class="chips" id="qSites"></div></div>
+      <div class="qrow"><span class="ql">기간</span>
+        <select id="qPreset" aria-label="빠른 기간 선택">
+          <option value="all">전체 기간</option><option value="m">이번 달</option><option value="pm">지난 달</option>
+          <option value="q">이번 분기</option><option value="pq">지난 분기</option><option value="h1">올해 상반기</option><option value="h2">올해 하반기</option>
+          <option value="y">올해</option><option value="py">작년</option><option value="12">최근 12개월</option><option value="custom">직접 입력</option>
+        </select>
+        <input type="date" id="qFrom" aria-label="시작일"> <span class="hint">~</span> <input type="date" id="qTo" aria-label="종료일">
+      </div>
+      <div class="qrow"><span class="ql">구분</span>
+        <div class="seg" id="qDir"><button data-d="all">받을 돈 + 줄 돈</button><button data-d="AR">받을 돈 (원청)</button><button data-d="AP">줄 돈 (도급)</button></div>
+      </div>
+      <div class="qrow"><span class="ql">집계 단위</span>
+        <div class="seg" id="qGran"><button data-g="M">월별</button><button data-g="Q">분기별</button><button data-g="H">반기별</button><button data-g="Y">연도별</button></div>
+        <label class="chk"><input type="checkbox" id="qFixed" checked> 회사 전체 손익에 고정비 반영</label>
+      </div>
+      <div class="qsum" id="qDesc"></div>
+    </div>
+    <div id="qTiles"></div>
+    <div class="card">
+      <h3>현장별 집계 <span class="sub" id="qSiteSub"></span></h3>
+      <div class="tbl-wrap" id="qSiteTable"></div>
+    </div>
+    <div class="card">
+      <h3>기간별 집계 <span class="sub" id="qPerSub"></span></h3>
+      <div class="legend" id="qLegend"></div>
+      <div class="chart" id="qChart"></div>
+      <div class="tbl-wrap" id="qPerTable" style="margin-top:12px"></div>
+    </div>
+    <div class="card">
+      <h3>건별 내역 <span class="sub" id="qListSub"></span></h3>
+      <div class="tbl-wrap" id="qList" style="max-height:480px;overflow:auto"></div>
     </div>
   </section>
 
@@ -435,7 +487,7 @@ const saveS = () => safeSet(SKEY, S);
 const hasGAS = typeof google !== "undefined" && google.script && google.script.run;
 const state = {
   mode: hasGAS ? "gas" : "none", books: [], sig: "", busy: false, error: null, lastSync: null,
-  tab: safeGet("hs.tab", "pl"), model: null,
+  tab: safeGet("hs.tab", "q"), model: null,
 };
 
 function gasCall(fn) {
@@ -714,7 +766,7 @@ function rebuild() {
 /* =====================================================================
    렌더 공통
    ===================================================================== */
-const TABS = ["pl", "sites", "gs", "cal", "data"];
+const TABS = ["q", "pl", "sites", "gs", "cal", "data"];
 function renderSync() {
   const dot = $("#syncDot"), txt = $("#syncText");
   dot.className = "dot";
@@ -733,19 +785,19 @@ function render() {
   renderSync();
   const M = state.model;
   const has = M && (M.contracts.length || M.fixed.length);
-  if (!TABS.includes(state.tab)) state.tab = "pl";
+  if (!TABS.includes(state.tab)) state.tab = "q";
   document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === state.tab)));
   const alerts = [];
   if (state.error) alerts.push(`<div class="notice err">${esc(state.error)}</div>`);
   if (state.mode === "demo") alerts.push(`<div class="notice warn">가상의 샘플 데이터입니다. <a href="#" data-goto="data">데이터 연결</a>에서 실제 시트를 연결하세요.</div>`);
-  if (has && ["pl", "sites", "gs"].includes(state.tab) && S.assume && M.contracts.some(c => !c.tracked))
+  if (has && ["q", "pl", "sites", "gs"].includes(state.tab) && S.assume && M.contracts.some(c => !c.tracked))
     alerts.push(`<div class="notice">입금·지급 열이 없는 기성 시트는 <b>세금계산서 발행 후 ${S.arTerm}일(도급 ${S.apTerm}일)이 지나면 정산된 것으로 추정</b>했습니다 <span class="est">추정</span>. 실제 입금일·입금액 열을 추가하면 정확한 미수금이 나옵니다.</div>`);
   $("#alerts").innerHTML = alerts.join("");
   for (const t of TABS) $("#v-" + t).hidden = true;
   $("#v-empty").hidden = true;
   if (state.tab !== "data" && !has) { $("#v-empty").hidden = state.busy; return; }
   $("#v-" + state.tab).hidden = false;
-  ({ pl: renderPL, sites: renderSites, gs: renderGS, cal: renderCal, data: renderData })[state.tab]();
+  ({ q: renderQ, pl: renderPL, sites: renderSites, gs: renderGS, cal: renderCal, data: renderData })[state.tab]();
 }
 function tile(k, v, d = "", cls = "") {
   return `<div class="tile"><div class="k">${k}</div><div class="v ${cls}" title="${won(v)}원">${short(v)}원</div>${d ? `<div class="d">${d}</div>` : ""}</div>`;
@@ -754,6 +806,161 @@ function fillSelect(el, opts) {
   const cur = el.value;
   el.innerHTML = opts.map(([v, l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join("");
   if (opts.some(([v]) => v === cur)) el.value = cur;
+}
+
+/* =====================================================================
+   맞춤 집계 — 현장 · 기간 · 받을/줄 돈을 골라서 집계
+   ===================================================================== */
+const QKEY = "hs.query.v1";
+const Q = { sites: [], preset: "y", from: "", to: "", dir: "all", gran: "M", fixed: true, ...safeGet(QKEY, {}) };
+const saveQ = () => safeSet(QKEY, Q);
+function presetRange(p, M) {
+  const t = today0(), y = t.getFullYear(), m = t.getMonth(), q0 = Math.floor(m / 3) * 3;
+  const D = (yy, mm, dd) => new Date(yy, mm, dd);
+  switch (p) {
+    case "m": return [D(y, m, 1), D(y, m + 1, 0)];
+    case "pm": return [D(y, m - 1, 1), D(y, m, 0)];
+    case "q": return [D(y, q0, 1), D(y, q0 + 3, 0)];
+    case "pq": return [D(y, q0 - 3, 1), D(y, q0, 0)];
+    case "h1": return [D(y, 0, 1), D(y, 6, 0)];
+    case "h2": return [D(y, 6, 1), D(y, 12, 0)];
+    case "y": return [D(y, 0, 1), D(y, 11, 31)];
+    case "py": return [D(y - 1, 0, 1), D(y - 1, 11, 31)];
+    case "12": return [D(y, m - 11, 1), D(y, m + 1, 0)];
+    default: { // 전체: 데이터가 있는 첫 달 ~ 마지막 달
+      const ds = M.contracts.flatMap(c => c.sections.flatMap(s => s.rows.map(r => r.date))).concat(M.events.filter(e => !e.isFixed).map(e => e.d)).sort((a, b) => a - b);
+      const a = ds[0] || D(y, 0, 1), b = ds[ds.length - 1] || t;
+      return [D(a.getFullYear(), a.getMonth(), 1), D(b.getFullYear(), b.getMonth() + 1, 0)];
+    }
+  }
+}
+// 한 묶음(현장 목록 · 기간)의 집계
+function aggregate(M, siteSet, from, to, withFixed) {
+  const inR = d => d >= from && d <= to;
+  const a = { ar: 0, ap: 0, arDirect: 0, arBill: 0, apBill: 0, arIn: 0, apOut: 0, arRem: 0, apRem: 0, fixed: 0, arN: 0, apN: 0 };
+  for (const c of M.contracts) {
+    if (siteSet && !siteSet.has(c.site)) continue;
+    const AR = c.role === "AR";
+    for (const s of c.sections) for (const r of s.rows) {
+      if (!inR(r.date)) continue;
+      if (s.kind === "direct") { if (AR) a.arDirect += r.supply; continue; }
+      if (AR) { a.ar += r.supply; a.arBill += r.total; a.arRem += r.remain; a.arN++; }
+      else { a.ap += r.supply; a.apBill += r.total; a.apRem += r.remain; a.apN++; }
+    }
+  }
+  for (const e of M.events) {
+    if (!e.cash || !inR(e.d)) continue;
+    if (e.isFixed) { if (withFixed) a.fixed += e.amt; continue; }
+    if (siteSet && !siteSet.has(e.c.site)) continue;
+    if (e.kind === "in") a.arIn += e.amt; else a.apOut += e.amt;
+  }
+  a.profit = a.ar - a.ap; a.op = a.profit - a.fixed; a.net = a.arIn - a.apOut - a.fixed;
+  return a;
+}
+function renderQ() {
+  const M = state.model;
+  Q.sites = Q.sites.filter(s => M.sites.includes(s));
+  if (!Q.from || Q.preset !== "custom") { const [f, t] = presetRange(Q.preset, M); Q.from = iso(f); Q.to = iso(t); }
+  const from = parseDate(Q.from), to = parseDate(Q.to);
+  $("#qPreset").value = Q.preset; $("#qFrom").value = Q.from; $("#qTo").value = Q.to; $("#qFixed").checked = Q.fixed;
+  $("#qSites").innerHTML = `<button class="chip" data-site="" aria-pressed="${!Q.sites.length}">전체 현장</button>` +
+    M.sites.map(s => `<button class="chip" data-site="${esc(s)}" aria-pressed="${Q.sites.includes(s)}">${esc(s)}</button>`).join("");
+  document.querySelectorAll("#qDir button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.d === Q.dir)));
+  document.querySelectorAll("#qGran button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.g === Q.gran)));
+  if (!from || !to || from > to) { $("#qDesc").innerHTML = `<span class="down">기간을 확인해 주세요 (시작일이 종료일보다 늦습니다).</span>`; return; }
+
+  const sel = Q.sites.length ? new Set(Q.sites) : null;
+  const selName = Q.sites.length ? (Q.sites.length === 1 ? Q.sites[0] : `${Q.sites[0]} 외 ${Q.sites.length - 1}곳`) : "전체 현장";
+  const dirName = { all: "받을 돈 + 줄 돈", AR: "받을 돈 (원청)", AP: "줄 돈 (도급)" }[Q.dir];
+  $("#qDesc").innerHTML = `<b>${esc(selName)}</b> · ${fmtDate(from)} ~ ${fmtDate(to)} · ${dirName} <span class="hint">— 기성은 세금계산서 일자, 입금·지급은 실제(또는 예정) 날짜 기준</span>`;
+
+  const A = aggregate(M, sel, from, to, false), W = aggregate(M, null, from, to, Q.fixed);
+  const showAR = Q.dir !== "AP", showAP = Q.dir !== "AR";
+  const siteContracts = M.contracts.filter(c => !sel || sel.has(c.site));
+  const remainAR = siteContracts.filter(c => c.role === "AR").reduce((s, c) => s + c.remainContract, 0);
+  const remainAP = siteContracts.filter(c => c.role === "AP").reduce((s, c) => s + c.remainContract, 0);
+  const pct = (a, b) => b ? fmtPct(a / b) : "–";
+  const g1 = [
+    showAR ? tile("원청 기성 (매출)", A.ar, `계산서 ${A.arN}건 · 공급가`) : "",
+    showAR ? tile("입금", A.arIn, `청구 ${short(A.arBill)} 중 · VAT 포함`) : "",
+    showAR ? tile("미수금", A.arRem, `이 기간 청구분 중 못 받은 돈`, A.arRem ? "down" : "") : "",
+    showAP ? tile("도급 기성 (원가)", A.ap, `계산서 ${A.apN}건 · 공급가`) : "",
+    showAP ? tile("지급", A.apOut, `청구 ${short(A.apBill)} 중 · VAT 포함`) : "",
+    showAP ? tile("미지급금", A.apRem, `이 기간 받은 계산서 중 안 준 돈`) : "",
+    Q.dir === "all" ? tile("현장 손익", A.profit, `이익률 ${pct(A.profit, A.ar)} · 매출 − 도급`, A.profit < 0 ? "down" : "") : "",
+    Q.dir === "AR" ? tile("받을 돈 (계약 잔액)", remainAR, "오늘 기준 · 공급가") : "",
+    Q.dir === "AP" ? tile("줄 돈 (계약 잔액)", remainAP, "오늘 기준 · 공급가") : "",
+  ].join("");
+  const g2 = [
+    tile("전체 매출", W.ar, "모든 현장 원청 기성"),
+    tile("전체 도급 원가", W.ap, "모든 현장 도급 기성"),
+    Q.fixed ? tile("고정비", W.fixed, "고정지출 마스터 기준") : "",
+    tile("전체 영업이익", W.op, `이익률 ${pct(W.op, W.ar)}`, W.op < 0 ? "down" : ""),
+    tile("전체 순현금흐름", W.net, "입금 − 지급 − 고정비", W.net < 0 ? "down" : ""),
+  ].join("");
+  $("#qTiles").innerHTML = `<div class="qgroup"><h4>${esc(selName)}</h4><div class="tiles">${g1}</div></div>` +
+    (Q.dir === "all" ? `<div class="qgroup"><h4>회사 전체 (같은 기간)</h4><div class="tiles">${g2}</div></div>` : "");
+
+  // 현장별 표
+  const cols = [
+    ["원청 기성", "ar", showAR], ["입금", "arIn", showAR], ["미수금", "arRem", showAR],
+    ["도급 기성", "ap", showAP], ["지급", "apOut", showAP], ["미지급금", "apRem", showAP],
+    ["현장 손익", "profit", Q.dir === "all"],
+  ].filter(c => c[2]);
+  const sites = Q.sites.length ? Q.sites : M.sites;
+  const rows = sites.map(s => [s, aggregate(M, new Set([s]), from, to, false)]);
+  const cell = (k, v) => `<td class="n ${(k === "profit" && v < 0) || ((k === "arRem") && v) ? "down" : ""}">${won(v)}</td>`;
+  let body = rows.map(([s, a]) => `<tr><td>${esc(s)}</td>${cols.map(([, k]) => cell(k, a[k])).join("")}${Q.dir === "all" ? `<td class="n">${pct(a.profit, a.ar)}</td>` : ""}</tr>`).join("");
+  body += `<tr class="sum"><td>선택 현장 합계</td>${cols.map(([, k]) => cell(k, A[k])).join("")}${Q.dir === "all" ? `<td class="n">${pct(A.profit, A.ar)}</td>` : ""}</tr>`;
+  if (Q.dir === "all") {
+    const span = cols.length - 1;
+    if (Q.fixed) body += `<tr><td>고정비 (회사 전체)</td><td colspan="${span}"></td><td class="n">−${won(W.fixed)}</td><td></td></tr>`;
+    body += `<tr class="sum"><td>회사 전체 영업이익</td><td colspan="${span}" class="hint" style="font-weight:400">모든 현장 손익 ${won(W.profit)}${Q.fixed ? ` − 고정비 ${won(W.fixed)}` : ""}</td><td class="n ${W.op < 0 ? "down" : ""}">${won(W.op)}</td><td class="n">${pct(W.op, W.ar)}</td></tr>`;
+  }
+  $("#qSiteTable").innerHTML = `<table><thead><tr><th>현장</th>${cols.map(([n]) => `<th class="n">${n}</th>`).join("")}${Q.dir === "all" ? '<th class="n">이익률</th>' : ""}</tr></thead><tbody>${body}</tbody></table>`;
+  $("#qSiteSub").textContent = "기성은 공급가, 입금·지급·미수·미지급은 VAT 포함";
+
+  // 기간별 표 + 차트
+  const months = monthsBetween(ym(from), ym(to));
+  const keys = [...new Set(months.map(m => bucketOf(m, Q.gran)))];
+  const clip = k => { const ms = months.filter(m => bucketOf(m, Q.gran) === k); const f = new Date(Math.max(+from, +parseDate(ms[0] + "-01"))), t = new Date(Math.min(+to, +monthEnd(ms[ms.length - 1]))); return [f, t]; };
+  const per = keys.map(k => { const [f, t] = clip(k); return [k, aggregate(M, sel, f, t, false), Q.dir === "all" ? aggregate(M, null, f, t, Q.fixed) : null]; });
+  const nowM = ym(today0()), futK = k => months.find(m => bucketOf(m, Q.gran) === k) > nowM;
+  const labels = keys.map(bucketLabel), fut = keys.map(futK);
+  let bars, line, legend;
+  if (Q.dir === "all") {
+    bars = [{ name: "원청 기성", color: "--s-1", values: per.map(p => p[1].ar) }, { name: "도급 기성", color: "--s-2", values: per.map(p => p[1].ap) }];
+    line = { name: "현장 손익", color: "--s-3", values: per.map(p => p[1].profit) };
+  } else {
+    const AR = Q.dir === "AR";
+    bars = [{ name: AR ? "청구(VAT)" : "받은 계산서(VAT)", color: "--s-1", values: per.map(p => AR ? p[1].arBill : p[1].apBill) },
+            { name: AR ? "입금" : "지급", color: "--s-2", values: per.map(p => AR ? p[1].arIn : p[1].apOut) }];
+    line = { name: AR ? "미수금" : "미지급금", color: "--s-3", values: per.map(p => AR ? p[1].arRem : p[1].apRem) };
+  }
+  $("#qLegend").innerHTML = bars.map(b => `<span><i style="background:var(${b.color})"></i>${b.name}</span>`).join("") +
+    `<span><i class="line" style="background:var(${line.color})"></i>${line.name}</span><span><i class="fut"></i>예정 기간</span>`;
+  drawChart($("#qChart"), labels, bars, line, fut);
+  const pcols = Q.dir === "all"
+    ? [["원청 기성", p => p[1].ar], ["도급 기성", p => p[1].ap], ["현장 손익", p => p[1].profit], ["고정비", p => p[2].fixed, Q.fixed], ["회사 전체 영업이익", p => p[2].op], ["입금", p => p[1].arIn], ["지급", p => p[1].apOut]]
+    : Q.dir === "AR" ? [["원청 기성", p => p[1].ar], ["청구(VAT)", p => p[1].arBill], ["입금", p => p[1].arIn], ["미수금", p => p[1].arRem]]
+    : [["도급 기성", p => p[1].ap], ["받은 계산서(VAT)", p => p[1].apBill], ["지급", p => p[1].apOut], ["미지급금", p => p[1].apRem]];
+  const pc = pcols.filter(c => c[2] !== false);
+  $("#qPerSub").textContent = `${selName} · ${{ M: "월별", Q: "분기별", H: "반기별", Y: "연도별" }[Q.gran]}`;
+  $("#qPerTable").innerHTML = `<table><thead><tr><th>기간</th>${pc.map(([n]) => `<th class="n">${n}</th>`).join("")}</tr></thead><tbody>${
+    per.map((p, i) => `<tr><td class="${fut[i] ? "fut" : ""}">${bucketLabel(p[0])}${fut[i] ? ' <span class="est">예정</span>' : ""}</td>${pc.map(([, f]) => { const v = f(p); return `<td class="n ${v < 0 ? "down" : ""}${fut[i] ? " fut" : ""}">${won(v)}</td>`; }).join("")}</tr>`).join("")}
+    <tr class="sum"><td>합계</td>${pc.map(([, f]) => { const v = per.reduce((s, p) => s + f(p), 0); return `<td class="n ${v < 0 ? "down" : ""}">${won(v)}</td>`; }).join("")}</tr></tbody></table>`;
+
+  // 건별 내역
+  const inR = d => d >= from && d <= to;
+  const items = M.contracts.filter(c => (!sel || sel.has(c.site)) && (Q.dir === "all" || c.role === Q.dir))
+    .flatMap(c => c.sections.flatMap(s => s.rows.filter(r => inR(r.date)).map(r => ({ c, s, r }))))
+    .sort((a, b) => b.r.date - a.r.date || a.c.site.localeCompare(b.c.site, "ko"));
+  $("#qListSub").textContent = `${items.length}건`;
+  $("#qList").innerHTML = `<table><thead><tr><th>계산서일</th><th>현장</th><th>구분</th><th>거래처</th><th>내역</th><th class="n">공급가액</th><th class="n">합계(VAT)</th><th>상태</th><th class="n">남은 금액</th></tr></thead><tbody>${
+    items.map(({ c, s, r }) => `<tr class="link" data-key="${esc(c.key)}"><td>${fmtDate(r.date)}</td><td>${esc(c.site)}</td><td><span class="role">${roleName(c.role)}</span></td><td>${esc(c.party)}</td>
+      <td>${esc(s.title)}${r.note ? ` · ${esc(r.note)}` : ""}</td><td class="n">${won(r.supply)}</td><td class="n">${won(r.total)}</td>
+      <td>${s.kind === "direct" ? '<span class="hint">직불 차감</span>' : `<span class="badge ${r.status}">${STATUS[r.status]}</span>`}</td><td class="n ${r.remain ? "down" : ""}">${r.remain ? won(r.remain) : ""}</td></tr>`).join("")
+    || `<tr><td colspan="9" class="hint">이 조건에 해당하는 내역이 없습니다.</td></tr>`}</tbody></table>`;
 }
 
 /* =====================================================================
@@ -1180,7 +1387,7 @@ document.addEventListener("click", e => {
   if (a) {
     const act = a.dataset.action;
     if (act === "pick") $("#fileInput").click();
-    if (act === "demo") { state.mode = "demo"; state.books = demoBooks(); state.error = null; rebuild(); if (state.tab === "data") go("pl"); }
+    if (act === "demo") { state.mode = "demo"; state.books = demoBooks(); state.error = null; rebuild(); if (state.tab === "data") go("q"); }
     if (act === "clear") { safeDel(FKEY); if (state.mode !== "gas") { state.mode = "none"; state.books = []; } rebuild(); }
     return;
   }
@@ -1192,9 +1399,21 @@ document.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.ma
 $("#fileInput").addEventListener("change", async e => {
   const files = [...e.target.files]; e.target.value = "";
   if (!files.length) return;
-  try { await readFiles(files); if (state.tab === "data") go("pl"); } catch (err) { state.error = "파일을 읽지 못했습니다: " + err.message; render(); }
+  try { await readFiles(files); if (state.tab === "data") go("q"); } catch (err) { state.error = "파일을 읽지 못했습니다: " + err.message; render(); }
 });
 $("#btnRefresh").addEventListener("click", () => sync());
+$("#qSites").addEventListener("click", e => {
+  const b = e.target.closest("[data-site]"); if (!b) return;
+  const s = b.dataset.site;
+  if (!s) Q.sites = [];
+  else Q.sites = Q.sites.includes(s) ? Q.sites.filter(x => x !== s) : [...Q.sites, s];
+  saveQ(); renderQ();
+});
+$("#qPreset").addEventListener("change", e => { Q.preset = e.target.value; if (Q.preset === "custom") { Q.from = $("#qFrom").value; Q.to = $("#qTo").value; } saveQ(); renderQ(); });
+["#qFrom", "#qTo"].forEach(s => $(s).addEventListener("change", () => { Q.preset = "custom"; Q.from = $("#qFrom").value; Q.to = $("#qTo").value; saveQ(); renderQ(); }));
+$("#qDir").addEventListener("click", e => { const b = e.target.closest("[data-d]"); if (b) { Q.dir = b.dataset.d; saveQ(); renderQ(); } });
+$("#qGran").addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (b) { Q.gran = b.dataset.g; saveQ(); renderQ(); } });
+$("#qFixed").addEventListener("change", e => { Q.fixed = e.target.checked; saveQ(); renderQ(); });
 $("#plGran").addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (b) { ui.gran = b.dataset.g; renderPL(); } });
 ["#plYear", "#plSite", "#plFixed"].forEach(s => $(s).addEventListener("change", renderPL));
 $("#siteRole").addEventListener("click", e => { const b = e.target.closest("[data-r]"); if (b) { ui.role = b.dataset.r; renderSites(); } });
