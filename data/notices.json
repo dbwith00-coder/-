@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-23T21:13:09.201Z",
-  "count": 751,
+  "collectedAt": "2026-09-24T03:15:52.752Z",
+  "count": 750,
   "sites": [
     {
       "id": "applyhome-apt-2026820011-2026820011",
@@ -764,7 +764,7 @@
       "when": "2026-09-11",
       "rceptStart": "2026-09-21",
       "rceptEnd": "2026-09-23",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-21 ~ 2026-09-21",
         "rank1": "2026-09-22 ~ 2026-09-22",
@@ -882,7 +882,7 @@
       "when": "2026-09-11",
       "rceptStart": "2026-09-21",
       "rceptEnd": "2026-09-23",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-21 ~ 2026-09-21",
         "rank1": "2026-09-22 ~ 2026-09-22",
@@ -972,7 +972,7 @@
       "when": "2026-09-11",
       "rceptStart": "2026-09-21",
       "rceptEnd": "2026-09-23",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-21 ~ 2026-09-21",
         "rank1": "2026-09-22 ~ 2026-09-22",
@@ -1054,7 +1054,7 @@
       "when": "2026-09-11",
       "rceptStart": "2026-09-21",
       "rceptEnd": "2026-09-23",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-21 ~ 2026-09-21",
         "rank1": "2026-09-22 ~ 2026-09-22",
@@ -1298,7 +1298,7 @@
       "when": "2026-09-10",
       "rceptStart": "2026-09-21",
       "rceptEnd": "2026-09-23",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-21 ~ 2026-09-21",
         "rank1": "2026-09-22 ~ 2026-09-22",
@@ -1398,7 +1398,7 @@
       "when": "2026-09-09",
       "rceptStart": "2026-09-21",
       "rceptEnd": "2026-09-23",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-21 ~ 2026-09-21",
         "rank1": "2026-09-22 ~ 2026-09-22",
@@ -34569,7 +34569,7 @@
       "when": "2026-09-18",
       "rceptStart": "2026-09-23",
       "rceptEnd": "2026-09-23",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34642,7 +34642,7 @@
       "when": "2026-09-17",
       "rceptStart": "2026-09-22",
       "rceptEnd": "2026-09-23",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-22 ~ 2026-09-22",
         "rank1": "",
@@ -55476,51 +55476,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910172&pblancNo=2025910172",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 경기주택도시공사 · 당첨자발표 2025-10-02 · 입주예정 202802. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910179-2025910179",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "송파 위례 리슈빌 FIRST CLASS",
-      "gu": "서울특별시 송파구 위례송파로 124",
-      "brand": "(주)에스떠블유산업개발",
-      "total": 1,
-      "general": 1,
-      "when": "2025-09-23",
-      "rceptStart": "2025-09-29",
-      "rceptEnd": "2025-09-29",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-29 ~ 2025-09-29",
-        "result": "2025-10-02"
-      },
-      "types": [
-        {
-          "t": "105㎡",
-          "n": 1,
-          "price": 89508,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 72,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910179&pblancNo=2025910179",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)에스떠블유산업개발 · 당첨자발표 2025-10-02 · 입주예정 202511. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
