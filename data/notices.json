@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-24T21:13:15.052Z",
-  "count": 750,
+  "collectedAt": "2026-09-25T03:15:24.876Z",
+  "count": 748,
   "sites": [
     {
       "id": "applyhome-apt-2026820011-2026820011",
@@ -55372,110 +55372,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910184&pblancNo=2025910184",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)디케이랜드,(주)화인뷰 · 당첨자발표 2025-10-13 · 입주예정 202807. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910173-2025910173",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "고덕 자연앤 하우스디(A4BL)(민영)",
-      "gu": "경기도 평택시 고덕동 1858-2번지(고덕국제화계획지구",
-      "brand": "경기주택도시공사",
-      "total": 60,
-      "general": 60,
-      "when": "2025-09-24",
-      "rceptStart": "2025-09-29",
-      "rceptEnd": "2025-09-29",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-29 ~ 2025-09-29",
-        "result": "2025-10-02"
-      },
-      "types": [
-        {
-          "t": "98㎡",
-          "n": 60,
-          "price": 62900,
-          "general": 60,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910173&pblancNo=2025910173",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 경기주택도시공사 · 당첨자발표 2025-10-02 · 입주예정 202802. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910172-2025910172",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "고덕 자연앤 하우스디(A4BL)(국민)",
-      "gu": "경기도 평택시 고덕동 1858-2번지(고덕국제화계획지구",
-      "brand": "경기주택도시공사",
-      "total": 89,
-      "general": 89,
-      "when": "2025-09-24",
-      "rceptStart": "2025-09-29",
-      "rceptEnd": "2025-09-29",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-09-29 ~ 2025-09-29",
-        "result": "2025-10-02"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 9,
-          "price": 52960,
-          "general": 9,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 51,
-          "price": 52980,
-          "general": 51,
-          "special": 0
-        },
-        {
-          "t": "84㎡C",
-          "n": 29,
-          "price": 51960,
-          "general": 29,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910172&pblancNo=2025910172",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 경기주택도시공사 · 당첨자발표 2025-10-02 · 입주예정 202802. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
