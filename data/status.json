@@ -1,12 +1,12 @@
 {
-  "collectedAt": "2026-09-25T21:13:03.821Z",
+  "collectedAt": "2026-09-26T03:14:56.727Z",
   "sources": {
     "lh": {
       "ok": false,
       "count": 0,
       "rawCount": 0,
       "pickedFrom": null,
-      "ms": 1192,
+      "ms": 676,
       "error": "HTTP 400 · {\n  \"OpenAPI_ServiceResponse\": {\n    \"cmmMsgHeader\": {\n      \"errMsg\": \"NO_OPENAPI_SERVICE_ERROR\",\n      \"returnAuthMsg\": \"해당 오픈API 서비스가 없거나 폐기됨\",\n      \"return",
       "fields": []
     },
@@ -15,7 +15,7 @@
       "count": 748,
       "rawCount": 748,
       "pickedFrom": "data",
-      "ms": 41000,
+      "ms": 35137,
       "error": null,
       "fields": [
         "BSNS_MBY_NM",
