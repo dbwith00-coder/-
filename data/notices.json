@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-09-29T09:39:21.340Z",
-  "count": 743,
+  "collectedAt": "2026-09-30T00:06:56.314Z",
+  "count": 742,
   "sites": [
     {
       "id": "applyhome-apt-2026820011-2026820011",
@@ -19,7 +19,7 @@
       "when": "2026-09-18",
       "rceptStart": "2026-09-28",
       "rceptEnd": "2026-09-29",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "2026-09-28 ~ 2026-09-28",
@@ -706,7 +706,7 @@
       "when": "2026-09-17",
       "rceptStart": "2026-09-28",
       "rceptEnd": "2026-09-29",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "2026-09-28 ~ 2026-09-28",
@@ -54936,58 +54936,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910183&pblancNo=2025910183",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)대우건설 · 당첨자발표 2025-10-15 · 입주예정 202903. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910182-2025910182",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "양평 우방아이유쉘 에코리버(2차)",
-      "gu": "경기도 양평군 강상면 병산2지구",
-      "brand": "(주)레드씨플래닝",
-      "total": 11,
-      "general": 11,
-      "when": "2025-09-29",
-      "rceptStart": "2025-10-10",
-      "rceptEnd": "2025-10-10",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-10 ~ 2025-10-10",
-        "result": "2025-10-15"
-      },
-      "types": [
-        {
-          "t": "77㎡A",
-          "n": 6,
-          "price": 40800,
-          "general": 6,
-          "special": 0
-        },
-        {
-          "t": "77㎡B",
-          "n": 5,
-          "price": 40500,
-          "general": 5,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910182&pblancNo=2025910182",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)레드씨플래닝 · 당첨자발표 2025-10-15 · 입주예정 202511. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
