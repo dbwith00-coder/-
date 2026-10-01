@@ -1,7 +1,68 @@
 {
-  "collectedAt": "2026-09-30T09:31:12.027Z",
-  "count": 742,
+  "collectedAt": "2026-10-01T00:25:30.731Z",
+  "count": 738,
   "sites": [
+    {
+      "id": "applyhome-apt-2026820010-2026820010",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "공공",
+      "kind": "신혼희망타운",
+      "n": "인천계양 A17블록 신혼희망타운(공공분양)(본청약)",
+      "gu": "인천광역시 계양구 귤현동, 동양동,",
+      "brand": "(주)케이씨씨건설",
+      "total": 309,
+      "general": 309,
+      "when": "2026-09-30",
+      "rceptStart": "2026-10-19",
+      "rceptEnd": "2026-10-27",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "2026-10-19 ~ 2026-10-22",
+        "general": "2026-10-19 ~ 2026-10-27",
+        "result": "2026-11-05"
+      },
+      "types": [
+        {
+          "t": "55㎡A",
+          "n": 78,
+          "price": 50844,
+          "general": 0,
+          "special": 78
+        },
+        {
+          "t": "55㎡B",
+          "n": 56,
+          "price": 50826,
+          "general": 0,
+          "special": 56
+        },
+        {
+          "t": "55㎡C",
+          "n": 42,
+          "price": 50717,
+          "general": 0,
+          "special": 42
+        }
+      ],
+      "specialUnits": {},
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "분양가상한제",
+        "공공주택지구",
+        "대규모택지"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820010&pblancNo=2026820010",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 한국토지주택공사 인천지역본부 · 시공 (주)케이씨씨건설 · 당첨자발표 2026-11-05 · 입주예정 202911. 예상 당첨선(61점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
     {
       "id": "applyhome-apt-2026820011-2026820011",
       "live": true,
@@ -185,7 +246,7 @@
       "when": "2026-09-18",
       "rceptStart": "2026-09-28",
       "rceptEnd": "2026-09-30",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-28 ~ 2026-09-28",
         "rank1": "2026-09-29 ~ 2026-09-29",
@@ -261,7 +322,7 @@
       "when": "2026-09-18",
       "rceptStart": "2026-09-28",
       "rceptEnd": "2026-09-30",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-28 ~ 2026-09-28",
         "rank1": "2026-09-29 ~ 2026-09-29",
@@ -358,7 +419,7 @@
       "when": "2026-09-18",
       "rceptStart": "2026-09-28",
       "rceptEnd": "2026-09-30",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-28 ~ 2026-09-28",
         "rank1": "2026-09-29 ~ 2026-09-29",
@@ -442,7 +503,7 @@
       "when": "2026-09-18",
       "rceptStart": "2026-09-28",
       "rceptEnd": "2026-09-30",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-28 ~ 2026-09-28",
         "rank1": "2026-09-29 ~ 2026-09-29",
@@ -519,7 +580,7 @@
       "when": "2026-09-18",
       "rceptStart": "2026-09-28",
       "rceptEnd": "2026-09-30",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-28 ~ 2026-09-28",
         "rank1": "2026-09-29 ~ 2026-09-29",
@@ -616,7 +677,7 @@
       "when": "2026-09-18",
       "rceptStart": "2026-09-28",
       "rceptEnd": "2026-09-30",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-09-28 ~ 2026-09-28",
         "rank1": "2026-09-29 ~ 2026-09-29",
@@ -33749,83 +33810,6 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 사당3동지역주택조합 · 시공 현대건설(주) · 당첨자발표 2025-10-22 · 입주예정 202804. 예상 당첨선(61점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
-      "id": "applyhome-apt-2025000489-2025000489",
-      "live": true,
-      "source": "applyhome",
-      "set": "apt",
-      "category": "APT",
-      "scoreless": false,
-      "supply": "공공",
-      "kind": "APT",
-      "n": "원주무실지구 A-2블록 공공분양주택",
-      "gu": "강원특별자치도 무실동, 판부면, 흥업면",
-      "brand": "대방산업개발",
-      "total": 295,
-      "general": 74,
-      "when": "2025-09-30",
-      "rceptStart": "2025-10-16",
-      "rceptEnd": "2025-10-21",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "2025-10-16 ~ 2025-10-20",
-        "general": "2025-10-16 ~ 2025-10-21",
-        "result": "2025-11-06"
-      },
-      "types": [
-        {
-          "t": "74㎡A",
-          "n": 88,
-          "price": 37978,
-          "general": 22,
-          "special": 66
-        },
-        {
-          "t": "84㎡A",
-          "n": 207,
-          "price": 42999,
-          "general": 52,
-          "special": 155
-        }
-      ],
-      "specialUnits": {
-        "newly": {
-          "n": 30,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 44,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 30,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 14,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 44,
-          "label": "기관추천"
-        },
-        "baby": {
-          "n": 59,
-          "label": "신생아"
-        }
-      },
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "분양가상한제"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000489&pblancNo=2025000489",
-      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 한국토지주택공사 강원지역본부 · 시공 대방산업개발 · 당첨자발표 2025-11-06 · 입주예정 202804. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
-    },
-    {
       "id": "applyhome-remndr-2026910251-2026910251",
       "live": true,
       "source": "applyhome",
@@ -54749,193 +54733,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910180&pblancNo=2025910180",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)한국토지신탁 · 당첨자발표 2025-10-16 · 입주예정 202510. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910187-2025910187",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "오산 세교2지구 A12블록 공공분양주택(3차)",
-      "gu": "경기도 오산시 벌음동 382번지",
-      "brand": "금호건설(주),한국토지주택공사",
-      "total": 7,
-      "general": 7,
-      "when": "2025-09-30",
-      "rceptStart": "2025-10-10",
-      "rceptEnd": "2025-10-10",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-10 ~ 2025-10-10",
-        "result": "2025-10-16"
-      },
-      "types": [
-        {
-          "t": "59㎡C",
-          "n": 7,
-          "price": 33814,
-          "general": 7,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910187&pblancNo=2025910187",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 금호건설(주),한국토지주택공사 · 당첨자발표 2025-10-16 · 입주예정 202711. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910186-2025910186",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "브라운스톤 여월(5차)",
-      "gu": "경기도 부천시 오정구 성곡로28번길",
-      "brand": "부천여월 엘에이치 참여형 가로주택정비사업조합",
-      "total": 1,
-      "general": 1,
-      "when": "2025-09-30",
-      "rceptStart": "2025-10-10",
-      "rceptEnd": "2025-10-10",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-10 ~ 2025-10-10",
-        "result": "2025-10-15"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 1,
-          "price": 48015,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910186&pblancNo=2025910186",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 부천여월 엘에이치 참여형 가로주택정비사업조합 · 당첨자발표 2025-10-15 · 입주예정 202510. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910185-2025910185",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "엘리프 세종(3차)",
-      "gu": "세종특별자치시 조치원읍 봉산리 379번지",
-      "brand": "계룡건설산업(주), (주)대흥",
-      "total": 3,
-      "general": 3,
-      "when": "2025-09-30",
-      "rceptStart": "2025-10-13",
-      "rceptEnd": "2025-10-13",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-13 ~ 2025-10-13",
-        "result": "2025-10-16"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 1,
-          "price": 25806,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 2,
-          "price": 34914,
-          "general": 2,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 45,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910185&pblancNo=2025910185",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 계룡건설산업(주), (주)대흥 · 당첨자발표 2025-10-16 · 입주예정 202511. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910183-2025910183",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "탑석 푸르지오 파크7",
-      "gu": "경기도 의정부시 용현동 267-8번지",
-      "brand": "(주)대우건설",
-      "total": 121,
-      "general": 121,
-      "when": "2025-09-30",
-      "rceptStart": "2025-10-10",
-      "rceptEnd": "2025-10-10",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-10 ~ 2025-10-10",
-        "result": "2025-10-15"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 121,
-          "price": 51950,
-          "general": 121,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910183&pblancNo=2025910183",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)대우건설 · 당첨자발표 2025-10-15 · 입주예정 202903. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
