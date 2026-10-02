@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-01T09:57:42.340Z",
-  "count": 738,
+  "collectedAt": "2026-10-02T00:35:18.858Z",
+  "count": 739,
   "sites": [
     {
       "id": "applyhome-apt-2026820010-2026820010",
@@ -33810,6 +33810,169 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 사당3동지역주택조합 · 시공 현대건설(주) · 당첨자발표 2025-10-22 · 입주예정 202804. 예상 당첨선(61점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
+      "id": "applyhome-remndr-2026910253-2026910253",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "오남역 서희스타힐스 여의재 1단지",
+      "gu": "경기도 남양주시 오남읍 양지리",
+      "brand": "양지7지구1단지지역주택조합",
+      "total": 12,
+      "general": 12,
+      "when": "2026-10-01",
+      "rceptStart": "2026-10-06",
+      "rceptEnd": "2026-10-06",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-06 ~ 2026-10-06",
+        "result": "2026-10-13"
+      },
+      "types": [
+        {
+          "t": "84㎡",
+          "n": 12,
+          "price": 71900,
+          "general": 12,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 49,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910253&pblancNo=2026910253",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 양지7지구1단지지역주택조합 · 당첨자발표 2026-10-13 · 입주예정 203008. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910250-2026910250",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "신림스카이아파트(20차)",
+      "gu": "서울특별시 관악구 신림로 185(신림동,",
+      "brand": "신림 스카이 아파트",
+      "total": 4,
+      "general": 4,
+      "when": "2026-10-01",
+      "rceptStart": "2026-10-06",
+      "rceptEnd": "2026-10-06",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-06 ~ 2026-10-06",
+        "result": "2026-10-12"
+      },
+      "types": [
+        {
+          "t": "35㎡",
+          "n": 1,
+          "price": 45000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "38㎡",
+          "n": 1,
+          "price": 45000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "56㎡",
+          "n": 2,
+          "price": 59900,
+          "general": 2,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910250&pblancNo=2026910250",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 신림 스카이 아파트 · 당첨자발표 2026-10-12 · 입주예정 202611. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910249-2026910249",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "세종 우미 린 센터파크(행정중심복합도시 5-2생활권 S1블록, 글미마을 9단지)",
+      "gu": "세종특별자치시 다솜동 5204-1번지 일원(행정중심복합도시",
+      "brand": "세종에스원피에프브이 주식회사",
+      "total": 5,
+      "general": 5,
+      "when": "2026-10-01",
+      "rceptStart": "2026-10-06",
+      "rceptEnd": "2026-10-06",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-06 ~ 2026-10-06",
+        "result": "2026-10-12"
+      },
+      "types": [
+        {
+          "t": "84㎡A",
+          "n": 2,
+          "price": 63600,
+          "general": 2,
+          "special": 0
+        },
+        {
+          "t": "84㎡D",
+          "n": 2,
+          "price": 57550,
+          "general": 2,
+          "special": 0
+        },
+        {
+          "t": "84㎡E",
+          "n": 1,
+          "price": 60000,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910249&pblancNo=2026910249",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 세종에스원피에프브이 주식회사 · 당첨자발표 2026-10-12 · 입주예정 202903. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
       "id": "applyhome-remndr-2026910251-2026910251",
       "live": true,
       "source": "applyhome",
@@ -54629,110 +54792,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910181&pblancNo=2025910181",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 코리아신탁(주) · 당첨자발표 2025-10-20 · 입주예정 202905. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025930045-2025930045",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "불법행위 재공급",
-      "n": "익산자이 그랜드파크",
-      "gu": "전북특별자치도 익산시 마동 434",
-      "brand": "(주)한국토지신탁",
-      "total": 4,
-      "general": 4,
-      "when": "2025-10-01",
-      "rceptStart": "2025-10-10",
-      "rceptEnd": "2025-10-10",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-10 ~ 2025-10-10",
-        "result": "2025-10-16"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 1,
-          "price": 37500,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "91㎡",
-          "n": 1,
-          "price": 45400,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "122㎡",
-          "n": 2,
-          "price": 56100,
-          "general": 2,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025930045&pblancNo=2025930045",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)한국토지신탁 · 당첨자발표 2025-10-16 · 입주예정 202510. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910180-2025910180",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "익산자이 그랜드파크",
-      "gu": "전북특별자치도 익산시 마동 434",
-      "brand": "(주)한국토지신탁",
-      "total": 2,
-      "general": 2,
-      "when": "2025-10-01",
-      "rceptStart": "2025-10-10",
-      "rceptEnd": "2025-10-10",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-10 ~ 2025-10-10",
-        "result": "2025-10-16"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 2,
-          "price": 40800,
-          "general": 2,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910180&pblancNo=2025910180",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)한국토지신탁 · 당첨자발표 2025-10-16 · 입주예정 202510. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }

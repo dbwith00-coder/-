@@ -1,21 +1,21 @@
 {
-  "collectedAt": "2026-10-01T09:57:42.340Z",
+  "collectedAt": "2026-10-02T00:35:18.858Z",
   "sources": {
     "lh": {
       "ok": false,
       "count": 0,
       "rawCount": 0,
       "pickedFrom": null,
-      "ms": 1087,
+      "ms": 642,
       "error": "HTTP 400 · {\n  \"OpenAPI_ServiceResponse\": {\n    \"cmmMsgHeader\": {\n      \"errMsg\": \"NO_OPENAPI_SERVICE_ERROR\",\n      \"returnAuthMsg\": \"해당 오픈API 서비스가 없거나 폐기됨\",\n      \"return",
       "fields": []
     },
     "odc": {
       "ok": true,
-      "count": 738,
-      "rawCount": 738,
+      "count": 739,
+      "rawCount": 739,
       "pickedFrom": "data",
-      "ms": 44357,
+      "ms": 37888,
       "error": null,
       "fields": [
         "BSNS_MBY_NM",
@@ -79,8 +79,8 @@
         {
           "key": "remndr",
           "label": "무순위·잔여세대",
-          "count": 381,
-          "total": 381,
+          "count": 382,
+          "total": 382,
           "error": null
         }
       ]
