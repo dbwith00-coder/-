@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-04T09:32:03.129Z",
+  "collectedAt": "2026-10-04T23:52:15.987Z",
   "count": 745,
   "sites": [
     {
@@ -40995,9 +40995,25 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "84㎡A",
+          "n": 204,
+          "price": 57100,
+          "general": 204,
+          "special": 0
+        },
+        {
+          "t": "84㎡B",
+          "n": 143,
+          "price": 55150,
+          "general": 143,
+          "special": 0
+        },
+        {
+          "t": "111㎡",
+          "n": 138,
+          "price": 77560,
+          "general": 138,
+          "special": 0
         }
       ],
       "specialUnits": {},
@@ -44008,9 +44024,11 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "84㎡A",
+          "n": 1,
+          "price": 49200,
+          "general": 1,
+          "special": 0
         }
       ],
       "specialUnits": {},
@@ -45460,9 +45478,25 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "35㎡",
+          "n": 1,
+          "price": 45000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "38㎡",
+          "n": 1,
+          "price": 45000,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "56㎡",
+          "n": 2,
+          "price": 59900,
+          "general": 2,
+          "special": 0
         }
       ],
       "specialUnits": {},
