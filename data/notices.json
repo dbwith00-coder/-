@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-05T10:13:50.454Z",
+  "collectedAt": "2026-10-06T01:41:37.024Z",
   "count": 745,
   "sites": [
     {
@@ -34311,7 +34311,7 @@
       "when": "2026-10-01",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34356,7 +34356,7 @@
       "when": "2026-10-01",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34415,7 +34415,7 @@
       "when": "2026-10-01",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34474,7 +34474,7 @@
       "when": "2026-09-28",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34526,7 +34526,7 @@
       "when": "2026-09-23",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
