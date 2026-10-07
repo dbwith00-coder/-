@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-07T00:26:19.432Z",
+  "collectedAt": "2026-10-07T10:03:39.808Z",
   "count": 748,
   "sites": [
     {
@@ -37750,18 +37750,9 @@
       },
       "types": [
         {
-          "t": "84㎡K",
-          "n": 8,
-          "price": 125200,
-          "general": 8,
-          "special": 0
-        },
-        {
-          "t": "118㎡K",
-          "n": 14,
-          "price": 181200,
-          "general": 14,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
