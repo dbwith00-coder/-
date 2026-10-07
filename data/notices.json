@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-06T09:58:47.284Z",
-  "count": 745,
+  "collectedAt": "2026-10-07T00:26:19.432Z",
+  "count": 748,
   "sites": [
     {
       "id": "applyhome-apt-2026000498-2026000498",
@@ -34191,6 +34191,204 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 주식회사 이지건설 · 시공 주식회사 라인산업 · 당첨자발표 2025-10-28 · 입주예정 202802. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
+      "id": "applyhome-remndr-2026930034-2026930034",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "불법행위 재공급",
+      "n": "도안 푸르지오 디아델 31블록",
+      "gu": "대전광역시 유성구 용계동 73-48번지",
+      "brand": "케이비부동산신탁(주)",
+      "total": 4,
+      "general": 3,
+      "when": "2026-10-06",
+      "rceptStart": "2026-10-12",
+      "rceptEnd": "2026-10-13",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-10-12 ~ 2026-10-12",
+        "rank1": "",
+        "general": "2026-10-12 ~ 2026-10-13",
+        "result": "2026-10-20"
+      },
+      "types": [
+        {
+          "t": "59㎡",
+          "n": 1,
+          "price": 53200,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "84㎡A",
+          "n": 1,
+          "price": 73300,
+          "general": 0,
+          "special": 1
+        },
+        {
+          "t": "124㎡",
+          "n": 2,
+          "price": 101100,
+          "general": 2,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930034&pblancNo=2026930034",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 케이비부동산신탁(주) · 당첨자발표 2026-10-20 · 입주예정 202709. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026930033-2026930033",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "불법행위 재공급",
+      "n": "도안 푸르지오 디아델 29블록",
+      "gu": "대전광역시 유성구 용계동 70대",
+      "brand": "케이비부동산신탁(주)",
+      "total": 3,
+      "general": 2,
+      "when": "2026-10-06",
+      "rceptStart": "2026-10-12",
+      "rceptEnd": "2026-10-13",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-10-12 ~ 2026-10-12",
+        "rank1": "",
+        "general": "2026-10-12 ~ 2026-10-13",
+        "result": "2026-10-19"
+      },
+      "types": [
+        {
+          "t": "106㎡A",
+          "n": 1,
+          "price": 95400,
+          "general": 0,
+          "special": 1
+        },
+        {
+          "t": "124㎡",
+          "n": 2,
+          "price": 106900,
+          "general": 2,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930033&pblancNo=2026930033",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 케이비부동산신탁(주) · 당첨자발표 2026-10-19 · 입주예정 202709. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910256-2026910256",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "상동역 롯데캐슬 시그니처",
+      "gu": "경기도 부천시 원미구 상동",
+      "brand": "한국자산신탁(주)",
+      "total": 785,
+      "general": 785,
+      "when": "2026-10-06",
+      "rceptStart": "2026-10-12",
+      "rceptEnd": "2026-10-12",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-12 ~ 2026-10-12",
+        "result": "2026-10-15"
+      },
+      "types": [
+        {
+          "t": "84㎡A",
+          "n": 112,
+          "price": 162200,
+          "general": 112,
+          "special": 0
+        },
+        {
+          "t": "84㎡B",
+          "n": 45,
+          "price": 149900,
+          "general": 45,
+          "special": 0
+        },
+        {
+          "t": "84㎡C",
+          "n": 267,
+          "price": 159800,
+          "general": 267,
+          "special": 0
+        },
+        {
+          "t": "84㎡D",
+          "n": 62,
+          "price": 159900,
+          "general": 62,
+          "special": 0
+        },
+        {
+          "t": "84㎡E",
+          "n": 36,
+          "price": 161300,
+          "general": 36,
+          "special": 0
+        },
+        {
+          "t": "84㎡F",
+          "n": 262,
+          "price": 159900,
+          "general": 262,
+          "special": 0
+        },
+        {
+          "t": "187㎡P",
+          "n": 1,
+          "price": 572700,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 42,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910256&pblancNo=2026910256",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 한국자산신탁(주) · 당첨자발표 2026-10-15 · 입주예정 203203. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
       "id": "applyhome-remndr-2026930039-2026930039",
       "live": true,
       "source": "applyhome",
@@ -34207,7 +34405,7 @@
       "when": "2026-10-02",
       "rceptStart": "2026-10-07",
       "rceptEnd": "2026-10-07",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-10-07 ~ 2026-10-07",
         "rank1": "",
@@ -34259,7 +34457,7 @@
       "when": "2026-10-02",
       "rceptStart": "2026-10-07",
       "rceptEnd": "2026-10-08",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-10-07 ~ 2026-10-07",
         "rank1": "",
@@ -34311,7 +34509,7 @@
       "when": "2026-10-01",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34356,7 +34554,7 @@
       "when": "2026-10-01",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34415,7 +34613,7 @@
       "when": "2026-10-01",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34474,7 +34672,7 @@
       "when": "2026-09-28",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34526,7 +34724,7 @@
       "when": "2026-09-23",
       "rceptStart": "2026-10-06",
       "rceptEnd": "2026-10-06",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
