@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-07T10:03:39.808Z",
-  "count": 748,
+  "collectedAt": "2026-10-08T00:47:07.011Z",
+  "count": 749,
   "sites": [
     {
       "id": "applyhome-apt-2026000498-2026000498",
@@ -34191,6 +34191,51 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 주식회사 이지건설 · 시공 주식회사 라인산업 · 당첨자발표 2025-10-28 · 입주예정 202802. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
+      "id": "applyhome-remndr-2026930041-2026930041",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "불법행위 재공급",
+      "n": "세종 리더스포레 나릿재마을 1단지",
+      "gu": "세종특별자치시 나성동 835",
+      "brand": "(주) 한화",
+      "total": 1,
+      "general": 1,
+      "when": "2026-10-07",
+      "rceptStart": "2026-10-12",
+      "rceptEnd": "2026-10-12",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-10-12 ~ 2026-10-12",
+        "rank1": "",
+        "general": "2026-10-12 ~ 2026-10-12",
+        "result": "2026-10-15"
+      },
+      "types": [
+        {
+          "t": "84㎡D",
+          "n": 1,
+          "price": 34320,
+          "general": 0,
+          "special": 1
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930041&pblancNo=2026930041",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주) 한화 · 당첨자발표 2026-10-15 · 입주예정 202612. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
       "id": "applyhome-remndr-2026930034-2026930034",
       "live": true,
       "source": "applyhome",
@@ -34405,7 +34450,7 @@
       "when": "2026-10-02",
       "rceptStart": "2026-10-07",
       "rceptEnd": "2026-10-07",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-07 ~ 2026-10-07",
         "rank1": "",
@@ -37750,9 +37795,18 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "84㎡K",
+          "n": 8,
+          "price": 125200,
+          "general": 8,
+          "special": 0
+        },
+        {
+          "t": "118㎡K",
+          "n": 14,
+          "price": 181200,
+          "general": 14,
+          "special": 0
         }
       ],
       "specialUnits": {},
