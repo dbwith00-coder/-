@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-10T00:32:44.813Z",
+  "collectedAt": "2026-10-10T09:38:19.871Z",
   "count": 758,
   "sites": [
     {
@@ -14579,7 +14579,7 @@
       "gu": "인천광역시 남동구 구월동 1455번지",
       "brand": "현대엔지니어링(주)",
       "total": 496,
-      "general": 279,
+      "general": 496,
       "when": "2026-05-06",
       "rceptStart": "2026-05-18",
       "rceptEnd": "2026-05-20",
@@ -14592,49 +14592,12 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 248,
-          "price": 88800,
-          "general": 112,
-          "special": 136
-        },
-        {
-          "t": "84㎡B",
-          "n": 124,
-          "price": 91300,
-          "general": 57,
-          "special": 67
-        },
-        {
-          "t": "101㎡",
-          "n": 124,
-          "price": 112900,
-          "general": 110,
-          "special": 14
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
-      "specialUnits": {
-        "newly": {
-          "n": 85,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 33,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 48,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 14,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 37,
-          "label": "기관추천"
-        }
-      },
+      "specialUnits": {},
       "cut": 49,
       "cutEstimated": true,
       "cutAmt": 0,
