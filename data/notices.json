@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-10T09:38:19.871Z",
-  "count": 758,
+  "collectedAt": "2026-10-11T00:08:56.951Z",
+  "count": 755,
   "sites": [
     {
       "id": "applyhome-apt-2026000492-2026000492",
@@ -14579,7 +14579,7 @@
       "gu": "인천광역시 남동구 구월동 1455번지",
       "brand": "현대엔지니어링(주)",
       "total": 496,
-      "general": 496,
+      "general": 279,
       "when": "2026-05-06",
       "rceptStart": "2026-05-18",
       "rceptEnd": "2026-05-20",
@@ -14592,12 +14592,49 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "84㎡A",
+          "n": 248,
+          "price": 88800,
+          "general": 112,
+          "special": 136
+        },
+        {
+          "t": "84㎡B",
+          "n": 124,
+          "price": 91300,
+          "general": 57,
+          "special": 67
+        },
+        {
+          "t": "101㎡",
+          "n": 124,
+          "price": 112900,
+          "general": 110,
+          "special": 14
         }
       ],
-      "specialUnits": {},
+      "specialUnits": {
+        "newly": {
+          "n": 85,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 33,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 48,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 14,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 37,
+          "label": "기관추천"
+        }
+      },
       "cut": 49,
       "cutEstimated": true,
       "cutAmt": 0,
@@ -34820,173 +34857,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000443&pblancNo=2025000443",
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 구미중앙숲지역주택조합 · 시공 두산건설 주식회사 · 당첨자발표 2025-10-28 · 입주예정 202905. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
-    },
-    {
-      "id": "applyhome-apt-2025000462-2025000462",
-      "live": true,
-      "source": "applyhome",
-      "set": "apt",
-      "category": "APT",
-      "scoreless": false,
-      "supply": "민영",
-      "kind": "APT",
-      "n": "더파크 비스타동원",
-      "gu": "부산광역시 사상구 감전동 산1-9일원",
-      "brand": "(주)동원개발",
-      "total": 852,
-      "general": 385,
-      "when": "2025-10-10",
-      "rceptStart": "2025-10-20",
-      "rceptEnd": "2025-10-22",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "2025-10-20 ~ 2025-10-20",
-        "rank1": "2025-10-21 ~ 2025-10-21",
-        "general": "2025-10-20 ~ 2025-10-22",
-        "result": "2025-10-28"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 552,
-          "price": 59530,
-          "general": 248,
-          "special": 304
-        },
-        {
-          "t": "84㎡B",
-          "n": 143,
-          "price": 58930,
-          "general": 65,
-          "special": 78
-        },
-        {
-          "t": "84㎡C",
-          "n": 135,
-          "price": 58330,
-          "general": 60,
-          "special": 75
-        },
-        {
-          "t": "84㎡T",
-          "n": 22,
-          "price": 60730,
-          "general": 12,
-          "special": 10
-        }
-      ],
-      "specialUnits": {
-        "newly": {
-          "n": 196,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 76,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 85,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 25,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 85,
-          "label": "기관추천"
-        }
-      },
-      "cut": 45,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000462&pblancNo=2025000462",
-      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 대한토지신탁(주) · 시공 (주)동원개발 · 당첨자발표 2025-10-28 · 입주예정 202901. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
-    },
-    {
-      "id": "applyhome-apt-2025000449-2025000449",
-      "live": true,
-      "source": "applyhome",
-      "set": "apt",
-      "category": "APT",
-      "scoreless": false,
-      "supply": "민영",
-      "kind": "APT",
-      "n": "회천중앙역 파라곤",
-      "gu": "경기도 양주시 회천지구 A10-1BL",
-      "brand": "주식회사 라인산업",
-      "total": 845,
-      "general": 301,
-      "when": "2025-10-10",
-      "rceptStart": "2025-10-20",
-      "rceptEnd": "2025-10-22",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "2025-10-20 ~ 2025-10-20",
-        "rank1": "2025-10-21 ~ 2025-10-21",
-        "general": "2025-10-20 ~ 2025-10-22",
-        "result": "2025-10-28"
-      },
-      "types": [
-        {
-          "t": "72㎡",
-          "n": 50,
-          "price": 44500,
-          "general": 19,
-          "special": 31
-        },
-        {
-          "t": "84㎡A",
-          "n": 402,
-          "price": 51800,
-          "general": 142,
-          "special": 260
-        },
-        {
-          "t": "84㎡B",
-          "n": 393,
-          "price": 51700,
-          "general": 140,
-          "special": 253
-        }
-      ],
-      "specialUnits": {
-        "newly": {
-          "n": 193,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 159,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 84,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 24,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 84,
-          "label": "기관추천"
-        }
-      },
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "분양가상한제",
-        "대규모택지"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000449&pblancNo=2025000449",
-      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 주식회사 이지건설 · 시공 주식회사 라인산업 · 당첨자발표 2025-10-28 · 입주예정 202802. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
       "id": "applyhome-remndr-2026930041-2026930041",
@@ -56273,51 +56143,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910190&pblancNo=2025910190",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 주식회사 성우파트너스 · 당첨자발표 2025-10-24 · 입주예정 202511. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910181-2025910181",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "원주역 우미 린 더 스텔라",
-      "gu": "강원특별자치도 원주시 남원주역세권 AC-5블럭(무실동",
-      "brand": "코리아신탁(주)",
-      "total": 20,
-      "general": 20,
-      "when": "2025-10-10",
-      "rceptStart": "2025-10-15",
-      "rceptEnd": "2025-10-15",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-15 ~ 2025-10-15",
-        "result": "2025-10-20"
-      },
-      "types": [
-        {
-          "t": "84㎡D",
-          "n": 20,
-          "price": 48100,
-          "general": 20,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910181&pblancNo=2025910181",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 코리아신탁(주) · 당첨자발표 2025-10-20 · 입주예정 202905. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
