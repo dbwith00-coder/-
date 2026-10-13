@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-12T10:32:44.417Z",
-  "count": 755,
+  "collectedAt": "2026-10-13T02:28:13.675Z",
+  "count": 760,
   "sites": [
     {
       "id": "applyhome-apt-2026000492-2026000492",
@@ -361,7 +361,7 @@
       "when": "2026-10-08",
       "rceptStart": "2026-10-13",
       "rceptEnd": "2026-10-15",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-10-13 ~ 2026-10-13",
         "rank1": "2026-10-14 ~ 2026-10-14",
@@ -34859,6 +34859,238 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 구미중앙숲지역주택조합 · 시공 두산건설 주식회사 · 당첨자발표 2025-10-28 · 입주예정 202905. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
+      "id": "applyhome-remndr-2026910263-2026910263",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "청계 노르웨이숲(13차)",
+      "gu": "서울특별시 중구 황학동 1756번지",
+      "brand": "황학동청계지역주택조합",
+      "total": 10,
+      "general": 10,
+      "when": "2026-10-12",
+      "rceptStart": "2026-10-19",
+      "rceptEnd": "2026-10-19",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-19 ~ 2026-10-19",
+        "result": "2026-10-22"
+      },
+      "types": [
+        {
+          "t": "39㎡",
+          "n": 10,
+          "price": 76112,
+          "general": 10,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910263&pblancNo=2026910263",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 황학동청계지역주택조합 · 당첨자발표 2026-10-22 · 입주예정 202807. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910260-2026910260",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "의왕역 한신더휴",
+      "gu": "경기도 의왕시 삼동 244-1번지",
+      "brand": "우성4차아파트 및 주변가로주택정비사업조합",
+      "total": 8,
+      "general": 8,
+      "when": "2026-10-12",
+      "rceptStart": "2026-10-19",
+      "rceptEnd": "2026-10-19",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-19 ~ 2026-10-19",
+        "result": "2026-10-23"
+      },
+      "types": [
+        {
+          "t": "59㎡B",
+          "n": 2,
+          "price": 70000,
+          "general": 2,
+          "special": 0
+        },
+        {
+          "t": "84㎡B",
+          "n": 6,
+          "price": 94000,
+          "general": 6,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 58,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910260&pblancNo=2026910260",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 우성4차아파트 및 주변가로주택정비사업조합 · 당첨자발표 2026-10-23 · 입주예정 202906. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910259-2026910259",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "시티오씨엘 9단지 오션파크뷰",
+      "gu": "인천광역시 미추홀구 학익동 인천",
+      "brand": "코리아신탁(주)",
+      "total": 68,
+      "general": 68,
+      "when": "2026-10-12",
+      "rceptStart": "2026-10-19",
+      "rceptEnd": "2026-10-19",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-19 ~ 2026-10-19",
+        "result": "2026-10-22"
+      },
+      "types": [
+        {
+          "t": "75㎡",
+          "n": 68,
+          "price": 60090,
+          "general": 68,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 49,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910259&pblancNo=2026910259",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 코리아신탁(주) · 당첨자발표 2026-10-22 · 입주예정 203004. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910255-2026910255",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "e편한세상 에코델타 센터포인트(19BL)",
+      "gu": "부산광역시 강서구 강동동 에코델타시티",
+      "brand": "부산도시공사",
+      "total": 1,
+      "general": 1,
+      "when": "2026-10-12",
+      "rceptStart": "2026-10-19",
+      "rceptEnd": "2026-10-19",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-19 ~ 2026-10-19",
+        "result": "2026-10-22"
+      },
+      "types": [
+        {
+          "t": "84㎡A",
+          "n": 1,
+          "price": 47770,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910255&pblancNo=2026910255",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 부산도시공사 · 당첨자발표 2026-10-22 · 입주예정 202612. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
+      "id": "applyhome-remndr-2026910254-2026910254",
+      "live": true,
+      "source": "applyhome",
+      "set": "remndr",
+      "category": "무순위",
+      "scoreless": true,
+      "supply": "민영",
+      "kind": "무순위",
+      "n": "에코델타시티 푸르지오 센터파크(18BL)",
+      "gu": "부산광역시 강서구 강동동 에코델타시티",
+      "brand": "부산도시공사",
+      "total": 1,
+      "general": 1,
+      "when": "2026-10-12",
+      "rceptStart": "2026-10-19",
+      "rceptEnd": "2026-10-19",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "",
+        "general": "2026-10-19 ~ 2026-10-19",
+        "result": "2026-10-22"
+      },
+      "types": [
+        {
+          "t": "84㎡B",
+          "n": 1,
+          "price": 48400,
+          "general": 1,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "무순위"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910254&pblancNo=2026910254",
+      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 부산도시공사 · 당첨자발표 2026-10-22 · 입주예정 202612. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
+    },
+    {
       "id": "applyhome-remndr-2026930041-2026930041",
       "live": true,
       "source": "applyhome",
@@ -34875,7 +35107,7 @@
       "when": "2026-10-07",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-12",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-12 ~ 2026-10-12",
         "rank1": "",
@@ -35031,7 +35263,7 @@
       "when": "2026-10-06",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-12",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
