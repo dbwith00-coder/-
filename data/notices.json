@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-13T10:21:23.291Z",
-  "count": 760,
+  "collectedAt": "2026-10-14T00:11:42.949Z",
+  "count": 757,
   "sites": [
     {
       "id": "applyhome-apt-2026000492-2026000492",
@@ -1242,7 +1242,7 @@
       "when": "2026-10-02",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-13",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "2026-10-12 ~ 2026-10-12",
@@ -35152,7 +35152,7 @@
       "when": "2026-10-06",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-13",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-12 ~ 2026-10-12",
         "rank1": "",
@@ -35211,7 +35211,7 @@
       "when": "2026-10-06",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-13",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-12 ~ 2026-10-12",
         "rank1": "",
@@ -56198,183 +56198,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910188&pblancNo=2025910188",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 삼성물산(주) · 당첨자발표 2025-10-23 · 입주예정 202801. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025930047-2025930047",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "불법행위 재공급",
-      "n": "송도자이 더 스타 불법행위재공급",
-      "gu": "인천광역시 연수구 송도동 396-11",
-      "brand": "(주)무궁화신탁",
-      "total": 2,
-      "general": 2,
-      "when": "2025-10-13",
-      "rceptStart": "2025-10-20",
-      "rceptEnd": "2025-10-20",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-20 ~ 2025-10-20",
-        "result": "2025-10-23"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 1,
-          "price": 88050,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 1,
-          "price": 92730,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025930047&pblancNo=2025930047",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)무궁화신탁 · 당첨자발표 2025-10-23 · 입주예정 202603. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910191-2025910191",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "송도자이 더 스타(2차)",
-      "gu": "인천광역시 연수구 송도동 396-11",
-      "brand": "(주)무궁화신탁",
-      "total": 13,
-      "general": 13,
-      "when": "2025-10-13",
-      "rceptStart": "2025-10-21",
-      "rceptEnd": "2025-10-21",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-21 ~ 2025-10-21",
-        "result": "2025-10-24"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 7,
-          "price": 94600,
-          "general": 7,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 2,
-          "price": 94600,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "84㎡C",
-          "n": 2,
-          "price": 92690,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "84㎡D",
-          "n": 1,
-          "price": 90790,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "99㎡A",
-          "n": 1,
-          "price": 101410,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910191&pblancNo=2025910191",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 (주)무궁화신탁 · 당첨자발표 2025-10-24 · 입주예정 202603. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910190-2025910190",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "에스아이팰리스 올림픽공원(6차)",
-      "gu": "서울특별시 강동구 성내동 459-3",
-      "brand": "주식회사 성우파트너스",
-      "total": 9,
-      "general": 9,
-      "when": "2025-10-13",
-      "rceptStart": "2025-10-20",
-      "rceptEnd": "2025-10-21",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-20 ~ 2025-10-21",
-        "result": "2025-10-24"
-      },
-      "types": [
-        {
-          "t": "52㎡A",
-          "n": 8,
-          "price": 120000,
-          "general": 8,
-          "special": 0
-        },
-        {
-          "t": "52㎡T",
-          "n": 1,
-          "price": 114000,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 61,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910190&pblancNo=2025910190",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 주식회사 성우파트너스 · 당첨자발표 2025-10-24 · 입주예정 202511. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
