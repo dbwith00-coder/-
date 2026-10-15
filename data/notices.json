@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-14T23:46:09.325Z",
-  "count": 759,
+  "collectedAt": "2026-10-15T08:08:56.121Z",
+  "count": 755,
   "sites": [
     {
       "id": "applyhome-apt-2026000492-2026000492",
@@ -854,7 +854,7 @@
       "when": "2026-10-02",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-14",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-12 ~ 2026-10-12",
         "rank1": "2026-10-13 ~ 2026-10-13",
@@ -930,7 +930,7 @@
       "when": "2026-10-02",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-14",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-12 ~ 2026-10-12",
         "rank1": "2026-10-13 ~ 2026-10-13",
@@ -1020,7 +1020,7 @@
       "when": "2026-10-02",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-14",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-12 ~ 2026-10-12",
         "rank1": "2026-10-13 ~ 2026-10-13",
@@ -1124,7 +1124,7 @@
       "when": "2026-10-02",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-14",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-12 ~ 2026-10-12",
         "rank1": "2026-10-13 ~ 2026-10-13",
@@ -1314,7 +1314,7 @@
       "when": "2026-10-02",
       "rceptStart": "2026-10-12",
       "rceptEnd": "2026-10-14",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-12 ~ 2026-10-12",
         "rank1": "2026-10-13 ~ 2026-10-13",
@@ -56101,221 +56101,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910195&pblancNo=2025910195",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 망포역세권개발피에프브이㈜,㈜대우건설 · 당첨자발표 2025-10-24 · 입주예정 203002. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910193-2025910193",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "엘리프 검단 포레듀(AA32블록)",
-      "gu": "인천광역시 서구 검단신도시 AA32BL(마전동)",
-      "brand": "계룡건설산업(주)",
-      "total": 43,
-      "general": 43,
-      "when": "2025-10-14",
-      "rceptStart": "2025-10-20",
-      "rceptEnd": "2025-10-20",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-20 ~ 2025-10-20",
-        "result": "2025-10-23"
-      },
-      "types": [
-        {
-          "t": "64㎡C",
-          "n": 7,
-          "price": 50200,
-          "general": 7,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 34,
-          "price": 60900,
-          "general": 34,
-          "special": 0
-        },
-        {
-          "t": "110㎡S",
-          "n": 2,
-          "price": 98000,
-          "general": 2,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910193&pblancNo=2025910193",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 계룡건설산업(주) · 당첨자발표 2025-10-23 · 입주예정 202803. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910192-2025910192",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "천안 아이파크 시티 2단지",
-      "gu": "충청남도 천안시 서북구 부대동",
-      "brand": "주식회사 하나자산신탁",
-      "total": 635,
-      "general": 635,
-      "when": "2025-10-14",
-      "rceptStart": "2025-10-20",
-      "rceptEnd": "2025-10-20",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-20 ~ 2025-10-20",
-        "result": "2025-10-23"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 164,
-          "price": 57020,
-          "general": 164,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 157,
-          "price": 55630,
-          "general": 157,
-          "special": 0
-        },
-        {
-          "t": "102㎡",
-          "n": 265,
-          "price": 68160,
-          "general": 265,
-          "special": 0
-        },
-        {
-          "t": "118㎡",
-          "n": 49,
-          "price": 79770,
-          "general": 49,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910192&pblancNo=2025910192",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 주식회사 하나자산신탁 · 당첨자발표 2025-10-23 · 입주예정 202808. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910189-2025910189",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "래미안 센트리폴(2BL)",
-      "gu": "인천광역시 연수구 옥련동 송도역세권",
-      "brand": "삼성물산(주)",
-      "total": 1,
-      "general": 1,
-      "when": "2025-10-14",
-      "rceptStart": "2025-10-20",
-      "rceptEnd": "2025-10-20",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-20 ~ 2025-10-20",
-        "result": "2025-10-23"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 1,
-          "price": 55500,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910189&pblancNo=2025910189",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 삼성물산(주) · 당첨자발표 2025-10-23 · 입주예정 202801. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910188-2025910188",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "래미안 센트리폴(1BL)",
-      "gu": "인천광역시 연수구 옥련동 송도역세권",
-      "brand": "삼성물산(주)",
-      "total": 1,
-      "general": 1,
-      "when": "2025-10-14",
-      "rceptStart": "2025-10-20",
-      "rceptEnd": "2025-10-20",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-20 ~ 2025-10-20",
-        "result": "2025-10-23"
-      },
-      "types": [
-        {
-          "t": "84㎡A",
-          "n": 1,
-          "price": 70300,
-          "general": 1,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 49,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910188&pblancNo=2025910188",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 삼성물산(주) · 당첨자발표 2025-10-23 · 입주예정 202801. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
