@@ -1,7 +1,619 @@
 {
-  "collectedAt": "2026-10-16T08:01:34.652Z",
-  "count": 756,
+  "collectedAt": "2026-10-16T23:18:31.402Z",
+  "count": 762,
   "sites": [
+    {
+      "id": "applyhome-apt-2026000514-2026000514",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "트리븐센텀 2단지",
+      "gu": "부산광역시 해운대구 반여동 610-5번지",
+      "brand": "두산에너빌리티(주)",
+      "total": 792,
+      "general": 422,
+      "when": "2026-10-16",
+      "rceptStart": "2026-10-26",
+      "rceptEnd": "2026-10-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-10-26 ~ 2026-10-26",
+        "rank1": "2026-10-27 ~ 2026-10-27",
+        "general": "2026-10-26 ~ 2026-10-28",
+        "result": "2026-11-05"
+      },
+      "types": [
+        {
+          "t": "75㎡",
+          "n": 65,
+          "price": 69280,
+          "general": 27,
+          "special": 38
+        },
+        {
+          "t": "84㎡A",
+          "n": 385,
+          "price": 77200,
+          "general": 171,
+          "special": 214
+        },
+        {
+          "t": "84㎡B",
+          "n": 154,
+          "price": 75930,
+          "general": 70,
+          "special": 84
+        },
+        {
+          "t": "84㎡C",
+          "n": 24,
+          "price": 76090,
+          "general": 11,
+          "special": 13
+        },
+        {
+          "t": "114㎡",
+          "n": 164,
+          "price": 101830,
+          "general": 143,
+          "special": 21
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 95,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 45,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 79,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 25,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 63,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 63,
+          "label": "신생아"
+        }
+      },
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000514&pblancNo=2026000514",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 주식회사 하나자산신탁 · 시공 두산에너빌리티(주) · 당첨자발표 2026-11-05 · 입주예정 203102. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-apt-2026000513-2026000513",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "트리븐센텀 1단지",
+      "gu": "부산광역시 해운대구 반여동 1167-3번지",
+      "brand": "두산에너빌리티(주)",
+      "total": 852,
+      "general": 447,
+      "when": "2026-10-16",
+      "rceptStart": "2026-10-26",
+      "rceptEnd": "2026-10-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-10-26 ~ 2026-10-26",
+        "rank1": "2026-10-27 ~ 2026-10-27",
+        "general": "2026-10-26 ~ 2026-10-28",
+        "result": "2026-11-04"
+      },
+      "types": [
+        {
+          "t": "75㎡",
+          "n": 79,
+          "price": 68940,
+          "general": 35,
+          "special": 44
+        },
+        {
+          "t": "84㎡A",
+          "n": 433,
+          "price": 77970,
+          "general": 196,
+          "special": 237
+        },
+        {
+          "t": "84㎡B",
+          "n": 156,
+          "price": 75930,
+          "general": 69,
+          "special": 87
+        },
+        {
+          "t": "84㎡C",
+          "n": 28,
+          "price": 76460,
+          "general": 12,
+          "special": 16
+        },
+        {
+          "t": "114㎡",
+          "n": 156,
+          "price": 102850,
+          "general": 135,
+          "special": 21
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 104,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 49,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 86,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 26,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 70,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 70,
+          "label": "신생아"
+        }
+      },
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000513&pblancNo=2026000513",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 주식회사 하나자산신탁 · 시공 두산에너빌리티(주) · 당첨자발표 2026-11-04 · 입주예정 203102. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-apt-2026000509-2026000509",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "아크메르 동탄 99",
+      "gu": "경기도 화성특례시 동탄구 반송동",
+      "brand": "(주)포스코이앤씨",
+      "total": 996,
+      "general": 487,
+      "when": "2026-10-16",
+      "rceptStart": "2026-10-26",
+      "rceptEnd": "2026-10-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-10-26 ~ 2026-10-26",
+        "rank1": "2026-10-27 ~ 2026-10-27",
+        "general": "2026-10-26 ~ 2026-10-28",
+        "result": "2026-11-04"
+      },
+      "types": [
+        {
+          "t": "84㎡A",
+          "n": 334,
+          "price": 171420,
+          "general": 149,
+          "special": 185
+        },
+        {
+          "t": "84㎡B",
+          "n": 84,
+          "price": 171680,
+          "general": 39,
+          "special": 45
+        },
+        {
+          "t": "84㎡C",
+          "n": 166,
+          "price": 171320,
+          "general": 73,
+          "special": 93
+        },
+        {
+          "t": "84㎡D",
+          "n": 164,
+          "price": 171380,
+          "general": 76,
+          "special": 88
+        },
+        {
+          "t": "84㎡E",
+          "n": 164,
+          "price": 171520,
+          "general": 76,
+          "special": 88
+        },
+        {
+          "t": "99㎡A",
+          "n": 78,
+          "price": 191440,
+          "general": 68,
+          "special": 10
+        },
+        {
+          "t": "148㎡E",
+          "n": 1,
+          "price": 316460,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "158㎡D",
+          "n": 1,
+          "price": 337600,
+          "general": 1,
+          "special": 0
+        },
+        {
+          "t": "162㎡C",
+          "n": 4,
+          "price": 347450,
+          "general": 4,
+          "special": 0
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 136,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 63,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 99,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 29,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 91,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 91,
+          "label": "신생아"
+        }
+      },
+      "cut": 58,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "투기과열지구",
+        "조정대상지역",
+        "대규모택지"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000509&pblancNo=2026000509",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 케이비부동산신탁(주) · 시공 (주)포스코이앤씨 · 당첨자발표 2026-11-04 · 입주예정 203201. 예상 당첨선(58점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-apt-2026000508-2026000508",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "아크메르 동탄 95",
+      "gu": "경기도 화성특례시 동탄구 반송동",
+      "brand": "(주)포스코이앤씨",
+      "total": 812,
+      "general": 595,
+      "when": "2026-10-16",
+      "rceptStart": "2026-10-26",
+      "rceptEnd": "2026-10-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-10-26 ~ 2026-10-26",
+        "rank1": "2026-10-27 ~ 2026-10-27",
+        "general": "2026-10-26 ~ 2026-10-28",
+        "result": "2026-11-03"
+      },
+      "types": [
+        {
+          "t": "84㎡C",
+          "n": 180,
+          "price": 171210,
+          "general": 82,
+          "special": 98
+        },
+        {
+          "t": "84㎡F",
+          "n": 90,
+          "price": 171530,
+          "general": 41,
+          "special": 49
+        },
+        {
+          "t": "116㎡A",
+          "n": 92,
+          "price": 218670,
+          "general": 80,
+          "special": 12
+        },
+        {
+          "t": "116㎡B",
+          "n": 180,
+          "price": 221350,
+          "general": 157,
+          "special": 23
+        },
+        {
+          "t": "128㎡A",
+          "n": 90,
+          "price": 243610,
+          "general": 78,
+          "special": 12
+        },
+        {
+          "t": "129㎡B",
+          "n": 176,
+          "price": 248290,
+          "general": 153,
+          "special": 23
+        },
+        {
+          "t": "184㎡B",
+          "n": 2,
+          "price": 391150,
+          "general": 2,
+          "special": 0
+        },
+        {
+          "t": "188㎡A",
+          "n": 2,
+          "price": 401320,
+          "general": 2,
+          "special": 0
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 40,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 18,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 81,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 24,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 27,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 27,
+          "label": "신생아"
+        }
+      },
+      "cut": 58,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "투기과열지구",
+        "조정대상지역",
+        "대규모택지"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000508&pblancNo=2026000508",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 케이비부동산신탁(주) · 시공 (주)포스코이앤씨 · 당첨자발표 2026-11-03 · 입주예정 203201. 예상 당첨선(58점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-apt-2026000507-2026000507",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "광안센텀 비스타동원(조합원 취소분)",
+      "gu": "부산광역시 수영구 광안동 971",
+      "brand": "(주)동원개발",
+      "total": 39,
+      "general": 39,
+      "when": "2026-10-16",
+      "rceptStart": "2026-10-26",
+      "rceptEnd": "2026-10-27",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "2026-10-26 ~ 2026-10-26",
+        "general": "2026-10-26 ~ 2026-10-27",
+        "result": "2026-11-02"
+      },
+      "types": [
+        {
+          "t": "59㎡",
+          "n": 13,
+          "price": 67400,
+          "general": 13,
+          "special": 0
+        },
+        {
+          "t": "59㎡C",
+          "n": 5,
+          "price": 66100,
+          "general": 5,
+          "special": 0
+        },
+        {
+          "t": "84㎡A",
+          "n": 17,
+          "price": 91400,
+          "general": 17,
+          "special": 0
+        },
+        {
+          "t": "84㎡B",
+          "n": 4,
+          "price": 86700,
+          "general": 4,
+          "special": 0
+        }
+      ],
+      "specialUnits": {},
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000507&pblancNo=2026000507",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 광안지역주택조합 · 시공 (주)동원개발 · 당첨자발표 2026-11-02 · 입주예정 202709. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-apt-2026000495-2026000495",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "민영",
+      "kind": "APT",
+      "n": "연산 센텀 월드메르디앙",
+      "gu": "부산광역시 연제구 연산동 418-8(외1필지)",
+      "brand": "주식회사 명린종합건설",
+      "total": 144,
+      "general": 66,
+      "when": "2026-10-16",
+      "rceptStart": "2026-10-26",
+      "rceptEnd": "2026-10-28",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "2026-10-26 ~ 2026-10-26",
+        "rank1": "2026-10-27 ~ 2026-10-27",
+        "general": "2026-10-26 ~ 2026-10-28",
+        "result": "2026-11-04"
+      },
+      "types": [
+        {
+          "t": "59㎡",
+          "n": 16,
+          "price": 42316,
+          "general": 9,
+          "special": 7
+        },
+        {
+          "t": "66㎡A",
+          "n": 15,
+          "price": 48792,
+          "general": 8,
+          "special": 7
+        },
+        {
+          "t": "66㎡B",
+          "n": 29,
+          "price": 49278,
+          "general": 12,
+          "special": 17
+        },
+        {
+          "t": "66㎡C",
+          "n": 37,
+          "price": 46016,
+          "general": 16,
+          "special": 21
+        },
+        {
+          "t": "73㎡",
+          "n": 29,
+          "price": 55250,
+          "general": 14,
+          "special": 15
+        },
+        {
+          "t": "82㎡",
+          "n": 18,
+          "price": 61620,
+          "general": 7,
+          "special": 11
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 22,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 10,
+          "label": "생애최초"
+        },
+        "multi": {
+          "n": 14,
+          "label": "다자녀가구"
+        },
+        "old": {
+          "n": 4,
+          "label": "노부모부양"
+        },
+        "inst": {
+          "n": 14,
+          "label": "기관추천"
+        },
+        "baby": {
+          "n": 14,
+          "label": "신생아"
+        }
+      },
+      "cut": 45,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000495&pblancNo=2026000495",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 연산동태광맨션가로주택정비사업조합 · 시공 주식회사 명린종합건설 · 당첨자발표 2026-11-04 · 입주예정 202904. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
     {
       "id": "applyhome-apt-2026000455-2026000455",
       "live": true,
@@ -41872,9 +42484,11 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "84㎡A",
+          "n": 126,
+          "price": 56710,
+          "general": 126,
+          "special": 0
         }
       ],
       "specialUnits": {},
@@ -41915,9 +42529,46 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "59㎡A",
+          "n": 186,
+          "price": 86640,
+          "general": 186,
+          "special": 0
+        },
+        {
+          "t": "59㎡B",
+          "n": 45,
+          "price": 85610,
+          "general": 45,
+          "special": 0
+        },
+        {
+          "t": "74㎡A",
+          "n": 117,
+          "price": 101960,
+          "general": 117,
+          "special": 0
+        },
+        {
+          "t": "74㎡B",
+          "n": 68,
+          "price": 100850,
+          "general": 68,
+          "special": 0
+        },
+        {
+          "t": "84㎡A",
+          "n": 45,
+          "price": 113900,
+          "general": 45,
+          "special": 0
+        },
+        {
+          "t": "84㎡B",
+          "n": 24,
+          "price": 110190,
+          "general": 24,
+          "special": 0
         }
       ],
       "specialUnits": {},
@@ -43495,9 +44146,18 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "84㎡A",
+          "n": 503,
+          "price": 77690,
+          "general": 503,
+          "special": 0
+        },
+        {
+          "t": "115㎡A",
+          "n": 154,
+          "price": 106990,
+          "general": 154,
+          "special": 0
         }
       ],
       "specialUnits": {},
