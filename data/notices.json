@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-15T23:34:42.101Z",
-  "count": 758,
+  "collectedAt": "2026-10-16T08:01:34.652Z",
+  "count": 756,
   "sites": [
     {
       "id": "applyhome-apt-2026000455-2026000455",
@@ -472,7 +472,7 @@
       "when": "2026-10-08",
       "rceptStart": "2026-10-13",
       "rceptEnd": "2026-10-15",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "2026-10-13 ~ 2026-10-13",
         "rank1": "2026-10-14 ~ 2026-10-14",
@@ -34856,120 +34856,6 @@
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 운천주공재건축정비사업조합 · 시공 두산건설 주식회사 · 당첨자발표 2025-11-05 · 입주예정 202902. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
-      "id": "applyhome-apt-2025000443-2025000443",
-      "live": true,
-      "source": "applyhome",
-      "set": "apt",
-      "category": "APT",
-      "scoreless": false,
-      "supply": "민영",
-      "kind": "APT",
-      "n": "두산위브더제니스 구미",
-      "gu": "경상북도 구미시 광평동 227번지",
-      "brand": "두산건설 주식회사",
-      "total": 403,
-      "general": 213,
-      "when": "2025-10-15",
-      "rceptStart": "2025-10-20",
-      "rceptEnd": "2025-10-22",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "2025-10-20 ~ 2025-10-20",
-        "rank1": "2025-10-21 ~ 2025-10-21",
-        "general": "2025-10-20 ~ 2025-10-22",
-        "result": "2025-10-28"
-      },
-      "types": [
-        {
-          "t": "59㎡",
-          "n": 26,
-          "price": 37830,
-          "general": 11,
-          "special": 15
-        },
-        {
-          "t": "74㎡A",
-          "n": 8,
-          "price": 46960,
-          "general": 3,
-          "special": 5
-        },
-        {
-          "t": "74㎡B",
-          "n": 4,
-          "price": 46740,
-          "general": 3,
-          "special": 1
-        },
-        {
-          "t": "84㎡A",
-          "n": 184,
-          "price": 53380,
-          "general": 84,
-          "special": 100
-        },
-        {
-          "t": "84㎡B",
-          "n": 113,
-          "price": 52950,
-          "general": 52,
-          "special": 61
-        },
-        {
-          "t": "108㎡",
-          "n": 64,
-          "price": 71700,
-          "general": 56,
-          "special": 8
-        },
-        {
-          "t": "152㎡A",
-          "n": 2,
-          "price": 130810,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "152㎡B",
-          "n": 2,
-          "price": 130810,
-          "general": 2,
-          "special": 0
-        }
-      ],
-      "specialUnits": {
-        "newly": {
-          "n": 77,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 30,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 39,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 11,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 33,
-          "label": "기관추천"
-        }
-      },
-      "cut": 42,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2025000443&pblancNo=2025000443",
-      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 구미중앙숲지역주택조합 · 시공 두산건설 주식회사 · 당첨자발표 2025-10-28 · 입주예정 202905. 예상 당첨선(42점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
-    },
-    {
       "id": "applyhome-remndr-2026910264-2026910264",
       "live": true,
       "source": "applyhome",
@@ -41986,11 +41872,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 126,
-          "price": 56710,
-          "general": 126,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -42031,46 +41915,9 @@
       },
       "types": [
         {
-          "t": "59㎡A",
-          "n": 186,
-          "price": 86640,
-          "general": 186,
-          "special": 0
-        },
-        {
-          "t": "59㎡B",
-          "n": 45,
-          "price": 85610,
-          "general": 45,
-          "special": 0
-        },
-        {
-          "t": "74㎡A",
-          "n": 117,
-          "price": 101960,
-          "general": 117,
-          "special": 0
-        },
-        {
-          "t": "74㎡B",
-          "n": 68,
-          "price": 100850,
-          "general": 68,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 45,
-          "price": 113900,
-          "general": 45,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 24,
-          "price": 110190,
-          "general": 24,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -43648,18 +43495,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 503,
-          "price": 77690,
-          "general": 503,
-          "special": 0
-        },
-        {
-          "t": "115㎡A",
-          "n": 154,
-          "price": 106990,
-          "general": 154,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -56313,51 +56151,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910196&pblancNo=2025910196",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 주식회사 하나자산신탁 · 당첨자발표 2025-10-27 · 입주예정 202809. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910195-2025910195",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "망포역 푸르지오 르마크",
-      "gu": "경기도 수원시 영통구 영통동",
-      "brand": "망포역세권개발피에프브이㈜,㈜대우건설",
-      "total": 24,
-      "general": 24,
-      "when": "2025-10-15",
-      "rceptStart": "2025-10-21",
-      "rceptEnd": "2025-10-21",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-21 ~ 2025-10-21",
-        "result": "2025-10-24"
-      },
-      "types": [
-        {
-          "t": "84㎡B",
-          "n": 24,
-          "price": 121290,
-          "general": 24,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 58,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910195&pblancNo=2025910195",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 망포역세권개발피에프브이㈜,㈜대우건설 · 당첨자발표 2025-10-24 · 입주예정 203002. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
