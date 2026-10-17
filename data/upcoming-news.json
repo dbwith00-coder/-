@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-10-16T23:18:34.369Z",
+ "collectedAt": "2026-10-17T07:39:57.386Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -44,8 +44,8 @@
    "error": null
   }
  ],
- "articleCount": 626,
- "count": 30,
+ "articleCount": 639,
+ "count": 32,
  "candidates": [
   {
    "name": "청라 아크원 푸르지오",
@@ -72,7 +72,7 @@
     {
      "title": "청라에 10년 만의 대단지…'청라 아크원 푸르지오' 이달 분양",
      "source": "뉴시스",
-     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9LRXFDcUltclcwNThXbXVYLWRiaThDdEhjOFZkUjBROFYtQ1dWOTN1NXRZSVhyaXEyTnM1WV84U253akNfUkU0M1Bqc25LY29sZGtxVlZEaGxBdkZmN05wRdIBeEFVX3lxTE1MMDdRYkRhTkQ2YlVPSWJkTUsyZENwU01HbVNLT3RHd0JYZ3o5dGJFQmpFVmlYbGlsVkdHLUtWYnpScWZGcjJCeC1BaWxzV25hSVljTUFtZ3BqMXpPX3VESl9VTUItNGZtX291R1N2eEpnbzlXN1gySQ?oc=5",
+     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE54TDVTeTNPTGJVTkNMLXlwM3ZEbHNxWmJwbDBmakY4SmszQlJHNENtMWJfcUVxbDFMa2p0N081Si16bXh0TGVNYWJkd2NfX0RoalZFd0Q5clkwSkI3c041M2dn?oc=5",
      "pubDate": "Sat, 03 Oct 2026 07:00:00 GMT"
     }
    ],
@@ -121,7 +121,7 @@
   },
   {
    "name": "격차 축소더샵 천안라크원",
-   "mentions": 3,
+   "mentions": 4,
    "articles": [
     {
      "title": "천안 불당·성성동 아파트값 격차 축소...'더샵 천안라크원' 10월 분양 예정",
@@ -134,11 +134,45 @@
      "source": "포스코그룹 뉴스룸",
      "link": "https://news.google.com/rss/articles/CBMiswJBVV95cUxQSGdLdDhIYjdNREJaQ2o2dGhUbWNfUG9hekVFQS11UDZOWEN6R0JMWng3VjV3amthZHc0TmtvZzNuSUdJcEMyNWZyREJNZ19TdG5HY0dNQjF2U0VvbndRLWtfWkRnMDQzbTJpbmxJSkJScVA5SUhlaEtTRnFENW9zTnE2VGw4LXY0alBLYTZKVkNvYWxfeUNZV2phMVg2STI3TjhzY1Y2b3lhYWd6UURMcXp6d0VadEtLWGQ4M0ZsLWllVDVjWktYSnhkRG9HVWhNSU8tcEM3YVhpUlhSY2o5T0hBdUVWSzZOelRjTFVCU0JibE9YamI5eWdidG5xU1dnSng5aXpMZno5b2QxVWNjdkNoSVpPSDZEMVRBbjRJZkZKeEdtWXlrQ2dCYWpHb0VDdjRV?oc=5",
      "pubDate": "Tue, 01 Sep 2026 07:00:00 GMT"
+    },
+    {
+     "title": "포스코이앤씨, 천안 부대동 ‘더샵 천안라크원’ 10월 분양 예정",
+     "source": "부동산신문",
+     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5uU21wY1NCM29heHUwVGtBM0JaMXlWMmJfekJBYmctQ3JSVmpmR1lrQVRfc3Y4RFJab0pWd3YyajE1TFJFRE14ejZlNFd1YUd2aTNDSTgxSzY2UVRoX1FBVDV2amNwM3dq?oc=5",
+     "pubDate": "Thu, 03 Sep 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
     "격차 축소더샵 천안라크원",
     "더샵 천안라크원"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "힐스테이트 성남메트로블",
+   "mentions": 3,
+   "articles": [
+    {
+     "title": "현대엔지니어링, ‘힐스테이트 성남메트로블’ 이달 분양 예정",
+     "source": "매일일보",
+     "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1oN3dhUEVqQUNuOUFXTGdhbjdMaFM5dFVTWDgwdHd3cWh2dU13YUMyUkpIOUsyNHBzQlY2TTQxMTlGNndJeWE3YUQ4RU9vc0N4Z0RWby1Yem5wbDJpNzZuX1l2bHk?oc=5",
+     "pubDate": "Thu, 01 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "현대엔지니어링, ‘힐스테이트 성남메트로블’ 10월 분양 예정",
+     "source": "뉴스락",
+     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE44MjZtNkxxUVZqZ0stVmdtZ2VDazVlMVpkYURqaENaRHVxeWZnUHZxaXM1c0l2Y0RxM2c0dmN6QnVZMWxGZmtJQlAya3czN0VDVlkyUGFyaGJQX3BXR0pKNEt3SGdmOXFUc3VrZg?oc=5",
+     "pubDate": "Wed, 30 Sep 2026 07:00:00 GMT"
+    },
+    {
+     "title": "현대엔지니어링, ‘힐스테이트 성남메트로블’ 189실 10월 분양 예정",
+     "source": "ER 이코노믹리뷰",
+     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1ZR2dZd2RIMWZCRElseC1NOXoxT2UxUU1RSjltT1FuVlJVWHBhcEViWUFpcW8wcTE3aUJFQklnUFBkOHZvay15ck9LbDJsajJkendjaHZTUHVrNV84ZUhtdG9KaEhnX0k2RnJYSw?oc=5",
+     "pubDate": "Mon, 21 Sep 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "힐스테이트 성남메트로블"
    ],
    "freq": {}
   },
@@ -190,6 +224,23 @@
    "aliases": [
     "GTX 운정중앙역 시티프라디움",
     "운정중앙역 시티프라디움"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "광주 힐스테이트 삼동역",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "현대건설, 경기도 광주 '힐스테이트 삼동역' 565세대 다음달 분양",
+     "source": "베이비타임즈",
+     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAxV3RUc19aX1lJNVhnM2U5ZTlVVTFJYUxhNWdZbS1VZEdlRXBvZDV4bnVlMFhsZHAyZHB6ZXZBUGE1Q21OVlY3enZyaUdnMnBPdFVhS2FhVEVtdTdISzFfTmVzSFVlRDVibXZCaA?oc=5",
+     "pubDate": "Thu, 30 Jul 2020 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "광주 힐스테이트 삼동역",
+    "힐스테이트 삼동역"
    ],
    "freq": {}
   },
@@ -262,6 +313,28 @@
    "freq": {}
   },
   {
+   "name": "부대동 더샵 천안라크원",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "포스코이앤씨, 천안 부대동 ‘더샵 천안라크원’ 10월 분양 예정",
+     "source": "포스코그룹 뉴스룸",
+     "link": "https://news.google.com/rss/articles/CBMiswJBVV95cUxQSGdLdDhIYjdNREJaQ2o2dGhUbWNfUG9hekVFQS11UDZOWEN6R0JMWng3VjV3amthZHc0TmtvZzNuSUdJcEMyNWZyREJNZ19TdG5HY0dNQjF2U0VvbndRLWtfWkRnMDQzbTJpbmxJSkJScVA5SUhlaEtTRnFENW9zTnE2VGw4LXY0alBLYTZKVkNvYWxfeUNZV2phMVg2STI3TjhzY1Y2b3lhYWd6UURMcXp6d0VadEtLWGQ4M0ZsLWllVDVjWktYSnhkRG9HVWhNSU8tcEM3YVhpUlhSY2o5T0hBdUVWSzZOelRjTFVCU0JibE9YamI5eWdidG5xU1dnSng5aXpMZno5b2QxVWNjdkNoSVpPSDZEMVRBbjRJZkZKeEdtWXlrQ2dCYWpHb0VDdjRV?oc=5",
+     "pubDate": "Tue, 01 Sep 2026 07:00:00 GMT"
+    },
+    {
+     "title": "포스코이앤씨, 천안 부대동 ‘더샵 천안라크원’ 10월 분양 예정",
+     "source": "부동산신문",
+     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5uU21wY1NCM29heHUwVGtBM0JaMXlWMmJfekJBYmctQ3JSVmpmR1lrQVRfc3Y4RFJab0pWd3YyajE1TFJFRE14ejZlNFd1YUd2aTNDSTgxSzY2UVRoX1FBVDV2amNwM3dq?oc=5",
+     "pubDate": "Thu, 03 Sep 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "부대동 더샵 천안라크원"
+   ],
+   "freq": {}
+  },
+  {
    "name": "부산 래미안 어반파크",
    "mentions": 2,
    "articles": [
@@ -292,28 +365,6 @@
    "aliases": [
     "부산 힐스테이트 연산",
     "힐스테이트 연산"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "블랑 써밋",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "대우건설, 블랑 써밋 74 오피스텔 이달 분양",
-     "source": "한국주택경제신문",
-     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1vNUNONFBoY3FOX3dLS05DOW9pRVlaNkh0S1VKRnBOSGEtRDQ2S191MGRmMVhEREFad25CU0VTWnA0Q05oR3NpYzltRDVBSEJtNWlfcHp6NzJiQkw1Njh3Mng4a0pkbkFf?oc=5",
-     "pubDate": "Thu, 06 Feb 2025 08:00:00 GMT"
-    },
-    {
-     "title": "대우건설, 부산 하이엔드 아파트 '블랑 써밋 74' 다음달 공급",
-     "source": "팍스경제TV",
-     "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBuWWZIZUotSXhCa2Zla3BYdWEwRzNtM041UHM5MWVyRmttTVpVWmtGeXg4dHNLZERnNU5UbTNLTnRFcWhkVkUxVlVxTXUxYlpVbktPdEhXZ3VtR3RfQTM2a2o5WVNYNFps?oc=5",
-     "pubDate": "Tue, 14 May 2024 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "블랑 써밋"
    ],
    "freq": {}
   },
@@ -493,6 +544,28 @@
    "freq": {}
   },
   {
+   "name": "의정부 e편한세상 신곡",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "의정부 ‘e편한세상 신곡 시그니처뷰’ 단지 내 상가 분양 예정…주거·교육 수요 갖춘 입지",
+     "source": "미주중앙일보",
+     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VUG80ZTBfellGbjB5WTFIcGl1ZG8yYlBNVjl4dy1FVklwMjJReHY0cTdhSm5GTXZUU0FPRkgzY053eS1ha1hWRFBzemQzQVJscjdBUlpVZ280MmtwN3ZfVXV3?oc=5",
+     "pubDate": "Tue, 04 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "풍부한 주거 배후수요 갖춘 의정부 ‘e편한세상 신곡 시그니처뷰 단지 내 상가’ 분양 예정",
+     "source": "아시아경제",
+     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5WUTR0aXdNaXVDdTkwOUJHUG1KcG8tS2l6OTZGUjZ3NlFaQThfNmVUcHYtczF0dTJHZTlCRVFlU3ZuZmt1WXZaSF94bkRWeWJ6NFZaN1ZrcnczcE1weVEwaQ?oc=5",
+     "pubDate": "Tue, 11 Aug 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "의정부 e편한세상 신곡"
+   ],
+   "freq": {}
+  },
+  {
    "name": "장안지구 중흥S클래스 21일부터",
    "mentions": 2,
    "articles": [
@@ -578,7 +651,7 @@
      "title": "우미건설, ‘평택 고덕 우미린 더 프리미어’ 하반기 분양 예정",
      "source": "브릿지경제",
      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE55NkRtS19UREZnYVhYMjlPSXVFOGlYdW9kZUdOQzNJWldtWXZKUGZ3c0M0cU1QRVBlRHViX0RBOWFOcHRNbEh3eUc4c1AwbU9LTVFMOWxOTjc0QQ?oc=5",
-     "pubDate": "Thu, 01 Oct 2026 02:43:00 GMT"
+     "pubDate": "Thu, 01 Oct 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
@@ -601,28 +674,6 @@
    "aliases": [
     "화성 향남 롯데캐슬 시그니처",
     "향남 롯데캐슬 시그니처"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "힐스테이트 성남메트로블",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "현대엔지니어링, ‘힐스테이트 성남메트로블’ 이달 분양 예정",
-     "source": "매일일보",
-     "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1oN3dhUEVqQUNuOUFXTGdhbjdMaFM5dFVTWDgwdHd3cWh2dU13YUMyUkpIOUsyNHBzQlY2TTQxMTlGNndJeWE3YUQ4RU9vc0N4Z0RWby1Yem5wbDJpNzZuX1l2bHk?oc=5",
-     "pubDate": "Thu, 01 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "현대엔지니어링, ‘힐스테이트 성남메트로블’ 10월 분양 예정",
-     "source": "뉴스락",
-     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE44MjZtNkxxUVZqZ0stVmdtZ2VDazVlMVpkYURqaENaRHVxeWZnUHZxaXM1c0l2Y0RxM2c0dmN6QnVZMWxGZmtJQlAya3czN0VDVlkyUGFyaGJQX3BXR0pKNEt3SGdmOXFUc3VrZg?oc=5",
-     "pubDate": "Wed, 30 Sep 2026 09:33:53 GMT"
-    }
-   ],
-   "aliases": [
-    "힐스테이트 성남메트로블"
    ],
    "freq": {}
   }
