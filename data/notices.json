@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-18T22:51:16.769Z",
+  "collectedAt": "2026-10-19T08:40:36.367Z",
   "count": 753,
   "sites": [
     {
@@ -742,7 +742,7 @@
       "when": "2026-10-08",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-21",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-10-19 ~ 2026-10-19",
         "rank1": "2026-10-20 ~ 2026-10-20",
@@ -832,7 +832,7 @@
       "when": "2026-10-08",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-21",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-10-19 ~ 2026-10-19",
         "rank1": "2026-10-20 ~ 2026-10-20",
@@ -922,7 +922,7 @@
       "when": "2026-10-08",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-20",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "2026-10-19 ~ 2026-10-19",
@@ -994,7 +994,7 @@
       "when": "2026-10-08",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-21",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-10-19 ~ 2026-10-19",
         "rank1": "2026-10-20 ~ 2026-10-20",
@@ -1160,7 +1160,7 @@
       "when": "2026-10-08",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-21",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-10-19 ~ 2026-10-19",
         "rank1": "2026-10-20 ~ 2026-10-20",
@@ -1264,7 +1264,7 @@
       "when": "2026-10-08",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-21",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-10-19 ~ 2026-10-19",
         "rank1": "2026-10-20 ~ 2026-10-20",
@@ -1473,7 +1473,7 @@
       "when": "2026-10-08",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-21",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "2026-10-19 ~ 2026-10-19",
         "rank1": "2026-10-20 ~ 2026-10-20",
@@ -2151,7 +2151,7 @@
       "when": "2026-09-30",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-27",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "2026-10-19 ~ 2026-10-22",
@@ -35059,7 +35059,7 @@
       "when": "2026-10-14",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35125,7 +35125,7 @@
       "when": "2026-10-14",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35177,7 +35177,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35222,7 +35222,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35274,7 +35274,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35319,7 +35319,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35364,7 +35364,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -36376,7 +36376,7 @@
       "gu": "경기도 광명시 철산동 105번지",
       "brand": "철산주공10과11단지 주택재건축정비사업조합",
       "total": 2,
-      "general": 1,
+      "general": 2,
       "when": "2026-09-17",
       "rceptStart": "2026-09-22",
       "rceptEnd": "2026-09-23",
@@ -36389,18 +36389,9 @@
       },
       "types": [
         {
-          "t": "59㎡A",
-          "n": 1,
-          "price": 80170,
-          "general": 0,
-          "special": 1
-        },
-        {
-          "t": "59㎡B",
-          "n": 1,
-          "price": 86670,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -36441,18 +36432,9 @@
       },
       "types": [
         {
-          "t": "59㎡",
-          "n": 3,
-          "price": 80800,
-          "general": 3,
-          "special": 0
-        },
-        {
-          "t": "59㎡",
-          "n": 1,
-          "price": 75700,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -36493,39 +36475,9 @@
       },
       "types": [
         {
-          "t": "59㎡A",
-          "n": 38,
-          "price": 41600,
-          "general": 38,
-          "special": 0
-        },
-        {
-          "t": "59㎡C",
-          "n": 12,
-          "price": 39700,
-          "general": 12,
-          "special": 0
-        },
-        {
-          "t": "71㎡A",
-          "n": 15,
-          "price": 47800,
-          "general": 15,
-          "special": 0
-        },
-        {
-          "t": "71㎡B",
-          "n": 38,
-          "price": 47600,
-          "general": 38,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 23,
-          "price": 53400,
-          "general": 23,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -39493,18 +39445,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 8,
-          "price": 77600,
-          "general": 8,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 2,
-          "price": 69200,
-          "general": 2,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
