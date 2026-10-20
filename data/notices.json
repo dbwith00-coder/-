@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-19T08:40:36.367Z",
-  "count": 753,
+  "collectedAt": "2026-10-20T00:08:56.806Z",
+  "count": 754,
   "sites": [
     {
       "id": "applyhome-apt-2026000514-2026000514",
@@ -613,6 +613,205 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000495&pblancNo=2026000495",
       "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 연산동태광맨션가로주택정비사업조합 · 시공 주식회사 명린종합건설 · 당첨자발표 2026-11-04 · 입주예정 202904. 예상 당첨선(45점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
+    },
+    {
+      "id": "applyhome-apt-2026000373-2026000373",
+      "live": true,
+      "source": "applyhome",
+      "set": "apt",
+      "category": "APT",
+      "scoreless": false,
+      "supply": "공공",
+      "kind": "APT",
+      "n": "고덕강일지구 3단지 토지임대부(본청약)",
+      "gu": "서울특별시 강동구 강일동 174",
+      "brand": "에이치에스화성(주), (주)서해종합건설, 홍문종합건설(주)",
+      "total": 1305,
+      "general": 147,
+      "when": "2026-10-16",
+      "rceptStart": "2026-11-02",
+      "rceptEnd": "2026-11-06",
+      "status": "접수 예정",
+      "receipt": {
+        "special": "",
+        "rank1": "2026-11-02 ~ 2026-11-04",
+        "general": "2026-11-02 ~ 2026-11-06",
+        "result": "2026-11-26"
+      },
+      "types": [
+        {
+          "t": "49㎡A",
+          "n": 23,
+          "price": 30800,
+          "general": 5,
+          "special": 18
+        },
+        {
+          "t": "49㎡B",
+          "n": 8,
+          "price": 30800,
+          "general": 2,
+          "special": 6
+        },
+        {
+          "t": "49㎡C",
+          "n": 93,
+          "price": 31416,
+          "general": 19,
+          "special": 74
+        },
+        {
+          "t": "49㎡D",
+          "n": 13,
+          "price": 30800,
+          "general": 3,
+          "special": 10
+        },
+        {
+          "t": "49㎡E",
+          "n": 24,
+          "price": 30800,
+          "general": 4,
+          "special": 20
+        },
+        {
+          "t": "49㎡F",
+          "n": 72,
+          "price": 31724,
+          "general": 14,
+          "special": 58
+        },
+        {
+          "t": "49㎡G",
+          "n": 7,
+          "price": 31724,
+          "general": 2,
+          "special": 5
+        },
+        {
+          "t": "49㎡H",
+          "n": 39,
+          "price": 29567,
+          "general": 8,
+          "special": 31
+        },
+        {
+          "t": "49㎡I",
+          "n": 9,
+          "price": 31416,
+          "general": 2,
+          "special": 7
+        },
+        {
+          "t": "49㎡J",
+          "n": 7,
+          "price": 31416,
+          "general": 2,
+          "special": 5
+        },
+        {
+          "t": "49㎡K",
+          "n": 14,
+          "price": 30184,
+          "general": 3,
+          "special": 11
+        },
+        {
+          "t": "59㎡A",
+          "n": 24,
+          "price": 38670,
+          "general": 6,
+          "special": 18
+        },
+        {
+          "t": "59㎡B",
+          "n": 60,
+          "price": 39050,
+          "general": 12,
+          "special": 48
+        },
+        {
+          "t": "59㎡C",
+          "n": 3,
+          "price": 38670,
+          "general": 1,
+          "special": 2
+        },
+        {
+          "t": "59㎡D",
+          "n": 76,
+          "price": 39050,
+          "general": 16,
+          "special": 60
+        },
+        {
+          "t": "59㎡E",
+          "n": 44,
+          "price": 38670,
+          "general": 9,
+          "special": 35
+        },
+        {
+          "t": "59㎡F",
+          "n": 46,
+          "price": 37154,
+          "general": 9,
+          "special": 37
+        },
+        {
+          "t": "59㎡G",
+          "n": 120,
+          "price": 37912,
+          "general": 25,
+          "special": 95
+        },
+        {
+          "t": "59㎡H",
+          "n": 24,
+          "price": 37154,
+          "general": 4,
+          "special": 20
+        },
+        {
+          "t": "59㎡I",
+          "n": 7,
+          "price": 39050,
+          "general": 1,
+          "special": 6
+        }
+      ],
+      "specialUnits": {
+        "newly": {
+          "n": 106,
+          "label": "신혼부부"
+        },
+        "first": {
+          "n": 106,
+          "label": "생애최초"
+        },
+        "baby": {
+          "n": 248,
+          "label": "신생아"
+        },
+        "young": {
+          "n": 106,
+          "label": "청년"
+        }
+      },
+      "cut": 61,
+      "cutEstimated": true,
+      "cutAmt": 0,
+      "cutAmtEstimated": true,
+      "tags": [
+        "실시간",
+        "분양가상한제",
+        "투기과열지구",
+        "조정대상지역",
+        "공공주택지구",
+        "대규모택지"
+      ],
+      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000373&pblancNo=2026000373",
+      "note": "청약홈 APT 분양 API 에서 받아온 공고입니다. 시행 서울주택도시개발공사 · 시공 에이치에스화성(주), (주)서해종합건설, 홍문종합건설(주) · 당첨자발표 2026-11-26 · 입주예정 202705. 예상 당첨선(61점)은 API 가 제공하지 않아 지역 기준으로 추정한 값이고, 주택명·분양가·세대수·특별공급 물량은 응답 원문 그대로입니다."
     },
     {
       "id": "applyhome-apt-2026000455-2026000455",
@@ -34913,7 +35112,7 @@
       "when": "2026-10-15",
       "rceptStart": "2026-10-20",
       "rceptEnd": "2026-10-20",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -34979,7 +35178,7 @@
       "when": "2026-10-15",
       "rceptStart": "2026-10-20",
       "rceptEnd": "2026-10-20",
-      "status": "접수 예정",
+      "status": "접수 중",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35059,7 +35258,7 @@
       "when": "2026-10-14",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35125,7 +35324,7 @@
       "when": "2026-10-14",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35177,7 +35376,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35222,7 +35421,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35274,7 +35473,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35319,7 +35518,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -35364,7 +35563,7 @@
       "when": "2026-10-12",
       "rceptStart": "2026-10-19",
       "rceptEnd": "2026-10-19",
-      "status": "접수 중",
+      "status": "접수 마감",
       "receipt": {
         "special": "",
         "rank1": "",
@@ -36376,7 +36575,7 @@
       "gu": "경기도 광명시 철산동 105번지",
       "brand": "철산주공10과11단지 주택재건축정비사업조합",
       "total": 2,
-      "general": 2,
+      "general": 1,
       "when": "2026-09-17",
       "rceptStart": "2026-09-22",
       "rceptEnd": "2026-09-23",
@@ -36389,9 +36588,18 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "59㎡A",
+          "n": 1,
+          "price": 80170,
+          "general": 0,
+          "special": 1
+        },
+        {
+          "t": "59㎡B",
+          "n": 1,
+          "price": 86670,
+          "general": 1,
+          "special": 0
         }
       ],
       "specialUnits": {},
@@ -36432,9 +36640,18 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "59㎡",
+          "n": 3,
+          "price": 80800,
+          "general": 3,
+          "special": 0
+        },
+        {
+          "t": "59㎡",
+          "n": 1,
+          "price": 75700,
+          "general": 1,
+          "special": 0
         }
       ],
       "specialUnits": {},
@@ -36475,9 +36692,39 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "59㎡A",
+          "n": 38,
+          "price": 41600,
+          "general": 38,
+          "special": 0
+        },
+        {
+          "t": "59㎡C",
+          "n": 12,
+          "price": 39700,
+          "general": 12,
+          "special": 0
+        },
+        {
+          "t": "71㎡A",
+          "n": 15,
+          "price": 47800,
+          "general": 15,
+          "special": 0
+        },
+        {
+          "t": "71㎡B",
+          "n": 38,
+          "price": 47600,
+          "general": 38,
+          "special": 0
+        },
+        {
+          "t": "84㎡A",
+          "n": 23,
+          "price": 53400,
+          "general": 23,
+          "special": 0
         }
       ],
       "specialUnits": {},
@@ -39445,9 +39692,18 @@
       },
       "types": [
         {
-          "t": "주택형 미상",
-          "n": 0,
-          "price": 0
+          "t": "84㎡A",
+          "n": 8,
+          "price": 77600,
+          "general": 8,
+          "special": 0
+        },
+        {
+          "t": "84㎡B",
+          "n": 2,
+          "price": 69200,
+          "general": 2,
+          "special": 0
         }
       ],
       "specialUnits": {},
