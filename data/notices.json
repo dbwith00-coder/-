@@ -1,6 +1,6 @@
 {
-  "collectedAt": "2026-10-22T23:55:33.787Z",
-  "count": 759,
+  "collectedAt": "2026-10-23T08:23:51.836Z",
+  "count": 758,
   "sites": [
     {
       "id": "applyhome-apt-2026000496-2026000496",
@@ -15169,7 +15169,7 @@
       "gu": "인천광역시 연수구 송도동 32-3,",
       "brand": "㈜포스코이앤씨",
       "total": 100,
-      "general": 69,
+      "general": 100,
       "when": "2026-05-07",
       "rceptStart": "2026-05-19",
       "rceptEnd": "2026-05-21",
@@ -15182,67 +15182,12 @@
       },
       "types": [
         {
-          "t": "84㎡K",
-          "n": 32,
-          "price": 130600,
-          "general": 14,
-          "special": 18
-        },
-        {
-          "t": "118㎡K",
-          "n": 64,
-          "price": 187100,
-          "general": 51,
-          "special": 13
-        },
-        {
-          "t": "129㎡K",
-          "n": 1,
-          "price": 223800,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "188㎡K",
-          "n": 2,
-          "price": 315700,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "198㎡K",
-          "n": 1,
-          "price": 336900,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
-      "specialUnits": {
-        "newly": {
-          "n": 7,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 2,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 9,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 1,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 3,
-          "label": "기관추천"
-        },
-        "etc": {
-          "n": 9,
-          "label": "기타"
-        }
-      },
+      "specialUnits": {},
       "cut": 49,
       "cutEstimated": true,
       "cutAmt": 0,
@@ -20087,7 +20032,7 @@
       "gu": "경상북도 안동시 옥동 1069번지",
       "brand": "(주)포스코이앤씨",
       "total": 493,
-      "general": 254,
+      "general": 493,
       "when": "2026-04-09",
       "rceptStart": "2026-04-20",
       "rceptEnd": "2026-04-22",
@@ -20100,70 +20045,12 @@
       },
       "types": [
         {
-          "t": "70㎡",
-          "n": 73,
-          "price": 41860,
-          "general": 35,
-          "special": 38
-        },
-        {
-          "t": "84㎡A",
-          "n": 149,
-          "price": 49810,
-          "general": 65,
-          "special": 84
-        },
-        {
-          "t": "84㎡B",
-          "n": 164,
-          "price": 48340,
-          "general": 75,
-          "special": 89
-        },
-        {
-          "t": "84㎡C",
-          "n": 37,
-          "price": 48550,
-          "general": 17,
-          "special": 20
-        },
-        {
-          "t": "109㎡",
-          "n": 66,
-          "price": 63550,
-          "general": 58,
-          "special": 8
-        },
-        {
-          "t": "141㎡",
-          "n": 4,
-          "price": 91350,
-          "general": 4,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
-      "specialUnits": {
-        "newly": {
-          "n": 97,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 38,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 48,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 14,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 42,
-          "label": "기관추천"
-        }
-      },
+      "specialUnits": {},
       "cut": 42,
       "cutEstimated": true,
       "cutAmt": 0,
@@ -27548,7 +27435,7 @@
       "gu": "경기도 김포시 고촌읍 신곡리,",
       "brand": "(주)까뮤이앤씨",
       "total": 262,
-      "general": 71,
+      "general": 262,
       "when": "2025-12-29",
       "rceptStart": "2026-01-12",
       "rceptEnd": "2026-01-15",
@@ -27561,67 +27448,12 @@
       },
       "types": [
         {
-          "t": "59㎡A",
-          "n": 63,
-          "price": 45253,
-          "general": 18,
-          "special": 45
-        },
-        {
-          "t": "59㎡B",
-          "n": 24,
-          "price": 45488,
-          "general": 8,
-          "special": 16
-        },
-        {
-          "t": "59㎡C",
-          "n": 27,
-          "price": 45375,
-          "general": 8,
-          "special": 19
-        },
-        {
-          "t": "74㎡A",
-          "n": 131,
-          "price": 56824,
-          "general": 32,
-          "special": 99
-        },
-        {
-          "t": "74㎡B",
-          "n": 17,
-          "price": 57236,
-          "general": 5,
-          "special": 12
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
-      "specialUnits": {
-        "newly": {
-          "n": 26,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 37,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 26,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 12,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 39,
-          "label": "기관추천"
-        },
-        "baby": {
-          "n": 51,
-          "label": "신생아"
-        }
-      },
+      "specialUnits": {},
       "cut": 49,
       "cutEstimated": true,
       "cutAmt": 0,
@@ -46304,18 +46136,9 @@
       },
       "types": [
         {
-          "t": "94㎡A",
-          "n": 1,
-          "price": 48900,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "94㎡B",
-          "n": 2,
-          "price": 49100,
-          "general": 2,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -47876,11 +47699,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 1,
-          "price": 59910,
-          "general": 0,
-          "special": 1
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -47921,18 +47742,9 @@
       },
       "types": [
         {
-          "t": "77㎡",
-          "n": 1,
-          "price": 49950,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 1,
-          "price": 55860,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -49391,39 +49203,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 1,
-          "price": 45500,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 4,
-          "price": 43500,
-          "general": 4,
-          "special": 0
-        },
-        {
-          "t": "159㎡A",
-          "n": 2,
-          "price": 83400,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "159㎡B",
-          "n": 1,
-          "price": 82800,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "159㎡C",
-          "n": 1,
-          "price": 83300,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -49464,46 +49246,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 55,
-          "price": 156500,
-          "general": 55,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 28,
-          "price": 149200,
-          "general": 28,
-          "special": 0
-        },
-        {
-          "t": "84㎡C",
-          "n": 102,
-          "price": 154900,
-          "general": 102,
-          "special": 0
-        },
-        {
-          "t": "84㎡D",
-          "n": 27,
-          "price": 151300,
-          "general": 27,
-          "special": 0
-        },
-        {
-          "t": "144㎡P",
-          "n": 1,
-          "price": 500000,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "155㎡P",
-          "n": 1,
-          "price": 520000,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -50914,18 +50659,9 @@
       },
       "types": [
         {
-          "t": "74㎡A",
-          "n": 44,
-          "price": 41840,
-          "general": 44,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 64,
-          "price": 47330,
-          "general": 64,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -52398,11 +52134,9 @@
       },
       "types": [
         {
-          "t": "39㎡",
-          "n": 46,
-          "price": 76112,
-          "general": 46,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -52443,32 +52177,9 @@
       },
       "types": [
         {
-          "t": "64㎡",
-          "n": 9,
-          "price": 37760,
-          "general": 9,
-          "special": 0
-        },
-        {
-          "t": "74㎡",
-          "n": 4,
-          "price": 42080,
-          "general": 4,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 8,
-          "price": 48430,
-          "general": 8,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 5,
-          "price": 48370,
-          "general": 5,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -53966,25 +53677,9 @@
       },
       "types": [
         {
-          "t": "54㎡",
-          "n": 2,
-          "price": 80956,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "59㎡B",
-          "n": 3,
-          "price": 93537,
-          "general": 3,
-          "special": 0
-        },
-        {
-          "t": "59㎡C",
-          "n": 1,
-          "price": 102723,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -54012,7 +53707,7 @@
       "gu": "인천광역시 서구 당하동 1235(아라역",
       "brand": "(주)펜테리움이앤씨",
       "total": 2,
-      "general": 1,
+      "general": 2,
       "when": "2025-11-28",
       "rceptStart": "2025-12-03",
       "rceptEnd": "2025-12-04",
@@ -54025,18 +53720,9 @@
       },
       "types": [
         {
-          "t": "84㎡C",
-          "n": 1,
-          "price": 45400,
-          "general": 0,
-          "special": 1
-        },
-        {
-          "t": "84㎡D",
-          "n": 1,
-          "price": 46000,
-          "general": 1,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -55527,18 +55213,9 @@
       },
       "types": [
         {
-          "t": "50㎡",
-          "n": 20,
-          "price": 49900,
-          "general": 20,
-          "special": 0
-        },
-        {
-          "t": "84㎡C",
-          "n": 6,
-          "price": 82300,
-          "general": 6,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -55579,18 +55256,9 @@
       },
       "types": [
         {
-          "t": "76㎡A",
-          "n": 21,
-          "price": 84340,
-          "general": 21,
-          "special": 0
-        },
-        {
-          "t": "84㎡D",
-          "n": 30,
-          "price": 89630,
-          "general": 30,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -56603,86 +56271,6 @@
       ],
       "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910204&pblancNo=2025910204",
       "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 율하이엘지역주택조합 · 당첨자발표 2025-10-31 · 입주예정 202511. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
-    },
-    {
-      "id": "applyhome-remndr-2025910199-2025910199",
-      "live": true,
-      "source": "applyhome",
-      "set": "remndr",
-      "category": "무순위",
-      "scoreless": true,
-      "supply": "민영",
-      "kind": "무순위",
-      "n": "서면 어반센트 데시앙",
-      "gu": "부산광역시 부산진구 부암동 690-8번지",
-      "brand": "메디컬카운티지역주택조합",
-      "total": 153,
-      "general": 153,
-      "when": "2025-10-22",
-      "rceptStart": "2025-10-27",
-      "rceptEnd": "2025-10-27",
-      "status": "접수 마감",
-      "receipt": {
-        "special": "",
-        "rank1": "",
-        "general": "2025-10-27 ~ 2025-10-27",
-        "result": "2025-10-30"
-      },
-      "types": [
-        {
-          "t": "59㎡A",
-          "n": 6,
-          "price": 59500,
-          "general": 6,
-          "special": 0
-        },
-        {
-          "t": "59㎡B",
-          "n": 19,
-          "price": 62500,
-          "general": 19,
-          "special": 0
-        },
-        {
-          "t": "74㎡A",
-          "n": 2,
-          "price": 76900,
-          "general": 2,
-          "special": 0
-        },
-        {
-          "t": "74㎡B",
-          "n": 8,
-          "price": 74100,
-          "general": 8,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 71,
-          "price": 81400,
-          "general": 71,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 47,
-          "price": 84300,
-          "general": 47,
-          "special": 0
-        }
-      ],
-      "specialUnits": {},
-      "cut": 45,
-      "cutEstimated": true,
-      "cutAmt": 0,
-      "cutAmtEstimated": true,
-      "tags": [
-        "실시간",
-        "무순위"
-      ],
-      "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2025910199&pblancNo=2025910199",
-      "note": "청약홈 무순위·잔여세대 API 에서 받아온 공고입니다. 시행 메디컬카운티지역주택조합 · 당첨자발표 2025-10-30 · 입주예정 202709. 무순위·잔여세대는 가점제가 아니라 추첨이라 가점 비교를 하지 않습니다."
     }
   ]
 }
