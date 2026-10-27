@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-27T00:16:22.927Z",
+  "collectedAt": "2026-10-27T08:49:14.642Z",
   "count": 757,
   "sites": [
     {
@@ -6205,7 +6205,7 @@
       "gu": "인천광역시 서해구 인천검암역세권 공공주택지구",
       "brand": "㈜대우건설, 동부건설㈜, ㈜비에스한양, 경화건설㈜, 브니엘네이처㈜",
       "total": 441,
-      "general": 105,
+      "general": 441,
       "when": "2026-08-21",
       "rceptStart": "2026-08-31",
       "rceptEnd": "2026-09-02",
@@ -6218,78 +6218,12 @@
       },
       "types": [
         {
-          "t": "60㎡A",
-          "n": 25,
-          "price": 48630,
-          "general": 2,
-          "special": 23
-        },
-        {
-          "t": "60㎡B",
-          "n": 50,
-          "price": 47930,
-          "general": 11,
-          "special": 39
-        },
-        {
-          "t": "60㎡C",
-          "n": 75,
-          "price": 46250,
-          "general": 16,
-          "special": 59
-        },
-        {
-          "t": "84㎡A",
-          "n": 216,
-          "price": 63910,
-          "general": 63,
-          "special": 153
-        },
-        {
-          "t": "84㎡B",
-          "n": 50,
-          "price": 62940,
-          "general": 10,
-          "special": 40
-        },
-        {
-          "t": "84㎡C",
-          "n": 25,
-          "price": 62340,
-          "general": 3,
-          "special": 22
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
-      "specialUnits": {
-        "newly": {
-          "n": 44,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 66,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 44,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 22,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 65,
-          "label": "기관추천"
-        },
-        "baby": {
-          "n": 88,
-          "label": "신생아"
-        },
-        "etc": {
-          "n": 7,
-          "label": "기타"
-        }
-      },
+      "specialUnits": {},
       "cut": 49,
       "cutEstimated": true,
       "cutAmt": 0,
@@ -26166,7 +26100,7 @@
       "gu": "인천광역시 부평구 삼산동 191번지",
       "brand": "두산건설 주식회사",
       "total": 41,
-      "general": 21,
+      "general": 41,
       "when": "2026-01-30",
       "rceptStart": "2026-02-09",
       "rceptEnd": "2026-02-11",
@@ -26179,70 +26113,12 @@
       },
       "types": [
         {
-          "t": "52㎡",
-          "n": 1,
-          "price": 49670,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "63㎡",
-          "n": 12,
-          "price": 60890,
-          "general": 8,
-          "special": 4
-        },
-        {
-          "t": "69㎡",
-          "n": 1,
-          "price": 62050,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "74㎡",
-          "n": 4,
-          "price": 69980,
-          "general": 2,
-          "special": 2
-        },
-        {
-          "t": "84㎡A",
-          "n": 12,
-          "price": 76100,
-          "general": 4,
-          "special": 8
-        },
-        {
-          "t": "84㎡B",
-          "n": 11,
-          "price": 76580,
-          "general": 5,
-          "special": 6
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
-      "specialUnits": {
-        "newly": {
-          "n": 8,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 3,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 4,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 1,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 4,
-          "label": "기관추천"
-        }
-      },
+      "specialUnits": {},
       "cut": 49,
       "cutEstimated": true,
       "cutAmt": 0,
@@ -30645,7 +30521,7 @@
       "gu": "경기도 이천시 증포동 107-2번지",
       "brand": "디더블유대원 주식회사",
       "total": 355,
-      "general": 203,
+      "general": 355,
       "when": "2025-11-28",
       "rceptStart": "2025-12-08",
       "rceptEnd": "2025-12-10",
@@ -30658,63 +30534,12 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 168,
-          "price": 59870,
-          "general": 73,
-          "special": 95
-        },
-        {
-          "t": "84㎡B",
-          "n": 66,
-          "price": 59870,
-          "general": 28,
-          "special": 38
-        },
-        {
-          "t": "102㎡",
-          "n": 18,
-          "price": 74570,
-          "general": 15,
-          "special": 3
-        },
-        {
-          "t": "116㎡",
-          "n": 61,
-          "price": 86720,
-          "general": 52,
-          "special": 9
-        },
-        {
-          "t": "118㎡",
-          "n": 42,
-          "price": 88310,
-          "general": 35,
-          "special": 7
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
-      "specialUnits": {
-        "newly": {
-          "n": 55,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 22,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 38,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 13,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 24,
-          "label": "기관추천"
-        }
-      },
+      "specialUnits": {},
       "cut": 42,
       "cutEstimated": true,
       "cutAmt": 0,
@@ -33056,32 +32881,9 @@
       },
       "types": [
         {
-          "t": "64㎡",
-          "n": 9,
-          "price": 37760,
-          "general": 9,
-          "special": 0
-        },
-        {
-          "t": "74㎡",
-          "n": 4,
-          "price": 42080,
-          "general": 4,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 9,
-          "price": 48430,
-          "general": 9,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 5,
-          "price": 48370,
-          "general": 5,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -33108,7 +32910,7 @@
       "gu": "경상남도 창원시 성산구 신촌동",
       "brand": "에스지씨이앤씨(주)",
       "total": 143,
-      "general": 65,
+      "general": 143,
       "when": "2025-11-14",
       "rceptStart": "2025-11-24",
       "rceptEnd": "2025-11-26",
@@ -33121,70 +32923,12 @@
       },
       "types": [
         {
-          "t": "59㎡A",
-          "n": 15,
-          "price": 38000,
-          "general": 7,
-          "special": 8
-        },
-        {
-          "t": "59㎡B",
-          "n": 10,
-          "price": 36120,
-          "general": 5,
-          "special": 5
-        },
-        {
-          "t": "72㎡A",
-          "n": 35,
-          "price": 47012,
-          "general": 16,
-          "special": 19
-        },
-        {
-          "t": "72㎡B",
-          "n": 24,
-          "price": 46702,
-          "general": 11,
-          "special": 13
-        },
-        {
-          "t": "84㎡A",
-          "n": 26,
-          "price": 51300,
-          "general": 11,
-          "special": 15
-        },
-        {
-          "t": "84㎡B",
-          "n": 33,
-          "price": 51300,
-          "general": 15,
-          "special": 18
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
-      "specialUnits": {
-        "newly": {
-          "n": 33,
-          "label": "신혼부부"
-        },
-        "first": {
-          "n": 13,
-          "label": "생애최초"
-        },
-        "multi": {
-          "n": 14,
-          "label": "다자녀가구"
-        },
-        "old": {
-          "n": 4,
-          "label": "노부모부양"
-        },
-        "inst": {
-          "n": 14,
-          "label": "기관추천"
-        }
-      },
+      "specialUnits": {},
       "cut": 42,
       "cutEstimated": true,
       "cutAmt": 0,
@@ -39688,25 +39432,9 @@
       },
       "types": [
         {
-          "t": "84㎡A",
-          "n": 17,
-          "price": 130800,
-          "general": 17,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 10,
-          "price": 130200,
-          "general": 10,
-          "special": 0
-        },
-        {
-          "t": "124㎡A",
-          "n": 8,
-          "price": 187900,
-          "general": 8,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -41127,25 +40855,9 @@
       },
       "types": [
         {
-          "t": "42㎡A",
-          "n": 1,
-          "price": 39100,
-          "general": 1,
-          "special": 0
-        },
-        {
-          "t": "42㎡B",
-          "n": 5,
-          "price": 39100,
-          "general": 5,
-          "special": 0
-        },
-        {
-          "t": "71㎡",
-          "n": 4,
-          "price": 67140,
-          "general": 4,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -41186,18 +40898,9 @@
       },
       "types": [
         {
-          "t": "69㎡",
-          "n": 4,
-          "price": 42900,
-          "general": 4,
-          "special": 0
-        },
-        {
-          "t": "84㎡",
-          "n": 3,
-          "price": 51500,
-          "general": 3,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -41238,18 +40941,9 @@
       },
       "types": [
         {
-          "t": "74㎡A",
-          "n": 24,
-          "price": 75270,
-          "general": 24,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 27,
-          "price": 82530,
-          "general": 27,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
@@ -42597,46 +42291,9 @@
       },
       "types": [
         {
-          "t": "59㎡A",
-          "n": 186,
-          "price": 86640,
-          "general": 186,
-          "special": 0
-        },
-        {
-          "t": "59㎡B",
-          "n": 45,
-          "price": 85610,
-          "general": 45,
-          "special": 0
-        },
-        {
-          "t": "74㎡A",
-          "n": 117,
-          "price": 101960,
-          "general": 117,
-          "special": 0
-        },
-        {
-          "t": "74㎡B",
-          "n": 68,
-          "price": 100850,
-          "general": 68,
-          "special": 0
-        },
-        {
-          "t": "84㎡A",
-          "n": 45,
-          "price": 113900,
-          "general": 45,
-          "special": 0
-        },
-        {
-          "t": "84㎡B",
-          "n": 24,
-          "price": 110190,
-          "general": 24,
-          "special": 0
+          "t": "주택형 미상",
+          "n": 0,
+          "price": 0
         }
       ],
       "specialUnits": {},
