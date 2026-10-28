@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-10-28T00:17:52.806Z",
+ "collectedAt": "2026-10-28T09:28:56.961Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -10,12 +10,12 @@
   },
   {
    "query": "분양 예정 단지",
-   "count": 56,
+   "count": 59,
    "error": null
   },
   {
    "query": "이달 분양 아파트",
-   "count": 49,
+   "count": 100,
    "error": null
   },
   {
@@ -25,12 +25,12 @@
   },
   {
    "query": "청약 예정 아파트",
-   "count": 78,
+   "count": 79,
    "error": null
   },
   {
    "query": "분양 일정 아파트",
-   "count": 49,
+   "count": 100,
    "error": null
   },
   {
@@ -40,85 +40,110 @@
   },
   {
    "query": "재건축 일반분양 예정",
-   "count": 41,
+   "count": 100,
    "error": null
   }
  ],
- "articleCount": 390,
- "count": 16,
+ "articleCount": 513,
+ "count": 15,
  "candidates": [
   {
-   "name": "반포 센트럴 푸르지오 써밋",
+   "name": "서초 롯데캐슬 아트팰리스",
+   "mentions": 5,
+   "articles": [
+    {
+     "title": "‘중소형 중심’ 서초 롯데캐슬 아트팰리스, 내달 분양 예정",
+     "source": "이데일리",
+     "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNa3Y0d3Nqd0p3WV9XeFdDWWl4N2FtY3JKdTRzbTFPS005LTl0M1ZGVDIyelpoX3pwT3F5TzVoWEEzSFdENmNUU2FZR3JLSzJLU0FVLTdUcTRPcDQyTkRQYm5OM0NVTE14cFhOY1QzTFQzeEVCNzczWWpOQVkxaWRScQ?oc=5",
+     "pubDate": "Mon, 26 Oct 2026 00:02:41 GMT"
+    },
+    {
+     "title": "“서울 금싸라기 땅에 분상제 단지가...” 롯데건설, '서초 롯데캐슬 아트팰리스' 11월 분양 예정",
+     "source": "ER 이코노믹리뷰",
+     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE52THRnTWdfeS1RTG1STE1UVUNUeHA4UDhTZlo0S2MtaEdhaVNjR1JMalFySUVPTVJOVG1Na3pacTUtdDN0bTVqRFFTdUNTTXl0dzlBQm1KRjlBem1FNXF4OWVjeDhnNWotRXk0Rw?oc=5",
+     "pubDate": "Mon, 26 Oct 2026 08:30:04 GMT"
+    },
+    {
+     "title": "롯데건설, 서초구 서초동 ‘서초 롯데캐슬 아트팰리스’ 11월 분양 예정",
+     "source": "이슈투데이",
+     "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5CdWRPS2JqcXl0emhlLWpyY2RiTVVfTWJrRDEtSXVpeVo4YkNGVWV6NExjNEZvRWxzSWxFcVdrWjNEYTJTalpiVUt1alY3T2dmZ3lWRklpX2Y3OUhRT0g3MkluNm55UQ?oc=5",
+     "pubDate": "Wed, 28 Oct 2026 03:42:54 GMT"
+    },
+    {
+     "title": "‘서초 롯데캐슬 아트팰리스’ 146가구 다음달 분양…일반공급 60% 추첨",
+     "source": "한국경제",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB2Y1ZTY3dfejZfZGV5aHRMZVpjRVM4dkNKTHJ6TEppV2E4dnN4U3p5emlNN216dFlORFBORHlMNUJZU0NXWkVXVS0tM0VyNzRCdkVKTVpnSnMtZw?oc=5",
+     "pubDate": "Wed, 28 Oct 2026 02:37:27 GMT"
+    },
+    {
+     "title": "롯데건설·IPARK현대산업개발 ‘서초 롯데캐슬 아트팰리스’ 11월 분양 예정·군포 금정역세권1구역 재개발정비사업 수주",
+     "source": "여성소비자신문",
+     "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1DaHRCQlJ4TFpWdngzV1RzaVFqVVhVRl96US1sZlBHNlRlNS1KT0JRUzFHWERhbkQ1aHFtb1lKbU92c3NoR2x4dlQxcHBOY2xlcWZ3RzM2TlYyWTBJcFk4dFFCRQ?oc=5",
+     "pubDate": "Mon, 26 Oct 2026 05:49:28 GMT"
+    }
+   ],
+   "aliases": [
+    "서초 롯데캐슬 아트팰리스"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "반포디에이치클래스트 등판8월",
    "mentions": 4,
    "articles": [
     {
-     "title": "'반포 센트럴 푸르지오 써밋' 아파트 이달 분양",
-     "source": "연합뉴스",
-     "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9qMFRZUHRPcXRjZTRLdUJZUW5sVFVZR19pcHltemY4WWVoV1g4Mk5oRGRyQnZxSDBNNTV0SE1ZYWRhbExXZVNSZXBuUzdjMnVJUkwzTHFWSFFfQ03SAWBBVV95cUxQVEQxM3dxcGpac2VEY2JPNUR2bFNSTklqcHhBaUlGOXZpSEVEdnNHNERKZGk4T29jbXEtZk1HVEhCNk5XdU5YVV9tQnZEVmFiWkNUYWZIcjNWTktTNm5iSEQ?oc=5",
-     "pubDate": "Tue, 06 Oct 2015 07:00:00 GMT"
+     "title": "'반포디에이치클래스트' 등판…8월 아파트 2.8만가구 분양",
+     "source": "뉴시스",
+     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1NTWYzOVNleWUtbU95RDlxcWxhc0d4TEtpNnVRTmNIajNTQl8yMWd0LXk3Z0tkNHJ0Z2JTbnRQcDQ2RVI3NllTVjVidEZuYmdLdEhyUzJYOGFJbnd1ZmloS9IBeEFVX3lxTE9HX0poS2RhNWMwZFhQRU9aWUN2dF9aTTAxVl9GUEF1V0hyT0RZMVRDc3FWTF9nX0Q2MmlycnZjbmlDMkU5ZTJGN2NUZ2RMcW1CUXZTU3ctakx1a050My1wbC1oUkszUzJ2S3k5bE9ncHBKTTh6STdndw?oc=5",
+     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
     },
     {
-     "title": "강남 대치동 '대치 푸르지오 써밋' 이달 분양…일반에 106가구",
-     "source": "연합뉴스",
-     "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE03cHl6N2lBXzgwUVV2YnNVNWlJb0Q2aGQ1VnN2Ml9fM2lEYXp1VVZ5NEtJMEVwdnNGNmNmOHB1N0xxdUo3STN2T18zZGtQMlZCaGphemxacEQ2MlXSAWBBVV95cUxPaDdSNXBfVVRuX0lXV3E1YkVqZFI3ZEFnZnJhSURwTEFVTFhHcDhHR2VVRE5IOU1tVjBHbVlYX2ZfdXFzYlNtMEptWmhLSmZnY3FfckRiMUF2c1l5MS13NVc?oc=5",
-     "pubDate": "Fri, 12 Jun 2020 07:00:00 GMT"
+     "title": "\"30억 로또?\" 반포 디에이치 클래스트, 11월 일반분양 나선다 - 머니투데이",
+     "source": "머니투데이",
+     "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5wS3hJc0ROQTFZV2FFOUlPUzMtSlhZU084UEZqY2JWMnBiU2JfQ2QtWmlxZDdzOU13c3lLYzRkNUd5bU1kdTFrd3htSGNNUXR2ZzFRVFY4LXpkd2ZGd0pJUTNZbXFwWkJvaEHSAW9BVV95cUxNUm5KLWowdXlRN0F3Z3ZSNFAyelRJN2NyVGNYcHdraHR4dFJDZmJjQ3BDal90cWVhTmRtN3pXRXBKWFNHUXdUcUNJaVMxYUI1c1MtOENnblhCRVh4NEFjdWdHZnVNNGRNSlgxRThoSEU?oc=5",
+     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "8월 서울 일반분양 2530세대, 5천 세대 대단지 '디에이치클래스트' 대부분 차지",
+     "source": "비즈니스포스트",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0xdjVtbUtzQ1dsY29tcVdaTy1sRmtndk9EQVlpYWxjQWYzV3cyczJmSDlubTZTb1hKWkpKQjZDd3BWYXhwOUQ1UXZxYTd0OEY4aWdvd3F0ZUV6U29EZUQzTWV5YmpfMXRvaEl3eW9NOTJWakU?oc=5",
+     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "반포 센트럴 푸르지오 써밋",
-    "센트럴 푸르지오 써밋",
-    "푸르지오 써밋"
+    "반포디에이치클래스트 등판8월",
+    "반포디에이치클래스트",
+    "반포 디에이치 클래스트",
+    "디에이치클래스트"
    ],
    "freq": {}
   },
   {
-   "name": "8년만에 자이Xi아파트청계리버뷰자이",
-   "mentions": 2,
+   "name": "반포주공1단지 디에이치 반포124로",
+   "mentions": 4,
    "articles": [
     {
-     "title": "성동구서 8년만에 자이(Xi)아파트…'청계리버뷰자이' 이달 분양[집슐랭]",
-     "source": "서울경제",
-     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBMR21lSU1wdW9yNU9Da2k1SlZkXzE3a19zSXlVX0dKSkEtQmx2UGVPRGY4VV8xbFFUUWpGdllDTUdYWEptSWU1UURRa045WDNNQWfSAVNBVV95cUxNLUNtZWZSWF9GZkxSZmlIbnZFbVR4TUVIcC1WTC1jbjJONmVKOVh0YzJ1NFFURmdNZzZZdzBOVVJTOC12dDNKYTJJelB5LTA1dW45Zw?oc=5",
-     "pubDate": "Fri, 03 Nov 2023 07:00:00 GMT"
+     "title": "반포주공1단지, '디에이치 반포124'로",
+     "source": "한국경제",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE13ZlFFb2hibGt5Zm81S21vMjhVWnlVNjctZ1RhOGRzdW1UQWZRZnprekZ4SWVHcWgzbzQ2VE5XOTVxQTFtd1dLSWpVaXh1MXQ3SkVHOUdOZXBNdw?oc=5",
+     "pubDate": "Tue, 13 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "'디에이치 반포124'부터 지방 대단지까지···11월 아파트 5만6천가구 공급",
+     "source": "스마트비즈",
+     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1EdlV6dDN0c0x0d1JnWmQzVm5MY21EdTJOdzVjVkg0VURDcmtxblpUSVZyNm5KTV9HR2NiNENlTVBua0hCaXR5emZmWXhYVzktcWlRanpoUU1pMDBxdVl6a0xhYjhXaGdQZkdZTA?oc=5",
+     "pubDate": "Wed, 28 Oct 2026 00:18:14 GMT"
+    },
+    {
+     "title": "[단독] 30억 로또 '디에이치 반포124' 청약 날짜 확정…12월 7일 특공, 8일 1순위",
+     "source": "땅집고",
+     "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1tXy1BaHB2WkRMS3VtVHpaYTlJeXlaY2I0RmFxUk5VaWYzWTB4WjBVc0QzdjZ1N0FEei1uSG80cDg4TUppenFmaXFZUG1yX1JpbG9FZHlQemI4enVZdzFMMC12a2NlM2kzMkhRM0ZmM3ZfNGxOU3FGakpVaDhYSUHSAXNBVV95cUxPZXFlaDI3N2tHTFVIM2xwZkdtclRHM2NlWUg4TTNGWnpObWJhUGo0WWRGTU5HMWFyYTd5bk1CLTBoSTZ3NkxrUXlGYnhaaFVhaklHeEhOSzA1MU1RZUhPQ2U5Q010VTdMRTYwMk1ERGtVSUNv?oc=5",
+     "pubDate": "Thu, 22 Oct 2026 07:03:43 GMT"
     }
    ],
    "aliases": [
-    "8년만에 자이Xi아파트청계리버뷰자이",
-    "청계리버뷰자이"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "e편한세상 금정 메종카운티",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "'e편한세상 금정 메종카운티' 4월 분양 예정",
-     "source": "비즈워치",
-     "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4xWWFEcmxOMDRiLVcySDc3bHE2X0hURTlCaTdqZExaR1FZczZDUUNadHJSYk4xWm0zbV9wYkhtbndld1lLczFSVHlkaGhOWEtlTzFVQUw4Vl9GNExjSEpwRm95UDN6RUJxSlRUY0NqeHQ?oc=5",
-     "pubDate": "Thu, 28 Mar 2024 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "e편한세상 금정 메종카운티",
-    "e편한세상 금정"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "e편한세상 동탄역 어반원",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "DL이앤씨, ‘e편한세상 동탄역 어반원’ 다음달 분양",
-     "source": "경향신문",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8tWWpXUlZEQVdBbWE3akt0QW5IOXlVZy1ZaGVMMWctYnl5SldnaHpQT0plbUFxbkE2WGhIQi1QaHNFMmRwQ2FPTHVhazlEZmtIakNBcy1FYkV6QdIBX0FVX3lxTE9qWTNlMWVHOWlLSm5mMjhkMm52Q1dReFJ5bU5RanE0Nk5QZnBQZjRJVmQzLXZ4Q1QxaGdhMVU1bjd2bTk5eVNUcFFldjFwa01DQlFBYzhaX3pqa2lHOTRF?oc=5",
-     "pubDate": "Thu, 25 Dec 2025 08:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "e편한세상 동탄역 어반원",
-    "e편한세상 동탄역"
+    "반포주공1단지 디에이치 반포124로",
+    "디에이치 반포124"
    ],
    "freq": {}
   },
@@ -140,36 +165,19 @@
    "freq": {}
   },
   {
-   "name": "대전 관평동 예미지 어반코어",
+   "name": "부산 더샵 당리센트리체",
    "mentions": 2,
    "articles": [
     {
-     "title": "[5월 첫째 주 아파트 분양일정] ‘대전 관평동 예미지 어반코어’ 등 6712가구",
-     "source": "디트NEWS24",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE56YVRFTV9KbXFPVWNTdVhGaTFNU0VwaVFUNksyaTdEV0N3ZXp6VGsyUVZKS25BY2phLTE2RWdNZXQ1cWJDZ2VMVkVRZ1R6WWxQeU1yTmN6cEdOZFVVX3pKRFBGNXhPNVNlUERv?oc=5",
-     "pubDate": "Fri, 25 Apr 2025 07:00:00 GMT"
+     "title": "포스코이앤씨, 부산 '더샵 당리센트리체' 이달 분양",
+     "source": "한국경제",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE01SHUyZ21Pbi1LRElSXzlBOW9XUldGdnhYQzZ6QWNaOTJvUmJUemYwU0d2Ukh3U2NJSlhEN19raUM5T2wxM1RxMTBoaWJfWkVNMzgwNVJ2X1hVUQ?oc=5",
+     "pubDate": "Thu, 10 Apr 2025 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "대전 관평동 예미지 어반코어",
-    "관평동 예미지 어반코어"
-   ],
-   "freq": {}
-  },
-  {
-   "name": "디에이치클래스트 대부분",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "8월 서울 일반분양 2530세대, 5천 세대 대단지 '디에이치클래스트' 대부분 차지",
-     "source": "비즈니스포스트",
-     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0xdjVtbUtzQ1dsY29tcVdaTy1sRmtndk9EQVlpYWxjQWYzV3cyczJmSDlubTZTb1hKWkpKQjZDd3BWYXhwOUQ1UXZxYTd0OEY4aWdvd3F0ZUV6U29EZUQzTWV5YmpfMXRvaEl3eW9NOTJWakU?oc=5",
-     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
-    }
-   ],
-   "aliases": [
-    "디에이치클래스트 대부분",
-    "디에이치클래스트"
+    "부산 더샵 당리센트리체",
+    "더샵 당리센트리체"
    ],
    "freq": {}
   },
@@ -230,28 +238,6 @@
    "freq": {}
   },
   {
-   "name": "서초 롯데캐슬 아트팰리스",
-   "mentions": 2,
-   "articles": [
-    {
-     "title": "‘중소형 중심’ 서초 롯데캐슬 아트팰리스, 내달 분양 예정",
-     "source": "이데일리",
-     "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNa3Y0d3Nqd0p3WV9XeFdDWWl4N2FtY3JKdTRzbTFPS005LTl0M1ZGVDIyelpoX3pwT3F5TzVoWEEzSFdENmNUU2FZR3JLSzJLU0FVLTdUcTRPcDQyTkRQYm5OM0NVTE14cFhOY1QzTFQzeEVCNzczWWpOQVkxaWRScQ?oc=5",
-     "pubDate": "Mon, 26 Oct 2026 00:02:41 GMT"
-    },
-    {
-     "title": "“서울 금싸라기 땅에 분상제 단지가...” 롯데건설, '서초 롯데캐슬 아트팰리스' 11월 분양 예정",
-     "source": "ER 이코노믹리뷰",
-     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE52THRnTWdfeS1RTG1STE1UVUNUeHA4UDhTZlo0S2MtaEdhaVNjR1JMalFySUVPTVJOVG1Na3pacTUtdDN0bTVqRFFTdUNTTXl0dzlBQm1KRjlBem1FNXF4OWVjeDhnNWotRXk0Rw?oc=5",
-     "pubDate": "Mon, 26 Oct 2026 08:30:04 GMT"
-    }
-   ],
-   "aliases": [
-    "서초 롯데캐슬 아트팰리스"
-   ],
-   "freq": {}
-  },
-  {
    "name": "신경주 데시앙 잔여분",
    "mentions": 2,
    "articles": [
@@ -269,24 +255,36 @@
    "freq": {}
   },
   {
-   "name": "아르뮤제자이",
+   "name": "쌍용 더 플래티넘 서면",
    "mentions": 2,
    "articles": [
     {
-     "title": "GS건설, '아르뮤제자이' 10월 분양 예정...어떤 단지?",
-     "source": "초이스경제",
-     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4xUzV6b3NMQ1pIOWJlbTlvdWFlWDVrMGpfZURzc2R2Z3UzVUlGUVV0ZjZELWY2YnJiYldoMURjNk54RTZfMDdkdlZPTjlmUS0yay1peThGSVBNM3dCNlAtaVJKcW1mTmpPOUpwT2ZIa9IBc0FVX3lxTE9WekN1S0ZxOUd5Z3RxOUpzZjRWejJFcG5ydWpoc1hSTGtwdHd3TkNNeU1mWk1oNVFOTjZqM0NrZDNTbUl0eDJyRDBJaDd3S3puMzRNZnc1MFh0SWNFVW1rZnlXRDJiektuNEZXTml0RExVdUk?oc=5",
-     "pubDate": "Thu, 01 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "GS건설, '아르뮤제자이' 11월 분양 예정",
-     "source": "한국일보",
-     "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBieGppT1YxOXE5bTJwcld4bDV3elhvV3lOSi0zcnhUY0tkUDZTRjZYUmRNS2FILVVDTUMzWjhuMC1wNGtWcU9pcmFYMWUwZ1RoT3E5Ml9Gd1Rna2FhaDlGSi1zckVLY2lDa3ktU3hB0gFzQVVfeXFMTm41eUxXWHI4aExRdm01eENwT3dKaXBkU1RodF95Q28wYU45Q3czNEJVUk1hR2Y0cjVRTVpvVkY0MnV6RG5mOHp6LUN0QU9sUHpqalZ4QjAtWVZURE9idno0eVBRa1p2SXBTbmhWcDNvdFFfVQ?oc=5",
-     "pubDate": "Thu, 22 Oct 2026 23:00:00 GMT"
+     "title": "쌍용건설, ‘쌍용 더 플래티넘 서면’ 견본주택 오픈…이달 분양 예정",
+     "source": "뉴스톱",
+     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5veGVFOTZNSUEyOUdhcUt0aC1QRDlkRnhjbnFZdFhmVXBWdlFUSUpldXFGUFlHT3VCWFZHbXdOYXNWQ0FYR2NzTWlLekszaTZfdGJ0bG1zQnZEVmlrQmlRYzJiTUE3VUIxQmFyQUQ1MA?oc=5",
+     "pubDate": "Thu, 03 Jul 2025 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "아르뮤제자이"
+    "쌍용 더 플래티넘 서면",
+    "더 플래티넘 서면"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "앞둔 호반써밋 풍무II의",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "[분양 현장] 개관 앞둔 '호반써밋 풍무II'의 모델하우스",
+     "source": "스트레이트뉴스",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB6NzFUT05FSVlxdHYxSUJibmtPWW5TaWpuWk9lV2IyM2tXNllSbVpfNFBiQ08wdHNqdGR1dXFCaG9vQzVLMkVOdm1CQmNzZDhIRkpSZVlJbTlNd2hyVGhZeGRRdXZIQ3JvUW15cEtCOXJtNzTSAXdBVV95cUxPZHJFVDVLOWEyY25hVHg4Z1c4dGRPWkd6Tjd1Z0pmU3Z2UVZ4YTJsdXBKaHBfQmV6T0NZWXJDY2dpZ2pHUEl2Qjd3NmRNalZqS01XcjVISnFsRjRyVXlHMklVU01ibDBuajYtLVFZWWwyZm12a0xLbw?oc=5",
+     "pubDate": "Fri, 22 May 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "앞둔 호반써밋 풍무II의",
+    "호반써밋 풍무II"
    ],
    "freq": {}
   },
@@ -321,6 +319,28 @@
    "aliases": [
     "지속 디에이치 신반포에스테라",
     "디에이치 신반포에스테라"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "천안 백석시그니처자이",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "GS건설, 천안 ‘백석시그니처자이’ 이달 분양…1174가구 공급",
+     "source": "마켓인",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5kbU1RVzYzOXZXR243VmliUWc5eFNzZDZNd0p5dS1ZT2VYeHVUdkFvd0ptRHF1LVlDV0NUbXdpUlJ3REM1X3RvVG85TFp6b09uaUNPUnB1UWN2VV9sZUhHcng4ZTRBRGxlb2dubmZJWVppS1U?oc=5",
+     "pubDate": "Wed, 06 May 2026 07:00:00 GMT"
+    },
+    {
+     "title": "[6월 둘째 주 아파트 분양일정] 천안 ‘백석시그니처자이’ 등 2000가구",
+     "source": "디트NEWS24",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5JZWJkQUVXM2xkd3UtckNTem96c0tVR2RUV0s2WlNReFpkbFdZUXV1N05NM0pJbjNYLVkweFFpVlFWb293dUxCRmRXcGZoa2xPWHFzd3FUaWhSQlJ3RnJDQW9TcDhlYzNma1h3?oc=5",
+     "pubDate": "Fri, 05 Jun 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "천안 백석시그니처자이"
    ],
    "freq": {}
   },
