@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-10-28T09:28:56.961Z",
+ "collectedAt": "2026-10-29T00:39:54.844Z",
  "source": "Google News RSS",
  "disclaimer": "공고 전 분양예정 단지는 공공 API 로 제공되지 않아, 뉴스 기사 제목에서 추출한 후보입니다. 공식 확정 정보가 아니며 오탐이 있을 수 있습니다.",
  "queries": [
@@ -25,27 +25,27 @@
   },
   {
    "query": "청약 예정 아파트",
-   "count": 79,
+   "count": 78,
    "error": null
   },
   {
    "query": "분양 일정 아파트",
-   "count": 100,
+   "count": 49,
    "error": null
   },
   {
    "query": "선착순 분양 예정",
-   "count": 35,
+   "count": 80,
    "error": null
   },
   {
    "query": "재건축 일반분양 예정",
-   "count": 100,
+   "count": 42,
    "error": null
   }
  ],
- "articleCount": 513,
- "count": 15,
+ "articleCount": 486,
+ "count": 22,
  "candidates": [
   {
    "name": "서초 롯데캐슬 아트팰리스",
@@ -88,46 +88,33 @@
    "freq": {}
   },
   {
-   "name": "반포디에이치클래스트 등판8월",
-   "mentions": 4,
+   "name": "e편한세상 평택 라씨엘로·하이센트",
+   "mentions": 3,
    "articles": [
     {
-     "title": "'반포디에이치클래스트' 등판…8월 아파트 2.8만가구 분양",
-     "source": "뉴시스",
-     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1NTWYzOVNleWUtbU95RDlxcWxhc0d4TEtpNnVRTmNIajNTQl8yMWd0LXk3Z0tkNHJ0Z2JTbnRQcDQ2RVI3NllTVjVidEZuYmdLdEhyUzJYOGFJbnd1ZmloS9IBeEFVX3lxTE9HX0poS2RhNWMwZFhQRU9aWUN2dF9aTTAxVl9GUEF1V0hyT0RZMVRDc3FWTF9nX0Q2MmlycnZjbmlDMkU5ZTJGN2NUZ2RMcW1CUXZTU3ctakx1a050My1wbC1oUkszUzJ2S3k5bE9ncHBKTTh6STdndw?oc=5",
-     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
+     "title": "'e편한세상 평택 라씨엘로·하이센트' 동호지정 선착순 분양중",
+     "source": "경상일보",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9uSXVMWmhqeGdxdDBfX3hoekNkV1pDYjh5VktXUVdDbF9GV2I1RmkyMHJZTkdoR0xDSUQzQ2JaNHRlSHZtYXJYdlRyTmsyY1N6bUpCZlZob042WWtRNUpUMXlMR3BLOGFLTFJF?oc=5",
+     "pubDate": "Sat, 08 Oct 2022 07:00:00 GMT"
     },
     {
-     "title": "\"30억 로또?\" 반포 디에이치 클래스트, 11월 일반분양 나선다 - 머니투데이",
-     "source": "머니투데이",
-     "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5wS3hJc0ROQTFZV2FFOUlPUzMtSlhZU084UEZqY2JWMnBiU2JfQ2QtWmlxZDdzOU13c3lLYzRkNUd5bU1kdTFrd3htSGNNUXR2ZzFRVFY4LXpkd2ZGd0pJUTNZbXFwWkJvaEHSAW9BVV95cUxNUm5KLWowdXlRN0F3Z3ZSNFAyelRJN2NyVGNYcHdraHR4dFJDZmJjQ3BDal90cWVhTmRtN3pXRXBKWFNHUXdUcUNJaVMxYUI1c1MtOENnblhCRVh4NEFjdWdHZnVNNGRNSlgxRThoSEU?oc=5",
-     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
-    },
-    {
-     "title": "8월 서울 일반분양 2530세대, 5천 세대 대단지 '디에이치클래스트' 대부분 차지",
-     "source": "비즈니스포스트",
-     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0xdjVtbUtzQ1dsY29tcVdaTy1sRmtndk9EQVlpYWxjQWYzV3cyczJmSDlubTZTb1hKWkpKQjZDd3BWYXhwOUQ1UXZxYTd0OEY4aWdvd3F0ZUV6U29EZUQzTWV5YmpfMXRvaEl3eW9NOTJWakU?oc=5",
-     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
+     "title": "평택 화양지구 ‘e편한세상 평택 라씨엘로’ 선착순 분양",
+     "source": "경상일보",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9wUVk1RWVzUmNJR1hLNS04b0pCblByNl9sZTlWOXhBc2FuZDBXNkFqeTI4N1FLU1hrZjFONkthNUNPTkdpQzJyaEp0UlIxWjNGVWhmdzhHTHdERmQyQVhYaXh3VHV1azdQS3k4?oc=5",
+     "pubDate": "Thu, 22 Sep 2022 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "반포디에이치클래스트 등판8월",
-    "반포디에이치클래스트",
-    "반포 디에이치 클래스트",
-    "디에이치클래스트"
+    "e편한세상 평택 라씨엘로·하이센트",
+    "e편한세상 평택 라씨엘로",
+    "e편한세상 평택"
    ],
    "freq": {}
   },
   {
-   "name": "반포주공1단지 디에이치 반포124로",
-   "mentions": 4,
+   "name": "디에이치 반포124부터",
+   "mentions": 3,
    "articles": [
-    {
-     "title": "반포주공1단지, '디에이치 반포124'로",
-     "source": "한국경제",
-     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE13ZlFFb2hibGt5Zm81S21vMjhVWnlVNjctZ1RhOGRzdW1UQWZRZnprekZ4SWVHcWgzbzQ2VE5XOTVxQTFtd1dLSWpVaXh1MXQ3SkVHOUdOZXBNdw?oc=5",
-     "pubDate": "Tue, 13 Oct 2026 07:00:00 GMT"
-    },
     {
      "title": "'디에이치 반포124'부터 지방 대단지까지···11월 아파트 5만6천가구 공급",
      "source": "스마트비즈",
@@ -142,8 +129,59 @@
     }
    ],
    "aliases": [
-    "반포주공1단지 디에이치 반포124로",
+    "디에이치 반포124부터",
     "디에이치 반포124"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "e편한세상 동탄역 어반원",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "DL이앤씨, ‘e편한세상 동탄역 어반원’ 다음달 분양",
+     "source": "경향신문",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8tWWpXUlZEQVdBbWE3akt0QW5IOXlVZy1ZaGVMMWctYnl5SldnaHpQT0plbUFxbkE2WGhIQi1QaHNFMmRwQ2FPTHVhazlEZmtIakNBcy1FYkV6QdIBX0FVX3lxTE9qWTNlMWVHOWlLSm5mMjhkMm52Q1dReFJ5bU5RanE0Nk5QZnBQZjRJVmQzLXZ4Q1QxaGdhMVU1bjd2bTk5eVNUcFFldjFwa01DQlFBYzhaX3pqa2lHOTRF?oc=5",
+     "pubDate": "Thu, 25 Dec 2025 08:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "e편한세상 동탄역 어반원",
+    "e편한세상 동탄역"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "구미 파크원 데시앙",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "태영건설, 지역 ‘대표 단지’ 새긴다… 11월엔 ‘구미 파크원 데시앙’ 분양 예정",
+     "source": "아시아경제",
+     "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE93c0luOGN4LWY3X1BVb0VpTllnSkxCcHFHOW1WZFExR2l6VmZnbWc3RWhmcEw2RVdLQVZfQk5JUkN4NTk4SlpNS3VrMm84MFhiWnEzVENBTlEwRThneTU3UA?oc=5",
+     "pubDate": "Wed, 28 Oct 2026 06:20:00 GMT"
+    }
+   ],
+   "aliases": [
+    "구미 파크원 데시앙",
+    "파크원 데시앙"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "급부상신내역 시티프라디움 일부세대",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "주택 대체수요로 오피스텔 급부상...‘신내역 시티프라디움’ 일부세대 선착순 분양중",
+     "source": "시사뉴스",
+     "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5YdGtCU2ZuWVgwcGpnclNRc0c5Mm44aWdIUEg3NHFGdk5RQ1lwN0NmVGxsdksxcEdsSlpESzYxQ2pXRFRmeEhybGtUTmg5UmhHblhMemx5MXM2TmxhcFpXN1NGTTBJZw?oc=5",
+     "pubDate": "Sat, 08 Aug 2020 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "급부상신내역 시티프라디움 일부세대",
+    "신내역 시티프라디움"
    ],
    "freq": {}
   },
@@ -161,6 +199,23 @@
    "aliases": [
     "단지전주 라온프라이빗 퍼스티브",
     "전주 라온프라이빗 퍼스티브"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "디에이치클래스트 대부분",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "8월 서울 일반분양 2530세대, 5천 세대 대단지 '디에이치클래스트' 대부분 차지",
+     "source": "비즈니스포스트",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0xdjVtbUtzQ1dsY29tcVdaTy1sRmtndk9EQVlpYWxjQWYzV3cyczJmSDlubTZTb1hKWkpKQjZDd3BWYXhwOUQ1UXZxYTd0OEY4aWdvd3F0ZUV6U29EZUQzTWV5YmpfMXRvaEl3eW9NOTJWakU?oc=5",
+     "pubDate": "Mon, 03 Aug 2026 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "디에이치클래스트 대부분",
+    "디에이치클래스트"
    ],
    "freq": {}
   },
@@ -255,6 +310,23 @@
    "freq": {}
   },
   {
+   "name": "신반포5차 아크로리버뷰",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "신반포5차 '아크로리버뷰' 32세대 6월 일반분양",
+     "source": "하우징헤럴드",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9WVm5Pb21KQTV0MjU3YlJwblZ2VXktbzNSbDcwcXFZZTFxTlNpQm9yZXZhbU9NeFE1cW5UUVc0VUtoTzdCU3RQWEM2R2JsWXRjcERZVjhES3JyTHZyZ2s4RWMwNmJiVWV3cEg2MDBJc2RQZnc?oc=5",
+     "pubDate": "Thu, 28 Apr 2016 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "신반포5차 아크로리버뷰",
+    "아크로리버뷰"
+   ],
+   "freq": {}
+  },
+  {
    "name": "쌍용 더 플래티넘 서면",
    "mentions": 2,
    "articles": [
@@ -272,19 +344,24 @@
    "freq": {}
   },
   {
-   "name": "앞둔 호반써밋 풍무II의",
+   "name": "용인 푸르지오 원클러스터 2·3단지",
    "mentions": 2,
    "articles": [
     {
-     "title": "[분양 현장] 개관 앞둔 '호반써밋 풍무II'의 모델하우스",
-     "source": "스트레이트뉴스",
-     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB6NzFUT05FSVlxdHYxSUJibmtPWW5TaWpuWk9lV2IyM2tXNllSbVpfNFBiQ08wdHNqdGR1dXFCaG9vQzVLMkVOdm1CQmNzZDhIRkpSZVlJbTlNd2hyVGhZeGRRdXZIQ3JvUW15cEtCOXJtNzTSAXdBVV95cUxPZHJFVDVLOWEyY25hVHg4Z1c4dGRPWkd6Tjd1Z0pmU3Z2UVZ4YTJsdXBKaHBfQmV6T0NZWXJDY2dpZ2pHUEl2Qjd3NmRNalZqS01XcjVISnFsRjRyVXlHMklVU01ibDBuajYtLVFZWWwyZm12a0xLbw?oc=5",
-     "pubDate": "Fri, 22 May 2026 07:00:00 GMT"
+     "title": "'용인 푸르지오 원클러스터 2·3단지' 잔여 가구 선착순 분양",
+     "source": "한국경제",
+     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1MbFA3VzVLUmZId2V3TTJwbU9ucW9MWmRVV0h6Q2hrYjR1M2wzamtGMkZhYzZTV2F6QzQ2VUo1WlhlRTFIaW1IVlE2UXZmN2M5NENRTEhzWVRzdw?oc=5",
+     "pubDate": "Fri, 23 May 2025 07:00:00 GMT"
+    },
+    {
+     "title": "'용인 푸르지오 원클러스터 2·3단지' 잔여 세대 선착순 분양",
+     "source": "민주신문",
+     "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE00NnJLcjM2N3hDTUxSOXFLX0JlMExBX2RhN0NkbklMNE8wajRkenE5a1FXcWdnbUNsNmRNa014YlVRTlpibmxKS3ZZOGFPaFl5QUNBb09JdnJzM002ejlMSU5xWHZXeHPSAWtBVV95cUxNUmdTYzlteDRleW9ubTNMS2hYTWVaTWV4QWpXSDZxNVNaUlA3T2o0bW16Uld6SHA1VEhwWXVwd1RvcVBtVE8zQ2VVNnc2c2p0X25MRnI4TUxWMFk3UFJRR3hJV2U3bmZvSm9qQQ?oc=5",
+     "pubDate": "Fri, 23 May 2025 07:00:00 GMT"
     }
    ],
    "aliases": [
-    "앞둔 호반써밋 풍무II의",
-    "호반써밋 풍무II"
+    "용인 푸르지오 원클러스터 2·3단지"
    ],
    "freq": {}
   },
@@ -345,6 +422,23 @@
    "freq": {}
   },
   {
+   "name": "첨단 제일풍경채 분양완료",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "제일건설, 광주 첨단3지구 ‘첨단 제일풍경채’ 분양완료 임박… 59㎡등 일부 세대 선착순 분양 예정",
+     "source": "서울경제",
+     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE53aVFUWU5UcTFNUzdvdWVhSDRXQXZzMjVoWTNfY0VXdVVvX0VMV3FKN2xmandKLUwzVlV6WEs3YVBmUTBhR2JBT0ZmNUN5c1hyc1HSAVNBVV95cUxPeGF3eVFpNUVLZFI0Nk05bE5UNy1QblpXZFZ4SzQ4VFVTdG1oVzQwUHFhT0ZyYV9ENmxjaGlPTzNELXZJMHhvWnc0SjlGV0RQdjJPUQ?oc=5",
+     "pubDate": "Wed, 01 Nov 2023 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "첨단 제일풍경채 분양완료",
+    "첨단 제일풍경채"
+   ],
+   "freq": {}
+  },
+  {
    "name": "해링턴 플레이스 문래",
    "mentions": 2,
    "articles": [
@@ -363,6 +457,23 @@
    ],
    "aliases": [
     "해링턴 플레이스 문래"
+   ],
+   "freq": {}
+  },
+  {
+   "name": "힐스테이트 평택 화양",
+   "mentions": 2,
+   "articles": [
+    {
+     "title": "'힐스테이트 평택 화양' 잔여세대 선착순 분양... 모델하우스 운영중",
+     "source": "경상일보",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBiUHE2aS1aVHlSd1FCcGh5dEY1MjNrb011ZEV1cDVGUno4X1UzM1NwM0MxZUpuZzRWc3IxdlJ2WU03czdmSHpXdnlyR1dScGtkc2J6MkVqMjhOVVVtSHBQWU1wUkJGYml2cnRJ?oc=5",
+     "pubDate": "Sat, 22 Apr 2023 07:00:00 GMT"
+    }
+   ],
+   "aliases": [
+    "힐스테이트 평택 화양",
+    "힐스테이트 평택"
    ],
    "freq": {}
   }
