@@ -1,12 +1,12 @@
 {
-  "collectedAt": "2026-10-29T09:42:20.064Z",
+  "collectedAt": "2026-10-30T00:40:31.189Z",
   "sources": {
     "lh": {
       "ok": false,
       "count": 0,
       "rawCount": 0,
       "pickedFrom": null,
-      "ms": 1031,
+      "ms": 904,
       "error": "HTTP 400 · {\n  \"OpenAPI_ServiceResponse\": {\n    \"cmmMsgHeader\": {\n      \"errMsg\": \"NO_OPENAPI_SERVICE_ERROR\",\n      \"returnAuthMsg\": \"해당 오픈API 서비스가 없거나 폐기됨\",\n      \"return",
       "fields": []
     },
@@ -15,7 +15,7 @@
       "count": 759,
       "rawCount": 759,
       "pickedFrom": "data",
-      "ms": 49517,
+      "ms": 45693,
       "error": null,
       "fields": [
         "BSNS_MBY_NM",
@@ -72,15 +72,15 @@
         {
           "key": "apt",
           "label": "APT 분양",
-          "count": 367,
-          "total": 367,
+          "count": 370,
+          "total": 370,
           "error": null
         },
         {
           "key": "remndr",
           "label": "무순위·잔여세대",
-          "count": 392,
-          "total": 392,
+          "count": 389,
+          "total": 389,
           "error": null
         }
       ]
